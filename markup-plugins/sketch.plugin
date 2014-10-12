@@ -1,0 +1,3 @@
+<div class="sketch">
+    <img src="/public/sketches/${image}"/>
+</div>

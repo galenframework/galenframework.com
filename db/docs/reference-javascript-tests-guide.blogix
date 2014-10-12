@@ -1,0 +1,593 @@
+--------------------------------
+title
+   Javascript Tests Guide
+--------------------------------
+date
+   2014-05-27 21:45
+--------------------------------
+allowComments
+   true
+--------------------------------
+categories
+   
+================================
+
+Since version 0.11.1 Galen Framework migrated to Javascript test runners. This means that you can now have a better support for your functional tests.
+You should store all your javascript-based tests in @.test.js@ files. 
+
+* "Defining tests":#Definingtests
+* "Creating driver":#Creatingdriver
+* "Creating driver in Selenium Grid":#CreatingdriverinSeleniumGrid
+* "Checking layout":#Checkinglayout
+* "Parameterizing tests":#Parameterizingtests
+** "Using 2-dimensional arrays":#Using2dimensionalarrays
+** "Using structures":#Usingstructures
+** "Multi-level parameterization":#Multilevelparameterization
+** "Reusing parameterization element to run only once":#Reusingparameterizationelementtorunonlyonce
+* "GalenPages: interacting with page elements":#GalenPagesinteractingwithpageelements
+* "Events":#Events
+** "Before test suite":#Beforetestsuite
+** "After test suite":#Aftertestsuite
+** "Before test":#Beforetest
+** "After test":#Aftertest
+* "Reporting":#Reporting
+* "Test Session":#TestSession
+* "Data Providers":#DataProviders
+* "Properties":#Properties
+* "Reading file":#Readingfile
+* "Retrying unstable code":#Retryingunstablecode
+* "Taking screenshot":#Takingscreenshot
+* "Injecting client-side javascript":#Injectingclientsidejavascript
+* "Setting cookies":#Settingcookies
+* "Test Filters":#TestFilters
+
+h2. Defining tests
+
+The test are defined using the @test@ function where the first argument is test name and second is test callback
+
+$$ javascript
+test("Simplest test", function () {
+    // here goes a test code
+});
+$$
+
+h2. Creating driver
+
+While in "basic test suites":/docs/reference-galen-test-suite-syntax/ you didn't have to control the driver creation here in Javascript test suites you have to do it yourself. Therefore you have the complete control over driver instantiation. Stil there is a good API for creating a driver that mimics the behaviour from "basic test suites":/docs/reference-galen-test-suite-syntax/#BrowserFactory.
+
+The function for creating a driver is @"createDriver":/docs/reference-galen-javascript-api/#createDriver@. By default it creates a firefox driver. That behaviour can also be overriden in "config file":/docs/getting-started-configuration/ so later you can easily switch to Selenium Grid.
+
+$$ javascript
+test("Home page test on mobile device", function () {
+  var driver = createDriver("http://galenframework.com",
+                            "640x480");
+});
+$$
+
+You can also provide a browser type
+$$ javascript
+test("Home page test on mobile device", function () {
+  var driver = createDriver("http://galenframework.com",
+                            "640x480",
+                            "firefox");
+});
+$$
+
+h2. Creating driver in Selenium Grid
+
+To get the driver instance in Selenium Grid you should use @"createGridDriver":/docs/reference-galen-javascript-api/#createGridDriver@
+
+$$ javascript
+test("Home page test on mobile device", function () {
+  var driver = createGridDriver("http://mygrid/wd/hub", {
+    browser: "firefox",
+    browserVersion: "24",
+    platform: "LINUX",
+    size: "1024x768"
+  });
+});
+$$
+
+You can also provide custom desired capabilities. This might be very handy if you want to run your tests on "SauceLabs Grid":http://saucelabs.com/ as there you have to choose a specific browser through @desiredCapabilities@ property
+
+$$ javascript
+test("Home page test on mobile device", function () {
+  var driver = createGridDriver("http://mygrid/wd/hub", {
+    browser: "iphone",
+    desiredCapabilities: {
+      platform: "OS X 10.8",
+      version: "6.0",
+      deviceName: "iPhone",
+      "device-orientation": "portrait"
+    }
+  });
+});
+$$
+
+
+h2. Checking layout
+
+To check the layout of the page you should use @"checkLayout":/docs/reference-galen-javascript-api/#checkLayout@ function. It takes the following arguments:
+
+$$ javascript
+test("Home page", function() {
+  var driver = createDriver("http://galenframework.com",
+                            "1024x768");
+  checkLayout(driver, "homePage.spec", ["all", "desktop"]);
+});
+$$
+
+
+h2. Parameterizing tests
+
+In basic test suites you used to have "Tables and Parameterized":/docs/reference-galen-test-suite-syntax/#Parameterization constructions. In Javascript test suites you can use the @forAll@ function for parameterizing your tests. There are two parameterization ways available: by 2-dimensional arrays and by structures
+
+h3. Using 2-dimensional arrays
+
+In case of array-based parameterization you define the amount of tests by rows and arguments by columns in array. 
+The following example will run 3 times for devices: mobile, tablet and desktop.
+
+$$ javascript
+forAll([
+  ["mobile", "400x700"],
+  ["tablet", "600x800"],
+  ["desktop", "1024x768"]
+], function (deviceName, size){
+  test("Home page on " + deviceName + " device", function (deviceName, size){
+    var driver = createDriver("http://galenframework.com",
+                              size); 
+  });
+});
+$$
+
+
+h3. Using structures
+
+A more convinient way for paramaterization would be using structures. Galen will iterate over each element in a structure and pass its value to the test. 
+With this it also allows to use basic templating expression in test name
+
+$$ javascript
+// Lets create a separate variable describing all devices 
+// as it might be used by other tests as well
+this.devices = {
+  mobile: {
+    deviceName: "mobile",
+    size: "400x700"
+  },
+  tablet: {
+    deviceName: "tablet",
+    size: "600x800"
+  },
+  desktop: {
+    deviceName: "desktop",
+    size: "1024x768"
+  }
+};
+
+forAll(devices, function (device) {
+  test("Home page on ${deviceName}", function (device){
+    var driver = createDriver("http://galenframework.com",
+                              device.size); 
+  });
+});
+$$
+
+h3. Multi-level parameterization
+
+What if you want to use multiple levels of parameterization? You can do it in the following way:
+
+$$ javascript
+var operatingSystems = {
+  linux: {
+    osName: "Linux"
+  },
+  windows: {
+    osName: "Windows"
+  }
+};
+
+var browsers = {
+  firefox: {
+    browserName: "Firefox"
+  },
+  chrome: {
+    browserName: "Chrome"
+  }
+};
+
+forAll(operatingSystems, function () {
+  forAll(browsers, function () {
+    test("Test on ", function (os, browser) {
+      // some test code
+    });
+  }); 
+});
+$$
+
+As you can see in the example above you don't need to declare all argument in all callbacks as all these arguments are passed implicitly to the test
+
+h3. Reusing parameterization element to run only once 
+
+Sometimes you need to run specific tests for specific parameters. You can do so through @forOnly@ function:
+
+$$ javascript
+this.devices = {
+  mobile: {
+    deviceName: "mobile",
+    size: "400x700"
+  },
+  tablet: {
+    deviceName: "tablet",
+    size: "600x800"
+  },
+  desktop: {
+    deviceName: "desktop",
+    size: "1024x768"
+  }
+};
+
+forOnly(devices.mobile, function () {
+  test("Home page on ${deviceName}", function (device){
+    // test code goes here
+  });
+});
+$$
+
+h2. GalenPages: interacting with page elements
+
+In case you want to perform functional testing and you need to interact with elements on page it is best to use @"GalenPages":/docs/reference-galenpages-javascript-api/@. It is a small lightweight framework for working with page object model.
+
+This is how you declare a page
+
+$$ javascript
+this.LoginPage = function (driver) {
+  GalenPages.extendPage(this, driver, {
+    emailTextfield: "input.email", // css locator
+    passwordTextfield: "xpath: //input[@class='password']", // xpath locator
+    submitButton: "id: submit" // id locator
+  });
+};
+$$
+
+This is how you can use your page in the test
+
+$$ javascript
+var loginPage = new LoginPage(driver);
+loginPage.emailTextfield.typeText("testuser@example.com");
+loginPage.passwordTextfield.typeText("P@ssw0rd");
+loginPage.submitButton.click();
+$$
+
+But you can also provide functions together with page declaration
+
+
+$$ javascript
+this.LoginPage = function (driver) {
+  GalenPages.extendPage(this, driver, {
+    emailTextfield: "input.email", // css locator
+    passwordTextfield: "xpath: //input[@class='password']", // xpath locator
+    submitButton: "id: submit", // id locator
+
+    loginAs: function (userName, password) {
+      this.emailTextfield.typeText(userName);
+      this.passwordTextfield.typeText(password);
+      this.submitButton.click();
+    }
+  });
+};
+// now you can do it like this
+var loginPage = new LoginPage(driver);
+loginPage.loginAs("testuser@example.com", "password");
+$$
+
+Each page has an in-built @waitForIt@ method that waits for 10 seconds until all defined elements are displayed on page. In case you have some fields defined that are not always shown on page you can define them in next argument
+
+$$ javascript
+this.LoginPage = function (driver) {
+  GalenPages.extendPage(this, driver, {
+    emailTextfield: "input.email", // css locator
+    passwordTextfield: "xpath: //input[@class='password']", // xpath locator
+    submitButton: "id: submit" // id locator
+  }, {
+    // here are defined elements that will 
+    // not be used in waitForIt function
+    tooltip: "div.tooltip"
+  });
+};
+
+
+var loginPage = new LoginPage(driver);
+loginPage.waitForIt();
+$$
+
+For more information about GalenPages please read "GalenPages Javascript API":/docs/reference-galenpages-javascript-api/
+
+h2. Events
+
+You can assign custom handlers for different test events like: 
+* "Before test suite":#Beforetestsuite
+* "After test suite":#Aftertestsuite
+* "Before test":#Beforetest
+* "After test":#Aftertest
+
+h3. Before test suite
+
+Called once all the tests are prepared but not yet executed
+
+$$ javascript
+beforeTestSuite(function () {
+  // here goes the code
+});
+$$
+
+h3. After test suite
+
+Called once all the tests are finished
+$$ javascript
+afterTestSuite(function () {
+  // here goes the code
+});
+$$
+
+h3. Before test
+
+Caled before a test execution. Passes a TestInfo object as an argument
+
+$$ javascript
+beforeTest(function (testInfo) {
+  // here goes the code
+});
+$$
+
+A TestInfo object has the following fields.
+
+* *name* - a name of the test
+* *startedAt* - Java "Date":http://docs.oracle.com/javase/6/docs/api/java/util/Date.html object representing time when the test has started
+* *endedAt* - Java "Date":http://docs.oracle.com/javase/6/docs/api/java/util/Date.html object representing time when the test has finished
+* *isFailed* - a boolean function return the state of test (true if failed, false if passed)
+* *report* - an instance of test report
+
+
+h3. After test
+
+Called once a test is finished. Passes a TestInfo object as an argument
+
+$$ javascript
+afterTest(function (testInfo) {
+  // here goes the code
+});
+$$
+
+
+h2. Reporting
+
+Each test has a @report@ field once it is instantiated. This is how you can use it:
+
+$$ javascript
+test("Some basic test", function () {
+  this.report.info("Checked something");
+
+  this.report.error("Validation failed");
+});
+$$
+
+Reports in Galen Framework are hierarchal which means that you can design the structre of reports yourself. Here is another interesting trick with @logged@ function
+
+
+$$ javascript
+test("Hierarchical reporting test", function () {
+  logged("Doing some restful request", function (report) {
+    report.info("POST http://example.com");
+    // some code here
+    logged("Got 200 response", function () {
+      // ... some more code here
+    });
+  });
+});
+$$
+
+This is what the resulting report would look like
+
+!files/report1.png!
+
+You can also add details to the report entry
+
+$$ javascript
+test("Hierarchical reporting test", function () {
+  this.report.info("This text will be shown")
+    .withDetails("This text will be hidden inside");
+});
+$$
+
+You can also attach files to report
+
+$$ javascript
+test("Some basic test", function () {
+  this.report.info("Take a look at these attachments")
+    .withAttachment("page.html", "/path/to/file/page.html");
+});
+$$
+
+!files/report2.png!
+
+h2. Test Session
+
+Each test has a session in which it stores its data. This way it is easier to share data accross all your custom components.
+This is how you can put your data in session:
+
+$$ javascript
+test("My simple test", function () {
+  session.put("myObject", {
+    getName: function () {
+      return "John";
+    }
+  });
+});
+$$
+
+Somewhere later in your code you can retrieve the stored object
+
+$$ javascript
+var myObject = session.get("myObject");
+myObject.getName();
+$$
+
+h2. Data Providers
+
+It is also possible to create your own custom data providers for your tests. This could be used in case you want to create custom generic test functions.
+To create a test data provider you should use @"createTestDataProvider":/docs/reference-galen-javascript-api/#createTestDataProvider@ function
+
+$$ javascript
+this.featureSwitched = createTestDataProvider("featureSwitches");
+$$
+
+Now we can use it like this
+
+$$ javascript
+featureSwitched("Feature1", function () {
+  test("Home page test", function () {
+    console.log("All my features are here " + this.data.featureSwitches);
+  });
+});
+$$
+
+In the example above the output will be @["Feature1"]@
+
+Data providers also support multi-level definition and array values. In the end they are flatten in array
+
+$$ javascript
+featureSwitched(["Feature1", "Feature2"], function () {
+  featureSwitched("Feature3", function () {
+    test("Home page test", function () {
+      console.log("All my features are here " + this.data.featureSwitches);
+    });
+  });
+});
+$$
+
+In the example above the output will be @["Feature1", "Feature2", "Feature3"]@
+
+This doesn't really look usefull uless you have some defined some kind of basic test template and then reusing it everywhere. Lets check out this example
+
+$$ javascript
+this.featureSwitched = createTestDataProvider("featureSwitches");
+
+this.myBaseTest = function (testName, myCallback) {
+  test(testName, function () {
+    var driver = createDriver("http://example.com", "1024x768");
+    if (this.data.featureSwitches != undefined) {
+      // Do something with the 'featureSwitches' data 
+    }
+    myCallback.call(this, driver);
+    driver.quit();
+  });
+};
+
+// And now defining tests
+
+featureSwitched("Feature1", function () {
+  myBaseTest("Home page", function (driver) {
+    // do something in the test    
+    // This test will be with feature switch
+    // but in this place you don't have to care about it
+    // as it is handled already in your base test template above
+  });
+});
+
+myBaseTest("Other page", function (driver) {
+  // This test will be without feature switch
+});
+
+$$
+
+
+
+
+h2. Properties
+
+Sometimes you need to load a property file so later it could be picked up in your spec. This is very useful in case of intertatiolization testing
+To load properties you can use @"loadProperties":/docs/reference-galen-javascript-api/#loadProperties@ function
+
+$$ javascript
+var properties = loadProperties("mycustom.properties");
+$$
+
+h2. Reading file
+
+To read file content into variable you can use @"readFile":/docs/reference-galen-javascript-api/#readFile@ function
+
+$$ javascript
+var fileContent = readFile("myfile.txt");
+$$
+
+h2. Retrying unstable code 
+
+Soemtimes you need to retry some unstable action a couple of times until it passes. This might be if you use Selenium Grid and you have errors with instantiating a WebDriver. This can be done with @"retry":/docs/reference-galen-javascript-api/#retry@ function
+
+$$ javascript
+var driver = retry(3, function () {
+  return createGridDriver("http://mygrid/wd/hub", {
+    browser: "firefox"
+  });
+});
+$$
+
+The first argument - is the amount of retries and the second argument is the callback.
+
+h2. Taking screenshot
+
+To create a screenshot you can use the @"takeScreenshot":/docs/reference-galen-javascript-api/#takeScreenshot@ function. It returns the Java "File":http://docs.oracle.com/javase/6/docs/api/java/io/File.html type
+
+$$ javascript
+var screenshotFile = takeScreenshot(driver);
+$$
+
+You can also use it together with the reportso
+
+$$ javascript
+test("Some basic test", function () {
+  // ...
+  this.report.error("Something went wrong on the page")
+    .withAttachment("Screenshot", takeScreenshot(driver));
+});
+$$
+
+h2. Injecting client-side javascript
+
+Sometimes you need to inject a custom client-side javascript on the test page. This can done with @"inject":/docs/reference-galen-javascript-api/#inject@ funtion
+
+$$ javascript
+test("Some basic test", function () {
+  var driver = createDriver("http://example.com");
+  inject(driver, "document.getElementById('mybutton').innerHTML = 'my button';");
+});
+$$
+
+h2. Setting cookies
+
+If you need to provide custom cookie on the test page you can use @"cookie":/docs/reference-galen-javascript-api/#cookie@ function
+
+$$ javascript
+test("Some basic test", function () {
+  var driver = createDriver("http://example.com");
+  cookie(driver, "UserName=testuser; path=/");
+});
+$$
+
+
+h1. Test Filters
+
+It is also possible to change the sequence of tests that will be executed by Galen. By using the test filters you can exclude the test by some specific properties or reorder the test sequence. Just use @testFilter@ function
+
+$$ javascript
+testFilter(function (tests) {
+    var newTests = [];
+    for (var i = 0; i < tests.length; i++) {
+        if (tests[i].name != "Some test") {
+            newTests.push(tests[i]);
+        }
+    }
+    return newTests;
+});
+$$
+

@@ -1,0 +1,56 @@
+--------------------------------
+title
+   Documentation 
+--------------------------------
+date
+   2013-10-16 20:43
+--------------------------------
+allowComments
+   true
+--------------------------------
+categories
+   
+================================
+
+"Galen":http://galenframework.com is a test framework originally designed for testing layout of web applications but is also a great tool for functional testing. When it comes to testing a responsive layout it works in a following way:
+# Open a page in browser
+# Resize it to specified size
+# Test the layout according to user-defined specs
+
+It uses "Selenium":http://www.seleniumhq.org/ for interacting with elements on page and getting their locations and dimensions. 
+Once it sees that something is wrong - Galen reports the error, makes a screenshot and highlights the misbehaving element on it.
+
+h1. Getting Started
+
+Will help you to install Galen and configure it properly.
+
+- "Install Galen":/docs/getting-started-install-galen/ _download and install the latest version of Galen_
+- "Configuration":/docs/getting-started-configuration/ _configure Galen project_
+- "Running Galen":/docs/reference-working-in-command-line/ _run sample project with Galen_
+
+
+h1. Complete Reference
+
+- "Galen Spec Language Guide":/docs/reference-galen-spec-language-guide/ _complete list of all specs_
+- "Galen Test Suite Syntax":/docs/reference-galen-test-suite-syntax/
+- "Working in Command Line":/docs/reference-working-in-command-line/ _execution and reporting from command line_
+
+h1. Javascript Tests
+
+- "Javascript Tests Guide":/docs/reference-javascript-tests-guide/ _a Javascript framework for functional testing_
+- "Galen Javascript API":/docs/reference-galen-javascript-api/ _global functions that are available for Javascript tests_
+- "GalenPages Javascript API":/docs/reference-galenpages-javascript-api/ _a lightweight functional Javascript test framework for working with Page Objects model_
+
+h1. Java Tests
+
+- "Java + Maven + TestNG + Galen":/docs/reference-java-tests/ _how to use Galen inside Java tests_
+
+
+h1. Tutorials
+
+Tutorials articles are still in development. For now you can follow the "Complete Reference":#CompleteReference articles as they contain all the documentation. The tutorials section will follow up soon
+
+- "First Project":/docs/tutorial-first-project/ _a short introduction to Galen specs_
+- "TDD for Responsive Design. Or how to automate testing of website layout for different devices":http://mindengine.net/post/2013-11-16-tdd-for-responsive-design-or-how-to-automate-testing-of-website-layout-for-different-devices/
+- "Testing colors on your website with Galen Framework":http://mindengine.net/post/2014-01-14-testing-colors-on-your-website-with-galen-framework/
+- More tutorials you can find on "MindEngine.net":http://mindengine.net/category/galen/ 

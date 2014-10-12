@@ -1,0 +1,54 @@
+
+<#if category?? >
+    <#assign prefixUrl="${blogix.wayToRoot}/category/${category.id}">
+    <h1>${category.name?html}</h1>
+<#else>
+    <#assign prefixUrl="${blogix.wayToRoot}">
+</#if>
+
+<div class="articles">
+    <#list posts as post>
+    <div class="article">
+        <div class="header">
+            <span class="date">${post.date?date}</span>
+        </div>
+        <a class="title" href="${blogix.wayToRoot}/post/${post.id}/">${post.title?html}</a>
+        <div class="article-content">
+            ${markup.apply(post.contentPreview)}
+        </div>
+        <a class="button button-readmore" href="${blogix.wayToRoot}/post/${post.id}/">Read more</a>
+    </div>
+    </#list>
+</div>
+
+<#if pagination??>
+    <div class="pagination-block">
+        <div class="page-navigation">
+            <#if currentPage gt 1 >
+                <a class="button" href="${prefixUrl}/page-${currentPage-1}/">&larr;</a>
+            <#else>
+                <span class="button disabled">&larr;</span>
+            </#if>
+            <#if currentPage lt pages >
+                <a class="button" href="${prefixUrl}/page-${currentPage+1}/">&rarr;</a>
+            <#else>
+                <span class="button disabled">&rarr;</span>
+            </#if>
+        </div>
+        <ul class="pagination">
+            <#list pagination as p>
+            <li>
+                <#if p.isEllipsis()>
+                    <span class="ellipsis">...</span>
+                <#else>
+                    <#if p.active>
+                        <a href="${prefixUrl}/page-${p.number}/">${p.number}</a>
+                    <#else>
+                        <span>${p.number}</span>
+                    </#if>
+                </#if>
+            </li>
+            </#list>
+        </ul>
+    </div>
+</#if>

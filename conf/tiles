@@ -1,0 +1,44 @@
+
+
+mainframe: mainframe.ftl.html
+    header:         header.ftl.html        
+    footer:         footer.ftl.html
+    navigation:     navigation.ftl.html
+
+home: @mainframe
+    middle:         home.ftl.html
+
+main: @mainframe
+    middle:         main.ftl.html
+    sideBar:        sideBar.ftl.html
+
+browse: @main
+    content:        browse.ftl.html
+
+
+doc: @main
+    content:        doc.ftl.html
+
+post:   @main
+    content:        post.ftl.html
+
+categories: @main
+    content:         categories.ftl.html
+
+archive:    @main
+    content:        archive.ftl.html
+
+
+404: @mainframe
+    middle: 404.ftl.html
+
+rss:    rss.ftl.xml
+
+download:   @main
+    content:        download.ftl.html
+
+contact:    @main
+    content:        contact.ftl.html
+
+subscribe:  @main
+    content:        subscribe.ftl.html

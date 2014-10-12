@@ -1,0 +1,65 @@
+--------------------------------
+title
+   Released version 1.1.0
+--------------------------------
+date
+   2014-07-09 22:32
+--------------------------------
+allowComments
+   true
+--------------------------------
+categories
+   
+================================
+
+A new version 1.1.0 was released with the following features:
+
+* "Installers for OSX and Linux":/post/2014-07-09-released-version-1.1.0/#InstallersforOSXandLinux
+* "Variables processing in specs":/post/2014-07-09-released-version-1.1.0/#Variablesprocessinginspecs
+* "Execution time in html reports":/post/2014-07-09-released-version-1.1.0/#Executiontimeinhtmlreports
+* "Line numbers in html reports":/post/2014-07-09-released-version-1.1.0/#Linenumbersinhtmlreports
+
+>>>>
+
+h2. Installers for OSX and Linux
+
+Now you don't have to manually configure PATH variable to make galen accessible in your terminal. Just download a binary archive, extract it, go to folder and run the following command:
+
+$$ bash
+sudo ./install.sh
+$$
+
+This script will put galen executable and jar files into @/opt@ folder and will make a symbolic link in @/usr/bin@ folder
+
+
+h2. Variables processing in specs
+
+When designing a page spec you can define custom variables so later those could be used in the spec. You can use it like this:
+
+$$ galen-specs
+ @@ set main-margin     10 to 40px
+ @@ set custom.greeting Hello, user!
+ 
+ header
+     text is: ${custom.greeting}
+
+ article
+     inside: middle-section ${main-margin} top left
+
+$$
+
+
+
+
+h2. Execution time in html reports
+
+All tests and report nodes are now being reported with dates. Also in general @report.html@ it shows a duration of each test
+
+!files/executiontime.png!
+
+
+h2. Line numbers in html reports
+
+Now it is easier to find out where the specific spec is coming from. Just hover your mouse over spec and it will show a tooltip with the location and line number
+
+!files/linenumbers.png!

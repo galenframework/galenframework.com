@@ -1,0 +1,270 @@
+--------------------------------
+title
+   GalenPages Javascript API
+--------------------------------
+date
+   2014-05-31 21:16
+--------------------------------
+allowComments
+   true
+--------------------------------
+categories
+   
+================================
+
+GalenPages is a lightweight Selenium javascript framework that allows you to work with Page Objects model in a fast and comprehensive way.
+
+h1. Quick introduction
+
+Here is the simple code snippet for building a page object for a Login page
+
+$$ javascript
+this.LoginPage = function (driver) {
+  GalenPages.extendPage(this, driver, {
+    email: "input.email", // css locator
+    password: "xpath: //input[@class='password']", // xpath locator
+    submitButton: "id: submit", // id locator
+
+    load: function () {
+      this.open("http://example.com/login");
+      return this.waitForIt();
+    },
+    loginAs: function (userName, password) {
+      this.email.typeText(userName);
+      this.password.typeText(password);
+      this.submitButton.click();
+    }
+  });
+};
+// now you can use it like this
+var loginPage = new LoginPage(driver).load();
+loginPage.loginAs("testuser@example.com", "password");
+$$
+
+h1. GalenPages API
+
+h2. GalenPages.settings
+
+Contains some basic configurations for GalenPages framework
+
+h3. GalenPages.settings.allowReporting
+
+*GalenPages.settings.allowReporting* - boolean type. A property that is set to true by default and is used in order to allow basic page elements action to report their activity (e.g. click, typeText etc.)
+$$ javascript
+// to disable reporting in your tests
+GalenPages.settings.allowReporting = false;
+$$
+
+h3. GalenPages.settings.cacheWebElements
+
+*GalenPages.settings.cacheWebElements* - boolean type. A property thay is set to true by default and is used in @getWebElement@ function of @"GalenPages.PageElement":#GalenPagesPageElement@
+$$ javascript
+// to disable caching of WebElement objects in your tests
+GalenPages.settings.cacheWebElements = false;
+$$
+
+h2. GalenPages.extendPage
+
+*GalenPages.extendPage( page, driver, primaryFields, [ secondaryFields ])*
+
+Creates an instance of @"GalenPages.Page":#GalenPagesPage@ and copies all its fields to the specified page. Also based on @primaryFields@ and @secondaryFields@ it creates page elements using @"GalenPages.PageElement":#GalenPagesPageElement@ constructor
+
+* *page* - an object represeting a page 
+* *driver* - an instance of WebDriver
+* *primaryFields* - a set of key/values pairs containing page elements and functions that will be in-built into the page
+* *secondaryFields* - same as primaryFields but the elements defined inside this structure will not be used in @waitForIt@ function
+
+h3. Declaration
+
+$$ javascript
+this.LoginPage = function (driver) {
+  GalenPages.extendPage(this, driver, {
+    email: "input.email", // css locator
+    password: "xpath: //input[@class='password']", // xpath locator
+    submitButton: "id: submit", // id locator
+
+    load: function () {
+      this.open("http://example.com/login");
+      return this.waitForIt();
+    },
+    loginAs: function (userName, password) {
+      this.email.typeText(userName);
+      this.password.typeText(password);
+      this.submitButton.click();
+    }
+  }, {
+    // secondary fields
+    tooltip: "div.tooltip"
+  });
+};
+$$
+
+h3. Usage
+
+$$ javascript
+var loginPage = new LoginPage(driver);
+loginPage.loginAs("testuser@example.com", "test123");
+$$
+
+h2. GalenPages.Page
+
+*GalenPages.Page* - a constructor that is used by GalenPages framework to instantiate a page.
+
+Contains the following fields and functions:
+
+* *driver* - a WebDriver instance
+* *waitTimeout* - string type (default "10s"). A timeout that is used by @waitForIt@ method
+* *waitPeriod* - string type (default "1s"). A time period that is used by @waitForIt@ method
+* *open* - function. Takes a url as an argument and loads the specified url in current browser
+$$ javascript
+myPage.open("http://example.com");
+$$
+* *findChild* - function. Takes a string locator as an argument and searches for a first matching element on page. Returns a WebElement or null if no elements were found on the page
+$$ javascript
+var element = myPage.findChild("a.button");
+$$
+* *findChildren* - function. Takes a string locator as an argument and searches for all matching elements on page. Returns an array of WebElements
+$$ javascript
+var elements = myPage.findChildren("a.button");
+$$
+* *waitForIt* - function. Waits untill all primary fields appear on page. This function should be used in case the page is dynamically built in a browser. Returns a page object
+$$ javascript
+myPage.waitForIt();
+$$
+
+
+h2. GalenPages.PageElement
+
+*GalenPages.PageElement* - a constructor that is used when GalenPages creates a page element and attaches it to the page
+
+Contains the following fields and functions: 
+
+* *name* - a name of page element
+* *locator* - a locator that is used to fetch WebElement on the page
+* *isEnabled* - function. Returns true if page element is enabled and false if it is disabled
+$$ javascript
+if (loginPage.emailTextfield.isEnabled()) {
+  // do something
+}
+$$
+* *attribute* - function. Takes a string argument that represents a name of html attribute. Returns value of specified html attribute
+$$ javascript
+var href = myPage.submitLink.attribute("href");
+$$
+* *cssValue* - fucntion. Takes a string argument that represents a name of css property. Returns a value of specified css property
+$$ javascript
+var fontWeight = myPage.submitLink.cssValue("font-weight");
+$$
+* *click* - function. Clicks on the page element
+$$ javascript
+loginPage.submitButton.click();
+$$
+* *typeText* - function. Takes a string argument. Types the specified text to the page element
+$$ javascript
+loginPage.emailTextfield.typeText("testuser@example.com");
+$$
+* *clear* - function. Removes the text from textfield page element
+$$ javascript
+loginPage.emailTextfield.clear();
+$$
+* *getWebElement* - function. Returns WebElement object for current page element
+* *isDisplayed* - function. Returns true if page element is visible on page and false if it is hidden
+* *selectByValue* - function. Takes string argument representing a value of html @option@. This function should only be used in case the page element is a html @select@ tag. 
+$$ javascript
+myPage.menuList.selectByValue("categories");
+$$
+* *selectByText* - function. Takes string argument representing a text of html @option@. This function should only be used in case the page element is a html @select@ tag. 
+$$ javascript
+myPage.menuList.selectByText("Categories");
+$$
+* *waitFor* - function. Takes 3 arguments: callback, messageSuffix, time. Used in order to wait for some specific condition that is controlled by the callback. 
+$$ javascript
+loginPage.loginButton.waitFor(function (button) {
+  return button.isDisplayed();
+}, "button should be show", "10s");
+
+// can also be used without message and timeout
+// in this case the message will be equal to page element name
+// and timeout will be "10s"
+loginPage.loginButton.waitFor(function (button) {
+  return button.isDisplayed();
+});
+$$
+* *waitToBeShown* - function. Takes one string argument representing a timeout (default is "10s"). Waits with specified timeout until element appears on page and becomes visible.
+$$ javascript
+loginPage.loginButton.waitToBeShown("10s");
+
+// or without timeout
+loginPage.loginButton.waitToBeShown();
+$$
+
+* *waitToBeHidden* - function. Takes one string argument representing a timeout (default is "10s"). Waits with specified timeout until element disappears from the page or becomes invisible.
+$$ javascript
+loginPage.loginButton.waitToBeHidden("10s");
+
+// or without timeout
+loginPage.loginButton.waitToBeHidden();
+$$
+
+* *waitUntilExists* - function. Takes one string argument representing a timeout (default is "10s"). Waits with specified timeout until element appears on page.
+$$ javascript
+loginPage.loginButton.waitUntilExists("10s");
+
+// or without timeout
+loginPage.loginButton.waitUntilExists();
+$$
+
+* *waitUntilGone* - function. Takes one string argument representing a timeout (default is "10s"). Waits with specified timeout until element disappears from page.
+$$ javascript
+loginPage.loginButton.waitUntilGone("10s");
+
+// or without timeout
+loginPage.loginButton.waitUntilGone();
+$$
+
+* *exists* - function. Return true if page element is present in DOM and false if it is missing
+$$ javascript
+if (loginPage.loginButton.exists()) {
+  // do something
+}
+$$
+
+
+h2. GalenPages.wait
+
+A very usefull function that allows to wait for multiple condition with specified timeout. It has a good error messaging in case one of conditions fails.
+
+*GalenPages.wait( settings );*
+
+* *settings* - a set of key/value pairs for configuring the wait component
+** *time* - string or number type. The timeout for wait componet. A number represent milliseconds. A string is allowed in the following format: "10s" or "1m"
+** *period* - string or number type. The time interval with which it checks all the conditions. A number represent milliseconds. A string is allowed in the following format: "10s" or "1m"
+
+Returns a @GalenPages.Wait@ object that has the following function:
+
+* *untiAll* - function. Takes an argument of key/value pairs where key is a name of condition and value is a boolean function that returns state of condition
+
+$$ javascript
+GalenPages.wait( {time: "10s", period: "1s"}).untilAll({
+  "Email textfield should be shown": function () { 
+    return loginPage.emailTextfield.isDisplayed();
+  },
+  "Password textfield should be shown": function () {
+    return loginPage.passwordTextfield.isDisplayed();
+  }
+});
+$$
+
+h2. GalenPages.sleep
+
+Takes a number argument representing amount of milliseconds and sleeps the specified amount of time.
+
+$$ javascript
+// Will sleep for one second
+GalenPages.sleep(1000);
+$$
+
+
+
+
+

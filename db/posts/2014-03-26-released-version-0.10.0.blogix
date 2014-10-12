@@ -1,0 +1,57 @@
+--------------------------------
+title
+   Released version 0.10.0
+--------------------------------
+date
+   2014-03-26 21:50
+--------------------------------
+allowComments
+   true
+--------------------------------
+categories
+   
+================================
+
+A new version 0.10.0 was released with the following features:
+
+* Test filter for a command line runner 
+* Wait action in test suites
+* Component spec is now dynamic
+
+>>>>>>>>>
+
+h1. Test filter for a command line runner
+
+If you ever had this problem that you have a big test suite but you only want to check some specific test you can now use a test filter. It works like this:
+
+$$ bash
+galen test . --filter "Home page on * device"
+$$
+
+The above command will run only tests with names matching the given expression
+
+
+h1. Wait action in test suites
+
+This feature is very useful for testing dynamic content. Sometimes you have to deal with the page that is rendered dynamically after the page load. In this case you can either wait a hardcoded amount of time or you can wait for a specific condition
+
+$$ galen-suites
+Home page test
+    http://example.com 640x480
+        wait 10s
+        check homepage.spec
+$$
+
+Waiting for an element to become visible:
+
+$$ galen-suites
+Home page test
+    http://example.com 640x480
+        wait 10s until visible "css: div.list"
+        check homepage.spec
+$$
+
+
+h2. Component spec is now dynamic
+
+In previous version the component spec was loaded once and then was applied to all objects on page. Now it is being read each time it is executed. This gives you more flexibility when testing dynamic content on a web page.

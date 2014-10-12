@@ -1,0 +1,162 @@
+<div class="main-picture main-back-1">
+    <div class="wrapper">
+        <h1>Automated Testing of Responsive Design</h1>
+
+        <div class="main-feature">
+            <img class="devices-image" src="/public/images/home-devices.png"/>
+            <div class="download-home-box">
+                <a class="download-button" href="${urlPrefix}/download/"><i class="fa fa-download "></i> Download</a>
+                <ul class="social-buttons">
+                    <li>
+                        <span class="caption">Stay in touch!</span>
+                    </li>
+                    <li>
+                        <a href="${urlPrefix}/subscribe/">
+                            <i class="fa fa-envelope fa-2x"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://twitter.com/galenframework">
+                            <i class="fa fa-twitter fa-2x"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/galenframework/galen">
+                            <i class="fa fa-github-alt fa-2x"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/galenframework">
+                            <i class="fa fa-facebook-square fa-2x"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div style="clear: both"></div>
+            <ul class="feature-list">
+                <li><i class="fa fa-check-square-o fa-2x pull-left"></i> <span>For web-developers and testers</span></li>
+                <li><i class="fa fa-check-square-o fa-2x pull-left"></i> <span>Rich syntax</span></li>
+                <li><i class="fa fa-check-square-o fa-2x pull-left"></i> <span>Javascript support</span></li>
+                <li><i class="fa fa-check-square-o fa-2x pull-left"></i> <span>Runs in Selenium Grid</span></li>
+                <li><i class="fa fa-check-square-o fa-2x pull-left"></i> <span>Free and open-sourced</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="main-picture main-back-2">
+    <div class="wrapper">
+        <div class="feature-space"></div>
+        <h1>How it Works</h1>
+        <ul id="how-it-works">
+            <li>
+                <img src="/public/images/how-it-works-1.png"/>
+                <span class="caption">1. Write a test using Galen Specs</span>
+            </li>
+            <li>
+                <img src="/public/images/how-it-works-2.png"/>
+                <span class="caption">2. Execute test in a real browser</span>
+            </li>
+            <li>
+                <img src="/public/images/how-it-works-3.png"/>
+                <span class="caption">3. Get feedback</span>
+            </li>
+        </ul>
+        <div style="clear: both;"></div>
+        <div class="video-container">
+            <iframe src="//player.vimeo.com/video/81896181" width="500" height="375" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="http://vimeo.com/81896181">Galen Framework Introduction</a> from <a href="http://vimeo.com/user23480771">Ivan Shubin</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+        </div>
+        <div class="video-container">
+            <iframe src="//player.vimeo.com/video/81896182" width="500" height="375" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="http://vimeo.com/81896182">Galen Framework - Cross-browser layout testing</a> from <a href="http://vimeo.com/user23480771">Ivan Shubin</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper">
+    <div id="home">
+        <div class="feature-space"></div>
+        <div class="home-feature">
+            <div class="feature-text">
+                <h2>Page Layout Testing</h2>
+                <div>
+                    Galen is a tool for layout testing of web applications. 
+                    It uses <a href="http://www.seleniumhq.org/">Selenium</a> to obtain objects on page and then verifies if they are aligned appropriately. 
+                    Idea is simple: you tell Galen how a page should look like and Galen will check that 
+                </div>
+            </div>
+            <div class="feature-image">
+                <img src="/public/images/slide-layout-planning.png"/>
+            </div>
+        </div>
+        
+        <div class="feature-space"></div>
+        <div class="home-feature home-feature-2">
+            <div class="feature-image">
+                <img src="/public/images/slide-responsive-design.png"/>
+            </div>
+            <div class="feature-text">
+                <h2>Responsive Design Testing</h2>
+                <div>
+                    Galen is designed with responsivness in mind.
+                    It is easy to set up a test for different browser sizes. Galen just opens a browser, resizes it to a defined size and then tests the page according to specifications
+                </div>
+            </div>
+        </div>
+        
+        <div class="feature-space"></div>
+
+        <div class="home-feature">
+            <div class="feature-text">
+                <h2>Powerfull syntax</h2>
+                <div>
+                    Galen is not just a tool. It is a special language with powerfull syntax which gives you the ability to express even the most complex layouts. And even more than that. Galen has a special syntax for parameterizing your tests in the way you want
+                </div>
+            </div>
+            <div class="feature-block">
+                <code class="block" data-language="galen-specs">
+@ mobile, tablet 
+-----------------------------
+comments
+    width: 300px
+    inside: screen 10 to 30px top right
+    near: article-content &gt; 10px right
+
+@ desktop
+-----------------------------
+comments
+    width: ~ 100% of screen/width
+    below: article-content &gt; 20px
+</code>
+            </div>
+        </div>
+        
+        <div class="feature-space"></div>
+
+        <div class="home-feature">
+            <div class="feature-image">
+                <img src="/public/images/slide-selenium-grid.png"/>
+            </div>
+            <div class="feature-text">
+                <h2>Runs in Selenium Grid</h2>
+                <div>
+                    As Galen uses Selenium you also get the complete advantage of Selenium Grid. You can perform cross-browser testing and always make sure that the small changes in your code do not break layout in all other browsers
+                </div>
+            </div>
+        </div>
+
+        <div class="feature-space"></div>
+
+        <div class="home-feature">
+            <div class="feature-text">
+                <h2>Open-Source</h2>
+                <div>
+                    Galen is an open-source project licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>. It is available at <a href="https://github.com/galenframework/galen">GitHub</a>. Feel free to send your pull requests!
+                </div>
+            </div>
+            <div class="feature-image">
+                <img src="/public/images/slide-open-source.png" width="300"/>
+            </div>
+        </div>
+
+
+    </div>
+</div>

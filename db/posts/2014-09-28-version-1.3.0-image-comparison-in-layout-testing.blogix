@@ -1,0 +1,85 @@
+--------------------------------
+title
+   Version 1.3.0. Image comparison in layout testing
+--------------------------------
+date
+   2014-09-28 20:43
+--------------------------------
+allowComments
+   true
+--------------------------------
+categories
+    selenium, galen, responsive_design, automation
+   
+================================
+
+Since new v1.3.0 update in Galen Framework there are two new major functionalities: "image comparison":/docs/reference-galen-spec-language-guide/#Image and "page dump":/docs/reference-working-in-command-line/#PageDump. The *page dump* creates an html report with page screenshot and fetches all page objects with detailed information. Also it stores each image of page object separately in png format. These images could be used for image comparison - a new technique in Galen Framework that allows to compare area of the selected object with predefined image sample. As a result you can get a report with detailed description and an image represeting the difference:
+!/public/clipart/image-comparison.png!
+
+>>>>
+
+
+h2. Page Dump
+
+A page dump you can make in different ways. The simplest one is through the command line described "here":/docs/reference-working-in-command-line/#Creatingpagedump
+
+$$ bash
+galen dump "specs/homepage.spec"
+    --url "http://testapp.galenframework.com"
+    --size "1024x768"
+    --export "dumps/homepage-dump" 
+    --max-width "200" 
+    --max-height "200"
+$$
+
+Or if you use javascript tests you can use this "function":/docs/reference-galen-javascript-api/#dumpPage
+
+$$ javascript
+dumpPage(driver, "Home page", "specs/homepage.spec", "dumps/homepage", 200, 200);
+$$
+
+In case you write your Galen tests in Java you can use the following class @net.mindengine.galen.api.Galen@
+
+$$ java
+Galen.dumpPage(driver, pageName, specPath, pageDumpPath, maxWidth, maxHeight);
+$$
+
+
+Here is an "example of a page dump":/public/pagedump-example/page.html. You can select different objects and see what specs it will suggest you.
+Once the page dump is created it also stores the screenshots for each page element separately in @objects@ folder. These images could be used for image comparison.
+
+
+h2. Image comparison
+
+From now on you can also check how the individual page element looks like by comparing it with predefined image pixel to pixel. The detailed documentation you can find "here":/docs/reference-galen-spec-language-guide/#Image. In short it allows to compare pixel to pixel with predefined image sample and also allows to apply some image filters like: blur, contrast, saturation, denoise, quantinzation. Here is an example of simplest image comparison spec:
+
+$$ galen-specs
+header-logo
+    image: file imgs/header-logo.png
+$$
+
+The above spec will check that each pixel on page element area is the same as in defined @imgs/header-logo.png@ and will fail in case even one pixel is mismatched. In case you want to make it less error prone you can change the level of error like this:
+
+$$ galen-specs
+header-logo
+    image: file imgs/header-logo.png, error 100px
+$$
+
+The above spec will fail only if amount of mismatching pixels is bigger than 100. In case you want to assert on a relative number you can use the percentage error rate:
+
+$$ galen-specs
+header-logo
+    image: file imgs/header-logo.png, error 4%
+$$
+
+The above spec now tells that it should fail if amount of mismatching pixels is bigger than 4% of total pixels on image.
+
+Here is more advanced image comparison:
+
+$$ galen-specs
+header-logo
+    image: file imgs/header-logo.png, error 4%, stretch, filter contrast 100, filter saturation 50, filter blur 5, map-filter denoise 10
+$$
+
+Checkout more detailed documentation about image filters and other settings "here":/docs/reference-galen-spec-language-guide/#Image
+

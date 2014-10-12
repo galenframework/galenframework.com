@@ -1,0 +1,48 @@
+--------------------------------
+title
+   Released version 0.9.0
+--------------------------------
+date
+   2014-02-16 16:20
+--------------------------------
+allowComments
+   true
+--------------------------------
+categories
+   
+================================
+
+A new version 0.9.0 was released with the following features:
+
+* Migrated to "Mozilla Rhino":https://developer.mozilla.org/en/docs/Rhino Javascript engine
+* Added full page screenshots support
+* Dynamic ranges in page specs
+
+>>>>>>
+
+h1. Migrated to Mozilla Rhino Javascript engine
+
+Migration to Rhino gives us a better support for exceptions thrown from the script. Also it comes with some functions that everybody got used to on client-side (e.g. JSON.stringify, JSON.parse, escape, encodeURIComponent etc.)
+Also from now in order to load a script from another file you don't have to use @global.load@ anymore. Instead just use @load@ function directly.
+
+
+h1. Added full page screenshots support
+
+Previously it was a problem to test layout in Chrome, iOS and Androud browsers as there Selenium is not capable of taking complete screenshots of the page. From now you can take full page screenshots with Galen. In order to do so you need to enable a property @galen.browser.screenshots.fullPage = true@ in config file. In this case Galen will first try to make a screenshot and then compare its height with the scrollable view height in browser. In case it is smaller it will scroll one by one the view and make a screenshot of each part. In the end you will get a stiched screenshot of the whole page.
+
+
+h1. Dynamic ranges in page specs
+
+This is a major improvement as it gives more flexibility for fetching objects on page. Previously, in order to use "ranges with template specs":/docs/reference-galen-spec-language-guide/#Templatespecs, you had to specify exact value in the range. But what if we don't know the exact amount of objects on the page? Now you can do this trick:
+
+$$ galen-specs
+==================================
+menu-item-*         css #menu li a
+==================================
+
+[ 1 - ${count("menu-item-*") - 1} ]
+menu-item-@
+    near: menu-item@{+1} 10px left
+$$
+
+In the example above we specified the expression @${count("menu-item-*") - 1}@ with template range definition. That expression means that Galen should count the amount of objects matching @menu-item-*@ pattern and return minus one. So if we have 30 objects on page in the end it will create a template range of *[1-29]*. This is very usefull technique which allows you to describe any complext layout on the page.

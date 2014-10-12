@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Galen Framework - Testing website layout</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Ivan Shubin">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+        <!--
+        <link rel="stylesheet" href="css/theme/night.css" id="theme"> 
+        -->
+        <link rel="stylesheet" href="css/theme/night.css" id="theme"> 
+
+		<link rel="stylesheet" href="galen-highlight.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Galen Framework</h1>
+					<h3>Testing Responsive Layout Is Easy</h3>
+					<p>
+						<small>by <a href="http://mindengine.net">Ivan Shubin</a> </small>
+					</p>
+				</section>
+                <section data-transition="linear"  data-background-transition="slide" data-background="#662200">
+                    <h2>The Problem</h2>
+                    <img src="images/the-problem.png"/>
+                    <p>
+                        How do we implement and test responsive website?
+                    </p>
+                </section>
+                <section data-transition="linear"  data-background-transition="slide" data-background="#005522">
+                    <h2>Solution</h2>
+                    <img src="images/solution-1.png"/> 
+                    <p>
+                        1. Write Galen tests
+                    </p>
+                </section>
+                <section data-transition="linear"  data-background-transition="slide" data-background="#005522">
+                    <img src="images/solution-2.png"/> 
+                    <p>
+                        2. Implement Frontend and execute tests
+                    </p>
+                </section>
+                <section data-transition="linear"  data-background-transition="slide" data-background="#005522">
+                    <img src="images/solution-3.png"/> 
+                    <p>
+                        3. Get feedback
+                    </p>
+                </section>
+            
+                <section>
+                    <h2>What is Galen?</h2>
+                    <p>
+                        <a href="http://galenframework.com">Galen</a> is a framework with special language for testing page layout in a real browser. 
+                    </p>
+                </section>
+                <section>
+                    <h2>How Galen does it?</h2>
+                    <p>By checking objects locations relatively to each other</p>
+                </section>
+                <section>
+                    <h2>Near</h2>
+                    <p>
+                        <img src="images/spec-sketch-near.png"/>
+<pre class='galen-spec'>
+<span class='spec-object'>button</span>
+    <span class='spec-def'>near:</span> textfield <span class='spec-num'>10</span>px right
+</pre>
+                    </p>
+                </section>
+                <section>
+                    <h2>Inside</h2>
+                    <p>
+                        <img src="images/spec-sketch-inside.png"/>
+<pre class='galen-spec spec'>
+<span class='spec-object'>button</span>
+    <span class='spec-def'>inside:</span> container <span class='spec-num'>10</span>px top left
+</pre>
+                    </p>
+                </section>
+                <section>
+                    <h2>Inside (a bit more complicated)</h2>
+                    <p>
+                        <img src="images/spec-sketch-inside-complex.png"/>
+<pre class='galen-spec spec'>
+<span class='spec-object'>button</span>
+    <span class='spec-def'>inside:</span> container <span class='spec-num'>10</span>px left right, 20px top bottom
+</pre>
+                    </p>
+                </section>
+                <section>
+                    <h2>Above / Below</h2>
+                    <p>
+                        <img src="images/spec-sketch-above.png"/>
+<pre class='galen-spec'>
+<span class='spec-object'>caption</span>
+    <span class='spec-def'>above:</span> description <span class='spec-num'>15</span>px
+<div class='fragment'><span class="spec-comment"># or like this</span>
+<span class='spec-object'>description</span>
+    <span class='spec-def'>below:</span> caption <span class='spec-num'>15</span>px 
+</div>
+</pre>
+                    </p>
+                </section>
+                <section>
+                    <h2>Aligned</h2>
+                    <p>
+                        <img src="images/spec-sketch-aligned-horizontally.png"/>
+<pre class='galen-spec'>
+<span class='spec-object'>menu-item-*</span>
+    <span class='spec-def'>aligned horizontally top:</span> menu-item-1 <span class='spec-num'>10</span>px
+</pre>
+                    </p>
+                </section>
+                <section>
+                    <h2>Aligned Vertically</h2>
+                    <p>
+                        <img src="images/spec-sketch-aligned-vertically.png"/>
+<pre class='galen-spec'>
+<span class='spec-object'>menu-item-*</span>
+    <span class='spec-def'>aligned vertically left:</span> menu-item-1 <span class='spec-num'>10</span>px
+</pre>
+                    </p>
+                </section>
+                <section>
+                    <h2>All checks</h2>
+                    <ul class="box">
+                        <li>absent</li>
+                        <li>near</li>
+                        <li>above</li>
+                        <li>below</li>
+                        <li>inside</li>
+                        <li>aligned</li>
+                        <li>centered</li>
+                        <li>color scheme</li>
+                        <li>component</li>
+                    </ul>
+                    <ul class="box">
+                        <li>text is</li>
+                        <li>text starts</li>
+                        <li>text ends</li>
+                        <li>text matches</li>
+                        <li>text contains</li>
+                        <li>on</li>
+                        <li>width</li>
+                        <li>height</li>
+                        <li>contains</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Values</h2>
+                </section>
+                <section>
+                    <h2>Exact values</h2>
+<pre class='galen-spec'>
+<span class="spec-def">width:</span> <span class="spec-num">100</span>px
+</pre>
+                </section>
+                <section>
+                    <h2>Greater than / Less than</h2>
+<pre class='galen-spec'>
+<span class="spec-def">width:</span> &gt; <span class="spec-num">100</span>px
+<span class="spec-def">height:</span> &lt; <span class="spec-num">100</span>px
+</pre>
+                </section>
+                <section>
+                    <h2>Simple range</h2>
+<pre class='galen-spec'>
+<span class="spec-def">width:</span> <span class="spec-num">100</span> to <span class="spec-num">150</span>px
+</pre>
+                </section>
+                <section>
+                    <h2>Approximate values</h2>
+<pre class='galen-spec'>
+<span class="spec-def">width:</span> ~ <span class="spec-num">100</span>px
+</pre>
+                </section>
+                <section>
+                    <h2>Relative values</h2>
+<pre class='galen-spec'>
+<span class="spec-def">width:</span> <span class="spec-num">70</span>% of screen/width
+</pre>
+                </section>
+                <section>
+                    <h2>Combined ranges</h2>
+<pre class='galen-spec'>
+<span class="spec-def">width:</span> &gt; <span class="spec-num">50</span> % of screen/width
+<span class="spec-def">height:</span> <span class="spec-num">50</span> to <span class="spec-num">60</span> % of screen/height
+</pre>
+                </section>
+
+                <section data-transition="linear"  data-background-transition="slide" data-background="#003322">
+                    <h2>Real life example</h2>
+                </section>
+                <section data-background="#003322">
+                    <h2>Requirement</h2>
+                    <p>
+                        Comments sections should stretch on mobile and tablet devices but on desktop it should have fixed width of 800px
+                    </p>
+                </section>
+                <section data-background="#003322">
+                    <h2>Solution</h2>
+                    <pre class="galen-spec">
+===============================================
+<span class="spec-object">main</span>      id  main-container
+<span class="spec-object">comments</span>  css div.comments
+===============================================
+
+<span class="spec-tag">@ mobile, tablet</span>
+<span class="spec-object">comments</span>
+    <span class="spec-def">width:</span> <span class="spec-num">100</span>% of main/width
+
+<span class="spec-tag">@ desktop</span>
+<span class="spec-object">comments</span>
+    <span class="spec-def">width:</span> <span class="spec-num">800</span>px</pre>
+    </p>
+                </section> 
+                <section data-background="#003322">
+                    <h2>How do we run it?</h2>
+                </section>
+                <section data-background="#003322">
+<pre class="galen-spec">
+<span class="spec-object">$</span> galen check homepage.spec 
+            --url <span class='spec-num'>"http://example.com"</span>
+            --size <span class='spec-num'>"400x600"</span>
+            --include <span class='spec-num'>"mobile"</span>
+            --htmlreport <span class='spec-num'>"reports-dir"</span>
+</pre>
+                </section> 
+                <section>
+                    <h2>Defining a Test Suite</h2>
+                </section>
+                <section>
+                    <h2>Simple example</h2>
+<pre class="galen-spec">
+Home page on mobile device
+    http://galenframework.com  400x800
+        check homepage.spec --include "mobile"
+</pre>
+                </section>
+                <section>
+                <h2>Advanced Test Suite</h2>
+<pre class="galen-spec">
+<span class="spec-tag">@@ Set</span> 
+    domain    galenframework.com
+
+<span class="spec-tag">@@ Table</span> devices
+    | deviceName | tags      | size     |
+    | Mobile     | mobile    | 320x600  |
+    | Tablet     | tablet    | 640x480  |
+    | Desktop    | desktop   | 1024x800 | 
+
+<span class="spec-tag">@@ Parameterized using</span> devices
+Home page on <span class="spec-tag">${deviceName}</span> device
+    http://<span class="spec-tag">${domain}</span>/   <span class="spec-tag">${size}</span>
+</pre>
+                </section>
+                <section>
+                    <h1>Reports</h1>
+                    <img src="images/report-1.png"/>
+                </section>
+                <section>
+                    <h1>Reports</h1>
+                    <img src="images/report-2.png"/>
+                </section>
+                <section>
+                    <h1>Reports</h1>
+                    <img src="images/report-3.png"/>
+                </section>
+                <section>
+                    <p>
+                        Any questions 
+                    </p>
+                    <h1>?</h1>
+                    <p>
+                    For more information visit <a href="http://galenframework.com">GalenFramework.com</a> project website or <a href="https://github.com/galenframework/galen">GitHub project page</a>. Also there are many detailed articles about Galen Framework on <a href="http://mindengine.net">MindEngine.net</a>
+                    </p>
+                </section>
+            </div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

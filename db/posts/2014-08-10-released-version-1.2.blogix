@@ -1,0 +1,60 @@
+--------------------------------
+title
+   Released version 1.2.0
+--------------------------------
+date
+   2014-08-10 15:17
+--------------------------------
+allowComments
+   true
+--------------------------------
+categories
+   
+================================
+
+A new version 1.2.0 was released with the following features:
+
+* "Test filters in Javascript tests":/post/2014-08-10-released-version-1.2/#TestfiltersinJavascripttests
+* "Warning level in specs":/post/2014-08-10-released-version-1.2/#Warninglevelinspecs
+* "Java API":/post/2014-08-10-released-version-1.2/#JavaAPI
+
+
+>>>>
+
+h2. Test filters in Javascript tests
+
+This is an advanced technique allowing you to organize filtering or reordering of your tests.
+
+$$ javascript
+testFilter(function (tests) {
+    var newTests = [];
+    for (var i = 0; i < tests.length; i++) {
+        if (tests[i].name != "Some test") {
+            newTests.push(tests[i]);
+        }
+    }
+    return newTests;
+});
+$$
+
+h2. Warning level in specs
+
+When it comes to a bug on production on your website and you have to temporarily disable some checks in your specs you can use @%@ to change the error level to warning.
+
+
+$$ galen-specs
+ ===================
+ login-button   css #login-button
+ ===================
+
+ login-button
+    % width: 100px
+    text is: Login
+$$
+
+In the example above in case of error for spec "width: 100px" you will see a warning instead of error in resulting report.
+
+
+h2. Java API
+
+From now on you can also easily write Galen tests in Java. Please read this article "Java Tests (Maven + TestNG + Galen)":/docs/reference-java-tests/. Also you can check out this project on github "galen-sample-java-tests":https://github.com/galenframework/galen-sample-java-tests

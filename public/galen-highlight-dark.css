@@ -1,0 +1,30 @@
+
+pre code {
+    color: #fff;
+}
+
+pre code span.galen-comment {
+    color: #888;
+    font-style: italic;
+}
+
+pre code span.galen-tag {
+    color: #F7BAFF;
+}
+
+pre code span.galen-object {
+    color: #FCFFA8;
+}
+
+pre code span.galen-object-def {
+    color: #FCFFA8;
+}
+
+pre code span.galen-spec {
+    color: #95FF82;
+}
+
+pre code span.galen-number{
+    color: #72CCF2;
+}
+

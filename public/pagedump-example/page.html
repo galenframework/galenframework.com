@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>Galen Page Dump</title>
+        <link rel="stylesheet" type="text/css" href="galen-pagedump.css"></link>
+        <script src="jquery-1.10.2.min.js"></script>
+        <script src="galen-pagedump.js"></script>
+        <script>
+var pageData = {"pageName":"file:///home/ishubin/workspace/galen-sample-test-website/index.html","title":"Sample Website for Galen Framework","items":{"menu-item-4":{"area":[381,70,102,64],"text":"Contact","hasImage":true},"greeting":{"area":[105,222,800,69],"text":"Welcome to our test page!","hasImage":true},"login-button":{"area":[105,346,78,46],"text":"Login","hasImage":true},"menu":{"area":[55,70,900,64],"text":"Home My Notes About Contact","hasImage":true},"menu-item-1":{"area":[55,70,100,64],"text":"Home","hasImage":true},"menu-item-2":{"area":[159,70,114,64],"text":"My Notes","hasImage":true},"header":{"area":[55,0,900,70],"text":"Sample Website for Galen Framework","hasImage":true},"menu-item-3":{"area":[277,70,100,64],"text":"About","hasImage":true},"footer":{"area":[0,581,1009,200],"text":"","hasImage":true},"content":{"area":[55,134,900,447],"text":"Welcome to our test page!\nThis app is used as a playground for Galen Framework\nLogin\nTo log in this website use the email testuser@example.com and password test123","hasImage":true},"text-block-2":{"area":[105,346,800,46],"text":"Login","hasImage":true},"text-block-3":{"area":[105,407,800,61],"text":"To log in this website use the email testuser@example.com and password test123","hasImage":true},"text-block-1":{"area":[105,301,800,30],"text":"This app is used as a playground for Galen Framework","hasImage":true},"welcome-block":{"area":[75,154,860,377],"text":"Welcome to our test page!\nThis app is used as a playground for Galen Framework\nLogin\nTo log in this website use the email testuser@example.com and password test123","hasImage":true},"header-logo":{"area":[55,13,48,48],"text":"","hasImage":true},"header-text":{"area":[125,20,610,40],"text":"Sample Website for Galen Framework","hasImage":true}}};
+        </script>
+    </head>
+
+    <body>
+        <script>
+            $(function () {
+                initGalenPageDump(pageData);
+            });
+        </script>
+        <h1>http://testapp.galenframework.com - Galen page dump</h1>
+        <div class="image">
+            <div class="canvas">
+            </div>
+            <img src="page.png">
+            <div class="bottombarstub"></div>
+        </div>
+        <div id="sidebar">
+            <div class="wrapper">
+                <div id="object-list">
+                    <h2>All objects:</h2>
+                    <ul>
+                    </ul>
+                </div>
+                <div id="object-details" style="display: none;">
+                    <h2>Details</h2>
+                    <span class="field-name">Name:</span>
+                    <span class="field-value xf-object-name"></span>
+
+                    <span class="field-name">Area:</span>
+                    <span class="field-value xf-object-area"></span>
+
+                    <span class="field-name">Text:</span>
+                    <span class="field-value xf-object-text"></span>
+                    
+                    <span class="field-name">Image:</span>
+                    <div class="image"></div>
+
+                </div>
+                <div class="bottombarstub"></div>
+            </div>
+        </div>
+        <div id="bottombar">
+            <div class="wrapper">
+                <div id="object-suggestions" style="display: none;">
+                    <h2>Spec Suggestions</h2>
+                    <div class="spec-list">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

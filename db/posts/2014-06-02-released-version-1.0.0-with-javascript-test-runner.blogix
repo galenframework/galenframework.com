@@ -1,0 +1,99 @@
+--------------------------------
+title
+   Released version 1.0.0 with Javascript test runner
+--------------------------------
+date
+   2014-06-02 15:22
+--------------------------------
+allowComments
+   true
+--------------------------------
+categories
+   
+================================
+
+In this release Galen Framework introduces Javascript tests which means that it becomes a complete functional testing framework. You can now build more complicated tests in Javascript and have a better execution and reporting mechanism.
+
+Features in this release:
+
+* Javascript test executor
+* GalenPages test framework for functional testing
+* Hierarchical reports
+
+>>>>
+
+h2. Javascript test executor
+
+From now on you can write all your tests using Javascript. In order to execute Javascript-based tests you should store them in files with @.test.js@ suffix. Galen Framework looks for all files with this extension and executes one by one in order to build a list of tests. Later it takes that list and executes all test either sequentially or in parallel.
+Here is a basic example of a test that loads a page and checks its layout. For instance lets say we put it into @loginPage.test.js@ file
+
+$$ javascript
+test("Login page on mobile device", function () {
+  var driver = createDriver("http://example.com", "400x800");
+  checkLayout(driver, "loginPage.spec", ["mobile"]);
+});
+$$
+
+This is how you can execute the test
+
+$$ bash
+galen test loginPage.test.js --htmlreport reports
+$$
+
+If you want to search for all tests and execute them in one go just do the command:
+
+$$ bash
+galen test . --htmlreport reports
+$$
+
+As you can see there is no difference from the original tests executor that Galen had in its first versions.
+For more information please read this "Javascript Tests Guide":/docs/reference-javascript-tests-guide/ documentation page.
+
+
+h2. GalenPages test framework for functional testing
+
+Also because of this Javascript migration Galen Framework becomes now a functional testing framework. For this you should check "GalenPages":/docs/reference-galenpages-javascript-api/ - a lightweight Selenium test framework for working with Page Objects model. Here is a small example for declaring and using a page:
+
+$$ javascript
+this.LoginPage = function (driver) {
+  GalenPages.extendPage(this, driver, {
+    email: "input.email", // css locator
+    password: "xpath: //input[@class='password']", // xpath locator
+    submitButton: "id: submit", // id locator
+
+    load: function () {
+      this.open("http://example.com/login");
+      return this.waitForIt();
+    },
+    loginAs: function (userName, password) {
+      this.email.typeText(userName);
+      this.password.typeText(password);
+      this.submitButton.click();
+    }
+  });
+};
+// now you can use it like this
+var loginPage = new LoginPage(driver).load();
+loginPage.loginAs("testuser@example.com", "password");
+$$
+
+
+h2. Hierarchical reports
+
+From now on the reports are implemented with hierarchy so you can organize your reports the way you want
+Here is a quick example of a basic reporting
+
+$$ javascript
+test("Some basic test", function () {
+  logged("Creating a user and authorizing", function () {
+    logged("Log in", function (report) {
+      report.error("Couldn't authorize user");
+    });
+  });
+});
+$$
+
+This is how it looks in the end in html report
+!files/report.png!
+
+You can download a new version "here":/download/

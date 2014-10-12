@@ -1,0 +1,109 @@
+--------------------------------
+title
+   Released version 0.8.1
+--------------------------------
+date
+   2014-02-08 12:25
+--------------------------------
+allowComments
+   true
+--------------------------------
+categories
+   
+================================
+
+A new version 0.8.1 was released with the following features:
+
+* Javascript browser factory
+* Using empty urls in page tests and reporting last visited page
+* Added new page actions: @open@ and @resize@
+
+
+>>>>>>>>>>
+
+h1. Javascript browser factory
+
+In case you would like to take full control over instantiation of WebDriver you can use the so called @jsfactory@. It delegates the creation of browser to a user-defined script. This might be very handy in case you need to provide some additional settings in a profile. Lets image you need to open browser with specific language settings. Here is an example of a script @mydriver.js@ that does that:
+
+$$ javascript
+importClass(org.openqa.selenium.firefox.FirefoxDriver);
+importClass(org.openqa.selenium.firefox.FirefoxProfile);
+importClass(net.mindengine.galen.utils.GalenUtils);
+importClass(net.mindengine.galen.browser.SeleniumBrowser);
+
+var pageUrl = args[0];
+var size = GalenUtils.readSize(args[1]);
+
+var profile = new FirefoxProfile();
+profile.setPreference("intl.accept_languages", "no,en-us,en");
+
+var browser = new SeleniumBrowser(new FirefoxDriver(profile));
+browser.load(pageUrl);
+browser.changeWindowSize(size);
+
+browser;
+$$
+
+And here is an example how to use this script @mydriver.js@ in the test suite:
+
+$$ galen-suites
+Home page on a mobile device
+    jsfactory mydriver.js http://samples.galenframework.com/tutorial1/tutorial1.html  400x480
+        check homepage.spec --include "mobile"
+$$
+
+You should always provide a script for @jsfactory@. All other arguments will be copied to the @args@ array in the script. As you see from example above the argument @http://samples.galenframework.com/tutorial1/tutorial1.html@ is stored at 0 position in @args@ array and argument @640x480@ is at 1 position
+
+bq. *IMPORTANT!* If you use @jsfactory@ you also have to handle opening of a url and resizing browser window. In this browser factory Galen is not doing anything so you have to manage this by yourself. Just take a look how it is implemented in the example above
+
+In case you don't want to implement browser window resize and loading of page url you can use page actions @open@ and @resize@ for @jsfactory@ based tests.
+
+$$ galen-suites
+Home page test
+    jsfactory firefox.js
+        open http://example.com
+        resize 640x480
+        check homepage.spec
+$$
+
+h2. Using empty urls in page tests and reporting last visited page
+
+In case your tests are quite advanced and you are using a lot of javascript code for performing actions on page you might have a problem that in the html reports the url that is reported is not actually the one that is checked. From now since version 0.8.1 there is a possibility to report only the last page used in page test. You need to put to your config the following property 
+
+$$
+galen.reporting.html.useLastPageUrls = true
+$$
+
+Also in case you want to delegate page loading to your scripts you can now write tests like this:
+
+$$ galen-suites
+User profile page
+    - 640x480
+        run login-to-user-profile.js
+        check user-profile.spec
+$$
+
+In this case Galen will only open browser window and change its size to 640x480 without loading any page.
+
+
+h2. Page Actions: Open and Resize 
+
+In case you use your own factory for creating a browser and you don't want to handle url opening in there you can use @open@ page action
+
+$$ galen-suites
+Home page test
+    jsfactory firefox.js
+        open http://example.com
+        check homepage.spec
+$$
+
+You can also use @resize@ page action for changing browser window size
+
+$$ galen-suites
+Home page test
+    jsfactory firefox.js
+        open http://example.com
+        resize 640x480
+        check homepage.spec
+$$
+

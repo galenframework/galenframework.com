@@ -1,0 +1,26 @@
+<#if ! width?? >
+    <#assign width="600"/>
+</#if>
+
+<#if ! height?? >
+    <#assign height="400"/>
+</#if>
+
+<#if ! align?? >
+    <#assign align="center"/>
+</#if>
+
+<div align="${align}">
+
+    <div class="video-wrapper">
+        <div class="video-container">
+            <#if type=="youtube">
+                    <iframe width="${width}" height="${height}" src="${source}" frameborder="0" allowfullscreen></iframe>
+            <#elseif type=="vimeo">
+                <iframe src="${source}" width="${width}" height="${height}" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+            <#else>
+                No player found
+            </#if>
+        </div>
+    </div>
+</div>

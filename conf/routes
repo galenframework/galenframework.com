@@ -1,0 +1,35 @@
+# Url                               Controller                                      View                        Provider
+#######################################################################################################################
+
+/                                   -                                               home
+
+/news/                              Blogix.homeFirstPage                            browse                         
+
+/page-{page}/                       Blogix.homePage(page)                           browse                      BlogixProvider.allHomePages
+
+/post/{postId}/                     Blogix.post(postId)                             post                        BlogixProvider.allPosts   
+/post/{postId}/files/{fileName}     Blogix.fileForPost(postId, fileName)            -                           BlogixProvider.allFilesForPosts  
+
+/categories/                        Blogix.categories                               categories
+/category/{category}/               Blogix.postsByCategory(category)                browse                      BlogixProvider.allCategories
+/category/{category}/page-{page}/   Blogix.postsByCategoryAndPage(category, page)   browse                      BlogixProvider.allCategoriesAndPages
+
+
+/rss.xml                            Blogix.rssFeedAll                               rss                         
+/category/{category}/rss.xml        Blogix.rssFeedForCategory(category)             rss                         BlogixProvider.allCategories
+
+
+/docs/{documentPath}/                   Blogix.document(documentPath)               doc                         BlogixProvider.allDocuments
+/docs/{documentPath}/files/{fileName}   Blogix.fileForDocument(documentPath, fileName)      -         BlogixProvider.allFilesForDocuments
+
+/archive/                           Blogix.archive                                  archive
+
+/404/                               -                                               404
+
+
+/download/                          Blogix.homeFirstPage                            download
+
+/contact/                           Blogix.homeFirstPage                            contact
+
+
+/subscribe/                         Blogix.homeFirstPage                            subscribe

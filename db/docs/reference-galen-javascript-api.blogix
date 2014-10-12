@@ -1,0 +1,231 @@
+--------------------------------
+title
+   Galen Javascript API
+--------------------------------
+date
+   2014-05-31 10:01
+--------------------------------
+allowComments
+   true
+--------------------------------
+categories
+   
+================================
+
+h1. Basic functions
+
+* "load":#load
+* "createDriver":#createDriver
+* "createGridDriver":#createGridDriver
+* "checkLayout":#checkLayout
+* "loadProperties":#loadProperties
+* "readFile":#readFile
+* "retry":#retry
+* "takeScreenshot":#takeScreenshot
+* "cookie":#cookie
+* "inject":#inject
+* "createTestDataProvider":#createTestDataProvider
+* "dumpPage":#dumpPage
+
+h2. load
+
+*load( jsFilePath )*
+
+Loads and executes the javascript in specified file
+
+* *jsFilePath* - string type. A path to a javascript file.
+
+$$ javascript
+load("mycomponent.js");
+load("someOtherStuff.js");
+
+// some more js code
+$$
+
+Important to note that Galen loads the specified javascript only once. So if your tests in multiple files load the same javascript file - it will be executed only once.
+
+h2. createDriver
+
+*createDriver( [ url, browserSize, browserType ] )*
+
+Creates a WebDriver instance. Also creates a RemoteWebDriver in Grid in case it was configured in @config@ file
+
+* *url* - String type. A url to be loaded in a brower
+* *browserSize* - String type (e.g. "650x480"). Dimensions of browser window size
+* *browserType* - String type. A name of a browser. Could be one of these value: @firefox@, @chrome@, @ie@
+
+$$ javascript
+var driver = createDriver("http://galenframework.com",
+                          "640x480",
+                          "firefox");
+
+// can also be called like this
+var driver = createDriver("http://galenframework.com");
+
+// or just like this
+var driver = createDriver();
+$$
+
+h2. createGridDriver
+
+*createGridDriver( gridHubUrl, settings )*
+* *gridHubUrl* - String type. A url to Selenium Grid Hub
+* *settings* - Object type. A set of key/value pairs that specify criteria to fetch a Selenium Grid node
+** *browser* - a name of a browser
+** *browserVersion* - a version of a browser
+** *platform* - a name of a platform (LINUX, WINDOWS, VISTA, XP etc.)
+** *size* - a browser window size. After driver instantiation it will change the size of the windows. This property should not be used in case of mobile node. It is only working on desktop browsers.
+** *desiredCapabilities* -  Object type. A set of key/value pairs that provide desired capabilities to driver.
+
+$$ javascript
+var driver = createGridDriver("http://mygrid/wd/hub", {
+  browser: "iphone",
+  desiredCapabilities: {
+    platform: "OS X 10.8",
+    version: "6.0",
+    deviceName: "iPhone",
+    "device-orientation": "portrait"
+  }
+});
+$$
+
+
+h2. checkLayout
+
+*checkLayout( driver, specFile, [ tagsToInclude, tagsToExclude ] )*
+* *driver* - WebDriver type. An instance of WebDriver
+* *specFile* - String type. A path to spec file
+* *tagsToInclude*  - String[] type _(optional)_  An array of tags that should be included when checking layout
+* *tagsToExclude* - String[] type _(optional)_ - An array of tags that should be excluded when checking layout
+
+$$ javascript
+test("Home page", function() {
+  var driver = createDriver("http://galenframework.com",
+                            "1024x768");
+  checkLayout(driver, "homePage.spec", ["all", "desktop"]);
+});
+$$
+
+
+h2. loadProperties
+
+*loadProperties( filePath )*
+
+Reads a specified property file and returns Java "Properties":http://docs.oracle.com/javase/6/docs/api/java/util/Properties.html object
+
+* *filePath* - String type. A path to a properties file
+
+$$ javascript
+var properties = loadProperties("/path/to/file/mycustom.properties");
+
+var name = properties.get("user.name");
+$$
+
+
+h2. readFile
+
+*readFile( filePath )*
+
+Reads the content of specified file and returns a String with file content
+
+* *filePath* - String type. A path to a file
+
+$$ javascript
+var content = readFile("/path/to/file/names.txt");
+$$
+
+h2. retry
+
+retry( tries, callback )
+
+Executes the specified callback with a specified amount of tries in case of error. If a callback is executed without error - it stops. Returns the object that is returned from the callback.
+
+* *tries* - Amount of times it should retry the specified callback
+* *callback* - function. Takes one number argument that represents amount of tries left
+
+$$ javascript
+var driver = retry(3, function (triesLeft) {
+  return createDriver("http://example.com");
+});
+$$
+
+h2. takeScreenshot
+
+*takeScreenshot( driver )*
+
+Takes screenshot from specified driver and return a Java "File":http://docs.oracle.com/javase/6/docs/api/java/io/File.html instance with path to create screenshot
+
+* *driver* - a WebDriver instance
+
+$$ javascript
+var file = takeScreenshot(driver);
+var path = file.getAbsolutePath();
+
+$$
+
+h2. cookie
+
+*cookie( driver, cookieValue )*
+
+Sets the specified cookie in the page
+
+* *driver* - a WebDriver instance
+* *cookieValue* - String type. A cookie that should be set in a browser
+
+$$ javascript
+cookie(driver, "UserName=John; path=/");
+
+$$
+
+
+h2. inject
+
+*inject( driver, jsScript )*
+
+Inject the specified javascript on the page
+
+* *driver* - a WebDriver instance
+* *jsScript* - String type. A script that should be injected in a browser
+
+$$ javascript
+inject(driver, "document.getElementById('mybutton').innerHTML = 'my button';");
+
+$$
+
+
+h2. createTestDataProvider
+
+*createTestDataProvider( variableName )*
+
+Creates a data provider and returns it as a function
+
+* *variableName* - a name for a data variable which will be accessible in @data@ field of the test instance
+
+
+$$ javascript
+this.featureSwitched = createTestDataProvider("featureSwitches");
+
+featureSwitched("Feature1", function () {
+  test("Home page test", function () {
+    console.log("All my features are here " + this.data.featureSwitches);
+  });
+});
+$$
+
+
+h2. dumpPage
+
+*dumpPage(driver, pageName, specPath, exportPath, maxWidth, maxHeight)*
+
+Creates a dump for a current open page in a browser
+
+* *driver* - an instance of WebDriver
+* *pageName* - a name of a page
+* *specPath* - a path to a spec file
+* *exportPath* - a path to a folder where Galen should store page dump
+* *maxWidth* - a maximum width of an element for which it should create an image sample
+* *maxHeight* - a maximum height of an element for which it should create an image sample
+
+$$ javascript
+dumpPage(driver, "Home page", "specs/homepage.spec", "dumps/homepage", 200, 200);
+$$

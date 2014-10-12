@@ -1,0 +1,60 @@
+--------------------------------
+title
+   First Project
+--------------------------------
+date
+   2013-10-18 15:54
+--------------------------------
+allowComments
+   true
+--------------------------------
+categories
+   
+================================
+
+The simplest thing we can start with is checking the home page for our website. Lets take "this sample page":http://samples.galenframework.com/tutorial1/tutorial1.html as our test environment.
+You can start working with Galen with minimal project structure. Actually you don't really need anything to perform the simple check of look-and-feel of your website.
+
+
+h2. Writting specs
+
+Lets write some Galen specs for the home page. First create an empty folder with your test project name and in it create a file named @home-page.spec@
+We will start with the simplest example. Lets say we want to test that header height is exactly 40 pixels on home page.
+
+
+bq. *IMPORTANT!* Indentation in Galen is done with 1 to 8 spaces. Tabs are ignored.
+
+$$ galen-specs
+==================================================
+header              id      header
+==================================================
+
+header
+    height: 40px
+$$
+
+In our spec above we have defined an object called *header* and specified the locator for it (by id "header-container"). Then we have defined the simplest check of headers height. Here we basically state that the height of header should be exatly 40 px. If you don't want to be that strict you can define a range (e.g. from 35 to 45 px)
+
+$$ galen-specs
+header
+    height: 35 to 45px
+$$
+
+
+
+h2. Launching Galen
+
+
+bq. *IMPORTANT!* Galen relies on Selenium so it supports same browsers as Selenium does. If you have problem running Galen in your browser please check the Selenium compatibility. You might have to downgrade your browser.
+
+In your terminal go to your project folder and type the following command:
+
+$$ bash
+galen check home-page.spec \
+     --url http://samples.galenframework.com/tutorial1/tutorial1.html  \
+     --size 640x480  \
+     --htmlreport .
+$$
+
+The command above will launch Firefox browser and open our test website and perform the check. In the end it will create html report in your projects folder in @report.html@ file.
+

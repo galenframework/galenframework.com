@@ -1,0 +1,78 @@
+<#if recentPosts??>
+<h3>Last news</h3>
+<ul class="recent-posts">
+    <#list recentPosts as post>
+    <li>
+        <a href="/post/${post.id}/" class="title">${post.title?html}</a>
+    </li>
+    </#list>
+</ul>
+</#if>
+
+<h3>Stay in touch</h3>
+<ul>
+    <li>
+        <a href="/contact/">Leave feedback</a>
+    </li>
+    <li>
+    <a class="subscribe-button" href="/subscribe/"><i class="fa fa-envelope"></i> Subscribe</a>
+    </li>
+</ul>
+
+<h3>Getting Started</h3>
+<ul>
+    <li>
+        <a href="/docs/getting-started-install-galen/">Install Galen</a>
+    </li>
+    <li>
+        <a href="/docs/getting-started-configuration/">Configuration</a>
+    </li>
+    <li>
+        <a href="/docs/reference-working-in-command-line/">Running Galen</a>
+    </li>
+</ul>
+
+<h3>Complete Reference</h3>
+<ul>
+    <li>
+        <a href="/docs/reference-galen-spec-language-guide/">Galen Spec Language Guide</a> 
+    </li>
+    <li>
+        <a href="/docs/reference-galen-test-suite-syntax/">Galen Test Suite Syntax</a>
+    </li>
+    <li>
+        <a href="/docs/reference-working-in-command-line/">Working in Command Line</a> 
+    </li>
+</ul>
+
+<h3>Javascript tests</h3>
+<ul>
+    <li>
+        <a href="/docs/reference-javascript-tests-guide/">Javascript Tests Guide</a> 
+    </li>
+    <li>
+        <a href="/docs/reference-galen-javascript-api/">Galen Javascript API</a>
+    </li>
+    <li>
+        <a href="/docs/reference-galenpages-javascript-api/">GalenPages Javascript API</a> 
+    </li>
+</ul>
+
+<h3>Java tests</h3>
+<ul>
+    <li>
+        <a href="/docs/reference-java-tests/">Java Tests (Maven + TestNG + Galen)</a> 
+    </li>
+</ul>
+
+
+<h3>Tutorials</h3>
+<ul>
+    <li>
+        <a href="/docs/tutorial-first-project/">First Project</a>
+    </li>
+    <li>
+        <a href="http://mindengine.net/category/galen/">Other tutorials on mindengine.net</a>
+    </li>
+</ul>
+

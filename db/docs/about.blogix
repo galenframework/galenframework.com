@@ -1,0 +1,59 @@
+--------------------------------------------------
+title
+    About
+==================================================
+"Galen Framework":http://galenframework.com is a test framework for layout testing of web-applications in a real browser.
+It was made with responsive design in mind. It works in a following way:
+# Galen opens a page in browser
+# Resizes browser to specified size
+# Tests the layout with Galen Specs
+
+
+"Galen Specs":/docs/reference-galen-spec-language-guide/ is the language with which you define how the page should look like for different devices. The language is quite advanced and allows you to express complete layout of your website with minimal text. Take a look at the following example.
+
+$$ galen-specs
+
+@ all
+ -------------------------------------------
+header
+    height: 100px
+    inside: screen 0px top
+    width: 100% of screen/width
+
+menu
+    height: 50 to 60px
+    width: 100% of screen/width
+    below: header ~ 0px
+
+
+search-button
+    inside: menu 20 to 50px left, 0 to 10px top
+
+@ mobile
+ ------------------------------------------
+search-button
+    width: 100px
+    
+@ desktop 
+ ------------------------------------------
+search-button
+    width: 150px 
+    
+$$
+
+
+Galen uses "Selenium":http://www.seleniumhq.org/ for interacting with elements on page and getting their locations and dimensions. 
+Once Galen sees that something is wrong - it reports the error, makes a screenshot and highlights the misbehaving element on it.
+You can also run test against "Selenium Grid":http://code.google.com/p/selenium/wiki/Grid2 in case you want to cover cross-browser layout testing.
+
+In case you don't have resources to set up a Selenium Grid you can also run Galen tests with "Sauce Labs":https://saucelabs.com/. Actually with Sauce Labs you can even run your tests against real mobile devices like iPhone or Android so you don't need to emulate the mobile layout by resizing a browser.
+
+Galen offers two ways of reporting:
+- *Html Reports* - gives nice overview of all test suites with complete reports, screenshots and highlighted errors
+- *TestNG Reports* - can be used for embedding Galen in a CI tool like "Jenkins":http://jenkins-ci.org/
+
+Galen is licensed with "Apache License, Version 2.0":http://www.apache.org/licenses/LICENSE-2.0 and is distributed for free.
+
+For more information go to "documentation":/docs/all/ or read article "First Project":/docs/tutorial-first-project/ for more inspiration.
+
+If you find any issues please post them on "GitHub":https://github.com/ishubin/galen/issues
