@@ -1,4 +1,4 @@
-This is the source code of the generated [GalenFramework.com](http://galenframework.com) website. It is powered by (Blogix)[http://blogix.info] which is a static website generator with embeded webserver.
+This is the source code of the generated [GalenFramework.com](http://galenframework.com) website. It is powered by [Blogix](http://blogix.info) which is a static website generator with embeded webserver.
 If you would like to contribute to Galen Framework documentation like adding information or fixing errors please follow the steps below:
 
 1. Get blogix and configure it. This is described in [Blogix Documentation](http://blogix.info/docs/all/)
