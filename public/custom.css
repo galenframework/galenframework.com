@@ -201,6 +201,10 @@ img.home-slide {
     max-width: 100%;
 }
 
+.home-spacer h1 {
+    margin-bottom: 40px;
+}
+
 @media (min-width: 860px) {
     #intro h1 {
         font-size: 80px;
