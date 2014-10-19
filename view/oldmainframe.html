@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <#if !title??>
+            <#assign title="Galen Framework | Automated testing of responsive design">
+        </#if>
+
+        <title>${title}</title>
+        <link href="/public/font-awesome-4.0.3/css/font-awesome.css" rel="stylesheet">
+        <link rel="shortcut icon" href="/public/favicon.png" />
+        <link rel="stylesheet" href="/public/main.css?v=13oct2014" media="screen" type="text/css">
+        <link rel="stylesheet" href="/public/style.css?v=13oct2014" media="screen" type="text/css">
+        <link rel="stylesheet" href="/public/home.css?v=13oct2014" media="screen" type="text/css">
+        <link rel="stylesheet" href="/public/solarized_dark.css?v=1" media="screen" type="text/css">
+        <link rel="stylesheet" href="/public/galen-highlight-dark.css?v=1" media="screen" type="text/css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="/public/jquery-1.8.3.min.js?v=1"></script>
+        <script src="/public/highlight.pack.js?v=1"></script>
+        <script src="/public/galen-highlight.js?v=1"></script>
+
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-35449979-1']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
+
+        <script>
+            function highlightCodeBlocks() {
+                $("code.block").each(function (){
+                    var html = $(this).html();
+                    var className = $(this).attr("data-language");
+                    $(this).html("<pre><code class=\"" + className + "\">" + html + "</code></pre>");
+
+                    if (className != null && className != "") {
+                        if (className == "galen-specs") {
+                            var codeBlock = $(this).find("pre code");
+                            codeBlock.html(GalenHighlight.specs(codeBlock.html()));
+                        }
+                        else if (className == "galen-suites") {
+                            var codeBlock = $(this).find("pre code");
+                            codeBlock.html(GalenHighlight.suites(codeBlock.html()));
+                        }
+                        else {
+                            hljs.highlightBlock($(this).find("pre code").get(0));
+                        }
+                    }
+                });
+            }
+
+            function enrichHeadersWithLink() {
+                $("h1, h2, h3, h4").each(function (){
+                    var _ = $(this);
+                    var id = _.attr("id");
+                    if (id != undefined && id != null && id != "") {
+                        _.append("<a class='paragraph-link' href='#" + escape(id) + "'>&para;</a>");
+                    }
+                });
+            }
+
+            function enrichCodeBlocksWithMaximizeButton() {
+                $("code.block").each(function () {
+                    $(this).append("<a class='enlarge' href='#'><i class='fa fa-eye'></i></a>");
+                });
+
+                $("code.block a.enlarge").click(function (){
+                    var html = $(this).parent().find("pre").html();
+                    var w = window.open();
+                    $(w.document.body).html("<pre>" + html + "</pre>");
+
+                    return false;
+                });
+            }
+
+            $(function(){
+                $("#search-panel form").submit(function (event){
+                    var q = encodeURI($("#search-panel input").val() + " site:${googleSite}");
+                    event.preventDefault();
+                    window.location = "http://www.google.com/search?q=" + q;
+                });
+
+                highlightCodeBlocks();
+                enrichHeadersWithLink();
+                enrichCodeBlocksWithMaximizeButton();
+            });
+
+        
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="header">
+                <div class="wrapper">
+                    <a class="big-header" href="/"><img src="/public/logo.png"/> <span class="header-text">Galen <span class="hide-on-mobile">Framework</span></span></a>
+                </div>
+            </div>
+            <div id="navigation">
+                <div class="wrapper">
+                    <ul id="nav">
+                        <li><a href="/news/">News</a></li>
+                        <li><a href="/download/">Download</a>
+                        <li><a href="/docs/all/">Docs</a>
+                        <li><a href="https://github.com/galenframework/galen">On GitHub</a>
+                        <li><a href="/docs/about/">About</a>
+                        <li><a href="/contact/">Contact</a>
+                    </ul>
+                    <div id="navigationSelect" style="display:none;">
+                        Menu 
+                        <select name="menu">
+                        </select>
+                    </div>
+                    <div id="search-panel">
+                        <form action="http://www.google.com/search">
+                            <input type="text" placeholder="Search..." name="q" value=""/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="middle">
+                ${tiles.process('middle')}
+            </div>
+
+            <div id="footer">
+                <div class="wrapper">
+                    <div id="footer-sign">
+                        <span>&copy; 2013 - 2014, Powered by </span><a href="http://blogix.info">Blogix</a>
+                    </div> 
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>
+

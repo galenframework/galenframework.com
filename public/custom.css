@@ -1,0 +1,430 @@
+@import url(http://fonts.googleapis.com/css?family=Patua+One);
+
+
+nav.navbar {
+    background: #333;
+    color: white;
+    border-radius: 0px;
+    margin-bottom: 0;
+    border: none;
+}
+.navbar-default .navbar-brand, nav.navbar a, .navbar-default .navbar-nav>li>a {
+    color: #d0d0d0;
+}
+.navbar-default .navbar-brand:hover, nav.navbar a:hover, .navbar-default .navbar-nav>li>a:hover {
+    color: #AFD8F8;
+}
+
+nav.navbar input {
+    background: none;
+    color: #ddd;
+    border: 1px solid #bbb;
+    box-shadow: none;
+}
+@media (min-width: 768px) and (max-width: 950px) {
+    #menu-about {
+        display: none;
+    }
+    #menu-github {
+        display: none;
+    }
+}
+@media (min-width: 768px) and (max-width: 950px) {
+    #menu-about {
+        display: none;
+    }
+}
+@media (min-width: 768px ) and (max-width: 1000px) {
+    #search-panel input {
+        width: 90px;
+    }
+}
+
+body {
+    font-size: 16px;
+    color: #333;
+} 
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Patua One', 'Open Sans', sans-serif;
+}
+#header a {
+    font-family: 'Patua One', 'Open Sans', sans-serif;
+}
+nav a.navbar-brand {
+    font-weight: normal;
+    font-size: 24px;
+    padding-left: 40px;
+    position: relative;
+}
+nav a.navbar-brand img {
+    position: absolute;
+    left: 8px;
+    top: 12px;
+}
+.navbar-nav a {
+    font-size: 16px;
+}
+
+code {
+    background: #fff;
+    border:1px solid #888;
+    font-weight:normal;
+    padding: 0px 2px 2px 2px;
+    border-radius:5px;
+}
+code.block code {
+    background: none;
+    border:none;
+    padding:0; 
+    font-weight:normal;
+    border-radius:0px;
+    box-shadow: none;
+    font-size: 14px;
+    font-family: monospace, Monaco, Courier New;
+}
+code.block {
+    position: relative;
+    background: #293745;
+    background: url('/public/code-back.png');
+    padding: 0.5em;
+    margin-bottom: 1.5em;
+    display: block;
+    white-space: pre;
+    color: #d0e1f2;
+    border-radius:10px;
+    white-space: nowrap;
+}
+code.block pre {
+    background: none;
+    border: none;
+    text-shadow: 1px 1px 1px #222;
+    white-space: nowrap;
+}
+code.block a.enlarge {
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: #fff;
+    padding: 3px;
+    border: 1px solid #fff;
+    background: #555;
+    opacity: 0.4;
+    border-radius: 7px;
+}
+code.block a.enlarge:hover {
+    opacity: 0.8;
+}
+
+
+
+/*
+  Home
+------------------------*/
+p.home-description {
+    font-size: 20px;
+}
+
+#intro {
+    background: #397DAF;
+    background: url('/public/images/home-page-main-background-9.png');
+    padding-top: 20px;
+    padding-bottom: 100px;
+    color: white;
+}
+#home-social-buttons a {
+    color: white;
+}
+#intro h1 {
+    font-size: 80px;
+    text-shadow: 2px 2px 0px #5182A5, 5px 5px 0px #355B78;
+}
+#intro h2 {
+    margin-top: 50px;
+    margin-bottom : 50px;
+    text-shadow: 1px 1px 0px #376B92;
+}
+#home-download-button {
+    background: rgba(255, 255, 255, 0.1);
+    font-weight: bold;
+    color: white;
+    border: 1px solid white;
+    padding: 15px 30px 15px 30px;
+    font-size: 20px;
+    text-transform:uppercase;
+    border-radius: 8px;
+    transition: background 1s ease-in-out;
+}
+#home-download-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: 1px solid white;
+}
+#home-social-buttons {
+    margin-top: 50px;
+}
+#home-social-buttons a {
+    margin: 5px;
+    font-size: 20px;
+    text-decoration: none;
+}
+#home-social-buttons a:hover {
+    color: #AFD8F8;
+    text-decoration: none;
+}
+a.btn.home-button.btn-primary {
+    background: #428bca; 
+    box-shadow:0px 1px 0px #30618A, 0px 2px 0px #30618A;
+}
+a.btn.home-button.btn-primary.home-button-on-white:hover {
+    background: #3C79AB;
+}
+a.btn.home-button.btn-success{
+    box-shadow:0px 1px 0px #347834, 0px 2px 0px #347834;
+}
+a.btn.home-button {
+    padding: 15px 30px 15px 30px;
+    width: 200px;
+    font-size: 14px;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background 1s ease-in-out;
+}
+a.btn.home-button-on-dark.btn-primary:hover {
+    background: rgba(66, 139, 202, 0.2);
+}
+
+img.home-slide {
+    max-width: 100%;
+}
+
+@media (min-width: 860px) {
+    #intro h1 {
+        font-size: 80px;
+    }
+    #intro {
+        padding-top: 100px;
+        padding-bottom: 10px;
+    }
+    .home-spacer {
+        padding-top:100px;
+        padding-bottom: 100px;
+    }
+}
+@media (max-width: 859px) {
+    #intro h1 {
+        font-size: 60px;
+        text-align: center;
+    }
+    #intro {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .home-spacer {
+        padding-top:10px;
+        padding-bottom: 10px;
+    }
+}
+
+#img-home-devices img {
+    max-width: 100%;
+}
+
+.home-separator {
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #ddd;
+    height:0;
+    display: inline-block;
+    width: 40%;
+    opacity: 0.5;
+}
+
+.home-code-samples {
+    background: #222;
+    background: url('/public/back-dark.png'); 
+    color:#ddd;
+}
+.home-code-samples code {
+    border: none;
+    box-shadow: 1px 1px 3px #111 inset;
+}
+.home-code-samples code.block a.enlarge {
+    display: none;
+}
+
+#home-reports .thumbnail img {
+    max-width: 100%;
+}
+#home-reports p {
+    color: #333;
+}
+
+
+
+/*
+ * Article
+ ----------------- */
+.article {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.article, .article ul, .article ol {
+    color: #333;
+}
+.articles .article {
+    margin-top: 20px;
+    border-bottom: 3px dashed #ddd; 
+    padding-bottom: 80px;
+}
+.articles .article:last-child {
+    border-bottom: none;
+}
+.article ul li em {
+    font-size: 13px;
+    color: #777;
+}
+.article h1 {
+    font-size: 50px;
+    margin-bottom: 40px;
+}
+h1 a.paragraph-link, h2 a.paragraph-link, h3 a.paragraph-link, h4 a.paragraph-link {
+    position: absolute;
+    display: none;
+    font-family: Arial, 'Open Sans', sans-serif;
+    text-decoration:none;
+    padding-left: 10px;
+}
+h1:hover a.paragraph-link, h2:hover a.paragraph-link, h3:hover a.paragraph-link, h4:hover a.paragraph-link { 
+    display: inline;
+}
+
+.article-content h1,.article-content h2,.article-content h3,.article-content h4,.article-content h5, .article-content h6 {
+    padding-top: 0.5em;
+    margin-top:1.5em;
+    color: #333;
+    font-family: 'Patua One', 'Open Sans', sans-serif;
+    text-shadow:1px 1px 0px #fff;
+}
+.article-content h1 {
+    border-top: 10px solid #e0e0e0;
+}
+.article-content h2,.article-content h3 {
+    border-top: 2px dotted #ddd;
+}
+.article a.title {
+    display:block;
+    color:#428bca;
+    font-weight:normal;
+    text-decoration: none;
+    padding-right:100px;
+    font-size:46px;
+    font-family: 'Patua One', 'Open Sans', sans-serif;
+}
+.article a.title:hover {
+    color: #3C7EB8;
+}
+.article .header {
+    position:relative;
+}
+.article span.date { 
+    right: 10px;
+    margin-right:1.0em;
+    color:#555;
+    text-transform:uppercase;
+}
+.article-content blockquote {
+    background: #FFF9D1;
+    border-left:10px solid #FA9E4D;
+    margin:1.5em 1.5em;
+    padding:1.0em 0.5em;
+    color:#402808;
+    font-size: 16px;
+    quotes:"\201C""\201D""\2018""\2019";
+}
+.article-content blockquote:before {
+    color:#FA9E4D;
+    content:open-quote;
+    font-size:4em;
+    line-height:.1em;
+    margin-right:.25em;
+    vertical-align:-.4em;
+}
+.article-content blockquote p {
+    display:inline;
+}
+
+.comments {
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+
+div.sketch {
+    background: url('/public/sketch-back.png');
+    border: 1px solid #eee;
+    margin: 10px;
+    padding: 10px;
+    border:1px solid #1076AD;
+    max-width: 95%;
+    box-shadow: 0 0 10px #bbb;
+    text-align: center;
+}
+
+/*
+ Side bar
+ ---------------*/
+#sidebar {
+    padding-top:20px;
+}
+#sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+#sidebar ul li {
+    border-bottom: 1px dotted #ddd;
+}
+#sidebar ul li a{
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+
+/*
+ Footer
+ ---------------------*/
+#footer {
+    background: #333;
+    background: url('/public/back-dark.png'); 
+    padding-top: 80px;
+    padding-bottom: 80px;
+    color: #eee;
+}
+#footer h2 {
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+.footer-socials a {
+    color: white;
+    margin: 10px;
+}
+
+#footer ul {
+    list-style: none;
+    padding: 0;
+}
+#footer li a {
+    color: #aaa;
+}
+
+#footer h3 {
+    margin-top: 8px;
+    font-size: 22px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#footer-copyright {
+    padding-top: 8px;
+}

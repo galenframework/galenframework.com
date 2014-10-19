@@ -1,26 +1,328 @@
-<div id="home">
-    <div id="home-intro" class="wrapper">
-        <h1>Bla bla bla, a great tool for everyone!</h1>
-        <div id="intro-video">
-            intro video placeholder
+<div id="intro">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-lg-6 vertical-center text-center">
+                <div id="img-home-devices">
+                    <img src="/public/images/home-devices.png"/>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-6">
+                <h1>Galen Framework</h1>
+            </div>
         </div>
-        <div id="features-1">
-            <ul>
-                <li>Open-Sourced and Free</li>
-                <li>Awesome</li>
-                <li>Super duper hyper cool</li>
-            </ul>
+        <div class="row">
+            <div class="col-sm-12 col-lg-12 text-center">
+                <h2>Automated testing of look and feel for your responsive websites</h2>
+                <p><a id="home-download-button" href="/download/" class="btn btn-primary btn-lg" role="button">Download ${latestVersion}</a></p>
+            </div>
         </div>
-        <div id="features-2">
-            <ul>
-                <li>Cool</li>
-                <li>Cute little kitten</li>
-                <li>Smells like a morning coffee</li>
-            </ul>
+        <div id="home-social-buttons" class="row text-center">
+            <p>Stay in touch</p>
+            <p>
+            <a href="/subscribe/"><i class="fa fa-envelope fa-2x"></i></a>
+            <a href="http://twitter.com/galenframework"><i class="fa fa-twitter fa-2x"></i></a>
+            <a href="https://github.com/galenframework/galen"><i class="fa fa-github-alt fa-2x"></i></a>
+            <a href="https://www.facebook.com/galenframework"><i class="fa fa-facebook-square fa-2x"></i></a>
+            </p>
         </div>
-        <div id="download-section">
-            <a href="/download/">Download ${latestVersion}</a>
-            Whatever more stuff here for the download section
+    </div>
+</div>
+
+<div id="home-slides">
+    <div class="home-spacer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2 col-lg-2">
+                </div>
+                <div class="col-sm-3 col-lg-3">
+                    <img class="home-slide hidden-xs" src="/public/images/slide-layout-planning.png"/>
+                </div>
+                <div class="col-sm-6 col-lg-6">
+                    <h1>The Idea...</h1>
+                    <p class="home-description">
+                        Layout testing seemed always a complex task. Galen Framework offers a simple solution: test location of objects relatively to each other on page. Using a special syntax and comprehensive rules you can describe any layout you can imagine
+                    </p>
+                </div>
+                <div class="col-sm-1 col-lg-1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container"><div class="row text-center"><div class="home-separator"></div></div></div>
+    <div class="home-spacer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2 col-lg-2">
+                </div>
+                <div class="col-sm-6 col-lg-6">
+                    <h1>Runs in Selenium Grid</h1>
+                    <p class="home-description">
+                        Galen Framework runs well in Selenium Grid. You can set up your tests to run in a cloud like <a href="https://saucelabs.com">Sauce Labs</a> so that you can even test your responsive websites on different mobile devices. Galen can run multiple tests in parallel which is also a nice time saver. 
+                    </p>
+                </div>
+                <div class="col-sm-3 col-lg-3">
+                    <img class="home-slide hidden-xs" src="/public/images/slide-selenium-grid.png"/>
+                </div>
+                <div class="col-sm-1 col-lg-1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container"><div class="row text-center"><div class="home-separator"></div></div></div>
+    <div class="home-spacer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2 col-lg-2">
+                </div>
+                <div class="col-sm-3 col-lg-3">
+                    <img class="home-slide hidden-xs" src="/public/images/slide-responsive-design.png"/>
+                </div>
+                <div class="col-sm-6 col-lg-6">
+                    <h1>Responsive Design</h1>
+                    <p class="home-description">
+                        Galen Framework is designed with responsivness in mind. It is easy to set up a test for different browser sizes. Galen just opens a browser, resizes it to a defined size and then tests the page according to specifications
+                    </p>
+                </div>
+                <div class="col-sm-1 col-lg-1">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="home-spec-samples" class="home-spacer home-code-samples">
+    <div class="container">
+        <div class="row text-center">
+            <h1>Human Readable and Advanced Syntax</h1>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-lg-6">
+                <h3 class="text-center">Basic syntax</h3>
+<code class="block" data-language="galen-specs">
+@ mobile, tablet 
+-----------------------------
+comments
+    width: 300px
+    inside: screen 10 to 30px top right
+    near: article-content &gt; 10px right
+
+
+@ desktop
+-----------------------------
+comments
+    width: ~ 100% of screen/width
+    below: article-content &gt; 20px
+</code>
+                <p class="text-center">
+                    <a href="/docs/reference-galen-spec-language-guide/" target="__blank" class="btn btn-primary home-button home-button-on-dark">See more</a>
+                </p>
+                <p class="home-description text-center">
+                    Using Galen Specs Language you are able to describe any complex layout including different screen sizes or browsers. It's not only easy to write, it is also easy to read it if you are unfamiliar with the language. You can write a proper page spec file and use it later a requirement for your Front-end
+                </p>
+            </div>
+            <div class="col-sm-6 col-lg-6">
+                <h3 class="text-center">Advanced</h3>
+<code class="block" data-language="galen-specs">
+===================================
+menu-item-*   css  #menu li
+===================================
+
+[ 1 - 5 ]
+menu-item-@
+    near: menu-item-@{+1} 10px left
+
+header-logo
+    image: file imgs/header-logo.png, error 4%
+
+button-login
+    color scheme: 5% #ffefd0, 87 to 90% #ae32ef
+</code>
+                <p class="text-center">
+                    <a href="/docs/reference-galen-spec-language-guide/#Colorscheme" target="__blank" class="btn btn-primary home-button home-button-on-dark">See more</a>
+                </p>
+                <p class="home-description text-center">
+                    There a lot of techniques that can help you optimize your specs. Together with that Galen Framework provides you with rich functionality for visual testing like image comparison and color scheme verification
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="home-reports" class="home-spacer">
+    <div class="container">
+        <div class="row text-center">
+            <h1>Detailed Html Reports</h1>
+        </div>
+        <div class="row text-center">
+            <div class="col-sm-4 col-sm-4">
+                <a href="/public/samples/reports/report.html" target="__blank" class="thumbnail">
+                    <img src="/public/images/html-report.png">
+                </a>
+                <h3>Error Reporting</h3>
+                <p><a href="/public/samples/reports/report.html"  target="__blank" class="btn btn-primary home-button home-button-on-white" role="button">Example</a></p>
+                <p class="home-description">
+                    Galen Framework generates Html reports where you can see all your test objects on the page
+                </p>
+            </div>
+            <div class="col-sm-4 col-sm-4">
+                <a href="/public/samples/report-error-highlight.png" target="__blank" class="thumbnail">
+                    <img src="/public/images/html-report-screenshots.png">
+                </a>
+                <h3>Screenshots</h3>
+                <p><a href="/public/samples/report-error-highlight.png" target="__blank" class="btn btn-primary home-button home-button-on-white" role="button">Example</a></p>
+                <p class="home-description">
+                    It automatically highlights the misaligned elements so it is really easy to see what is wrong on the page
+                </p>
+            </div>
+            <div class="col-sm-4 col-sm-4">
+                <a href="/public/samples/report-image-comparison-screenshot.png" target="__blank" class="thumbnail">
+                    <img src="/public/images/image-comparison.png">
+                </a>
+                <h3>Image Comparison</h3>
+                <p><a href="/public/samples/report-image-comparison-screenshot.png"  target="__blank" class="btn btn-primary home-button home-button-on-white" role="button">Example</a></p>
+                <p class="home-description">
+                    Galen Framework gives you the ability to perform visual check and shows you the mismatching area
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+    
+
+<div id="home-suites" class="home-spacer home-code-samples">
+    <div class="container">
+        <div class="row text-center">
+            <h1>Execute Tests in Various Languages</h1>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-lg-6">
+                <h3 class="text-center">Basic syntax</h3>
+<code class="block" data-language="galen-suites">
+@@ Table devices
+    | deviceName  | size     | tags     |
+    | mobile      | 450x700  | mobile   |
+    | tablet      | 600x800  | tablet   |
+    | desktop     | 1024x768 | desktop  |
+
+@@ Parameterized using devices
+Home page on ${r"${deviceName}"}
+    http://example.com ${r"${size}"}
+        inject custom-cookies.js
+        check homepage.spec --include ${r"${tags}"}
+
+@@ Parameterized using devices
+User profile page on ${r"${deviceName}"}
+    http://example.com ${r"${size}"}
+        run loginAsTestUser.js
+        wait 1m until visible "css: #login-button"
+        check userProfile.spec --include ${r"${tags}"}
+</code>
+                <p class="text-center"><a href="/docs/reference-galen-test-suite-syntax/"  target="__blank" class="btn btn-primary home-button home-button-on-dark" role="button">See more</a></p>
+                <p class="home-description text-center">
+                    Standard suites are easy for a quick start but still give you a lot of power. You can select different browser like Firefox, Chrome, Internet Explore or switch your tests to Selenium Grid. In case the page is not easy accessible you can either inject custom Javascript on the client-side or run a Javascript action on a test side so that you can prepare your page for a layout check
+                </p>
+            </div>
+            <div class="col-sm-6 col-lg-6">
+                <h3 class="text-center">Javascript Tests</h3>
+<code class="block" data-language="javascript">
+function Device(deviceName, size, tags) {
+    this.deviceName = deviceName;
+    this.size = size;
+    this.tags = tags;
+}
+var devices = {
+    mobile:  new Device("mobile", "450x700", ["mobile"]),
+    tablet:  new Device("tablet", "600x800", ["tablet"]),
+    desktop: new Device("dekstop", "1024x768", ["desktop"])
+};
+
+forAll(devices, function () {
+    test("Home page on ${r"${deviceName}"}", function (device){
+        var driver = createDriver("http://example.com", 
+            device.size);
+        checkLayout(driver, "homepage.spec", device.tags);
+        driver.quit();
+    });
+});
+</code>
+                <p class="text-center"><a href="/docs/reference-javascript-tests-guide/"  target="__blank" class="btn btn-primary home-button home-button-on-dark" role="button">See more</a></p>
+                <p class="home-description text-center">
+                    With Javascript tests you are free to invent your own test framework and perform a lot of complex stuff. Out of the box Galen provides the following features for Javascript tests:
+                    <ul>
+                        <li>Handling before and after test events</li>
+                        <li>Filtering or reordering the test sequence</li>
+                        <li>Managing custom data providers</li>
+                        <li>Parameterizing tests by arrays or maps</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+        <div class="row home-spacer">
+            <div class="col-sm-12 col-lg-12">
+                <h3 class="text-center">Java API</h3>
+<code class="block" data-language="java">
+public class WelcomePageTest extends GalenTestBase {
+
+    @Test(dataProvider = "devices")
+    public void welcomePage_shouldLookGood_onDevice(TestDevice device) {
+        load("/");
+        checkLayout(driver, "/specs/welcomePage.spec", device.getTags());
+    }
+
+    @Test(dataProvider = "devices")
+    public void loginPage_shouldLookGood_onDevice(TestDevice device) {
+        load("/");
+        checkLayout(driver, "/specs/loginPage.spec", device.getTags());
+    }
+}
+</code>
+                <p class="text-center"><a href="https://github.com/galenframework/galen-sample-java-tests"  target="__blank" class="btn btn-primary home-button-on-dark home-button" role="button">See example</a></p>
+                <p class="home-description text-center">
+                    As Galen Framework is implemented in Java its API is also available for Java tests. Galen is released to Sonatype Central Repository so you can add it as a dependency in your Maven project.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="home-open-source" class="home-spacer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-1 col-lg-1">
+            </div>
+            <div class="col-sm-3 col-lg-3">
+                <img class="home-slide hidden-xs" src="/public/images/slide-open-source.png"/>
+            </div>
+            <div class="col-sm-6 col-lg-6">
+                <h1>Galen is Open-Sourced!</h1>
+                <p class="home-description">
+                Galen Framework is distributed under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2</a> and the sources are available on <a href="https://github.com/galenframework/galen">GitHub</a>.
+                </p>
+                <p class="home-description">
+                    Even this website is open-sourced and is posted on <a href="">GitHub</a> so that anyone can help improve the documentation.
+                </p>
+            </div>
+            <div class="col-sm-2 col-lg-2">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container"><div class="row text-center"><div class="home-separator"></div></div></div>
+
+<div id="home-lets-start" class="home-spacer">
+    <div class="container">
+        <div class="row text-center">
+            <h1>Let's Start!</h1>
+            <p class="home-description">
+                Checkout the "First Project" tutorial which will take you only 2 minutes
+            </p>
+            <p class="home-description">
+                <a class="btn btn-primary home-button home-button-on-white" href="/docs/tutorial-first-project/">First Project</a>
+                <a class="btn btn-success home-button home-button-on-white" href="/docs/all/">Learn More</a>
+            </p>
         </div>
     </div>
 </div>

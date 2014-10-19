@@ -2,12 +2,14 @@
 title
     About
 ==================================================
-"Galen Framework":http://galenframework.com is a test framework for layout testing of web-applications in a real browser.
-It was made with responsive design in mind. It works in a following way:
+"Galen Framework":http://galenframework.com is a test framework which was originaly introduced for testing layout of web-applications in a real browser. Nowadays it became a fully functional testing framework with rich reporting and test management system. It supports both Javascript and Java tests.
+
+Galen Framework was made with responsive design in mind. It works in a following way:
 # Galen opens a page in browser
 # Resizes browser to specified size
 # Tests the layout with Galen Specs
 
+In case the page is not directly accessible Galen Framework allows you to perform some operations on the website first. As it is based on Selenium you are free to do whatever you need like: clicking, typing, injecting client-side javascript etc.
 
 "Galen Specs":/docs/reference-galen-spec-language-guide/ is the language with which you define how the page should look like for different devices. The language is quite advanced and allows you to express complete layout of your website with minimal text. Take a look at the following example.
 
@@ -54,6 +56,6 @@ Galen offers two ways of reporting:
 
 Galen is licensed with "Apache License, Version 2.0":http://www.apache.org/licenses/LICENSE-2.0 and is distributed for free.
 
-For more information go to "documentation":/docs/all/ or read article "First Project":/docs/tutorial-first-project/ for more inspiration.
+For more information checkout "documentation":/docs/all/ or read article "First Project":/docs/tutorial-first-project/ for more inspiration.
 
-If you find any issues please post them on "GitHub":https://github.com/ishubin/galen/issues
+If you find any issues please report them on "GitHub":https://github.com/ishubin/galen/issues

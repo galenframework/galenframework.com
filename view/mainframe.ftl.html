@@ -1,186 +1,113 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <#if !title??>
             <#assign title="Galen Framework | Automated testing of responsive design">
         </#if>
-
         <title>${title}</title>
+
+        <!-- Bootstrap -->
+        <link href="/public/css/bootstrap.css" rel="stylesheet">
+        <link href="/public/custom.css?v=1" rel="stylesheet">
+        <script src="/public/jquery-1.8.3.min.js"></script>
+        <script src="/public/js/bootstrap.min.js"></script>
+        <script src="/public/galen.js"></script>
         <link href="/public/font-awesome-4.0.3/css/font-awesome.css" rel="stylesheet">
-        <link rel="shortcut icon" href="/public/favicon.png" />
-        <link rel="stylesheet" href="/public/main.css?v=13oct2014" media="screen" type="text/css">
-        <link rel="stylesheet" href="/public/style.css?v=13oct2014" media="screen" type="text/css">
-        <link rel="stylesheet" href="/public/home.css?v=13oct2014" media="screen" type="text/css">
         <link rel="stylesheet" href="/public/solarized_dark.css?v=1" media="screen" type="text/css">
         <link rel="stylesheet" href="/public/galen-highlight-dark.css?v=1" media="screen" type="text/css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="/public/jquery-1.8.3.min.js?v=1"></script>
         <script src="/public/highlight.pack.js?v=1"></script>
         <script src="/public/galen-highlight.js?v=1"></script>
 
-        <script type="text/javascript">
-
-          var _gaq = _gaq || [];
-          _gaq.push(['_setAccount', 'UA-35449979-1']);
-          _gaq.push(['_trackPageview']);
-
-          (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-          })();
-
-        </script>
-
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
         <script>
-            var LAYOUT_FULL = 1;
-            var LAYOUT_TABLET = 2;
-            var LAYOUT_MOBILE = 3;
-            var Layout = {
-                layout: LAYOUT_FULL,
-                switchToTablet: function() {
-                    if (this.layout != LAYOUT_TABLET) {
-                        this.layout = LAYOUT_TABLET;
-                        $("body").removeClass("full-layout").removeClass("mobile-layout").addClass("tablet-layout");
-                    }
-                },
-                switchToMobile: function() {
-                    if (this.layout != LAYOUT_MOBILE) {
-                        this.layout = LAYOUT_MOBILE;
-                        $("body").removeClass("full-layout").removeClass("tablet-layout").addClass("mobile-layout");
-                    }
-                },
-                switchToFull: function() {
-                    if (this.layout != LAYOUT_FULL) {
-                        this.layout = LAYOUT_FULL;
-                        $("body").removeClass("mobile-layout").removeClass("tablet-layout").addClass("full-layout");
-                    }
-                },
-                TABLET_SIZE: 560,
-                DESKTOP_SIZE: 800
-            };
-
-            function globalResize(){
-                var width = $(window).width(); 
-                if (width > Layout.DESKTOP_SIZE) {
-                    Layout.switchToFull();
-                }
-                else if (width <= Layout.DESKTOP_SIZE && width > Layout.TABLET_SIZE) {
-                    Layout.switchToTablet();
-                }
-                else if (width <= Layout.TABLET_SIZE) {
-                    Layout.switchToMobile();
-                }
-            }
-
-            function highlightCodeBlocks() {
-                $("code.block").each(function (){
-                    var html = $(this).html();
-                    var className = $(this).attr("data-language");
-                    $(this).html("<pre><code class=\"" + className + "\">" + html + "</code></pre>");
-
-                    if (className != null && className != "") {
-                        if (className == "galen-specs") {
-                            var codeBlock = $(this).find("pre code");
-                            codeBlock.html(GalenHighlight.specs(codeBlock.html()));
-                        }
-                        else if (className == "galen-suites") {
-                            var codeBlock = $(this).find("pre code");
-                            codeBlock.html(GalenHighlight.suites(codeBlock.html()));
-                        }
-                        else {
-                            hljs.highlightBlock($(this).find("pre code").get(0));
-                        }
-                    }
-                });
-            }
-
-            function enrichHeadersWithLink() {
-                $("h1, h2, h3, h4").each(function (){
-                    var _ = $(this);
-                    var id = _.attr("id");
-                    if (id != undefined && id != null && id != "") {
-                        _.append("<a class='paragraph-link' href='#" + escape(id) + "'>&para;</a>");
-                    }
-                });
-            }
-
-            function enrichCodeBlocksWithMaximizeButton() {
-                $("code.block").each(function () {
-                    $(this).append("<a class='enlarge' href='#'><i class='fa fa-eye'></i></a>");
-                });
-
-                $("code.block a.enlarge").click(function (){
-                    var html = $(this).parent().find("pre").html();
-                    var w = window.open();
-                    $(w.document.body).html("<pre>" + html + "</pre>");
-
-                    return false;
-                });
-            }
-
-            $(function(){
-                $(window).resize(globalResize);
-                globalResize();
-
-                $("#search-panel form").submit(function (event){
+            $(function (){
+                $("#search-panel").submit(function (event){
                     var q = encodeURI($("#search-panel input").val() + " site:${googleSite}");
                     event.preventDefault();
                     window.location = "http://www.google.com/search?q=" + q;
                 });
-
-                highlightCodeBlocks();
-
-                enrichHeadersWithLink();
-
-                enrichCodeBlocksWithMaximizeButton();
             });
-
-        
         </script>
     </head>
-    <body class="full-layout">
-        <div id="wrapper">
-            <div id="header">
-                <div class="wrapper">
-                    <a class="big-header" href="/"><img src="/public/logo.png"/> <span class="header-text">Galen <span class="hide-on-mobile">Framework</span></span></a>
-                </div>
+    <body>
+        <nav id="header" class="navbar navbar-default" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/"><img src="/public/logo.png" height="26px"/> Galen Framework</a>
             </div>
-            <div id="navigation">
-                <div class="wrapper">
-                    <ul id="nav">
-                        <li><a href="/news/">News</a></li>
-                        <li><a href="/download/">Download</a>
-                        <li><a href="/docs/all/">Docs</a>
-                        <li><a href="https://github.com/galenframework/galen">On GitHub</a>
-                        <li><a href="/docs/about/">About</a>
-                        <li><a href="/contact/">Contact</a>
-                    </ul>
-                    <div id="navigationSelect" style="display:none;">
-                        Menu 
-                        <select name="menu">
-                        </select>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li><a href="/news/">News</a></li>
+                <li><a href="/download/">Download</a></li>
+                <li><a href="/docs/all/">Docs</a></li>
+                <li><a id="menu-github" href="https://github.com/galenframework/galen">GitHub</a></li>
+                <li><a id="menu-about" href="/docs/about/">About</a></li>
+                <li><a href="/contact/">Contact</a></li>
+              </ul>
+              <form id="search-panel" class="navbar-form navbar-right" role="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Search">
+                </div>
+              </form>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+        ${tiles.process('middle')}
+        <div id="footer">
+            <div class="container">
+                <div class="row-fluid">
+                    <div class="col-sm-4 col-lg-4 text-center footer-socials">
+                        <h2>Galen Framework</h2>
+                        <a href="/subscribe/"><i class="fa fa-envelope fa-2x"></i></a>
+                        <a href="http://twitter.com/galenframework"><i class="fa fa-twitter fa-2x"></i></a>
+                        <a href="https://github.com/galenframework/galen"><i class="fa fa-github-alt fa-2x"></i></a>
+                        <a href="https://www.facebook.com/galenframework"><i class="fa fa-facebook-square fa-2x"></i></a>
                     </div>
-                    <div id="search-panel">
-                        <form action="http://www.google.com/search">
-                            <input type="text" placeholder="Search..." name="q" value=""/>
-                        </form>
+                    <div class="col-sm-2 col-lg-2">
+                        <h3>Site Map</h3>
+                        <ul>
+                            <li><a href="/news/">News</a>
+                            <li><a href="/download/">Download</a>
+                            <li><a href="/docs/all/">Docs</a>
+                        </ul>
+                    </div>
+                    <div class="col-sm-2 col-lg-2">
+                        <h3>Project</h3>
+                        <ul>
+                            <li><a href="/docs/about/">About</a>
+                            <li><a href="http://www.apache.org/licenses/LICENSE-2.0.html">License</a>
+                            <li><a href="/contact/">Contact</a>
+                        </ul>
+                    </div>
+                    <div class="col-sm-2 col-lg-2">
+                        <h3>Getting Started</h3>
+                        <ul>
+                            <li><a href="/docs/tutorial-first-project/">First project</a>
+                            <li><a href="/docs/reference-galen-spec-language-guide/">Specs Language</a>
+                            <li><a href="http://mindengine.net/category/galen/">Galen Tutorials</a>
+                        </ul>
+                    </div>
+                    <div id="footer-copyright" class="col-sm-2 col-lg-2 text-right">
+                        &copy; 2013 - 2014,<br/> Powered by <a href="http://blogix.info">Blogix</a>
                     </div>
                 </div>
             </div>
-
-            <div id="middle">
-                ${tiles.process('middle')}
-            </div>
-
-            <div id="footer">
-                <div class="wrapper">
-                    <div id="footer-sign">
-                        <span>&copy; 2013 - 2014, Powered by </span><a href="http://blogix.info">Blogix</a>
-                    </div> 
-                </div>
-            </div>
-
         </div>
     </body>
 </html>

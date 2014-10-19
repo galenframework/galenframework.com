@@ -839,7 +839,7 @@ Sometimes you might have different images for different browsers and this will b
 
 $$ galen-specs
 header-text
-    image: file imgs/header-text-1.png, file imgs/header-text-2.png, file imgs/header-text-3.png, error 20px
+    image: file image-1.png, file image-2.png, file image-3.png, error 20px
 $$
 
 This way Galen compares page element area with each image and selects the one that has less mismatching pixels.
@@ -872,7 +872,7 @@ Take a look at the following example:
 
 $$ galen-specs
 menu-item-1
-    image: file imgs/menu-item-1.png, error 100px, filter blur 4, filter saturation 0, map-filter denoise 5
+    image: file item-1.png, error 1%, filter blur 4, filter saturation 0, map-filter denoise 5
 $$
 
 What happens with this check is the following: Galen takes both images and applies blur filter with radius 4. Then it applies saturation filter with level 0 which means complete loss of color and the images become gray. Then it compares the image and builds a comparison map. After these operations it applies denoise filter with radius 5 pixels and removes noise from generated map. And after all these operations it counts the mismatching pixels. 
@@ -901,42 +901,50 @@ $$
 
 Here are some examples of image filters for the original foto:
 
-*Original*
-!/public/filter-examples/original.jpg!
-
-
-*Blur level 2*
-!/public/filter-examples/blur-2.png!
-
-
-*Blur level 10*
-!/public/filter-examples/blur-10.png!
-
-
-*Contrast level 100*
-!/public/filter-examples/contrast-100.png!
-
-
-*Contrast level 200*
-!/public/filter-examples/contrast-200.png!
-
-
-*Saturation level 0*
-!/public/filter-examples/saturation-0.png!
-
-
-*Saturation level 50*
-!/public/filter-examples/saturation-50.png!
-
-
-*Quantinize 2*
-!/public/filter-examples/quantinize-2.png!
-
-
-*Quantinize 10*
-!/public/filter-examples/quantinize-10.png!
-
-
+@@
+<div class="row">
+    <div class="col-sm-4 col-lg-4 text-center">
+        <h4>Original</h4>
+        <img src="/public/filter-examples/original.jpg"/>
+    </div>
+    <div class="col-sm-4 col-lg-4 text-center">
+        <h4>Blur level 2</h4>
+        <img src="/public/filter-examples/blur-2.png"/>
+    </div>
+    <div class="col-sm-4 col-lg-4 text-center">
+        <h4>Blur level 10</h4>
+        <img src="/public/filter-examples/blur-10.png"/>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4 col-lg-4 text-center">
+        <h4>Contrast level 100</h4>
+        <img src="/public/filter-examples/contrast-100.png"/>
+    </div>
+    <div class="col-sm-4 col-lg-4 text-center">
+        <h4>Contrast level 200</h4>
+        <img src="/public/filter-examples/contrast-200.png"/>
+    </div>
+    <div class="col-sm-4 col-lg-4 text-center">
+        <h4>Saturation level 0</h4>
+        <img src="/public/filter-examples/saturation-0.png"/>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4 col-lg-4 text-center">
+        <h4>Saturation level 50</h4>
+        <img src="/public/filter-examples/saturation-50.png"/>
+    </div>
+    <div class="col-sm-4 col-lg-4 text-center">
+        <h4>Quantinize 2</h4>
+        <img src="/public/filter-examples/quantinize-2.png"/>
+    </div>
+    <div class="col-sm-4 col-lg-4 text-center">
+        <h4>Quantinize 10</h4>
+        <img src="/public/filter-examples/quantinize-10.png"/>
+    </div>
+</div>
+@@
 
 h1. Advanced Specs
 

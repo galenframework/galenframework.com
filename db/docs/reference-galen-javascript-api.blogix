@@ -12,8 +12,6 @@ categories
    
 ================================
 
-h1. Basic functions
-
 * "load":#load
 * "createDriver":#createDriver
 * "createGridDriver":#createGridDriver
