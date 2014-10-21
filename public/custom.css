@@ -376,6 +376,10 @@ div.sketch {
     text-align: center;
 }
 
+.sketch img {
+    max-width: 100%;
+}
+
 /*
  Side bar
  ---------------*/
