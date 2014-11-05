@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Galen Framework - Testing website layout</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Ivan Shubin">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+        <!--
+        <link rel="stylesheet" href="css/theme/night.css" id="theme"> 
+        -->
+        <link rel="stylesheet" href="css/theme/night.css" id="theme"> 
+
+		<link rel="stylesheet" href="galen-highlight.css">
+		<link rel="stylesheet" href="custom-night.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+<!--
+        <script src="js/highlight.pack.js?v=1"></script>
+        -->
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+                    <h1>Testing</h1><h1> Responsive Layout</h1>
+				</section>
+                <section>
+                    <h2>UI Testing was Hard</h2>
+                    <p class="fragment">
+                        Common techniques
+                        <ul>
+                            <li class="fragment">Manually</li>
+                            <li class="fragment">Comparing screenshots</li>
+                            <li class="fragment">Combined</li>
+                        </ul>
+                    </p>
+                </section>
+                <section>
+                    <h2>But what about..</h2>
+                        <img src="images/slide-responsive-design.png" />
+                    <h2>Responsive Design?</h2>
+                </section>
+                <section>
+                    <h2>What if ...</h2>
+                    <p>
+                        ... we could describe the layout rules in simple words?
+                    </p>
+                    <p class="fragment">
+                        and make it consistent across different screen sizes
+                    </p>
+                    <br/>
+                    <h2 class="fragment">What if...</h2>
+                    <p class="fragment">
+                        ... we could test it on real mobile devices <i class='fa fa-android'> </i> <i class='fa fa-apple'> </i> <i class='fa fa-windows'> </i> ?
+                    </p>
+                </section>
+                <section>
+                    <h2>Galen Framework</h2>
+                    <p>
+                        Lets talk about...
+                    </p>
+                    <ul class="table-of-contents">
+                        <li class="fragment"><b><i class='fa fa-file-text-o'> </i> Page specifications</b> <span class="hint">writting for multiple screen sizes</span></li>
+                        <li class="fragment"><b><i class='fa fa-cogs'> </i> Test Suite</b> <span class="hint">parameterize tests for different devices</span></li>
+                        <li class="fragment"><b><i class='fa fa-newspaper-o'> </i> Complex Layout</b> <span class="hint">how to deal with it?</span></li>
+                        <li class="fragment"><b><i class='fa fa-cloud'> </i> Running in a cloud</b> <span class="hint">on real mobile devices</span></li>
+                        <li class="fragment"><b><i class='fa fa-eye'> </i> Visual testing</b> <span class="hint">with image comparison</span></li>
+                        <li class="fragment"><b><i class='fa fa-puzzle-piece'> </i> Javascript tests</b> <span class="hint">and structured reporting</span></li>
+                        <li class="fragment"><b><i class='fa fa-recycle'> </i> Galen in Continuous Integration</b> <span class="hint">include it in your release cycle</span></li>
+                    </ul>
+                </section>
+                <section>
+                    <h2><i class='fa fa-file-text-o'> </i> Page Specifications</h2>
+                    <h1 class="fragment">Galen Specs</h1>
+                </section>
+                <section>
+                    <h2><i class='fa fa-file-text-o'> </i> The Syntax</h2>
+<pre class='galen-spec'>
+============================================
+<div class="fragment"><span class="spec-object">object-name-1</span>    css   <span class="spec-num">selector</span>
+<span class="spec-object">object-name-2</span>    xpath <span class="spec-num">//div[@id='some-div']</span>
+<span class="spec-object">object-name-3</span>    id    <span class="spec-num">some-id</span></div>
+============================================
+
+<div class="fragment"><span class="spec-tag">@ tag
+------------------------------</span></div>
+<div class="fragment"><span class='spec-object'>object-name</span>
+    <span class='spec-def'>check-name:</span> check-value</div>
+</pre>
+<b class="fragment"><i class="fa fa-warning"> </i> No tabs! Only spaces</b>
+                </section>
+                <section>
+                    <h2>Near</h2>
+                    <p>
+                        <img src="images/spec-sketch-near.png"/>
+<pre class='galen-spec'>
+<span class='spec-object'>button</span>
+    <span class='spec-def'>near:</span> textfield <span class='spec-num'>10</span>px right
+</pre>
+                    </p>
+                </section>
+                <section>
+                    <h2>Inside</h2>
+                    <p>
+                        <img src="images/spec-sketch-inside.png"/>
+<pre class='galen-spec spec'>
+<span class='spec-object'>button</span>
+    <span class='spec-def'>inside:</span> container <span class='spec-num'>10</span>px top left
+</pre>
+                    </p>
+                </section>
+                <section>
+                    <h2>Inside (a bit more complicated)</h2>
+                    <p>
+                        <img src="images/spec-sketch-inside-complex.png"/>
+<pre class='galen-spec spec'>
+<span class='spec-object'>button</span>
+    <span class='spec-def'>inside:</span> container <span class='spec-num'>10</span>px left right, 20px top bottom
+</pre>
+                    </p>
+                </section>
+                <section>
+                    <h2>Above / Below</h2>
+                    <p>
+                        <img src="images/spec-sketch-above.png"/>
+<pre class='galen-spec'>
+<span class='spec-object'>caption</span>
+    <span class='spec-def'>above:</span> description <span class='spec-num'>15</span>px
+<div class='fragment'><span class="spec-comment"># or like this</span>
+<span class='spec-object'>description</span>
+    <span class='spec-def'>below:</span> caption <span class='spec-num'>15</span>px
+</div>
+</pre>
+                    </p>
+                </section>
+                <section>
+                    <h2>Aligned</h2>
+                    <p>
+                        <img src="images/spec-sketch-aligned-horizontally.png"/>
+<pre class='galen-spec'>
+<span class='spec-object'>menu-item-*</span>
+    <span class='spec-def'>aligned horizontally top:</span> menu-item-1
+</pre>
+                    </p>
+                </section>
+                <section data-transition="linear"  data-background-transition="slide">
+                    <h2>Aligned</h2>
+                    <p>
+                        <img src="images/spec-sketch-aligned-horizontally-all.png"/>
+<pre class='galen-spec'>
+<span class='spec-object'>menu-item-*</span>
+    <span class='spec-def'>aligned horizontally all:</span> menu-item-1
+</pre>
+                    </p>
+                </section>
+                <section>
+                    <h2>Aligned Vertically</h2>
+                    <p>
+                        <img src="images/spec-sketch-aligned-vertically.png"/>
+<pre class='galen-spec'>
+<span class='spec-object'>menu-item-*</span>
+    <span class='spec-def'>aligned vertically left:</span> menu-item-1 <span class="fragment"><span class='spec-num'>1</span>px</span>
+</pre>
+                    </p>
+                </section>
+                <section>
+                    <h2>All checks</h2>
+                    <ul class="box">
+                        <li>absent</li>
+                        <li>near</li>
+                        <li>above</li>
+                        <li>below</li>
+                        <li>inside</li>
+                        <li>aligned</li>
+                        <li>centered</li>
+                        <li>color scheme</li>
+                    </ul>
+                    <ul class="box">
+                        <li>component</li>
+                        <li>visible</li>
+                        <li>text</li>
+                        <li>on</li>
+                        <li>width</li>
+                        <li>height</li>
+                        <li>contains</li>
+                        <li>image</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Page Specifications: Ranges</h2>
+                    <p>
+                        Range is the core for all checks
+                    </p>
+                </section>
+                <section>
+                    <h2>Exact value</h2>
+<pre class='galen-spec'>
+<span class="spec-def">width:</span> <span class="spec-num">100</span>px
+</pre>
+                </section>
+                <section>
+                    <h2>Greater than / Less than</h2>
+<pre class='galen-spec'>
+<span class="spec-def">width:</span> &gt; <span class="spec-num">100</span>px
+<span class="spec-def">height:</span> &lt; <span class="spec-num">100</span>px
+</pre>
+                </section>
+                <section>
+                    <h2>Simple range</h2>
+<pre class='galen-spec'>
+<span class="spec-def">width:</span> <span class="spec-num">100</span> to <span class="spec-num">150</span>px
+</pre>
+                </section>
+                <section>
+                    <h2>Approximate value</h2>
+<pre class='galen-spec'>
+<span class="spec-def">width:</span> ~ <span class="spec-num">100</span>px
+<span class="fragment"><span class="spec-def">width:</span> <span class="spec-num">97</span> to <span class="spec-num">103</span>px</span>
+</pre>
+                </section>
+                <section>
+                    <h2>Relative value</h2>
+<pre class='galen-spec'>
+<span class="spec-def">width:</span> <span class="spec-num">70</span>% of screen/width
+</pre>
+                </section>
+                <section>
+                    <h2>Combined ranges</h2>
+<pre class='galen-spec'>
+<span class="spec-def">width:</span> &gt; <span class="spec-num">50</span> % of screen/width
+<span class="spec-def">height:</span> <span class="spec-num">50</span> to <span class="spec-num">60</span> % of screen/height
+</pre>
+                </section>
+
+                <section data-transition="linear"  data-background-transition="slide" data-background="#003322">
+                    <h2>Real life example</h2>
+                </section>
+                <section data-transition="linear" data-background-transition="slide" data-background="#003322">
+                    <h2>Requirement</h2>
+                    <p>
+                        Navigation panel should stretch on mobile and tablet devices and be located under main section. But on desktop it should have static width of 300px and be on the right side of a screen near a main section
+                    </p>
+                    <img src="images/requirement.png"/>
+                </section>
+                <section data-transition="linear" data-background-transition="slide" data-background="#003322">
+                    <h2>Solution</h2>
+                    <pre class="galen-spec">
+<span class="spec-tag">@ mobile, tablet</span>
+<span class="spec-object">navigation</span>
+    <span class="spec-def">width:</span> <span class="spec-num">100</span>% of main/width
+    <span class="spec-def">below:</span> main <span class="spec-num">0</span>px
+
+<span class="spec-tag">@ desktop</span>
+<span class="spec-object">navigation</span>
+    <span class="spec-def">width:</span> <span class="spec-num">300</span>px
+    <span class="spec-def">near:</span> main <span class="spec-num">0</span>px right
+</pre>
+                </section> 
+                <section data-transition="linear" data-background-transition="slide" data-background="#003322">
+                    <h2>How do we run it?</h2>
+                </section>
+                <section data-transition="linear" data-background-transition="slide" data-background="#003322">
+<pre class="galen-spec">
+<span class="spec-object">$</span> galen check homepage.spec 
+            --url <span class='spec-num'>"http://example.com"</span>
+            --size <span class='spec-num'>"400x600"</span>
+            --include <span class='spec-num'>"mobile"</span>
+            --htmlreport <span class='spec-num'>"reports-dir"</span>
+</pre>
+                </section> 
+                <section data-transition="linear" data-background-transition="slide" data-background="#003322">
+                    <h2>What do we get?</h2>
+                    <img class='fragment' src="images/report.png"/>
+                </section>
+                
+                <section>
+                    <h2><i class='fa fa-cogs'> </i> Defining a Test Suite</h2>
+                </section>
+                <section>
+                    <h2>Simple example</h2>
+<pre class="galen-spec">
+<span class="fragment">Home page on mobile device</span>
+<span class="fragment">    http://galenframework.com  400x800</span>
+<span class="fragment">        check homepage.spec --include "mobile"</span>
+</pre>
+                </section>
+                <section>
+                <h2>Advanced Test Suite</h2>
+<pre class="galen-spec">
+<span class='spec-tag'>@@ Set</span>  domain    galenframework.com
+
+<span class='spec-tag'>@@ Table</span> <span class="spec-object">devices</span>
+    | deviceName | tags      | size     |
+    | Mobile     | mobile    | 320x600  |
+    | Tablet     | tablet    | 640x480  |
+    | Desktop    | desktop   | 1024x800 | 
+
+<span class='spec-tag'>@@ Parameterized with</span> <span class="spec-object">devices</span>
+Home page on <span class='spec-def'>${deviceName}</span> device
+    http://<span class='spec-def'>${domain}</span>/   <span class='spec-def'>${size}</span>
+        check homepage.spec --include "<span class='spec-def'>${tags}</span>"</span>
+</pre>
+                </section>
+                <section data-transition="linear" data-background-transition="slide" data-background="#003300">
+                    <h2><i class='fa fa-newspaper-o'> </i> Complex Layout</h2>
+                </section>
+                <section data-transition="linear" data-background-transition="slide" data-background="#003300">
+                    <h2>What shall we do with this?</h2>
+                    <img src="images/spec-sketch-complex-layout.png"/>
+                </section>
+                <section data-transition="linear" data-background-transition="slide" data-background="#003300">
+                    <h2>Solution</h2>
+                    <pre class="galen-spec">===============================================
+<span class="spec-object">user-profile-*</span>    css  #profiles .profile
+===============================================
+
+<span class='fragment'>[ 1 - 9 ]</span>
+<p class='fragment'><span class="spec-object">user-profile-@</span>
+    <span class="spec-def">above</span>: user-profile-@{+1} <span class="spec-num">5</span>px</p><p class='fragment'>    <span class="spec-def">component</span>: specs/user-profile-component.spec</p>
+</pre>
+                </section>
+                <section data-transition="linear" data-background-transition="slide" data-background="#003300">
+                    <h2>Or even so:</h2>
+                    <pre class="galen-spec">===============================================
+<span class="spec-object">user-profile-*</span>    css  #menu ul li
+===============================================
+
+[ 2 - <span class='spec-tag'>${count("user-profile-*")}</span> ]
+<span class="spec-object">user-profile-@</span>
+    <span class="spec-def">below</span>: user-profile-@{-1} <span class="spec-num">5</span>px
+</pre>
+                </section>
+
+
+                <section data-transition="linear" data-background-transition="slide" data-background="#632D00">
+                    <h2><i class='fa fa-cloud'> </i> Running in a cloud</h2>
+                </section>
+                <section data-transition="linear" data-background-transition="slide" data-background="#632D00">
+                    <h2>Selenium Grid</h2>
+                    <pre class="galen-spec">
+Homepage in Selenium Grid in Chrome
+    selenium grid http://hostname:4444/wd/hub
+        --page http://example.com --size 640x480 
+        --browser Chrome --version "21.0"
+        --platform "XP"
+            check homepage.spec
+                    </pre>
+                </section>
+                <section data-transition="linear" data-background-transition="slide" data-background="#632D00">
+                    <h2>Sauce Labs</h2>
+                    <img src="images/saucelabs-platform.png"/>
+                </section>
+                <section data-transition="linear" data-background-transition="slide" data-background="#632D00">
+                    <h2>Screenshot</h2>
+                    <img src="images/saucelabs-report.png"/>
+                </section>
+
+
+
+                <section data-transition="linear" data-background-transition="slide" data-background="#00634B">
+                    <h2><i class='fa fa-eye'> </i> Visual testing</h2>
+                </section>
+                <section data-transition="linear" data-background-transition="slide" data-background="#00634B">
+                    <h2>Color Scheme</h2>
+                    <img src="images/photo-mouse-over.jpg"/>
+<pre class="galen-spec fragment">
+<span class='spec-object'>login-button</span>
+    <span class='spec-def'>color scheme:</span> ~<span class='spec-num'>2</span>% white, &gt; 80% #397fb8;
+
+<span class="spec-tag">@ login-button-highlighted</span>
+<span class='spec-object'>login-button</span>
+    <span class='spec-def'>color scheme:</span> ~<span class='spec-num'>2</span>% white, &gt; 80% #24a10b;
+</pre>
+                </section>
+                <section data-transition="linear" data-background-transition="slide" data-background="#00634B">
+                    <h2>Image Comparison</h2>
+<pre class="galen-spec fragment">
+<span class='spec-object'>logo</span>
+    <span class='spec-def'>image:</span> file imgs/logo.png, error 10%<span class='fragment'>, tolerance 50</span>
+</pre>
+                </section>
+                <section data-transition="linear" data-background-transition="slide" data-background="#00634B">
+                    <h2>Image Comparison</h2>
+                    <img src="images/image-comparison-report-1.png"/>
+                </section>
+                
+                <section data-transition="linear" data-background-transition="slide" data-background="#00634B">
+                    <h2>But what if?</h2>
+                    <img src="images/image-comparison-noise-1.png"/>
+                </section>
+                <section data-transition="linear" data-background-transition="slide" data-background="#00634B">
+                    <h2>Image Filters</h2>
+<pre class='galen-spec'>
+<span class='spec-object'>logo</span>
+    <span class='spec-def'>image:</span> file imgs/logo.png, map-filter denoise 1
+</pre>
+                </section>
+                <section data-transition="linear" data-background-transition="slide" data-background="#00634B">
+                    <h2>Even if </h2>
+                    <h3>Hqme</h3>
+                    <div class="fragment">
+                        <p>Galen will catch it</p>
+                        <img src="images/image-comparison-noise-2.png"/>
+                    </div>
+                </section>
+
+                <section>
+                    <h2><i class='fa fa-puzzle-piece'> </i> Javascript Tests</h2>
+                </section>
+                <section>
+<pre class='javascript'><code data-trim>
+test("Home page on mobile device", function (){
+  var driver = createDriver(
+    "http://example.com", "1024x768");
+
+    checkLayout(driver, "home.spec", ["mobile"]);
+});
+</code></pre>
+                </section>
+                <section>
+<pre class='javascript'><code data-trim>
+var devices = {
+  mobile: { deviceName: "mobile", 
+    size:"350x600", tags: ["mobile"]
+  }, 
+  desktop: { deviceName: "desktop", 
+    size:"1024x768", tags:["desktop"]
+  }
+};
+</code></pre>
+
+<pre class='fragment javascript'><code data-trim>
+forAll(devices, function (device) {
+  test("Home page on ${deviceName}", function (device){
+    var driver = createDriver(
+        "http://galenframework.com",
+        device.size); 
+
+    checkLayout(driver, "homepage.spec", device.tags);
+  });
+});
+</code></pre>
+                </section>
+                <section>
+                    <h2>GalenPages Javascript Framework</h2>
+                </section>
+                <section>
+<pre class='javascript'><code>
+function LoginPage (driver) {
+  GalenPages.extend(this, driver, {
+    login: "#login-form .login",
+    password: "xpath: //input[@type='password']",
+    submitButton: "id: submit-button"
+  });
+}
+</code></pre>
+<pre class='javascript fragment'><code>
+var loginPage = new LoginPage(driver);
+loginPage.waitForIt();
+loginPage.login.typeText("testuser@example.com");
+loginPage.password.typeText("test123");
+loginPage.submitButton.click();
+</code></pre>
+                </section>
+                <section>
+<pre class='javascript'><code>
+function LoginPage (driver) {
+  GalenPages.extend(this, driver, {
+    login: "#login-form .login",
+    password: "xpath: //input[@type='password']",
+    submitButton: "id: submit-button",
+
+    loginAs: function (username, password) {
+      this.login.typeText(username);
+      this.password.typeText(password);
+      this.submitButton.click();
+    }
+  });
+}
+
+new LoginPage(driver)
+  .waitForIt()
+  .loginAs("testuser@example.com", "test123");
+</code></pre>
+                </section>
+                <section>
+                    <h2><i class='fa fa-th-list'> </i> Reports</h2>
+                    <img src="images/structured-report-1.png"/>
+                </section>
+                <section>
+<pre class='javascript'><code>
+function LoginPage (driver) {
+  GalenPages.extend(this, driver, {
+    login: "input[name='login.username']",
+    password: "input[name='login.password']",
+    submitButton: "id: submit-button",
+
+    loginAs: function (username, password) {
+      var loginPage = this;
+      logged("Login as " + username + 
+        " with password " + password, function() {
+        loginPage.login.typeText(username);
+        loginPage.password.typeText(password);
+        loginPage.submitButton.click();
+      }):
+    }
+  });
+}
+
+</code></pre>
+                </section>
+                <section>
+                    <h2><i class='fa fa-th-list'> </i> Structured Reports</h2>
+                    <img src="images/structured-report-2.png"/>
+                </section>
+                <section>
+                    <h2><i class='fa fa-th-list'> </i> Structured Reports</h2>
+                    <img src="images/structured-report-3.png"/>
+                </section>
+
+                <section data-transition="linear" data-background-transition="slide" data-background="#005E63">
+                    <h2><i class='fa fa-recycle'> </i> Galen in Continuous Integration</h2>
+                </section>
+                <section data-transition="linear" data-background-transition="slide" data-background="#005E63">
+<pre>
+
+
+   galen test . --testngreport testng.xml
+
+
+</pre>
+                </section>
+                <section data-transition="linear" data-background-transition="slide" data-background="#005E63">
+                    <h2><i class='fa fa-recycle'> </i> Galen in Continuous Integration</h2>
+                    <img src="images/ci-jenkins.png"/>
+                </section>
+                <section>
+                    <h1>Questions?</h1>
+                    <p>
+                        What we talked about:
+                    </p>
+                    <ul class="table-of-contents">
+                        <li><b><i class='fa fa-file-text-o'> </i> Page specifications</b> <span class="hint">writting for multiple screen sizes</span></li>
+                        <li><b><i class='fa fa-cogs'> </i> Test Suite</b> <span class="hint">parameterize tests for different devices</span></li>
+                        <li><b><i class='fa fa-newspaper-o'> </i> Complex Layout</b> <span class="hint">how to deal with it?</span></li>
+                        <li><b><i class='fa fa-cloud'> </i> Running in a cloud</b> <span class="hint">on real mobile devices</span></li>
+                        <li><b><i class='fa fa-eye'> </i> Visual testing</b> <span class="hint">with image comparison</span></li>
+                        <li><b><i class='fa fa-puzzle-piece'> </i> Javascript tests</b> <span class="hint">and structured reporting</span></li>
+                        <li><b><i class='fa fa-recycle'> </i> Galen in Continuous Integration</b> <span class="hint">include it in your release cycle</span></li>
+                    </ul>
+                </section>
+                <section>
+                    <p>
+                        For more information visit <a href="http://galenframework.com">GalenFramework.com</a> project website or <a href="https://github.com/galenframework/galen">GitHub project page</a> 
+                    </p>
+                    <br/>
+                    <p>
+                        Also you can find some interesting articles about Galen Framework on <a href="http://mindengine.net">MindEngine.net</a> blog
+                    </p>
+                    <br/>
+                    <p>
+                        You can find me on <a href="https://www.facebook.com/johny.j.jay">Facebook</a>, <a href="http://nl.linkedin.com/pub/ivan-shubin/31/503/a64">LinkedIn</a> or <a href="https://plus.google.com/u/0/103407348120590120525/posts">Google+</a>
+                    </p>
+                </section>
+            </div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

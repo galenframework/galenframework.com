@@ -1,0 +1,36 @@
+
+ul.table-of-contents {
+    list-style: none;
+    color: #aaa;
+}
+ul.table-of-contents i.fa {
+    width: 40px;
+    margin-right: 10px;
+}
+
+ul.table-of-contents li {
+    margin: 15px;
+}
+ul.table-of-contents b {
+    color: #fff;
+}
+ul.table-of-contents .hint {
+    font-size: 18px;
+    color: #AEC2D1;
+}
+.reveal section img {
+    box-shadow: none;
+}
+
+.reveal i{
+    font-family: 'FontAwesome';
+    font-style: normal;
+}
+
+.reveal pre code {
+    max-height: none;
+}
+
+.reveal pre, .reveal pre code {
+    background: #111;
+}
