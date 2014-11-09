@@ -1040,6 +1040,13 @@ menu-item-@
     near: menu-item-@{-1} 10 px right
 $$
 
+Also sometimes you might need to perform more complex operations inside *@{ }* construction. Here is a way to do. Note the special @index@ object which represents the current parameter:
+
+$$ galen-specs
+[ 2 - 10 ]
+menu-item-@
+    near: menu-item-@{index*2 + 1} 10px right
+$$
 
 h2. Template specs with advanced expressions
 
@@ -1067,6 +1074,49 @@ menu-item-*         css #menu li a
 [ 2 - ${count("menu-item-*")} ]
 menu-item-@
     near: menu-item@{-1} 10px right
+$$
+
+
+h2. Custom javascript functions in specs
+
+There is a way to use custom javascript functions inside @${ }@ construction. Lets say you need to put a special function "*i18n*" that would take care of internationalization. You can do it like this:
+Create a file @i18n.function.js@:
+$$ javascript
+this.i18n = function (name) {
+    // ...
+    // define a code for handling i18n
+};
+$$
+
+Now you can use it in your specs. Use @import@ in order to load the javascript:
+
+$$ galen-specs
+@@ import i18n.function.js
+
+greeting-text
+    text is: ${i18n("header.greeting.text")}
+$$
+
+Same way you can implement a custom function that would allow you to parameterize checks against only even items of a list. Create a script @allEven.js@:
+$$ javascript
+this.allEven = function (pattern) {
+    var size = count(pattern);
+    var parameters = "2";
+    if (size > 1) {
+       for (var i = 4; i <= size; i+=2) {
+           parameters = parameters + "," + i;
+       }
+    }
+
+    return parameters;
+};
+$$
+
+In spec file call like this:
+$$ galen-specs
+[ ${allEven("menu-item-*")} ]
+menu-item-@
+    height: 100px
 $$
 
 
