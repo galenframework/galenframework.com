@@ -616,6 +616,20 @@ greeting
 $$
 
 
+h3. Text operations
+
+Sometimes you don't want to check the text case sensitive. For this purpose you can rely on special text operations. At the moment only these operations are supported: *lowercase* and *uppercase*.
+
+$$ galen-specs
+greeting
+    text lowercase is: welcome user@example.com to our cool website!
+    text uppercase starts: WELCOME
+    text lowercase ends: website!
+    text lowercase contains: to our cool
+    text lowercase matches: welcome .* to our cool website!
+$$
+
+
 h2. Centered
 
 If you want to check that the element is centered inside another element you can of course use the spec *inside* by defining same range for left and right sides. But there is a problem if it is responsive design. Then there is a special spec called *centered*. It allows to verify that the element is centered inside or on top of another element with user-defined error rate. Lets take a look at the following scheme:
