@@ -15,6 +15,7 @@ categories
 * "load":#load
 * "createDriver":#createDriver
 * "createGridDriver":#createGridDriver
+* "resize":#resize
 * "checkLayout":#checkLayout
 * "loadProperties":#loadProperties
 * "readFile":#readFile
@@ -87,6 +88,17 @@ var driver = createGridDriver("http://mygrid/wd/hub", {
 });
 $$
 
+
+h2. resize
+
+*resize( driver, size )*
+Changes the size of browser window
+* *driver* - an instance of WebDriver
+* *size* - a string with size _(e.g. "1024x768")_
+
+$$ javascript
+resize(driver, "1024x768");
+$$
 
 h2. checkLayout
 
