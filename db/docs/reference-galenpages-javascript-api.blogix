@@ -167,6 +167,10 @@ $$
 $$ javascript
 loginPage.emailTextfield.clear();
 $$
+* *hover* - function. Simulates the mouse over event and makes an element hovered
+$$ javascript
+loginPage.submitButton.hover();
+$$
 * *getWebElement* - function. Returns WebElement object for current page element
 * *isDisplayed* - function. Returns true if page element is visible on page and false if it is hidden
 * *selectByValue* - function. Takes string argument representing a value of html @option@. This function should only be used in case the page element is a html @select@ tag. 
@@ -242,7 +246,7 @@ A very usefull function that allows to wait for multiple condition with specifie
 
 Returns a @GalenPages.Wait@ object that has the following function:
 
-* *untiAll* - function. Takes an argument of key/value pairs where key is a name of condition and value is a boolean function that returns state of condition
+* *untilAll* - function. Takes an argument of key/value pairs where key is a name of condition and value is a boolean function that returns state of condition
 
 $$ javascript
 GalenPages.wait( {time: "10s", period: "1s"}).untilAll({
