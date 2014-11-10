@@ -12,8 +12,105 @@ categories
    
 ================================
 
-There were a lot of functionalities introduced in version 1.4.1 as well as bugfixes. The major features are "css"
+There were a lot of new features introduced in version 1.4.1 as well as bugfixes. The major features are "css property verification":/docs/reference-galen-spec-language-guide/#CSSProperties and "custom Javascript functions in specs":/docs/reference-galen-spec-language-guide/#Customjavascriptfunctionsinspecs
 
 >>>>
 
-fas
+h2. CSS Properties Verification
+
+From this moment you can now check the value of a specific CSS property of a test element on page. Check this example:
+
+$$ galen-specs
+login-button
+    css font-size is: 18px
+    css font-family starts: Helvetica
+    css font-family ends: sans-serif
+    css font-family contains: Arial
+    css font-family matches: .*Arial.*
+$$
+
+h2. Javascript Functions in Page Specs
+
+Sometimes you might need some functionality which is not in Galen. For instance be able to parameterize your checks only for odd or even items in list. Or anything else you might have stuck with already. Use Javascript custom functions for that. Here is an example. A file @allEven.js@:
+$$ javascript
+this.allEven = function (pattern) {
+    var size = count(pattern);
+    var parameters = "2";
+    if (size > 1) {
+       for (var i = 4; i <= size; i+=2) {
+           parameters = parameters + "," + i;
+       }
+    }
+
+    return parameters;
+};
+$$
+
+Now you can use it in your page spec. Just import the script like this:
+
+$$ galen-specs
+@@ import allEven.js
+
+[ ${allEven("menu-item-*")} ]
+menu-item-@
+    height: 100px
+$$
+
+h2. Text Operations
+
+Also when validating a text of an element on page you can now apply @lowercase@ or @uppercase@ text operations. This is needed when you don't want to compare text case sensitive.
+
+$$ galen-specs
+greeting
+    text lowercase is: welcome user@example.com to our cool website!
+    text uppercase starts: WELCOME
+    text lowercase ends: website!
+    text lowercase contains: to our cool
+    text lowercase matches: welcome .* to our cool website!
+$$
+
+
+h2. Hover Function in GalenPages
+
+When you need to emulate a hovered of a page element in GalenPages framework you can now do it with @hover@ function:
+
+$$ javascript
+this.LoginPage = function (driver) {
+  GalenPages.extendPage(this, driver, {
+    emailTextfield: "input.email", // css locator
+    passwordTextfield: "xpath: //input[@class='password']", // xpath locator
+    submitButton: "id: submit" // id locator
+  });
+};
+
+var loginPage = new LoginPage(driver);
+loginPage.loginButton.hover();
+$$
+
+h2. Resize Function in Javascript API
+
+If you need to resize the window of a browser just call @resize@ function and pass it a driver and new size like this:
+
+$$ javascript
+resize(driver, "1024x768");
+$$
+
+
+h2. Simple String in checkLayout Function for Tags
+
+There is no need to pass an array of tags in case you need one tag in @checkLayout@ function of Javascript API. Example:
+
+$$ javascript
+checkLayout(driver, "homepage.spec", "mobile");
+$$
+
+
+h2. BugFixes:
+
+* "Same scripts were loading multiple times":https://github.com/galenframework/galen/issues/137
+* "Full page screenshots were not properly waiting for page to be scrolled":https://github.com/galenframework/galen/issues/129
+* "Conditional statements conflicted with parameterized checks":https://github.com/galenframework/galen/issues/113
+* "Unclear error message when missing 'px' in ranges":https://github.com/galenframework/galen/issues/111
+* "Incorrect imported spec path resolution":https://github.com/galenframework/galen/issues/95
+
+
