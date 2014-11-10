@@ -72,7 +72,7 @@ $$
 
 h2. Hover Function in GalenPages
 
-When you need to emulate a hovered of a page element in GalenPages framework you can now do it with @hover@ function:
+When you need to emulate a hovered state of a page element in GalenPages framework you can now do it with @hover@ function:
 
 $$ javascript
 this.LoginPage = function (driver) {
@@ -98,7 +98,7 @@ $$
 
 h2. Simple String in checkLayout Function for Tags
 
-There is no need to pass an array of tags in case you need one tag in @checkLayout@ function of Javascript API. Example:
+There is no need to pass an array of tags in case you need only one tag in @checkLayout@ function. Example:
 
 $$ javascript
 checkLayout(driver, "homepage.spec", "mobile");
@@ -113,4 +113,4 @@ h2. BugFixes:
 * "Unclear error message when missing 'px' in ranges":https://github.com/galenframework/galen/issues/111
 * "Incorrect imported spec path resolution":https://github.com/galenframework/galen/issues/95
 
-
+You can download a new version "here":/download/

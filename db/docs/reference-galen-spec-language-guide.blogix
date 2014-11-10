@@ -39,6 +39,7 @@ categories
 ** "Multiple objects with same specs":#Multipleobjectswithsamespecs
 ** "Template specs":#Templatespecs
 ** "Template specs with advanced expressions":#Templatespecswithadvancedexpressions
+** "Custom javascript functions in specs":#Customjavascriptfunctionsinspecs
 ** "Conditional specs":#Conditionalspecs
 ** "Warning level for specs":#Warninglevelforspecs
 
@@ -1132,8 +1133,10 @@ this.allEven = function (pattern) {
 };
 $$
 
-In spec file call like this:
+In spec file call it like this:
 $$ galen-specs
+@@ import allEven.js
+
 [ ${allEven("menu-item-*")} ]
 menu-item-@
     height: 100px
