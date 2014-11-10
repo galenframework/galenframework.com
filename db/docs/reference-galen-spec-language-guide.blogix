@@ -25,6 +25,7 @@ categories
 ** "Width and Height":#WidthandHeight
 ** "Aligned":#Aligned
 ** "Text":#Text
+** "CSS Properties":#CSSProperties
 ** "Centered":#Centered
 ** "Absent":#Absent
 ** "Visible":#Visible
@@ -628,6 +629,25 @@ greeting
     text lowercase contains: to our cool
     text lowercase matches: welcome .* to our cool website!
 $$
+
+
+h2. CSS Properties
+
+By analogy of "text spec":#Text the @css@ spec allows you to test the value of a CSS property of a specific element. For instance you can check the @font-size@, @font-family@, @background-color@ or any other CSS property you want. Use it in a same way as @text@ property:
+
+$$ galen-specs
+login-button
+    css font-size is: 18px
+    css font-family starts: Helvetica
+    css font-family ends: sans-serif
+    css font-family contains: Arial
+    css font-family matches: .*Arial.*
+$$
+
+At the moment text operations lowercase and uppercase are not available in @css@ spec.
+
+bq. *Important!* Galen Framework originally was planned as UI testing tool which is not dependent on CSS and HTML. The use of @css@ specs breaks the original purpose and it was introduced only because of high demand from users. Use this @css@ spec rarely and wisely.
+
 
 
 h2. Centered
