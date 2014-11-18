@@ -12,7 +12,7 @@ categories
    
 ================================
 
-There were a lot of new features introduced in version 1.4.1 as well as bugfixes. The major features are "css property verification":/docs/reference-galen-spec-language-guide/#CSSProperties and "custom Javascript functions in specs":/docs/reference-galen-spec-language-guide/#Customjavascriptfunctionsinspecs
+There were a lot of new features introduced in version 1.4.1 as well as bugfixes. The major features are "css property verification":/docs/reference-galen-spec-language-guide/#CSSProperties and "custom JavaScript functions in specs":/docs/reference-galen-spec-language-guide/#Customjavascriptfunctionsinspecs
 
 >>>>
 
@@ -29,9 +29,9 @@ login-button
     css font-family matches: .*Arial.*
 $$
 
-h2. Javascript Functions in Page Specs
+h2. JavaScript Functions in Page Specs
 
-Sometimes you might need some functionality which is not in Galen. For instance be able to parameterize your checks only for odd or even items in list. Or anything else you might have stuck with already. Use Javascript custom functions for that. Here is an example. A file @allEven.js@:
+Sometimes you might need some functionality which is not in Galen. For instance be able to parameterize your checks only for odd or even items in list. Or anything else you might have stuck with already. Use JavaScript custom functions for that. Here is an example. A file @allEven.js@:
 $$ javascript
 this.allEven = function (pattern) {
     var size = count(pattern);
@@ -87,7 +87,7 @@ var loginPage = new LoginPage(driver);
 loginPage.loginButton.hover();
 $$
 
-h2. Resize Function in Javascript API
+h2. Resize Function in JavaScript API
 
 If you need to resize the window of a browser just call @resize@ function and pass it a driver and new size like this:
 

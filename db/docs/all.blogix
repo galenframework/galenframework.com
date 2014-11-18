@@ -35,11 +35,11 @@ h1. Complete Reference
 - "Galen Test Suite Syntax":/docs/reference-galen-test-suite-syntax/
 - "Working in Command Line":/docs/reference-working-in-command-line/ _execution and reporting from command line_
 
-h1. Javascript Tests
+h1. JavaScript Tests
 
-- "Javascript Tests Guide":/docs/reference-javascript-tests-guide/ _a Javascript framework for functional testing_
-- "Galen Javascript API":/docs/reference-galen-javascript-api/ _global functions that are available for Javascript tests_
-- "GalenPages Javascript API":/docs/reference-galenpages-javascript-api/ _a lightweight functional Javascript test framework for working with Page Objects model_
+- "JavaScript Tests Guide":/docs/reference-javascript-tests-guide/ _a JavaScript framework for functional testing_
+- "Galen JavaScript API":/docs/reference-galen-javascript-api/ _global functions that are available for JavaScript tests_
+- "GalenPages JavaScript API":/docs/reference-galenpages-javascript-api/ _a lightweight functional JavaScript test framework for working with Page Objects model_
 
 h1. Java Tests
 

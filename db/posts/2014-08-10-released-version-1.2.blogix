@@ -14,14 +14,14 @@ categories
 
 A new version 1.2.0 was released with the following features:
 
-* "Test filters in Javascript tests":/post/2014-08-10-released-version-1.2/#TestfiltersinJavascripttests
+* "Test filters in JavaScript tests":/post/2014-08-10-released-version-1.2/#TestfiltersinJavaScripttests
 * "Warning level in specs":/post/2014-08-10-released-version-1.2/#Warninglevelinspecs
 * "Java API":/post/2014-08-10-released-version-1.2/#JavaAPI
 
 
 >>>>
 
-h2. Test filters in Javascript tests
+h2. Test filters in JavaScript tests
 
 This is an advanced technique allowing you to organize filtering or reordering of your tests.
 

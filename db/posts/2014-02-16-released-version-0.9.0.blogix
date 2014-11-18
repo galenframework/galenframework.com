@@ -14,13 +14,13 @@ categories
 
 A new version 0.9.0 was released with the following features:
 
-* Migrated to "Mozilla Rhino":https://developer.mozilla.org/en/docs/Rhino Javascript engine
+* Migrated to "Mozilla Rhino":https://developer.mozilla.org/en/docs/Rhino JavaScript engine
 * Added full page screenshots support
 * Dynamic ranges in page specs
 
 >>>>>>
 
-h1. Migrated to Mozilla Rhino Javascript engine
+h1. Migrated to Mozilla Rhino JavaScript engine
 
 Migration to Rhino gives us a better support for exceptions thrown from the script. Also it comes with some functions that everybody got used to on client-side (e.g. JSON.stringify, JSON.parse, escape, encodeURIComponent etc.)
 Also from now in order to load a script from another file you don't have to use @global.load@ anymore. Instead just use @load@ function directly.

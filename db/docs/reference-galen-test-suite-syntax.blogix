@@ -19,11 +19,11 @@ To give more flexibility and maintanability to user Galen came up with another s
 * "Browser Factory":#BrowserFactory
 ** "Defining a local browser":#Definingalocalbrowser
 ** "Running in Selenium Grid":#RunninginSeleniumGrid
-** "Javascript Browser Factory":#JavascriptBrowserFactory
+** "JavaScript Browser Factory":#JavaScriptBrowserFactory
 ** "Replacing page url in reports":#Replacingpageurlinreports
 * "Page Actions":#PageActions
 ** "Cookies Handling":#PageActionsCookiesHandling
-** "Javascript Injection":#PageActionsJavascriptInjection
+** "JavaScript Injection":#PageActionsJavaScriptInjection
 ** "Selenium Interaction":#PageActionsSeleniumInteraction
 ** "Open and Resize":#PageActionsOpenandResize
 * "Parameterization":#Parameterization
@@ -163,7 +163,7 @@ Homepage in Selenium Grid
 $$
 
 
-h2. Javascript Browser Factory
+h2. JavaScript Browser Factory
 
 In case you would like to take full control over instantiation of WebDriver you can use the so called @jsfactory@. It delegates the creation of browser to a user-defined script. This might be very handy in case you need to provide some additional settings in a profile. Lets image you need to open browser with specific language settings. Here is an example of a script @mydriver.js@ that does that:
 
@@ -235,7 +235,7 @@ $$
 
 What will happen is that Galen will generate a javascript for setting a new cookie and will inject it in browser. After that it will refresh the browser window so that you can test your page properly.
 
-h2. Page Actions: Javascript Injection
+h2. Page Actions: JavaScript Injection
 
 Sometimes you need to test things that are not easy accessible. For example user profile page. Normally you need to authorize first. Or another example: there could be a hidden menu that pops up only in case you interact with something on a page. For both problems there two different solutions: *javascript injection* and *selenium interaction*
 

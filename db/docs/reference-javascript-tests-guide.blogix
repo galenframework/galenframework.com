@@ -1,6 +1,6 @@
 --------------------------------
 title
-   Javascript Tests Guide
+   JavaScript Tests Guide
 --------------------------------
 date
    2014-05-27 21:45
@@ -12,7 +12,7 @@ categories
    
 ================================
 
-Since version 0.11.1 Galen Framework migrated to Javascript test runners. This means that you can now have a better support for your functional tests.
+Since version 0.11.1 Galen Framework migrated to JavaScript test runners. This means that you can now have a better support for your functional tests.
 You should store all your javascript-based tests in @.test.js@ files. 
 
 * "Defining tests":#Definingtests
@@ -53,7 +53,7 @@ $$
 
 h2. Creating driver
 
-While in "basic test suites":/docs/reference-galen-test-suite-syntax/ you didn't have to control the driver creation here in Javascript test suites you have to do it yourself. Therefore you have the complete control over driver instantiation. Stil there is a good API for creating a driver that mimics the behaviour from "basic test suites":/docs/reference-galen-test-suite-syntax/#BrowserFactory.
+While in "basic test suites":/docs/reference-galen-test-suite-syntax/ you didn't have to control the driver creation here in JavaScript test suites you have to do it yourself. Therefore you have the complete control over driver instantiation. Stil there is a good API for creating a driver that mimics the behaviour from "basic test suites":/docs/reference-galen-test-suite-syntax/#BrowserFactory.
 
 The function for creating a driver is @"createDriver":/docs/reference-galen-javascript-api/#createDriver@. By default it creates a firefox driver. That behaviour can also be overriden in "config file":/docs/getting-started-configuration/ so later you can easily switch to Selenium Grid.
 
@@ -120,7 +120,7 @@ $$
 
 h2. Parameterizing tests
 
-In basic test suites you used to have "Tables and Parameterized":/docs/reference-galen-test-suite-syntax/#Parameterization constructions. In Javascript test suites you can use the @forAll@ function for parameterizing your tests. There are two parameterization ways available: by 2-dimensional arrays and by structures
+In basic test suites you used to have "Tables and Parameterized":/docs/reference-galen-test-suite-syntax/#Parameterization constructions. In JavaScript test suites you can use the @forAll@ function for parameterizing your tests. There are two parameterization ways available: by 2-dimensional arrays and by structures
 
 h3. Using 2-dimensional arrays
 
@@ -300,7 +300,7 @@ var loginPage = new LoginPage(driver);
 loginPage.waitForIt();
 $$
 
-For more information about GalenPages please read "GalenPages Javascript API":/docs/reference-galenpages-javascript-api/
+For more information about GalenPages please read "GalenPages JavaScript API":/docs/reference-galenpages-javascript-api/
 
 h2. Events
 

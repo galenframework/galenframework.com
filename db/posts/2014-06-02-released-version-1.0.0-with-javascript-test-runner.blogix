@@ -1,6 +1,6 @@
 --------------------------------
 title
-   Released version 1.0.0 with Javascript test runner
+   Released version 1.0.0 with JavaScript test runner
 --------------------------------
 date
    2014-06-02 15:22
@@ -12,19 +12,19 @@ categories
    
 ================================
 
-In this release Galen Framework introduces Javascript tests which means that it becomes a complete functional testing framework. You can now build more complicated tests in Javascript and have a better execution and reporting mechanism.
+In this release Galen Framework introduces JavaScript tests which means that it becomes a complete functional testing framework. You can now build more complicated tests in JavaScript and have a better execution and reporting mechanism.
 
 Features in this release:
 
-* Javascript test executor
+* JavaScript test executor
 * GalenPages test framework for functional testing
 * Hierarchical reports
 
 >>>>
 
-h2. Javascript test executor
+h2. JavaScript test executor
 
-From now on you can write all your tests using Javascript. In order to execute Javascript-based tests you should store them in files with @.test.js@ suffix. Galen Framework looks for all files with this extension and executes one by one in order to build a list of tests. Later it takes that list and executes all test either sequentially or in parallel.
+From now on you can write all your tests using JavaScript. In order to execute JavaScript-based tests you should store them in files with @.test.js@ suffix. Galen Framework looks for all files with this extension and executes one by one in order to build a list of tests. Later it takes that list and executes all test either sequentially or in parallel.
 Here is a basic example of a test that loads a page and checks its layout. For instance lets say we put it into @loginPage.test.js@ file
 
 $$ javascript
@@ -47,12 +47,12 @@ galen test . --htmlreport reports
 $$
 
 As you can see there is no difference from the original tests executor that Galen had in its first versions.
-For more information please read this "Javascript Tests Guide":/docs/reference-javascript-tests-guide/ documentation page.
+For more information please read this "JavaScript Tests Guide":/docs/reference-javascript-tests-guide/ documentation page.
 
 
 h2. GalenPages test framework for functional testing
 
-Also because of this Javascript migration Galen Framework becomes now a functional testing framework. For this you should check "GalenPages":/docs/reference-galenpages-javascript-api/ - a lightweight Selenium test framework for working with Page Objects model. Here is a small example for declaring and using a page:
+Also because of this JavaScript migration Galen Framework becomes now a functional testing framework. For this you should check "GalenPages":/docs/reference-galenpages-javascript-api/ - a lightweight Selenium test framework for working with Page Objects model. Here is a small example for declaring and using a page:
 
 $$ javascript
 this.LoginPage = function (driver) {
