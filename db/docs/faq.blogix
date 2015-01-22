@@ -1,0 +1,18 @@
+--------------------------------
+title
+   Frequently Asked Questions
+--------------------------------
+date
+   2013-10-16 20:43
+--------------------------------
+allowComments
+   true
+--------------------------------
+categories
+   
+================================
+
+- "Can I run my tests on iPhone or Android?":#faqmobiledevices
+- "Is it possible to test elements iframe?":#faqiframe
+- "How do I know what pixel values to use in my spec?":#faqpagedump
+- "Is it possible to write tests in Java?":#faqjava
