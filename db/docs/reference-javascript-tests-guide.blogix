@@ -40,6 +40,7 @@ You should store all your javascript-based tests in @.test.js@ files.
 * "Injecting client-side javascript":#Injectingclientsidejavascript
 * "Setting cookies":#Settingcookies
 * "Test Filters":#TestFilters
+* "Retrying a failed test":#Retryingafailedtest
 
 h2. Defining tests
 
@@ -590,4 +591,23 @@ testFilter(function (tests) {
     return newTests;
 });
 $$
+
+
+h1. Retrying a failed test
+
+If you want to retry a failed test you can create your own handler which checks whether a certain test should be retried or not. For that you should use @testRetry@ function. With this function you can provide a callback which will be used for checking if a specific failed test should be retried. The callback is a boolean function and takes two parameters: *test* and *retryCount*:
+* *test* - an instance of a test
+* *retryCount* - a number representing the amount of times this test was already retried.
+
+$$ javascript
+testRetry(function (test, retryCount) {
+    if (retryCount < 3) {
+        return true;
+    }
+    else {
+        return false;
+    }
+});
+$$
+
 
