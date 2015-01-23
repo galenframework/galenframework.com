@@ -100,6 +100,17 @@ search-panel-button     css     #search-bar a
 $$
 
 
+Also you can skip the locator type definition. In that case Galen will consider that the given locator is css selector.
+
+$$ galen-specs
+=======================================
+search-panel            #search-bar
+search-panel-input      #search-bar input[type='text']
+search-panel-button     #search-bar a
+=======================================
+$$
+
+
 h1. Multiple objects definition
 
 Quite often in html we have similar objects which we could fetch with a single locator. This can also be done with Galen. Lets take a look at sample html code for menu 
