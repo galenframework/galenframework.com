@@ -112,6 +112,10 @@ Homepage in local Chrome browser
 Homepage in local Internet Explorer browser
     selenium ie http://example.com/  640x480
         check homepage.spec
+
+Homepage in PhantomJS browser
+    selenium phantomjs http://example.com/ 640x480
+        check homepage.spec
 $$
 
 Actually if you skip the browser name before url Galen will pick Firefox by default. 

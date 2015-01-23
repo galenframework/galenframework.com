@@ -70,6 +70,20 @@ galen test mytest01.test
 $$
 
 
+h2. Providing system properties
+
+Sometimes you might need to provide system properties for your tests. For instance if you want to run tests in local Chrome, IE or PhantomJS browser - you have to provide a path to each browser or a special driver binary. This could be done with system properties. Just use @-D@ prefix for command line argument. Here is an example how to run tests for phantomjs. In your case the path to phantomjs binary might be different:
+
+$$ bash
+galen test mytest01.test -Dphantomjs.binary.path=/opt/phantomjs/bin/phantomjs
+$$
+
+Or for example if you need to run your tests in Chrome
+
+$$ bash
+galen test mytest01.test -Dwebdriver.chrome.driver=/opt/chromedriver/chromedriver
+$$
+
 h2. Creating page dump
 
 Since version 1.3 Galen has a feature of creating a page dump. With a page dump you can store information about all your test objects on the page together with image samples. 

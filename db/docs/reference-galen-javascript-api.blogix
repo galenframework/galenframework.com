@@ -51,7 +51,7 @@ Creates a WebDriver instance. Also creates a RemoteWebDriver in Grid in case it 
 
 * *url* - String type. A url to be loaded in a brower
 * *browserSize* - String type (e.g. "650x480"). Dimensions of browser window size
-* *browserType* - String type. A name of a browser. Could be one of these value: @firefox@, @chrome@, @ie@
+* *browserType* - String type. A name of a browser. Could be one of these values: @firefox@, @chrome@, @ie@, @phantomjs@
 
 $$ javascript
 var driver = createDriver("http://galenframework.com",
