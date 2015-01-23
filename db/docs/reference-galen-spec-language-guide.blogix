@@ -491,6 +491,16 @@ $$
 bq. Try to avoid the example above. For the illustrated case it is advised to use spec *on*
 
 
+You can also omit the sides definition in the @inside@ spec and just use it like this:
+
+$$ galen-specs
+button
+    inside: container
+$$
+
+That way Galen will only check that the element is completely inside another element. Still it is not a good practice to do so and the advice is - always specify sides to which the element is attached.
+
+
 
 h2. Width and Height
 
