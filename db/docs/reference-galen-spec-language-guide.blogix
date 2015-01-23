@@ -824,6 +824,20 @@ In this case Galen will first fetch all objects *user-profile-1*, *user-profile-
 bq. *Important!* In component spec file you also have to specify all tags as Galen also filters specs in it. If you don't specify tags and use "include" filter from command line then those checks in component spec file will not be picked up
 
 
+h3. Frame support
+
+In case you have to test a website which has frames and you need to access the elements inside frame you could use @component frame@ spec.
+
+$$ galen-specs
+========================
+banner-frame     css  iframe#banner
+========================
+
+banner-frame
+    component frame: banner.spec
+$$
+
+
 h2. Color scheme
 
 Used when you need to verify color distribution on object area. Galen takes a picture and then calculates the objects area color spectrum so later you can verify the usage for specific colors. Example:
