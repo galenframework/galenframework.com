@@ -43,6 +43,12 @@ $$
 
 Important to note that Galen loads the specified javascript only once. So if your tests in multiple files load the same javascript file - it will be executed only once.
 
+Sometimes you might have different folder levels and fromt their you need to access the script from the root folder of a project. Instead of having @../../somescript.js@ you could use slash in the beginning: 
+
+$$ javascript
+load("/somescript.js");
+$$
+
 h2. createDriver
 
 *createDriver( [ url, browserSize, browserType ] )*
