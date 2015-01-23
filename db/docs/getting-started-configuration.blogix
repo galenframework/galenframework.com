@@ -99,4 +99,8 @@ galen.spec.image.tolerance = 30
 
 # Default value for error rate in image spec
 galen.spec.image.error = 0px
+
+
+# Testing visibility of each element in every spec
+galen.spec.global.visibility = true
 $$
