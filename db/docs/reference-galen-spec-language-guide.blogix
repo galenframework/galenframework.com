@@ -1052,9 +1052,16 @@ $$
 Or same could be written more elegantly
 
 $$ galen-specs
-menu-item-*
+menu-*
     width: 100 to 150px
     height: 50px
+$$
+
+The example above shows the simplest regular expresion. In case you want to match any symbol you can use @*@ symbol. But if you need to match only numbers then you should use @#@ symbol.
+
+$$ galen-specs
+menu-item-#
+    width: 100px
 $$
 
 
