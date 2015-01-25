@@ -18,7 +18,7 @@ The version 1.5 was just released with the following major features:
 * "Test retry event handler":/post/2015-01-25-version-1.5-is-released/#Testretryeventhandler
 * "Frame support":/post/2015-01-25-version-1.5-is-released/#Framesupport
 
-The complete list of implented features is "on GitHub":https://github.com/galenframework/galen/issues?q=milestone%3A%22Version+1.5%22
+The complete list of implemented features is "on GitHub":https://github.com/galenframework/galen/issues?q=milestone%3A%22Version+1.5%22
 
 >>>>
 
@@ -49,7 +49,7 @@ h2. Test retry event handler
 
 In case you have unstable test environment and some of the tests in your test suite are failing from time to time, you can try solving this issue with @testRetry@ event. You can define it in a JavaScript file but it works for both tests: standard and JavaScript-based.
 
-In the test retry even callback you can have access to the test instance and also you receive the number of test executions. Therefor you can apply the retry event only for a specific test and a specific number of times.
+In the test retry event callback you can have access to the test instance and also you get the number of test executions as a second argument. Therefore you can apply the retry event only for a specific test and a specific number of times.
 
 $$ javascript
 testRetry(function (test, retryCount) {
@@ -72,7 +72,7 @@ $$
 
 h2. Frame support
 
-For a long time there was no support for frames in HTML document. From this version we have added support for frames via "component spec":/docs/reference-galen-spec-language-guide/#Component. In case you want to have access to elements inside frame - you should test them as a separate component:
+For a long time in Galen Framework there was no support for frames in HTML document. From this version we have added support for frames via "component spec":/docs/reference-galen-spec-language-guide/#Framesupport. In case you want to have access to elements inside frame - you should test them as a separate component:
 
 
 $$ galen-specs
