@@ -1,0 +1,85 @@
+--------------------------------
+title
+   Version 1.5 is released
+--------------------------------
+date
+   2015-01-25 09:41
+--------------------------------
+allowComments
+   true
+--------------------------------
+categories
+   
+================================
+
+The version 1.5 was just released with the following major features:
+
+* "Support for PhantomJS browser":/post/2015-01-25-version-1.5-is-released/#SupportforPhantomJSbrowser
+* "Test retry event handler":/post/2015-01-25-version-1.5-is-released/#Testretryeventhandler
+* "Frame support":/post/2015-01-25-version-1.5-is-released/#Framesupport
+
+The complete list of implented features is "on GitHub":https://github.com/galenframework/galen/issues?q=milestone%3A%22Version+1.5%22
+
+>>>>
+
+h2. Support for PhantomJS browser
+
+From now on you can run your Galen tests in a headless WebKit-based browser "PhantomJS":http://phantomjs.org/
+
+You can use it in a standard test suites:
+$$ galen-suites
+Home page on PhantomJS browser
+    selenium phantomjs http://example.com 1024x768
+        check homepage.spec
+$$
+
+Or in JavaScript tests:
+
+$$ javascript
+var driver = createDriver("http://example.com", 
+                          "1024x768", 
+                          "phantomjs");
+
+checkLayout(driver, "homepage.spec");
+$$
+
+
+
+h2. Test retry event handler
+
+In case you have unstable test environment and some of the tests in your test suite are failing from time to time, you can try solving this issue with @testRetry@ event. You can define it in a JavaScript file but it works for both tests: standard and JavaScript-based.
+
+In the test retry even callback you can have access to the test instance and also you receive the number of test executions. Therefor you can apply the retry event only for a specific test and a specific number of times.
+
+$$ javascript
+testRetry(function (test, retryCount) {
+    if (test.name == "Home page test" 
+        && retryCount < 2) {
+        return true;
+    }
+    else return false;
+});
+$$
+
+Or you can just have a global retry event for all tests:
+
+$$ javascript
+testRetry(function (test, retryCount) {
+    return retryCount < 3;
+});
+$$
+
+
+h2. Frame support
+
+For a long time there was no support for frames in HTML document. From this version we have added support for frames via "component spec":/docs/reference-galen-spec-language-guide/#Component. In case you want to have access to elements inside frame - you should test them as a separate component:
+
+
+$$ galen-specs
+========================
+banner-frame     css  iframe#banner
+========================
+
+banner-frame
+    component frame: banner.spec
+$$
