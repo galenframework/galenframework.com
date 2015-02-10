@@ -5,6 +5,13 @@
     <div class="article-content">
         ${markup.apply(doc.content)}
 
+        <#if doc.entry.field('authorName')?has_content && doc.entry.field('authorLink')?has_content>
+            <#assign authorName = "${doc.entry.field('authorName')}">
+            <#assign authorLink = "${doc.entry.field('authorLink')}">
+            <div class="written-by-section">
+                Written by <a href="${authorLink}">${authorName}</a>
+            </div>
+        </#if>
 
         <div class="comments">
              <div id="disqus_thread"></div>
@@ -22,6 +29,6 @@
             <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
             <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
         </div>
-    
     </div>
+
 </article>

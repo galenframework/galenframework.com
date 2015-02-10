@@ -10,6 +10,12 @@ allowComments
 --------------------------------
 categories
    
+--------------------------------
+authorName
+    James Whitney
+--------------------------------
+authorLink
+    http://github.com/whitneyit/
 ================================
 
 bq. The following is a guest post by "James Whitney":http://github.com/whitneyit/. He is a front end developer from Sydney Australia with a passion for testing which naturally led him to use Galen for his User Interface testing. James has offered some of his insights on how to use "gulp":http://gulpjs.com/ and Galen together. Take it away James!
