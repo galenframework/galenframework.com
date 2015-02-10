@@ -1,0 +1,161 @@
+--------------------------------
+title
+   Using Galen with gulp
+--------------------------------
+date
+   2015-02-10 04:48
+--------------------------------
+allowComments
+   true
+--------------------------------
+categories
+   
+--------------------------------
+authorName
+    James Whitney
+--------------------------------
+authorLink
+    http://github.com/whitneyit/
+================================
+
+bq. The following is a guest post by "James Whitney":http://github.com/whitneyit/. He is a front end developer from Sydney Australia with a passion for testing which naturally led him to use Galen for his User Interface testing. James has offered some of his insights on how to use "gulp":http://gulpjs.com/ and Galen together. Take it away James!
+
+h2. What is gulp?
+
+"Gulp":http://gulpjs.com is a command line tool to "Automate and enhance your workflow". You can leverage this automation in your workflow to concatinat/minify CSS and JS and now, test your UI's with Galen!
+
+If you are unfamiliar with gulp, I suggest you familiarise yourself with it. It's actually quite easy. Gulp is known to be an alternative/successor to the "Grunt":http://gruntjs.com/ task runner.
+
+$$ json
+{
+  "name": "galen-example",
+  "devDependencies": {
+    "async": "^0.9.0",
+    "del": "^1.1.1",
+    "gulp": "^3.8.11",
+    "gulp-serve": "^0.3.0",
+    "gulp-tap": "^0.1.3",
+    "serve-index": "^1.6.1"
+  }
+}
+$$
+
+h2. Using gulp to run your tests
+
+$$ javascript
+var
+    // Built in packages.
+    spawn = require('child_process').spawn,
+
+    // Generic npm packages.
+    async = require('async'),
+    del   = require('del'),
+    index = require('serve-index'),
+
+    // The gulp related plugins.
+    gulp  = require('gulp'),
+    serve = require('gulp-serve'),
+    tap   = require('gulp-tap'),
+
+    // The port on which the local server should serve up the reports on.
+    port = 3333,
+
+    // The folder in which the generated reports should be saved to.
+    reportsDir = 'reports',
+
+    // A `glob` for where the Galen test suites can be found.
+    suitesGlob = 'tests/specs/**/*.test';
+
+// Clean out the directory where the reports will be saved to. This is done so
+// as not to pollute the reports directory with old/potentially unwanted files.
+gulp.task('clean', function (done) {
+    del([reportsDir], function (err) {
+        if (err) {
+            throw err;
+        }
+        done();
+    });
+});
+
+// This is the task that will kick off running all the Galen test suites.
+gulp.task('test', ['clean'], function (done) {
+
+    var
+        // Here we create an empty Array to store vinyl File Objects.
+        files = [],
+
+        // Here we define a simple utility Function that we will call to
+        // execute the Galen specs.
+        galen = function galen (file, callback) {
+            spawn('galen', [
+                'test',
+                file.path,
+                '--htmlreport',
+                reportsDir + '/' + file.relative.replace(/\.test/, '')
+            ], {'stdio' : 'inherit'}).on('close', function () {
+                callback();
+            });
+        };
+
+    // Here we source our suites and immediately pass them to `gulp-tap`. The
+    // `gulp-tap` plugin allows you to "tap into" each file that is streamed
+    // into the pipe. We use this functionality to build up the `files` Array
+    // and populate it with vinyl File Objects.
+    //
+    // Once `gulp-tap` has finished
+    // doing its thing, we listen to the `end` event and then pass off the built
+    // up `files` Array to `async.mapSeries`.
+    //
+    // This will sequentially iterate through the Array perform the first
+    // callback and then when all items in the Array have been iterated over, it
+    // will perform the next callback.
+    //
+    // The next callback executes the `done()` handler that tells gulp that we
+    // are finished with this task and that we are good to continue with
+    // whichever task in next in the queue.
+    gulp.src([suitesGlob])
+        .pipe(tap(function (file) {
+            files.push(file);
+        }))
+        .on('end', function () {
+            async.mapSeries(files, function (file, finished) {
+                galen(file, finished);
+            }, function () {
+                done();
+            });
+        });
+});
+
+// Here we define a task to serve up the generated reports. This allows the
+// generated HTML to be easily viewed in the browser, simply navigate to
+// `http://localhost:[port]`. The value for the port is defined at the top of
+// this file.
+//
+// This task requires that the `test` task is run first. This is so Galen can
+// generate the required reports and present us with the files to display.
+gulp.task('serve', ['test'], serve({
+    'middleware' : function (req, res, next) {
+        index(reportsDir, {
+            'filter'     : false,
+            'hidden'     : true,
+            'icons'      : true,
+            'stylesheet' : false,
+            'template'   : false,
+            'view'       : 'details'
+        })(req, res, next);
+    },
+    'port' : port,
+    'root' : reportsDir
+}));
+
+// And lastly, we define a `default` task to kick off if `gulp` is called with
+// no additional arguments.
+//
+// If this happens, we then kick off the `serve` task which will in turn kick
+// off the `test` task.
+//
+// Once this is all complete you can navigate to localhost in your browser and
+// see the results of the tests.
+gulp.task('default', ['serve']);
+$$
+

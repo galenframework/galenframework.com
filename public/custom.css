@@ -360,6 +360,12 @@ h1:hover a.paragraph-link, h2:hover a.paragraph-link, h3:hover a.paragraph-link,
     display:inline;
 }
 
+.article-content .written-by-section {
+    text-align: right;
+    font-size: 1.4em;
+}
+
+
 .comments {
     margin-top: 60px;
     margin-bottom: 30px;
