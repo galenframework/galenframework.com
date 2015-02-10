@@ -51,6 +51,7 @@ h1. Tutorials
 Tutorials articles are still in development. For now you can follow the "Complete Reference":#CompleteReference articles as they contain all the documentation. The tutorials section will follow up soon
 
 - "First Project":/docs/tutorial-first-project/ _a short introduction to Galen specs_
+- "Using Galen with a task runner":/docs/tutorial-using-galen-with-a-task-runner/ _run your specs from the command line with gulp or grunt_
 - "TDD for Responsive Design. Or how to automate testing of website layout for different devices":http://mindengine.net/post/2013-11-16-tdd-for-responsive-design-or-how-to-automate-testing-of-website-layout-for-different-devices/
 - "Testing colors on your website with Galen Framework":http://mindengine.net/post/2014-01-14-testing-colors-on-your-website-with-galen-framework/
 - More tutorials you can find on "MindEngine.net":http://mindengine.net/category/galen/ 
