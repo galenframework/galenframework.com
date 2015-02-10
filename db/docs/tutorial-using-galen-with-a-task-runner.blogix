@@ -3,7 +3,7 @@ title
    Using Galen with gulp
 --------------------------------
 date
-   2013-02-11 04:48
+   2015-02-10 04:48
 --------------------------------
 allowComments
    true
@@ -16,7 +16,7 @@ bq. The following is a guest post by "James Whitney":http://github.com/whitneyit
 
 h2. What is gulp?
 
-"Gulp":http://gulpjs.com is a command line tool to "Automate and enhance your workflow". You can leverage this automation in your workflow to concatinat/minify CSS and JS and now, test your UI's with Galen!.
+"Gulp":http://gulpjs.com is a command line tool to "Automate and enhance your workflow". You can leverage this automation in your workflow to concatinat/minify CSS and JS and now, test your UI's with Galen!
 
 If you are unfamiliar with gulp, I suggest you familiarise yourself with it. It's actually quite easy. Gulp is known to be an alternative/successor to the "Grunt":http://gruntjs.com/ task runner.
 
