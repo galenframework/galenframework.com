@@ -442,3 +442,104 @@ div.sketch {
 #footer-copyright {
     padding-top: 8px;
 }
+
+
+/* Task Tracker */
+
+.task-tracker h4 {
+    padding-bottom: 4px;
+    border-bottom: 1px solid #ccc;
+    
+}
+ul.task-tracker-stories {
+    list-style: none;
+    padding: 0;
+}
+
+ul.task-tracker-stories li.story {
+    position: relative;
+    margin: 5px;
+    padding: 5px 10px 15px 15px;
+    display: block;
+    min-height: 70px;
+    border-radius: 5px;
+}
+ul.task-tracker-stories li.story a.title {
+    color: black;
+}
+ul.task-tracker-stories li.story-feature {
+    background: #DEF0FC;
+    border: 1px solid #89B7D6;
+}
+ul.task-tracker-stories li.story-bug {
+    background: #FCD4D4;
+    border: 1px solid #E07272;
+}
+ul.task-tracker-stories li.story-other {
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+}
+
+
+ul.task-tracker-stories li.story span.story-label{
+    display: inline-block;
+    padding: 2px 5px 2px 5px;
+    position: absolute;
+    border-radius: 5px;
+
+    color: white;
+    font-weight: bold;
+    font-size: 0.6em;
+    text-shadow: 0px 0px 1px #777;
+}
+ul.task-tracker-stories li.story span.story-priority {
+    top: 1px;
+    left: -17px; 
+}
+ul.task-tracker-stories li.story span.story-priority-1 {
+    background: #FF3333;
+}
+ul.task-tracker-stories li.story span.story-priority-2 {
+    background: #FF9933;
+}
+ul.task-tracker-stories li.story span.story-priority-3 {
+    background: #3388FF;
+}
+ul.task-tracker-stories li.story span.story-priority-4 {
+    background: #12B500;
+}
+
+ul.task-tracker-stories li.story span.story-complexity {
+    top: 20px;
+    left: -17px; 
+}
+ul.task-tracker-stories li.story span.story-complexity-1 {
+    background: #FF3333;
+}
+ul.task-tracker-stories li.story span.story-complexity-2 {
+    background: #FF9933;
+}
+ul.task-tracker-stories li.story span.story-complexity-3 {
+    background: #3388FF;
+}
+ul.task-tracker-stories li.story span.story-complexity-4 {
+    background: #12B500;
+}
+
+ul.task-tracker-stories li.story span.label-undocumented {
+    right: 1px;
+    bottom: 1px;
+    background: #FF3333;
+}
+
+
+/* Contributors */
+.dashboard-contributors {
+    margin-bottom: 20px;
+}
+.dashboard-contributors a.contributor img {
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px #aaa;
+}
+
+

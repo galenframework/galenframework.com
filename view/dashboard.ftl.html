@@ -1,0 +1,182 @@
+<div class="content">
+    <h1>Project Dashboard: ${currentMilestone}</h1>
+    <p>
+        This is a project dashboard with task board for current milestone <b>${currentMilestone}</b>. It shows a list of stories that are planned and also stories that are already done for this milestone. Using this dashboard you can track the progress of current milestone.
+    </p>
+</div>
+
+
+
+<script>
+    var _READY_FOR_TEST = "ready for test";
+    var _BUG = "bug";
+    var _FEATURE = "enhancement";
+    var _CURRENT_MILESTONE = "${currentMilestone}";
+    var _CURRENT_MILESTONE_NUMBER = "${currentMilestoneNumber}";
+    var _NEEDS_DOCUMENTATION = "needs documentation";
+    var _templates = {
+    }
+
+    function hasLabel(label, labels) {
+        if (labels !== null && labels !== undefined) {
+            for (var i = 0; i < labels.length; i++) {
+                if (labels[i].name === label) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    function getPriorityFromLabels(labels) {
+        for (var i = 0; i < labels.length; i++) {
+            if (/p[0-9]/.test(labels[i].name)) {
+                return labels[i].name.substr(1);
+            }
+        }
+        return 4;
+    }
+
+    function getComplexityFromLabels(labels) {
+        for (var i = 0; i < labels.length; i++) {
+            if (/c[0-9]/.test(labels[i].name)) {
+                return labels[i].name.substr(1);
+            }
+        }
+        return 4;
+    }
+
+    function wrapIssue(issue) {
+        return {
+            title: issue.title,
+            url: issue.html_url,
+            user: issue.user,
+            priority: getPriorityFromLabels(issue.labels),
+            complexity: getComplexityFromLabels(issue.labels),
+            labels: issue.labels,
+            needsDocumentation: hasLabel(_NEEDS_DOCUMENTATION, issue.labels)
+        };
+    }
+
+    function filterIssues(issues, callback) {
+        var filtered = [];
+        for (var i = 0; i < issues.length; i++) {
+            if (callback(issues[i]) === true) {
+                filtered.push(wrapIssue(issues[i]));
+            }
+        }
+        return filtered;
+    }
+
+    function filterTodoIssues(issues) {
+        return filterIssues(issues, function (issue) {
+            return !hasLabel(_READY_FOR_TEST, issue.labels);
+        });
+    }
+
+    function filterDoneIssues(issues) {
+        return filterIssues(issues, function (issue) {
+            return hasLabel(_READY_FOR_TEST, issue.labels);
+        });
+    }
+
+    function renderIssues(htmlId, issues) {
+        var groups = {
+            features: [],
+            bugs: [],
+            others: []
+        };
+
+        for (var i = 0; i < issues.length; i++) {
+            var issue = issues[i];
+            if (hasLabel(_FEATURE, issue.labels)) {
+                groups.features.push(issue);
+            } else if (hasLabel(_BUG, issue.labels)) {
+                groups.bugs.push(issue);
+            } else {
+                groups.others.push(issue);
+            }
+        }
+
+        
+
+        $("#" + htmlId).html(_templates.issues([ { 
+            group: "Features",
+            style: "story-feature", 
+            issues: groups.features,
+            isEmpty: groups.features.length === 0
+        }, {
+            group: "Bugs",
+            style: "story-bug", 
+            issues: groups.bugs,
+            isEmpty: groups.bugs.length === 0
+        }, {
+            group: "Other (refactoring)",
+            style: "story-other", 
+            issues: groups.others,
+            isEmpty: groups.others.length === 0
+        }]));
+    }
+
+    function createTemplateFrom(id) {
+        var source = $("#" + id).html();
+        return Handlebars.compile(source);
+    }
+
+    $(function () {
+        _templates.issues = createTemplateFrom("issues-progress-tpl");
+
+        $.ajax({
+            url: "https://api.github.com/repos/galenframework/galen/issues",
+            jsonp: "callback",
+            dataType: "jsonp",
+            data: {
+                access_token: "d2f9cf142182ae97e848fd1da31b91c23c56c682",
+                milestone: _CURRENT_MILESTONE_NUMBER 
+            },
+            success: function (response) {
+                renderIssues("current-todo-issues", filterTodoIssues(response.data));
+                renderIssues("current-done-issues", filterDoneIssues(response.data));
+            }
+        });
+    });
+</script>
+
+<div class="row">
+    <div class="col-sm-6 col-lg-6">
+        <h3>Planned for this release</h3>
+        <div id="current-todo-issues" class="task-tracker">
+            Loading...
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-6">
+        <h3>Done in branch</h3>
+        <div id="current-done-issues" class="task-tracker">
+            Loading...
+        </div>
+    </div>
+</div>
+
+<script id="issues-progress-tpl" language="text/x-handlebars-template">
+    {{#each this}}
+        <h4>{{group}}</h4>
+        {{#if issues}}
+        <ul class="task-tracker-stories">
+            {{#each issues}}
+            <li class="story {{../style}}">
+                <a href="{{url}}" class="title">{{title}}</a>
+                <span class="story-label story-priority story-priority-{{priority}}" title="Priority {{priority}}">P {{priority}}</span>
+                <span class="story-label story-complexity story-complexity-{{complexity}}" title="Complexity {{complexity}}">C {{complexity}}</span>
+                {{#if needsDocumentation}}
+                    <span class="story-label label-undocumented" title="This story does not yet have any documentations">undocumented</span>
+                {{/if}}
+            </li>
+            {{/each}}
+        </ul>
+        {{/if}}
+        {{#if isEmpty}}
+        No stories
+        {{/if}}
+    {{/each}}
+</script>
+

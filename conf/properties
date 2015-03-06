@@ -24,3 +24,6 @@ custom.rssTitle = Galen Framework
 custom.latestVersion=1.5.3
 custom.latestVersionBinSize=25 Mb
 custom.latestVersionSrcSize=2 Mb
+
+custom.currentMilestoneNumber=6
+custom.currentMilestone=Version 1.6

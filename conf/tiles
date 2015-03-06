@@ -42,3 +42,9 @@ contact:    @main
 
 subscribe:  @main
     content:        subscribe.ftl.html
+
+developers: @main
+    content:        developers.ftl.html
+
+dashboard: @main
+    content:        dashboard.ftl.html

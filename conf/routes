@@ -26,3 +26,8 @@
 
 
 /subscribe/                         Blogix.homeFirstPage                            subscribe
+
+
+/developers/                        Blogix.homeFirstPage                            developers
+
+/dashboard/                         Blogix.homeFirstPage                            dashboard
