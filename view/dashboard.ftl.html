@@ -70,13 +70,13 @@
 
     function filterTodoIssues(issues) {
         return filterIssues(issues, function (issue) {
-            return !hasLabel(_READY_FOR_TEST, issue.labels);
+            return issue.state !== "closed" && !hasLabel(_READY_FOR_TEST, issue.labels);
         });
     }
 
     function filterDoneIssues(issues) {
         return filterIssues(issues, function (issue) {
-            return hasLabel(_READY_FOR_TEST, issue.labels);
+            return issue.state == "closed" || hasLabel(_READY_FOR_TEST, issue.labels);
         });
     }
 
@@ -132,7 +132,8 @@
             dataType: "jsonp",
             data: {
                 access_token: "d2f9cf142182ae97e848fd1da31b91c23c56c682",
-                milestone: _CURRENT_MILESTONE_NUMBER 
+                milestone: _CURRENT_MILESTONE_NUMBER,
+                state: "all"
             },
             success: function (response) {
                 renderIssues("current-todo-issues", filterTodoIssues(response.data));
@@ -170,6 +171,7 @@
                 {{#if needsDocumentation}}
                     <span class="story-label label-undocumented" title="This story does not yet have any documentations">undocumented</span>
                 {{/if}}
+                <div class="story-author">posted by <a href="{{user.html_url}}">{{user.login}}</a></div>
             </li>
             {{/each}}
         </ul>
