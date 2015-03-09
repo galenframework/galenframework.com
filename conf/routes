@@ -20,14 +20,14 @@
 /404/                               -                                               404
 
 
-/download/                          Blogix.homeFirstPage                            download
+/download/                          Blogix.base                            download
 
-/contact/                           Blogix.homeFirstPage                            contact
-
-
-/subscribe/                         Blogix.homeFirstPage                            subscribe
+/contact/                           Blogix.base                            contact
 
 
-/developers/                        Blogix.homeFirstPage                            developers
+/subscribe/                         Blogix.base                            subscribe
 
-/dashboard/                         Blogix.homeFirstPage                            dashboard
+
+/developers/                        Blogix.base                                     developers
+
+/dashboard/                         Blogix.base                                     dashboard
