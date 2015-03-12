@@ -371,6 +371,26 @@ h1:hover a.paragraph-link, h2:hover a.paragraph-link, h3:hover a.paragraph-link,
     margin-bottom: 30px;
 }
 
+a.big-ask-question-button {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    display: inline-block;
+    padding: 10px 20px 10px 20px;
+    background: #3AA7D6;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 10px;
+    text-shadow: 0px 1px 1px #03648C;
+    box-shadow: 1px 1px 6px #ccc;
+}
+a.big-ask-question-button:hover {
+    text-decoration: none;
+    color: white;
+    background: #0A7DAD;
+}
+
 div.sketch {
     background: url('/public/sketch-back.png');
     border: 1px solid #eee;
