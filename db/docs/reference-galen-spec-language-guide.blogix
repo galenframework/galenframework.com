@@ -42,6 +42,7 @@ categories
 ** "Custom javascript functions in specs":#Customjavascriptfunctionsinspecs
 ** "Conditional specs":#Conditionalspecs
 ** "Warning level for specs":#Warninglevelforspecs
+** "Custom rules":#CustomRules
 
 
 Galen Specs Language is quite flexible and gives you the oportunity to express exactly how you want your website to behave on different devices. There are two main parts in page specs file: *object definitions* and *object specs*
@@ -1296,3 +1297,97 @@ login-button
     text is: Login
     % width: 100px
 $$
+
+
+h2. Custom Rules
+
+Since version 1.6 you can use @rules@ for your specs, which work as sort of a user-defined functions. Custom rules allow you to group complex specs and give them a better naming. Also they allow you to come up with a much more readable spec file. Lets take a simple example. Imagine you want to test that the icon is a square. So you need to test that its width is equal to its height. And for example there could be a lot of other elements on page which should have the same rule. You can write it like this:
+
+$$ galen-specs
+@@ rule: %{name} should be squared 
+    ${name}
+        width: 100% of ${name}/height
+@@ end
+
+# This is how you can use your spec
+
+| header-icon should be squared
+| footer-icon should be squared
+$$
+
+As you can see you can create a mapping to parameters in your rule using @%{...}@ syntax. When you use a rule in your spec with @|@ symbol galen fetches the values from the rule text and provides them in the parameter context. That gives you the possibility to use custom parameters in your specs.
+
+
+h3. Custom Rules: rules in object context
+
+You can also create rules to serve on an object context. Lets take the above example and change its usage like this:
+
+$$ galen-specs
+@@ rule: should be squared
+    width: 100% of ${objectName}/height
+@@ end
+
+header-icon
+    | should be squared
+
+footer-icon
+    | should be squared
+$$
+
+As you can see we didn't provide any custom parameters but still Galen provides us with @objectName@ parameter. This is possible because the rule is used on an object scope.
+
+
+h3. Custom Rules: user-defined regular expressions for parameters
+
+By default Galen Framework uses @.*@ regular expression to match the parameter name in rule text. But you can change this behaviour by providing custom regex. For example you could have a situation where you need only to match digits
+
+$$ galen-specs
+@@ rule: %{object} should be squared with %{size: [0-9]+} pixel size
+    ${object}
+        width: ${size} px
+        height: ${size} px
+@@ end
+
+
+| logo should be squared with 100 pixel size
+$$
+
+
+h3. Custom Rules: JavaScript based rules
+
+If you need to describe a more complex situation you could use JavaScript for rules. Here is an example how to create a JavaScript-based rule that check that the elements are equally distant from each other. You need to define a rule in a separate js file. We can put in @my-rules.js@ file the following:
+
+$$ javascript
+rule("%{objectPattern} are equally distant from each other", function (objectName, parameters) {
+    var allObjects = findAll(parameters.objectPattern);
+
+    if (allObjects.length > 1) {
+        var distance = allObjects[1].left() - allObjects[0].right();
+        for (var i = 0; i < allObjects.length - 1; i++) {
+            var nextObject = allObjects[i + 1];
+            this.addObjectSpecs(allObjects[i].name, [
+                "near: " + allObjects[i + 1].name + " " + distance + " px";
+            ]);
+        }
+    } else {
+        throw new Error("Not enough objects for pattern: " + parameters.objectPattern);
+    }
+});
+$$
+
+And now if you import this @my-rules.js@ file in your spec you can use the rule like this:
+
+$$ galen-specs
+@@ import my-rules.js
+
+================================
+menu-item-*        #menu li a
+================================
+
+| menu-item-* are equally distant from each other
+$$
+
+
+
+
+
