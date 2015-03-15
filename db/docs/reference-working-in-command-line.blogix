@@ -70,6 +70,28 @@ galen test mytest01.test
 $$
 
 
+h3. Running test groups
+
+In case you want to run tests only for specific groups you can use @groups@ argument in command line.
+
+$$ bash
+galen test tests/ --htmlreport report --groups homepage,loginpage
+$$
+
+You have to define your own groups that you use in your tests. If you use standard test suite then you can read about groups in this "article":/docs/reference-galen-test-suite-syntax/#TestGroups
+
+In case you use JavaScript tests then this "article":/docs/reference-javascript-tests-guide/#TestGroups can help you.
+
+
+h3. Running tests with excluded groups
+
+Sometimes you might need to run all tests that don't belong to certain group. For this reason you can use @excluded-groups@ argument.
+
+$$ bash
+galen test tests/ --htmlreport report --excluded-groups homepage,loginpage
+$$
+
+
 h2. Providing system properties
 
 Sometimes you might need to provide system properties for your tests. For instance if you want to run tests in local Chrome, IE or PhantomJS browser - you have to provide a path to each browser or a special driver binary. This could be done with system properties. Just use @-D@ prefix for command line argument. Here is an example how to run tests for phantomjs. In your case the path to phantomjs binary might be different:

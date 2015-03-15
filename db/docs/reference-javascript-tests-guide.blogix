@@ -41,10 +41,11 @@ You should store all your javascript-based tests in @.test.js@ files.
 * "Setting cookies":#Settingcookies
 * "Test Filters":#TestFilters
 * "Retrying a failed test":#Retryingafailedtest
+* "Test Groups":#TestGroups
 
 h2. Defining tests
 
-The test are defined using the @test@ function where the first argument is test name and second is test callback
+The tests are defined using @test@ function where the first argument represents a test name and second is test callback
 
 $$ javascript
 test("Simplest test", function () {
@@ -611,3 +612,22 @@ testRetry(function (test, retryCount) {
 $$
 
 
+
+h1. Test Groups
+
+Since version 1.6 you can group your tests. Each test can belong to multiple groups. In JavaScript tests you can use a function @grouped@ for grouping specific tests. Here is an example:
+
+$$ javascript
+grouped(["mobile", "homepage"], function () {
+    test("Home page on mobile device", function () {
+        // ...
+    });
+
+
+    grouped(["temp"], function () {
+        test("Home page on mobile device 2", function() {
+            // ...
+        });
+    });
+});
+$$  

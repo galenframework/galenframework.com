@@ -29,6 +29,7 @@ To give more flexibility and maintanability to user Galen came up with another s
 * "Parameterization":#Parameterization
 * "Tables":#Tables
 * "Disabling Tests":#DisablingTests
+* "Test Groups":#TestGroups
 * "Waiting for dynamic content":#Waitingfordynamiccontent
 * "Page Dump":#PageDump
 
@@ -443,6 +444,18 @@ Home page
 
 Login page 
     http://example.com/login      640x480
+        check homepage.spec
+$$
+
+
+h1. Test Groups
+
+Since version 1.6 you can tag your tests with groups. That will allow you to group your tests in Html report and choose which group to run in command line. To mark a specific test as a group just use @groups@ keyword:
+
+$$ galen-suites
+@@ groups mobile, homepage, temp
+Home page test
+    http://example.com 1024x768
         check homepage.spec
 $$
 
