@@ -1355,18 +1355,32 @@ $$
 
 h3. Custom Rules: JavaScript based rules
 
-If you need to describe a more complex situation you could use JavaScript for rules. Here is an example how to create a JavaScript-based rule that check that the elements are equally distant from each other. You need to define a rule in a separate js file. We can put in @my-rules.js@ file the following:
+If you need to describe a more complex situation you could use JavaScript for rules. Here is an example how to create a JavaScript-based rule that check that the elements are equally distant from each other. You need to define a rule in a separate js file. The rule representa a callback which takes two arguments: *objectName* and *parameters*: 
+
+* *objectName* - represents the name of an object on which the rule was applied. Passed as @null@ in case the rule was applied on a section level without any object.
+* *parameters* - represents an object with fields that were defined in the rule text. For instance if you defined a rule with text @located near %{name} with %{distance} pixel margin@ in the end Galen will parse that rule and will provide a structure which you can use as @parameters.name@ and @parameters.distance@
+
+Inside the callback you can create your specs using two functions: *addObjectSpecs* and *addSpecs*  
+
+* *addObjectSpecs(objectName, specs)* - this function should be used in case the rule is applied on section level and on on the object level. It takes the following arguments:
+** *objectName* - a name of an object for which the specs should be added.
+** *specs* - an array of String. Contains the list of specs which should be added to the specified object
+* *addSpecs(specs)* - this function can be used in case a rule is applied on object level. It takes only one argument - array of String, which represents a list of specs that should be added to the object on which the rule was applied.
+
+We can put in @my-rules.js@ file the following:
 
 $$ javascript
 rule("%{objectPattern} are equally distant from each other", function (objectName, parameters) {
+    // Searching for all objects with user-defined pattern
     var allObjects = findAll(parameters.objectPattern);
 
     if (allObjects.length > 1) {
         var distance = allObjects[1].left() - allObjects[0].right();
         for (var i = 0; i < allObjects.length - 1; i++) {
             var nextObject = allObjects[i + 1];
+
             this.addObjectSpecs(allObjects[i].name, [
-                "near: " + allObjects[i + 1].name + " " + distance + " px"
+                "near: " + allObjects[i + 1].name + " " + distance + " px left"
             ]);
         }
     } else {
