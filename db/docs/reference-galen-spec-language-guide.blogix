@@ -21,6 +21,7 @@ categories
 * "Specs Reference":#SpecsReference
 ** "Near":#Near
 ** "Below and Above":#BelowandAbove
+** "Left of and Right of":#LeftofandRightof
 ** "Inside":#Inside
 ** "Width and Height":#WidthandHeight
 ** "Aligned":#Aligned
@@ -436,6 +437,22 @@ description
     below: caption 10 to 20 px
 $$
 
+
+h2. Left of and Right of
+
+In order to increase readability in version 1.6 were added two specs: @left of@ and @right of@. These specs check that the object is located near another object from left or right. You could still use spec @near@ for this case but @left of@ and @right of@ also would work well in terms of readability.
+
+{@ sketch
+    image: spec-near-01.png
+}
+
+$$ galen-specs
+textfield
+    left of: button 10px
+
+button
+    right of: textfield 10px
+$$
 
 h2. Inside
 
