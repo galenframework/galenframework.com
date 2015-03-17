@@ -25,6 +25,7 @@ galen check homepage.spec
     --exclude "toexclude"
     --htmlreport "htmlreport-dir"
     --testngreport "report/testng.xml"
+    --jsonreport "jsonreport-dir"
 $$
 
 Command line arguments:
@@ -35,6 +36,7 @@ Command line arguments:
 * *size* _- dimensions of browser window. Consists of two numbers separated by "x" symbol_
 * *htmlreport* _- path to folder in which Galen should generate html reports_
 * *testngreport* _- path to xml file in which Galen should write testng report_
+* *jsonreport* _- path to folder in which Galen should generate json reports_
 
 
 h2. Running test suites
@@ -46,6 +48,7 @@ $$ bash
 galen test mytest01.test
     --htmlreport "htmlreport-dir"
     --testngreport "report/testng.xml"
+    --jsonreport "jsonreport-dir"
     --parallel-suites 4
 $$
 
