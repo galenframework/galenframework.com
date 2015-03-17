@@ -167,6 +167,10 @@ $$
 $$ javascript
 loginPage.emailTextfield.clear();
 $$
+* *getText* - function. Returns the text inside page element
+$$ javascript
+var text = loginPage.captionLabel.getText();
+$$
 * *hover* - function. Simulates the mouse over event and makes an element hovered
 $$ javascript
 loginPage.submitButton.hover();
