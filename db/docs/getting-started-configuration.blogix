@@ -103,4 +103,13 @@ galen.spec.image.error = 0px
 
 # Testing visibility of each element in every spec
 galen.spec.global.visibility = true
+
+# Test file extension for standard test suite runner
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+galen.test.file.ext = .test
+
+
+# Test file extension for JavaScript test suite runner
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+galen.test.js.file.ext = .test.js
 $$
