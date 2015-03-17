@@ -44,6 +44,7 @@ categories
 ** "Conditional specs":#Conditionalspecs
 ** "Warning level for specs":#Warninglevelforspecs
 ** "Custom rules":#CustomRules
+** "Notes for specs":#Notesforspecs
 
 
 Galen Specs Language is quite flexible and gives you the oportunity to express exactly how you want your website to behave on different devices. There are two main parts in page specs file: *object definitions* and *object specs*
@@ -1419,6 +1420,19 @@ menu-item-*        #menu li a
 $$
 
 
+h2. Notes for specs
 
+Sometimes it is hard to understand why a certain validation was chosen in a spec file. Comments could help but what to do with resulting html report. You would not be able to see those comments in it. Just for this situation in version 1.6 was introduced a small improvement that allows you to add notes for a specific spec. Just a add a text surrounded with double-quotes before the spec.
 
+$$ galen-specs
+
+header-logo
+    inside: header 5 to 15px top, 0 to 10px left
+    near: header-text 5 to 30px left
+    "should be squared" width: 100% of header-logo/height
+$$
+
+In the resulting report you would get something like this. As you can see on the screenshot, Galen creates a subsection under test object and puts that single spec inside it:
+
+!files/spec-notes.png!
 
