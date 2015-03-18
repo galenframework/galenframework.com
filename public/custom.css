@@ -552,6 +552,17 @@ ul.task-tracker-stories li.story span.label-undocumented {
     background: #FF3333;
 }
 
+ul.task-tracker-stories li.story .story-author {
+    position: absolute;
+    left: 5px;
+    bottom: 2px;
+    font-size: 0.7em;
+    color: #444;
+}
+ul.task-tracker-stories li.story .story-author a {
+    color: #444;
+}
+
 
 /* Contributors */
 .dashboard-contributors {
