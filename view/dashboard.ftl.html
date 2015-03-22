@@ -15,7 +15,9 @@
     var _CURRENT_MILESTONE_NUMBER = "${currentMilestoneNumber}";
     var _NEEDS_DOCUMENTATION = "needs documentation";
     var _templates = {
-    }
+    };
+
+    var _finishedIssues = [];
 
     function hasLabel(label, labels) {
         if (labels !== null && labels !== undefined) {
@@ -50,6 +52,7 @@
         return {
             title: issue.title,
             url: issue.html_url,
+            number: issue.number,
             user: issue.user,
             priority: getPriorityFromLabels(issue.labels),
             complexity: getComplexityFromLabels(issue.labels),
@@ -81,9 +84,11 @@
     }
 
     function filterFinishedIssues(issues) {
-        return filterIssues(issues, function (issue) {
+        _finishedIssues = filterIssues(issues, function (issue) {
             return issue.state === "closed";
         });
+
+        return _finishedIssues;
     }
 
     function renderIssues(htmlId, issues) {
@@ -129,6 +134,20 @@
         return Handlebars.compile(source);
     }
 
+    function copyFinishedForReleaseNotes() {
+        var text = "";
+
+        for (var i = 0; i < _finishedIssues.length; i++) {
+            text += "#" + _finishedIssues[i].number + " " + _finishedIssues[i].title; 
+
+            if (i > 0) {
+                text += "\n";
+            }
+        }
+
+        window.prompt("Copy this", text);
+    }
+
     $(function () {
         _templates.issues = createTemplateFrom("issues-progress-tpl");
 
@@ -145,6 +164,8 @@
                 renderIssues("current-todo-issues", filterTodoIssues(response.data));
                 renderIssues("current-ready-issues", filterReadyIssues(response.data));
                 renderIssues("current-finished-issues", filterFinishedIssues(response.data));
+
+                $("#copy-finished-to-release-notes").click(copyFinishedForReleaseNotes);
             }
         });
     });
@@ -168,6 +189,7 @@
         <div id="current-finished-issues" class="task-tracker">
             Loading...
         </div>
+        <a id="copy-finished-to-release-notes" href="#">Copy to release notes</a>
     </div>
 </div>
 

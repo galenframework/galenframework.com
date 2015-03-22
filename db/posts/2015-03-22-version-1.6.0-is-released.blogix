@@ -1,0 +1,138 @@
+--------------------------------
+title
+   Version 1.6.0 is released
+--------------------------------
+date
+   2015-03-22 21:13
+--------------------------------
+allowComments
+   true
+--------------------------------
+categories
+   
+================================
+
+The version 1.6.0 was just released with the following major features:
+
+* "Custom rules in Galen Specs language":/post/2015-03-22-version-1.6.0-is-released/#CustomrulesinGalenSpecslanguage
+* "Test groups":/post/2015-03-22-version-1.6.0-is-released/#Testgroups
+* "Notes in specs":/post/2015-03-22-version-1.6.0-is-released/#Notesinspecs
+* "New specs: 'left of' and 'right of'":/post/2015-03-22-version-1.6.0-is-released/#Newspecsleftofandrightof
+
+You can see complete list of features on "GitHub milestone 1.6":https://github.com/galenframework/galen/issues?q=milestone%3A%22Version+1.6%22+is%3Aclosed
+
+>>>>
+
+h2. Custom rules in Galen Specs language
+
+This is a major improvement in Galen Specs language which allows you to extend your own page spec and make it much more readable. Custom rules allow you to group complex specs and give them a better naming. Lets take a simple example. Imagine you want to test that the icon is a square. So you need to test that its width is equal to its height. And for example there could be a lot of other elements on page which should have the same rule. You can write it like this:
+
+$$ galen-specs
+@@ rule: %{name} should be squared 
+    ${name}
+        width: 100% of ${name}/height
+@@ end
+
+# This is how you can use your spec
+
+| header-icon should be squared
+| footer-icon should be squared
+$$
+
+
+Also you can try something more advanced with JavaScript based custom rules. For instance you can create a rule that checks that elements on page are aligned horizontally with equal distance between each other. You can create a JavaScript file (e.g. *my-rules.js*): 
+
+$$ javascript
+rule("%{objectPattern} are equally distant from each other", function (objectName, parameters) {
+    // Searching for all objects with user-defined pattern
+    var allObjects = findAll(parameters.objectPattern);
+
+    if (allObjects.length > 1) {
+        var distance = allObjects[1].left() - allObjects[0].right();
+        for (var i = 0; i < allObjects.length - 1; i++) {
+            var nextObject = allObjects[i + 1];
+
+            this.addObjectSpecs(allObjects[i].name, [
+                "near: " + allObjects[i + 1].name + " " + distance + " px left"
+            ]);
+        }
+    } else {
+        throw new Error("Not enough objects for pattern: " + parameters.objectPattern);
+    }
+});
+$$
+
+And then you can use that rule in your spec like this:
+
+$$ galen-specs
+ @@ import my-rules.js
+
+ ================================
+ menu-item-*        #menu li a
+ ================================
+
+ | menu-item-* are equally distant from each other
+$$
+
+h2. Test groups
+
+Test groups allows you to group test by some specific functionality. You can choose which groups you want to execute and also the groups will be rendered in Html report. Here is how you can define groups in standard test suite:
+
+$$ galen-suites
+@@ groups homepage, mobile
+Homepage on mobile device
+    http://example.com 400x600
+        check homepage.spec --include mobile
+$$
+
+Or in JavaScript test suite:
+
+$$ javascript
+grouped(["homepage", "temp"], function () {
+    test("Home page", function () {
+        // ...
+    });
+});
+$$
+
+
+Once you have specified the groups you can run tests for a specific set of groups only:
+
+$$ bash
+galen test . --groups "homepage,temp"
+$$
+
+Ore you can run all tests excluding a specific group:
+$$ bash
+galen test . --exclude-groups "temp"
+$$
+
+
+h2. Notes in specs
+
+Another interesting feature that adds more readability to your specs. Sometimes you want to leave notes in spec file which explain why a certain spec was used. You can do that with comments but then you wouldn't see those notes in the reports. Just for this case you can use spec notes:
+
+$$ galen-specs
+header-logo
+    "is squared" width: 100% of header-logo/height
+$$
+
+Galen will take the sentence between double-quotes and will add it to Html report. This brings more clarity to both: spec file and resulting test report.
+
+h2. New specs: left of and right of
+
+Till this moment you had to use spec "near":/docs/reference-galen-spec-language-guide/#Near when you wanted to check that an element is located from the left or right side of another element. For better readability you can now use specs "left of":/docs/reference-galen-spec-language-guide/#LeftofandRightof and "right of":/docs/reference-galen-spec-language-guide/#LeftofandRightof 
+
+$$ galen-specs
+textfield
+    left of: button 10px
+
+button
+    right of: textfield 10px
+$$
+
+
+h2. Other features
+
+There also were implemented a lot of other features. You see a full list on the "release page"
+
