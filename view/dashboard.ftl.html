@@ -76,7 +76,7 @@
 
     function filterReadyIssues(issues) {
         return filterIssues(issues, function (issue) {
-            return issue.state !== "closed" || hasLabel(_READY_FOR_TEST, issue.labels);
+            return issue.state !== "closed" && hasLabel(_READY_FOR_TEST, issue.labels);
         });
     }
 
