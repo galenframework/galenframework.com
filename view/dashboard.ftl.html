@@ -74,9 +74,15 @@
         });
     }
 
-    function filterDoneIssues(issues) {
+    function filterReadyIssues(issues) {
         return filterIssues(issues, function (issue) {
-            return issue.state == "closed" || hasLabel(_READY_FOR_TEST, issue.labels);
+            return issue.state !== "closed" && hasLabel(_READY_FOR_TEST, issue.labels);
+        });
+    }
+
+    function filterFinishedIssues(issues) {
+        return filterIssues(issues, function (issue) {
+            return issue.state === "closed";
         });
     }
 
@@ -137,22 +143,29 @@
             },
             success: function (response) {
                 renderIssues("current-todo-issues", filterTodoIssues(response.data));
-                renderIssues("current-done-issues", filterDoneIssues(response.data));
+                renderIssues("current-ready-issues", filterReadyIssues(response.data));
+                renderIssues("current-finished-issues", filterFinishedIssues(response.data));
             }
         });
     });
 </script>
 
 <div class="row">
-    <div class="col-sm-6 col-lg-6">
+    <div class="col-sm-4 col-lg-4">
         <h3>Planned for this release</h3>
         <div id="current-todo-issues" class="task-tracker">
             Loading...
         </div>
     </div>
-    <div class="col-sm-6 col-lg-6">
-        <h3>Done in branch</h3>
-        <div id="current-done-issues" class="task-tracker">
+    <div class="col-sm-4 col-lg-4">
+        <h3>Ready for test</h3>
+        <div id="current-ready-issues" class="task-tracker">
+            Loading...
+        </div>
+    </div>
+    <div class="col-sm-4 col-lg-4">
+        <h3>Finished</h3>
+        <div id="current-finished-issues" class="task-tracker">
             Loading...
         </div>
     </div>
