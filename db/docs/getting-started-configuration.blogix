@@ -49,6 +49,15 @@ galen.range.approximation=3
 #
 galen.browser.screenshots.fullPage = false
 
+# the following parameters can be used in case the upper parameter is set to true
+
+# smart waiting for scroll position, but with a timeout, set to zero to turn off smart wait
+galen.browser.screenshots.fullPage.scrollTimeout = 50
+
+# it sets the amount of time in milliseconds needed for a check that the page was scrolled when taking full page screenshots
+# hard wait during scroll
+galen.browser.screenshots.fullPage.scrollWait = 20
+
 
 # Default browser
 # ~~~~~~~~~~~~~~~~~~~~~~~~
