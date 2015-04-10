@@ -51,7 +51,7 @@ Galen Specs Language is quite flexible and gives you the oportunity to express e
 
 h1. Comments
 
-All comments should start with '#' symbol in the begging of line. If you use '#' symbol somewhere in the middle of text it will be taken as is. That is due to ability to work with CSS locators which might have this symbol in their expression
+All comments should start with '#' symbol in the beginning of a line. If you use '#' symbol somewhere in the middle of text it will be taken as is. That is due to ability to work with CSS locators which might have this symbol in their expression
 
 $$ galen-specs
 # This line a comment
