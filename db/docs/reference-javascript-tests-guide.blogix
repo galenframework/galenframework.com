@@ -507,7 +507,7 @@ $$
 
 h2. Properties
 
-Sometimes you need to load a property file so later it could be picked up in your spec. This is very useful in case of intertatiolization testing
+Sometimes you need to load a property file so later it could be picked up in your spec. This is very useful in case of internationalization testing
 To load properties you can use @"loadProperties":/docs/reference-galen-javascript-api/#loadProperties@ function
 
 $$ javascript
