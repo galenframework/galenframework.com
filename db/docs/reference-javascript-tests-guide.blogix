@@ -524,7 +524,7 @@ $$
 
 h2. Retrying unstable code 
 
-Soemtimes you need to retry some unstable action a couple of times until it passes. This might be if you use Selenium Grid and you have errors with instantiating a WebDriver. This can be done with @"retry":/docs/reference-galen-javascript-api/#retry@ function
+Sometimes you need to retry some unstable action a couple of times until it passes. This might be if you use Selenium Grid and you have errors with instantiating a WebDriver. This can be done with @"retry":/docs/reference-galen-javascript-api/#retry@ function
 
 $$ javascript
 var driver = retry(3, function () {
