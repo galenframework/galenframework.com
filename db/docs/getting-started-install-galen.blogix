@@ -22,7 +22,7 @@ h2. NPM-based Installation
 If you're using  "NPM":https://nodejs.org/download/ you can just install galen via the following commmand
 
 $$ bash
-sudo npm -g galenframework-cli
+sudo npm install -g galenframework-cli
 $$
 
 
