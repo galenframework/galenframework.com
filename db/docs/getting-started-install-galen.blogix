@@ -17,7 +17,18 @@ h2. Requirements
 For Galen you need to have a Java version 1.6 or greater installed. If you don't have Java you can install it from "official website":http://www.java.com/en/download/help/download_options.xml
 
 
-h2. Install on OSX and Linux
+h2. NPM-based Installation
+
+If you're using  "NPM":https://nodejs.org/download/ you can just install galen via the following commmand
+
+$$ bash
+sudo npm -g galenframework-cli
+$$
+
+
+h2. Manual Installation
+
+h3. Install on OSX and Linux
 
 Download the archive from "download page":/download/ and extract it anywhere. Go to folder and execute the following command
 
