@@ -21,9 +21,9 @@ custom.urlPrefix=http://galenframework.com
 custom.authorName = Ivan Shubin
 custom.rssTitle = Galen Framework
 
-custom.latestVersion=1.6.2
+custom.latestVersion=1.6.3
 custom.latestVersionBinSize=25 Mb
 custom.latestVersionSrcSize=2 Mb
 
-custom.currentMilestoneNumber=6
-custom.currentMilestone=Version 1.6
+custom.currentMilestoneNumber=7
+custom.currentMilestone=Version 2.0
