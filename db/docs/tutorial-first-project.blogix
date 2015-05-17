@@ -25,19 +25,19 @@ We will start with the simplest example. Lets say we want to test that header he
 bq. *IMPORTANT!* Indentation in Galen is done with 1 to 8 spaces. Tabs are ignored.
 
 $$ galen-specs
-==================================================
-header              id      header
-==================================================
+@objcts
+    header              id      header
 
-header
-    height: 40px
+= Main section =
+    header:
+        height 40px
 $$
 
 In our spec above we have defined an object called *header* and specified the locator for it (by id "header-container"). Then we have defined the simplest check of headers height. Here we basically state that the height of header should be exatly 40 px. If you don't want to be that strict you can define a range (e.g. from 35 to 45 px)
 
 $$ galen-specs
-header
-    height: 35 to 45px
+header:
+    height 35 to 45px
 $$
 
 

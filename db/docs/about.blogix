@@ -15,32 +15,29 @@ In case the page is not directly accessible Galen Framework allows you to perfor
 
 $$ galen-specs
 
-@ all
- -------------------------------------------
-header
-    height: 100px
-    inside: screen 0px top
-    width: 100% of screen/width
+= Main section =
+    @on *
+        header:
+            height 100px
+            inside screen 0px top
+            width 100% of screen/width
 
-menu
-    height: 50 to 60px
-    width: 100% of screen/width
-    below: header ~ 0px
+        menu:
+            height 50 to 60px
+            width 100% of screen/width
+            below header ~ 0px
 
+        search-button:
+            inside menu 20 to 50px left, 0 to 10px top
 
-search-button
-    inside: menu 20 to 50px left, 0 to 10px top
-
-@ mobile
- ------------------------------------------
-search-button
-    width: 100px
-    
-@ desktop 
- ------------------------------------------
-search-button
-    width: 150px 
-    
+    @on mobile
+        search-button:
+            width 100px
+        
+    @on desktop 
+        search-button:
+            width 150px 
+            
 $$
 
 

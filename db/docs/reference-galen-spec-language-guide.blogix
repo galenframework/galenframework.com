@@ -38,10 +38,10 @@ categories
 * "Advanced Specs":#AdvancedSpecs
 ** "Importing":#Importing
 ** "Multiple objects with same specs":#Multipleobjectswithsamespecs
-** "Template specs":#Templatespecs
-** "Template specs with advanced expressions":#Templatespecswithadvancedexpressions
+** "for Loop":#forLoop
+** "forEach Loop":#forEachLoop
 ** "Custom javascript functions in specs":#Customjavascriptfunctionsinspecs
-** "Conditional specs":#Conditionalspecs
+** "if statement":#ifStatement
 ** "Warning level for specs":#Warninglevelforspecs
 ** "Custom rules":#CustomRules
 ** "Notes for specs":#Notesforspecs
@@ -68,19 +68,7 @@ Each Galen spec file normally starts with object definition. It is the place whe
 * css _- uses CSS selectors to find objects_
 * xpath _- uses "XPath expressions":http://www.w3schools.com/xpath/_ 
 
-The object definition is outlined in specs file with "=====================" line
-
-$$ galen-specs
-=========================================
-# Here goes objects definition
-# ...
-=========================================
-
-# Here goes specs definition
-# ...
-$$
-
-
+The object definition is defined with *@objects* keyword and all objects are declared below it.
 Lets take a look at the following HTML example and try to define these objects in our spec file
 
 $$ html
@@ -95,23 +83,36 @@ $$
 Now lets try out all available locators in Galen spec for the example above
 
 $$ galen-specs
-=======================================
-search-panel            id      search-bar
-search-panel-input      xpath   //div[@id='search-bar']/input[@type='text']
-search-panel-button     css     #search-bar a
-=======================================
+@objects
+    search-panel            id      search-bar
+    search-panel-input      xpath   //div[@id='search-bar']/input[@type='text']
+    search-panel-button     css     #search-bar a
 $$
 
 
 Also you can skip the locator type definition. In that case Galen will consider that the given locator is css selector.
 
 $$ galen-specs
-=======================================
-search-panel            #search-bar
-search-panel-input      #search-bar input[type='text']
-search-panel-button     #search-bar a
-=======================================
+@objects
+    search-panel            #search-bar
+    search-panel-input      #search-bar input[type='text']
+    search-panel-button     #search-bar a
 $$
+
+Also you can optimize your locators by nesting objects
+
+$$ galen-specs
+@objects
+    search-panel   #search-bar
+        input      input[type='text']
+        button     a
+$$
+
+This way Galen will automatically wrap the locators in the scope of the parent object and will create object references with the following names:
+* *search-panel*
+* *search-panel.input*
+* *search-panel.button*
+
 
 
 h1. Multiple objects definition
@@ -130,9 +131,8 @@ $$
 It would be nice to define all these menu items with a single css locator like @#menu li a@. Lets do it in our spec file:
 
 $$ galen-specs
-==================================
-menu-item-*     css     #menu li a
-==================================
+@objects
+    menu-item-*     css     #menu li a
 $$
 
 As you can see we used asterisk in object name. In this case Galen will find all elements on page and will give them names @menu-item-1@, @menu-item-2@, @menu-item-3@, @menu-item-4@. As you can see it replaces asterisk with a number of on object on page.
@@ -143,33 +143,29 @@ h1. Objects corrections
 Sometimes it is hard to fetch the real size and position of page element. This happens rarely but when it happens it gives a lot of headache. You can fix this by using so called *corrections*. For instance we have an element on page that is located correctly but its width should be by 50 pixels less then what Galen gets. Lets write down this in our spec file:
 
 $$ galen-specs
-==================================================================
-some-test-object    @(0, 0, -50, 0)   id  some-container
-==================================================================
+@objects
+    some-test-object    @(0, 0, -50, 0)   id  some-container
 $$
 
 Or lets say we have an object but we want to move its boundary box down by 100 pixels and also to the left by 30 pixels
 
 $$ galen-specs
-==================================================================
-some-test-object    @(-30, +100, 0, 0)   id  some-container
-==================================================================
+@objects
+    some-test-object    @(-30, +100, 0, 0)   id  some-container
 $$
 
 Or maybe we need to extend the height of the element by 200 px
 
 $$ galen-specs
-==================================================================
-some-test-object    @(0, 0, 0, +200)   id  some-container
-==================================================================
+@objects
+    some-test-object    @(0, 0, 0, +200)   id  some-container
 $$
 
 Sometimes we need to specify the exact value in corrections
 
 $$ galen-specs
-==================================================================
-some-test-object    @(0, 0, 0, =200)   id  some-container
-==================================================================
+@objects
+    some-test-object    @(0, 0, 0, =200)   id  some-container
 $$
 
 h1. Ranges
@@ -178,169 +174,114 @@ The basis for all specs is a so called "range". Range is a format of defining bo
 
 $$ galen-specs
 # Exact range
-    width: 100px
+    width 100px
 
 # The value between range
-    width: 50 to 200 px
+    width 50 to 200 px
 
 # Greater than
-    width: > 40 px
+    width > 40 px
 
 # Less than
-    width: < 40 px
+    width < 40 px
 
 # Approximate
-    width: ~ 100 px
+    width ~ 100 px
 $$
 
 As you can see all examples of ranges above end with 'px' symbol. This is important for Galen as we define the units in which it should check the values. In case you want to check relative values you can do it by using '%' symbol but then the syntax will be a bit different
 
 $$ galen-specs
 # Relative ranges
-    width: 50 % of screen/width
+    width 50 % of screen/width
 $$
 
 In the example above we state that the width of some object should take half of the screen. In this case *screen* is a special Galen object which you don't need to define in your specs. It has width and height of browser inner window.
 You can also mix in the example of range above with relative checks 
 
 $$ galen-specs
-    width: ~ 95 % of screen/width
-    height: > 40 % of screen/height
-    width: 30 to 100 % of screen/width
+    width ~ 95 % of screen/width
+    height > 40 % of screen/height
+    width 30 to 100 % of screen/width
 $$
 
 You can also use your own objects for relative checks. For any object you can use 'width' and 'height' properties like in example below:
 
 $$ galen-specs
-===========================================
-main                id      main-container
-menu                css     ul.menu
-comments            css     div.comments
-===========================================
+@objects
+    main                id      main-container
+    menu                css     ul.menu
+    comments            css     div.comments
 
-menu
-    width: ~ 100 % of main/width
+= Main section =
+    menu:
+        width ~ 100 % of main/width
 
-comments
-    width: 40 % of main/width
-    height: 90 to 100 % of main/height
+    comments:
+        width 40 % of main/width
+        height 90 to 100 % of main/height
 $$
 
 Another special Galen object you could use is *viewport*. Similar to *screen* object it takes the browsers client window. It is usefull if you want to check some fixed element on screen which sticks to viewport even when you scroll.
 
 $$ galen-specs
-    width: 100% of viewport/width
+    width 100% of viewport/width
 $$
 
 
 h1. Tagging and Sections
 
-You can specify tags in your spec file so that it is easier to manage your layout testing. Tags are specified in a single line with *@* symbol.
+Sections are declared with @=@ symbol in the beginning and end of the line. Also in Galen you can have multiple sections within each other. This allows you to structure your test code so that it is easier to read it.
 
 $$ galen-specs
-@ mobile
-menu
-    height: 300 px
+= Header section =
+    = Icons and text =
+        header.icon:
+            inside header 10px top left
 
-@ desktop
-menu
-    height: 40 px
+        header.caption: 
+            text is "Greetings!"
+
+    = User section =
+        header.username:
+            inside header 10px top right
 $$
 
-You can also add a visual separator which doesn't bring any logic to specs. It is used only to visualy indent the information in specs
+Quite often you need to declare different specs for different conditions (e.g. various devices like mobile, tablet, desktop etc.). You can specify tags in your spec file so that it is easier to manage your layout testing. You can wrap all your checks inside *@on* statement like this:
 
 $$ galen-specs
-@ mobile
- --------------------------
-menu
-    height: 300 px
+= Main section =
+    @on mobile
+        menu:
+            height 300 px
 
-@ desktop
- --------------------------
-menu
-    height: 40 px
+    @on desktop
+        menu:
+            height 40 px
 $$
+
 
 In case your specs apply to all of the tags you can express that by using @*@ symbol
 
 $$ galen-specs
-@ *
- ---------------
-menu
-    height: 70px
+= Main section = 
+    @on *
+        menu:
+            height 70px
 
-@ mobile
- ---------------
-login-button
-    width: 100px
+    @on mobile
+        login-button:
+            width 100px
 $$
 
 
 You can also combine multimple tags using comma-separated tag notation
 
 $$ galen-specs
-@ mobile, desktop
- --------------------------
-menu
-    height: 300 px
-
-$$
-
-bq. *IMPORTANT!* Each tag specification removes previous tags. Make sure you define all tags in a single line. Don't do it like this:
-@ mobile
-@ table
-object
-
-There is also a way of visualy structuring your tests in Galen by sections. Actually Galen already does it through tags notations. For each tag notation it creates a section within which it will later group specs in html report. You can give custom names to that. Just use a *vertical bar* (|) symbol to split the name and tags declaration. Take a look at the following example: 
-
-$$ galen-specs
-# ...
-
-@ Section 1. Testing header | mobile, tablet
- ----------------------------------------------------
-header
-    width: 100% of screen/width
-    height: 100px
-
-@ Section 2. Testing user profiles | mobile, tablet
- ----------------------------------------------------
-user-profile
-    width: 400px
-$$
-
-If you don't want to type all the same tags again and again you can do it like this:
-
-$$ galen-specs
-# ...
-
-@ Section 1. Testing header | mobile, tablet
- ----------------------------------------------------
-header
-    width: 100% of screen/width
-    height: 100px
-
-@ Section 2. Testing user profiles | ^
- ----------------------------------------------------
-user-profile
-    width: 400px
-$$
-
-The *caret* symbol (^) used in the example above tells Galen that 2-nd section should take tags from previous section. You can use the same symbol for copying section names
-
-$$ galen-specs
-# ...
-
-@ Section 1. Header | mobile, tablet
- ----------------------------------------------------
-header
-    width: 100% of screen/width
-    height: 100px
-
-@ ^ | desktop
- ----------------------------------------------------
-header
-    width: 90% of screen/width
-    height: 50px
+= Main section =
+    @on mobile, desktop
+        menu:
+            height 300 px
 $$
 
 
@@ -351,6 +292,7 @@ Galen supports the following specs:
 * "near":#Near _- checks that object is located near another object_
 * "below":#BelowandAbove _- checks thay element is located below other object_
 * "above":#BelowandAbove _- checks thay element is located above other object_
+* "left-of and right-of":#LeftofandRightof _- checks thay element is located above other object_
 * "inside":#Inside _- checks that object is located inside another object_
 * "width":#WidthandHeight _- checks the width of object_
 * "height":#WidthandHeight _- checks the height of object_
@@ -361,7 +303,7 @@ Galen supports the following specs:
 * "contains":#Contains _- checks that object visualy contains other objects inside it_
 * "on":#On _- checks that object is visualy located on other object_
 * "component":#Component _- runs a subset of specs from another file within the given object context_
-* "color scheme":#Colorscheme _- checks the color distribution in the given object area_
+* "color-scheme":#Colorscheme _- checks the color distribution in the given object area_
 
 bq. *IMPORTANT!* For each spec Galen always checks that all included elements in a spec are visible on page. Galen tries to act as a real user and if a user doesn't see an object on page then it is not there.
 
@@ -377,15 +319,15 @@ Take a look at the following example
 Now lets try to write a spec for checking that
 
 $$ galen-specs
-textfield
-    near: button 10px left
+textfield:
+    near button 10px left
 $$
 
 Or we can be less strict about the actual range:
 
 $$ galen-specs
-textfield
-    near: button 5 to 15px left
+textfield:
+    near button 5 to 15px left
 $$
 
 Now another example for spec *near*
@@ -395,8 +337,8 @@ Now another example for spec *near*
 }
 
 $$ galen-specs
-textfield
-    near: button 5px top
+textfield:
+    near button 5px top
 $$
 
 Or even more insteresting case:
@@ -406,8 +348,8 @@ Or even more insteresting case:
 }
 
 $$ galen-specs
-textfield
-    near: button 5px bottom left
+textfield:
+    near button 5px bottom left
 $$
 
 Or this case: 
@@ -417,8 +359,8 @@ Or this case:
 }
 
 $$ galen-specs
-textfield
-    near: button 5px top, 10px left
+textfield:
+    near button 5px top, 10px left
 $$
 
 
@@ -431,28 +373,28 @@ There is also a way to test if an element is located above or below another elem
 }
 
 $$ galen-specs
-caption
-    above: description 10 to 20 px
+caption:
+    above description 10 to 20 px
 
-description
-    below: caption 10 to 20 px
+description:
+    below caption 10 to 20 px
 $$
 
 
 h2. Left of and Right of
 
-In order to increase readability in version 1.6 were added two specs: @left of@ and @right of@. These specs check that the object is located near another object from left or right. You could still use spec @near@ for this case but @left of@ and @right of@ also would work well in terms of readability.
+In order to increase readability in version 1.6 were added two specs: @left-of@ and @right-of@. These specs check that the object is located near another object from left or right. You could still use spec @near@ for this case but @left-of@ and @right-of@ also would work well in terms of readability.
 
 {@ sketch
     image: spec-near-01.png
 }
 
 $$ galen-specs
-textfield
-    left of: button 10px
+textfield:
+    left-of button 10px
 
-button
-    right of: textfield 10px
+button:
+    right-of: textfield 10px
 $$
 
 h2. Inside
@@ -471,8 +413,8 @@ Lets take a look at the following example on a picture:
 Now what we can write in a spec
 
 $$ galen-specs
-button
-    inside: container 10 px top left
+button:
+    inside container 10 px top left
 $$
 
 
@@ -483,8 +425,8 @@ A little bit more complicated
 }
 
 $$ galen-specs
-button
-    inside: container 10px left right, 20px top bottom
+button:
+    inside container 10px left right, 20px top bottom
 $$
 
 
@@ -495,16 +437,16 @@ But what to do if our button "sticks out" a little bit?
 }
 
 $$ galen-specs
-button
-    inside partly: container 10px top left
+button:
+    inside partly container 10px top left
 $$
 
 
 Or... A bit weird case... But why not?
 
 $$ galen-specs
-button 
-    inside partly: container -10px top left
+button:
+    inside partly container -10px top left
 $$
 
 bq. Try to avoid the example above. For the illustrated case it is advised to use spec *on*
@@ -513,8 +455,8 @@ bq. Try to avoid the example above. For the illustrated case it is advised to us
 You can also omit the sides definition in the @inside@ spec and just use it like this:
 
 $$ galen-specs
-button
-    inside: container
+button:
+    inside container
 $$
 
 That way Galen will only check that the element is completely inside another element. Still it is not a good practice to do so and the advice is - always specify sides to which the element is attached.
@@ -530,16 +472,16 @@ Width and height have exactly the same simple syntax
 }
 
 $$ galen-specs
-button
-    width: 100 px
-    height: 25px
+button:
+    width 100 px
+    height 25px
 $$
 
 Or we can also say that width should not be bigger that 100 pixels
 
 $$ galen-specs
-button
-    width: < 101 px
+button:
+    width < 101 px
 $$
 
 Relative width and hegiht specs. Lets check that comments sections is stretched to the width of main container
@@ -550,14 +492,14 @@ Relative width and hegiht specs. Lets check that comments sections is stretched 
 
 $$ galen-specs
 comments:
-    width: 100 % of main/width
+    width 100 % of main/width
 $$
 
 Or we can be less strict and do it like this. This way Galen will not fail if comments section is only by few pixels smaller.
 
 $$ galen-specs
-comments
-    width: 95 to 100 % of main/width
+comments:
+    width 95 to 100 % of main/width
 $$
 
 
@@ -583,16 +525,16 @@ Now lets take a look at the following scheme and lets write down the according G
 
 $$ galen-specs
 # By top and bottom edges
-menu-item-1
-    aligned horizontally all: menu-item-2
+menu-item-1:
+    aligned horizontally all menu-item-2
 $$
 
 You can also skip the word *all* and use like this:
 
 $$ galen-specs
 # By top and bottom edges
-menu-item-1
-    aligned horizontally: menu-item-2
+menu-item-1:
+    aligned horizontally menu-item-2
 $$
 
 
@@ -604,8 +546,8 @@ And now alignment by only one edge
 
 $$ galen-specs
 # By top edge
-menu-item-1
-    aligned horizontally top: menu-item-2
+menu-item-1:
+    aligned horizontally top menu-item-2
 $$
 
 
@@ -616,15 +558,15 @@ Vertical alignment by left edge:
 }
 
 $$ galen-specs
-menu-item-1
-    aligned vertically left: menu-item-2
+menu-item-1:
+    aligned vertically left menu-item-2
 $$
 
 There is also a posibility to define the error rate within which we don't care if objects are not aligned. For instance it could be that one object is by 1px higher than the other one. If we are ok with that we can define it in our spec like this:
 
 $$ galen-specs
-menu-item-1
-    aligned horizontally: menu-item-2 1px
+menu-item-1:
+    aligned horizontally menu-item-2 1px
 $$
 
 In the code above we have defined the 1 pixel error rate so galen will not complain if object are misaligned by only one pixel.
@@ -649,12 +591,12 @@ $$
 Now lets write down all possible text checks for it
 
 $$ galen-specs
-greeting
-    text is: Welcome user@example.com to our cool website!
-    text starts: Welcome
-    text ends: website!
-    text contains: to our cool
-    text matches: Welcome .* to our cool website!
+greeting:
+    text is "Welcome user@example.com to our cool website!"
+    text starts "Welcome"
+    text ends "website!"
+    text contains "to our cool"
+    text matches "Welcome .* to our cool website!"
 $$
 
 
@@ -663,12 +605,12 @@ h3. Text operations
 Sometimes you don't want to check the text case sensitive. For this purpose you can rely on special text operations. At the moment only these operations are supported: *lowercase* and *uppercase*.
 
 $$ galen-specs
-greeting
-    text lowercase is: welcome user@example.com to our cool website!
-    text uppercase starts: WELCOME
-    text lowercase ends: website!
-    text lowercase contains: to our cool
-    text lowercase matches: welcome .* to our cool website!
+greeting:
+    text lowercase is "welcome user@example.com to our cool website!"
+    text uppercase starts "WELCOME"
+    text lowercase ends "website!"
+    text lowercase contains "to our cool"
+    text lowercase matches "welcome .* to our cool website!"
 $$
 
 
@@ -702,8 +644,8 @@ If you want to check that the element is centered inside another element you can
 We could write it down like this:
 
 $$ galen-specs
-button
-    centered horizontally inside: box
+button:
+    centered horizontally inside box
 $$
 
 Or if the label is also centered vertically we can include both checks in one line by doing this:
@@ -714,8 +656,8 @@ Or if the label is also centered vertically we can include both checks in one li
 
 
 $$ galen-specs
-button
-    centered all inside: box
+button:
+    centered all inside box
 $$
 
 But this will fail if a label is not inside box but "sticks out" of it edges. Lets take this example on picture:
@@ -727,8 +669,8 @@ But this will fail if a label is not inside box but "sticks out" of it edges. Le
 As we see here it looks like the label is placed on top of a box. In this case we should write it down like this:
 
 $$ galen-specs
-label 
-    centered horizontally on: box
+label:
+    centered horizontally on box
 $$
 
 
@@ -741,8 +683,8 @@ But what to do if the element is not exactly in a center? What if an item is shi
 We need the ability to define error rate within which an element should be considered centered. We can specify this in our spec in the following way.
 
 $$ galen-specs
-label
-    centered horizontally inside: box 10px
+label:
+    centered horizontally inside box 10px
 $$
 
 
@@ -751,7 +693,7 @@ h2. Absent
 One of the simplest specs in Galen. It doesn't take any parameters. It is used to check that the element is either missing on page _(in html code)_ either it is present but not visible _(e.g. style display:none)_
 
 $$ galen-specs
-comments
+comments:
     absent
 $$
 
@@ -761,7 +703,7 @@ h2. Visible
 Same idea as spec *absent* but in this case Galen checks that the element is visible
 
 $$ galen-specs
-comments
+comments:
     visible
 $$
 
@@ -772,21 +714,21 @@ Used to verify that the element contains a list of specified elements.
 
 $$ galen-specs
 comments:
-    contains: comment-header, comment-send-button, comment-textfield
+    contains comment-header, comment-send-button, comment-textfield
 $$
 
 You can also use asterisk to match all other objects so you write less text. For example lets say we have an object @menu@ and in it there other object like: @menu-item-home@, @menu-item-categories@, @menu-item-about@, @menu-item-contact@. Instead of enumerating all of them in same spec we can write a shorter version:
 
 $$ galen-specs
-menu
-    contains: menu-item-*
+menu:
+    contains menu-item-*
 $$
 
 Another case that you might have is when an element is not completely inside. For that you can use spec *contains partly*. Take a look at the following example
 
 $$ galen-specs
-box
-    contains partly: box-item-1, box-item-2
+box:
+    contains partly box-item-1, box-item-2
 $$
 
 
@@ -799,15 +741,15 @@ Verifies that the element is moved from another element from specified corner. V
 }
 
 $$ galen-specs
-user-picture-label
-    on top left: user-picture 20 px left, 10px bottom
+user-picture-label:
+    on top left edge user-picture 20 px left, 10px bottom
 $$
 
 You can also pick a different corner:
 
 $$ galen-specs
-user-picture-label
-    on bottom left: user-picture 20px right, 10 px top
+user-picture-label:
+    on bottom left edge user-picture 20px right, 10 px top
 $$
 
 
@@ -822,41 +764,35 @@ Used for advanced testing in case there are multiple similar complex snippets on
 For the example above we would need a separate spec file where we can define the specs for a component. Later this file will be used in another page spec. So lets create a component spec named @user-profile.spec@
 
 $$ galen-specs
-==================================
-user-name       css     .user-name
-user-pic        css     .user-pic
-user-age        css     .user-age
-==================================
+@objects 
+    user-name       css     .user-name
+    user-pic        css     .user-pic
+    user-age        css     .user-age
 
-@ all
- ---------------------------------
+= User section =
+    user-pic:
+        inside parent 10px top left
+        width 50px
+        height 50px
 
-user-pic
-    inside: parent 10px top left
-    width: 50px
-    height: 50px
+    user-name:
+        inside parent 10px top
+        near user-pic 10px right
 
-user-name
-    inside: parent 10px top
-    near: user-pic 10px right
-
-user-age
-    below: user-name 5px
-    near: user-pic 10px
+    user-age:
+        below user-name 5px
+        near user-pic 10px
 $$
 
 Now we are going to test the the user profile using the component spec file we have prepared.
 
 $$ galen-specs
-=====================================
-user-profile-*  css   .user-profile
-=====================================
+@objects
+    user-profile-*  css   .user-profile
 
-@ all 
- --------------------------------------
-
-user-profile-*
-    component: user-profile.spec
+= All user profiles =
+    user-profile-*:
+        component user-profile.spec
 $$
 
 In this case Galen will first fetch all objects *user-profile-1*, *user-profile-2*, *user-profile-3* and then will load a subtest for objects within each user profile scope. This means that you can reuse components within the same page for different object or in general for different pages.
@@ -869,12 +805,12 @@ h3. Frame support
 In case you have to test a website which has frames and you need to access the elements inside frame you could use @component frame@ spec.
 
 $$ galen-specs
-========================
-banner-frame     css  iframe#banner
-========================
+@objects
+    banner-frame     css  iframe#banner
 
-banner-frame
-    component frame: banner.spec
+= Main section =
+    banner-frame:
+        component frame banner.spec
 $$
 
 
@@ -883,9 +819,8 @@ h2. Color scheme
 Used when you need to verify color distribution on object area. Galen takes a picture and then calculates the objects area color spectrum so later you can verify the usage for specific colors. Example:
 
 $$ galen-specs
-
-login-form
-    color scheme: 10% white, 4 to 5 % black, < 30% #f845b7
+login-form:
+    color-scheme 10% white, 4 to 5 % black, < 30% #f845b7
 $$
 
 
@@ -896,8 +831,8 @@ h2. Image
 Galen Framework also allows to perform more advanced check like image comparison. When you need to make sure your buttons or logos stay the same you can compare them by predefined image pixel to pixel. Example:
 
 $$ galen-specs
-menu-item-1
-    image: file imgs/menu-item-1.png, error 12px
+menu-item-1:
+    image file imgs/menu-item-1.png, error 12px
 $$
 
 The above spec will compare object on the screen pixel to pixel with image @imgs/menu-item-1.png@ and will notify if amount of mismatching pixel is higher than maximum allowed 12 pixels.
@@ -905,8 +840,8 @@ The above spec will compare object on the screen pixel to pixel with image @imgs
 You can also change the assertion from absolute pixels values to percentage like this:
 
 $$ galen-specs
-menu-item-1
-    image: file imgs/menu-item-1.png, error 4%
+menu-item-1:
+    image file imgs/menu-item-1.png, error 4%
 $$
 
 In the generated report you can see which image was expected and also you can find the comparison map
@@ -916,8 +851,8 @@ In the generated report you can see which image was expected and also you can fi
 The red pixels on comparison map are the mismatching pixels that are far away from the *tolerance* value. The yellow pixels are in the range of 30 to 80 color difference from tolerance. The green pixels are the closest to the tolerance value. You can play a bit with this spec by changing the tolerance value:
 
 $$ galen-specs
-menu-item-1
-    image: file imgs/menu-item-1.png, error 4%, tolerance 80
+menu-item-1:
+    image file imgs/menu-item-1.png, error 4%, tolerance 80
 $$
 
 The *tolerance* - is the maximum allowed color difference of two compared pixels. By default the tolerance is set to 30. If you increase this parameter - the amount of mismatching pixels will be decreased but than you risk of not having the proper comparison.
@@ -927,8 +862,8 @@ h3. Multiple image comparison
 Sometimes you might have different images for different browsers and this will break all your tests. Just for this case you can define different image samples in one image spec like this:
 
 $$ galen-specs
-header-text
-    image: file image-1.png, file image-2.png, file image-3.png, error 20px
+header-text:
+    image file image-1.png, file image-2.png, file image-3.png, error 20px
 $$
 
 This way Galen compares page element area with each image and selects the one that has less mismatching pixels.
@@ -938,8 +873,8 @@ h3. Stretching images
 When comparing images of different sizes Galen Framework just puts on image on top of another and assumes that the missing pixels are of a black color. But you can change this behavior by stretching the image to fit the original size. Example:
 
 $$ galen-specs
-menu-item-1
-    image: file imgs/menu-item-1.png, error 4%, stretch
+menu-item-1:
+    image file imgs/menu-item-1.png, error 4%, stretch
 $$
 
 
@@ -948,8 +883,8 @@ h3. Selecting the area in the sample image
 You can also define an area which should be used from the sample image like this:
 
 $$ galen-specs
-menu-item-1
-    image: file imgs/menu-item-1.png, error 4%, area 10 10 100 30
+menu-item-1:
+    image file imgs/menu-item-1.png, error 4%, area 10 10 100 30
 $$
 
 The area parameter takes 4 values: left, top, width and height
@@ -960,8 +895,8 @@ Sometimes you might want to apply some filters to compared images to have a smar
 Take a look at the following example:
 
 $$ galen-specs
-menu-item-1
-    image: file item-1.png, error 1%, filter blur 4, filter saturation 0, map-filter denoise 5
+menu-item-1:
+    image file item-1.png, error 1%, filter blur 4, filter saturation 0, map-filter denoise 5
 $$
 
 What happens with this check is the following: Galen takes both images and applies blur filter with radius 4. Then it applies saturation filter with level 0 which means complete loss of color and the images become gray. Then it compares the image and builds a comparison map. After these operations it applies denoise filter with radius 5 pixels and removes noise from generated map. And after all these operations it counts the mismatching pixels. 
@@ -977,15 +912,15 @@ Here is the list of all available image filters:
 In case you want to apply filter only to original image - you can use @filter-a@ expression like this:
 
 $$ galen-specs
-login-button
-    image: file imgs/login-button.png, filter-a blur 10, error 4%
+login-button:
+    image file imgs/login-button.png, filter-a blur 10, error 4%
 $$
 
 You can also use @filter-b@ expression if you need to apply a specific filter to sample image only
 
 $$ galen-specs
-login-button
-    image: file imgs/login-button.png, filter-b contrast 200, error 4%
+login-button:
+    image file imgs/login-button.png, filter-b contrast 200, error 4%
 $$
 
 Here are some examples of image filters for the original foto:
@@ -1045,14 +980,10 @@ h2. Importing
 Quite often your website has something similar one each page. Normally it is headers, footers and sometimes the side panel. In case you want to test these for each page you can just import the needed specs. Lets say you have defined specs for header and footer in the following files: @header.spec@, @footer.spec@. And now you are working on a @homepage.spec@ where you would like to import the first two specs. You can do it in the following way
 
 $$ galen-specs
-@@ import header.spec
-@@ import footer.spec
+@import header.spec
+@import footer.spec
 
 # and now goes the spec for your home page
-===========
-...
-===========
-...
 $$
 
 In the example above Galen will import all objects and spec from @header.spec@ and @footer.spec@ files and merge them with the @homepage.spec@. This means that you can then reuse objects from header and footer in your home page spec.
@@ -1063,100 +994,82 @@ h2. Multiple objects with same specs
 So till now you have seen various specs for page objects. But what to do if you want to test exactly the same specs for other objects? In Galen you can use comma separated object notation and simple regex
 
 $$ galen-specs
-menu-item-1, menu-item-2, menu-item-3
-    width: 100 to 150px
-    height: 50px
+menu-item-1, menu-item-2, menu-item-3:
+    width 100 to 150px
+    height 50px
 $$
 
 Or same could be written more elegantly
 
 $$ galen-specs
-menu-*
-    width: 100 to 150px
-    height: 50px
+menu-*:
+    width 100 to 150px
+    height 50px
 $$
 
 The example above shows the simplest regular expresion. In case you want to match any symbol you can use @*@ symbol. But if you need to match only numbers then you should use @#@ symbol.
 
 $$ galen-specs
-menu-item-#
-    width: 100px
+menu-item-#:
+    width 100px
 $$
 
 
-h2. Template specs
+h2. for Loop
 
-Another use ot multiple objects is so called *Template Specs*. The idea is that you can define the numeric range or a list of values in which Galen will iterate over the specs. Sounds complex but in the end it is quite simple. Lets take an example of horizontal menu items. In previous paragraph we used comma-separated notation and also simple regex. But we can also do it like this
+There is also a possiblity to declare for loop in case you need to express complex layout for multiple objects. In the following example it will iterate over 9 menu items and will check that each menu item is located from the left side of the following item. 
 
 $$ galen-specs
-[ 1 - 3 ]
-menu-item-@
-    width: 100 to 150px
-    height: 50px
+= Main section =
+    @for [1 - 9] as index
+        menu-item-${index}:
+            left-of menu-item-${index + 1} 10px
 $$
 
-As you can see we used *@* symbol in object name. That is the place where Galen is going to put the index from template.
+As you can see you can declare a variable inside a loop and later use it even in javascript statements.
 
-Another example. Lets say we have 10 menu items but we want to test only few of them. We can mix ranges with comma-separated values like this:
+The @for@ loop statment also allow to declare more complex sequence.
 
 $$ galen-specs
-[ 1 - 3, 5, 7-9 ]
-menu-item-@
-    width: 100 to 150px
-    height: 50px
+= Main section =
+    @for [1 - 5, 7, 9, 14, 20 - 25] as index
+        menu-item-${index}:
+            left-of menu-item-${index + 1} 10px
 $$
 
-And now a bit more complicated example. Imagine we have a menu with 10 items and we would like to test that each of them is located next to another but on a distance of 10 pixels.  We could write it down like this:
+
+
+
+h2. forEach Loop
+
+In case you don't want to hardcode the numbers and want to match whatever objects you have on the page, you can use @forEach@ loop. It allows to iterate over all objects matching the defined pattern:
 
 $$ galen-specs
-[ 1 - 9 ]
-menu-item-@
-    near: menu-item-@{+1} 10 px left
+= Main section =
+    @forEach [menu-item-*] as itemName
+        ${itemName}:
+            height 30px
 $$
 
-As you can see we used the following syntax in spec *@{+1}*. This means that whatever is the current index - it should be increased by one. We could also write the same tests a bit differently:
+But what is more interesting is that you can also define a variable for previous or next item in the loop. 
 
 $$ galen-specs
-[ 2 - 10 ]
-menu-item-@
-    near: menu-item-@{-1} 10 px right
+= Main section =
+    @forEach [menu-item-*] as itemName, next as nextItem
+        ${itemName}:
+            left-of ${nextItem} 10px
 $$
 
-Also sometimes you might need to perform more complex operations inside *@{ }* construction. Here is a way to do. Note the special @index@ object which represents the current parameter:
+That way it will iterate over all elements until last one. If you want to change the statement and reference the previous elements in the loop you can do it like this:
 
 $$ galen-specs
-[ 2 - 10 ]
-menu-item-@
-    near: menu-item-@{index*2 + 1} 10px right
+= Main section =
+    @forEach [menu-item-*] as itemName, prev as previousItem
+        ${itemName}:
+            right-of ${previousItem} 10px
 $$
 
-h2. Template specs with advanced expressions
-
-In case you don't know the exact amount of elements on page you can also use the following technique:
-
-$$ galen-specs
-==================================
-menu-item-*         css #menu li a
-==================================
-
-[ 1 - ${count("menu-item-*") - 1} ]
-menu-item-@
-    near: menu-item@{+1} 10px left
-$$
-
-In the example above we specified the expression @${count("menu-item-*") - 1}@ with template range definition. That expression means that Galen should count the amount of objects matching @menu-item-*@ pattern and return minus one. So if we have 30 objects on page in the end it will create a template range of *[1-29]*. This is very usefull technique which allows you to describe any complext layout on the page.
-
-The above example can also be optimized a bit:
-
-$$ galen-specs
-==================================
-menu-item-*         css #menu li a
-==================================
-
-[ 2 - ${count("menu-item-*")} ]
-menu-item-@
-    near: menu-item@{-1} 10px right
-$$
+That way it will iterate starting from second element in the loop
 
 
 h2. Custom javascript functions in specs
@@ -1170,13 +1083,13 @@ this.i18n = function (name) {
 };
 $$
 
-Now you can use it in your specs. Use @import@ in order to load the javascript:
+Now you can use it in your specs. Use @script@ in order to load the javascript:
 
 $$ galen-specs
-@@ import i18n.function.js
+@scripti18n.function.js
 
-greeting-text
-    text is: ${i18n("header.greeting.text")}
+greeting-text:
+    text is ${i18n("header.greeting.text")}
 $$
 
 Same way you can implement a custom function that would allow you to parameterize checks against only even items of a list. Create a script @allEven.js@:
@@ -1196,125 +1109,48 @@ $$
 
 In spec file call it like this:
 $$ galen-specs
-@@ import allEven.js
+@script allEven.js
 
-[ ${allEven("menu-item-*")} ]
-menu-item-@
-    height: 100px
+@for  [${allEven("menu-item-*")}] as index
+    menu-item-${index}:
+        height 100px
 $$
 
 
 
 
-h2. Conditional specs
+h2. if Statement
 
-Sometimes you might need to provide some basic logic in your Galen tests. Although the advice is always try to avoid that but if you really need it you can do it with so called *Conditional Specs*. The idea is simple. Using same Spec language you define the codition with which Galen decides whether to run additional specs or not. This could be helpful in case you want to monitor production banners and at each run you don't know which of them is going to pop up and there is no way for you to control that. So lets imagine the following case
 
-We have two different banners:
+
+We have three different banners:
 
 $$ galen-specs
-=====================================
-banner-1        id  some-banner-1
-banner-2        id  some-banner-2
-=====================================
+@objects
+    banner-1        id  some-banner-1
+    banner-2        id  some-banner-2
+    banner-3        id  some-banner-3
 $$
 
 And now depending on which of the banners is shown on the page we should run specific specs.
 
 $$ galen-specs
 #...
-@@ if
-banner-1 
-    visible
-    text contains: Some Big Awesome Banner
-@@ do
-banner-1
-    width: 300 px
-    height: 100 px
-@@ end
-
-@@ if 
-banner-2
-    visible
-@@ do
-banner-2:
-    width: 300 px
-    height: 100 px
-@@ end
+= Banners = 
+    @if ${isVisible("banner-1")}
+        banner-1:
+            width 300 px
+            height 100 px
+    @elseif ${isVisible("banner-2")}
+        banner-2:
+            width 300 px
+            height 100 px
+    @else
+        banner-3:
+            width 300 px
+            height 100 px
 $$
 
-
-You can also invert the statement by adding a word *not*
-
-$$ galen-specs
-@@ if not
-banner-1
-    absent
-@@ do
-banner-1
-    height: 100 px
-@@ end
-$$
-
-Or you can have additional statements for the same condition using the "*or*" instruction
-
-$$ galen-specs
-@@ if
-banners
-    visible
-@@ or
-other-banner
-    visible
-@@ do
-# put whatever specs you need here
-# ...
-@@ end
-$$
-
-Also you can ad a block of specs that will be executed in case the condition didn't match any statements. This is done with "*otherwise*" instruction:
-
-$$ galen-specs
-@@ if
-banners
-    visible
-@@ do
-# put whatever specs you need here
-# ...
-@@ otherwise
-# ...
-# Do something else here
-@@ end
-$$
-
-Also it is good to visually indent the information within conditional blocks:
-
-$$ galen-specs
-@@ if
- -----------------------------
-banners
-    visible
-@@ do
- -----------------------------
-# put whatever specs you need here
-# ...
-@@ otherwise
- -----------------------------
-# ...
-# Do something else here
- -----------------------------
-@@ end
-$$
-
-
-h2. Warning level for specs
-
-Since version 1.2 it is possible to mark a specific check in your spec file so that once it fails - it is reported with a warning level and does not affect the status of the whole test suite. This might be usefull in case you have a bug on your website that you already know and are working on but you don't want to be constantly reminded about it. As a temporary solution you can put @%@ symbol before the failing check and thats it. In the resulting html report this check will be shown with yellow color.
-
-$$ galen-specs
-login-button
-    text is: Login
-    % width: 100px
-$$
 
 
 h2. Custom Rules
@@ -1322,15 +1158,15 @@ h2. Custom Rules
 Since version 1.6 you can use @rules@ for your specs, which work as sort of a user-defined functions. Custom rules allow you to group complex specs and give them a better naming. Also they allow you to come up with a much more readable spec file. Lets take a simple example. Imagine you want to test that the icon is a square. So you need to test that its width is equal to its height. And for example there could be a lot of other elements on page which should have the same rule. You can write it like this:
 
 $$ galen-specs
-@@ rule: %{name} should be squared 
-    ${name}
-        width: 100% of ${name}/height
-@@ end
+@rule %{name} should be squared 
+    ${name}:
+        width 100% of ${name}/height
 
 # This is how you can use your spec
 
-| header-icon should be squared
-| footer-icon should be squared
+= Main section =
+    | header-icon should be squared
+    | footer-icon should be squared
 $$
 
 As you can see you can create a mapping to parameters in your rule using @%{...}@ syntax. When you use a rule in your spec with @|@ symbol galen fetches the values from the rule text and provides them in the parameter context. That gives you the possibility to use custom parameters in your specs.
@@ -1341,15 +1177,15 @@ h3. Custom Rules: rules in object context
 You can also create rules to serve on an object context. Lets take the above example and change its usage like this:
 
 $$ galen-specs
-@@ rule: should be squared
-    width: 100% of ${objectName}/height
-@@ end
+@rule should be squared
+    width 100% of ${objectName}/height
 
-header-icon
-    | should be squared
+= Main =
+    header-icon:
+        | should be squared
 
-footer-icon
-    | should be squared
+    footer-icon:
+        | should be squared
 $$
 
 As you can see we didn't provide any custom parameters but still Galen provides us with @objectName@ parameter. This is possible because the rule is used on an object scope.
@@ -1360,14 +1196,13 @@ h3. Custom Rules: user-defined regular expressions for parameters
 By default Galen Framework uses @.*@ regular expression to match the parameter name in rule text. But you can change this behaviour by providing custom regex. For example you could have a situation where you need only to match digits
 
 $$ galen-specs
-@@ rule: %{object} should be squared with %{size: [0-9]+} pixel size
-    ${object}
-        width: ${size} px
-        height: ${size} px
-@@ end
+@rule %{object} should be squared with %{size: [0-9]+} pixel size
+    ${object}:
+        width ${size} px
+        height ${size} px
 
-
-| logo should be squared with 100 pixel size
+= Main =
+    | logo should be squared with 100 pixel size
 $$
 
 
@@ -1407,16 +1242,16 @@ rule("%{objectPattern} are equally distant from each other", function (objectNam
 });
 $$
 
-And now if you import this @my-rules.js@ file in your spec you can use the rule like this:
+And now if you execute this @my-rules.js@ file in your spec you can use the rule like this:
 
 $$ galen-specs
-@@ import my-rules.js
+@script my-rules.js
 
-================================
-menu-item-*        #menu li a
-================================
+@objects
+    menu-item-*        #menu li a
 
-| menu-item-* are equally distant from each other
+= Menu =
+    | menu-item-* are equally distant from each other
 $$
 
 
@@ -1426,9 +1261,9 @@ Sometimes it is hard to understand why a certain validation was chosen in a spec
 
 $$ galen-specs
 
-header-logo
-    inside: header 5 to 15px top, 0 to 10px left
-    near: header-text 5 to 30px left
+header-logo:
+    inside header 5 to 15px top, 0 to 10px left
+    near header-text 5 to 30px left
     "should be squared" width: 100% of header-logo/height
 $$
 

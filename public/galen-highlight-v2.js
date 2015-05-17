@@ -39,17 +39,27 @@ var GalenHighlightV2 = GalenHighlightV2 || {
         });
     },
     specs: function (html) {
+        var NORMAL = 0;
+        var OBJECT_DEFINITION = 1;
+        var state = NORMAL;
         var lines = html.split("\n");
         return this.processLines(lines, function (line) {
             line = line.replace(/\$\{(.*?)\}/gi, "<span class='galen-expression'>${$1}</span>");
 
+            if (GalenHighlightV2.startsWith(line, "@objects")) {
+                state = OBJECT_DEFINITION;
+            }
+
             if (GalenHighlightV2.startsWith(line, "#")) {
                 return "<span class='galen-comment'>" + line + "</span>";
             }
-
-            if (GalenHighlightV2.startsWith(line, "=")) {
+            if (GalenHighlightV2.startsWith(line.trim(), "=") &&
+                GalenHighlightV2.endsWith(line.trim(), "=") 
+            ) {
+                state = NORMAL;
                 return "<span class='galen-section'>" + line + "</span>";
             }
+
             if (GalenHighlightV2.startsWith(line.trim(), "@")) {
                 return "<span class='galen-tag'>" + line + "</span>";
             }
@@ -57,10 +67,15 @@ var GalenHighlightV2 = GalenHighlightV2 || {
                 return "<span class='galen-object'>" + line + "</span>";
             }
             else if (GalenHighlightV2.startsWith(line, "  ")){
-                //return "<span class='galen-spec'>" + line + "</span>";
-                return line.replace(/([a-z\-\*]+)\s(.*)/gi, "<span class='galen-spec'>$1</span> $2")
-                    .replace(/(#[a-z0-9]+|[0-9]+)/gi, "<span class='galen-number'>$1</span>")
-                ;
+                if (state == OBJECT_DEFINITION) {
+                    return line.replace(/([a-z\-\*]+)\s(.*)/gi, "<span class='galen-object'>$1</span> $2");
+                } else if (!GalenHighlightV2.startsWith(line.trim(), "|")){
+                    line = line.replace(/([a-z\-\*]+)\s(.*)/gi, "<span class='galen-spec'>$1</span> $2");
+                    line = line.replace(/(#[a-z0-9]+|[0-9]+)/gi, "<span class='galen-number'>$1</span>");
+                    return line;
+                } else {
+                    return "<span class='galen-spec'>" + line + "</span>";
+                }
             }
 
             return line;
