@@ -8,11 +8,11 @@ function highlightCodeBlocks() {
         if (className != null && className != "") {
             if (className == "galen-specs") {
                 var codeBlock = $(this).find("pre code");
-                codeBlock.html(GalenHighlight.specs(codeBlock.html()));
+                codeBlock.html(GalenHighlightV2.specs(codeBlock.html()));
             }
             else if (className == "galen-suites") {
                 var codeBlock = $(this).find("pre code");
-                codeBlock.html(GalenHighlight.suites(codeBlock.html()));
+                codeBlock.html(GalenHighlightV2.suites(codeBlock.html()));
             }
             else {
                 hljs.highlightBlock($(this).find("pre code").get(0));

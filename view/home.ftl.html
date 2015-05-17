@@ -117,19 +117,21 @@
             <div class="col-sm-6 col-lg-6">
                 <h3 class="text-center">Basic syntax</h3>
 <code class="block" data-language="galen-specs">
-@ mobile, tablet 
------------------------------
-comments
-    width: 300px
-    inside: screen 10 to 30px top right
-    near: article-content &gt; 10px right
+@objects
+    comments            #comments
+    article-content     div.article
 
+= Main section =
+    @on mobile, tablet 
+        comments:
+            width 300px
+            inside screen 10 to 30px top right
+            near article-content &gt; 10px right
 
-@ desktop
------------------------------
-comments
-    width: ~ 100% of screen/width
-    below: article-content &gt; 20px
+    @on desktop
+        comments:
+            width ~ 100% of screen/width
+            below article-content &gt; 20px
 </code>
                 <p class="text-center">
                     <a href="/docs/reference-galen-spec-language-guide/" target="__blank" class="btn btn-primary home-button home-button-on-dark">See more</a>
@@ -141,19 +143,21 @@ comments
             <div class="col-sm-6 col-lg-6">
                 <h3 class="text-center">Advanced</h3>
 <code class="block" data-language="galen-specs">
-===================================
-menu-item-*   css  #menu li
-===================================
+@objects
+    menu-item-*   css  #menu li
+    header-logo   id   logo
+    button-login  xpath //button[@id='login']  
 
-[ 1 - 5 ]
-menu-item-@
-    near: menu-item-@{+1} 10px left
+= Menu =
+    @forEach [ menu-item-* ] as itemName, next as nextItem
+        ${r"${itemName}"}:
+            left-of ${r"${nextItem}"} 10px
 
-header-logo
-    image: file imgs/header-logo.png, error 4%
+    header-logo:
+        image file imgs/header-logo.png, error 4%
 
-button-login
-    color scheme: 5% #ffefd0, 87 to 90% #ae32ef
+    button-login:
+        color scheme 5% #ffefd0, 87 to 90% #ae32ef
 </code>
                 <p class="text-center">
                     <a href="/docs/reference-galen-spec-language-guide/#Colorscheme" target="__blank" class="btn btn-primary home-button home-button-on-dark">See more</a>

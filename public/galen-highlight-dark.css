@@ -28,3 +28,10 @@ pre code span.galen-number{
     color: #72CCF2;
 }
 
+pre code span.galen-section {
+    color: #72CCF2;
+}
+
+pre code span.galen-expression {
+    color: #72CCF2;
+}
