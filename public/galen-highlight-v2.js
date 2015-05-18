@@ -69,17 +69,26 @@ var GalenHighlightV2 = GalenHighlightV2 || {
             else if (GalenHighlightV2.startsWith(line, "  ")){
                 if (state == OBJECT_DEFINITION) {
                     return line.replace(/([a-z\-\*]+)\s(.*)/gi, "<span class='galen-object'>$1</span> $2");
-                } else if (!GalenHighlightV2.startsWith(line.trim(), "|")){
-                    line = line.replace(/([a-z\-\*]+)\s(.*)/gi, "<span class='galen-spec'>$1</span> $2");
-                    line = line.replace(/(#[a-z0-9]+|[0-9]+)/gi, "<span class='galen-number'>$1</span>");
-                    return line;
-                } else {
+                } else if (GalenHighlightV2.startsWith(line.trim(), "|")){
                     return "<span class='galen-spec'>" + line + "</span>";
+                } else {
+                    return GalenHighlightV2.highlightIndividualSpec(line);
                 }
             }
 
             return line;
         })
 
+    },
+    highlightIndividualSpec: function (line) {
+        line = line.replace(/([a-z\-\*]+)\s(.*)/gi, "<span class='galen-spec'>$1</span> $2");
+        line = line.replace(/(#[a-z0-9]+|[0-9]+)/gi, "<span class='galen-number'>$1</span>");
+        line = line.replace(/(absent|visible)/gi, "<span class='galen-spec'>$1</span>");
+        line = line.replace(/ (edge|partly|horizontally|vertically|all|is|starts|ends|contains|matches|uppercase|lowercase|inside|on) /gi,
+            " <span class='galen-spec'>$1</span> ");
+
+        line = line.replace(/ (left|top|bottom|right)\s*/gi, " <span class='galen-spec'>$1</span> ");
+        line = line.replace(/ (left)/gi, " <span class='galen-spec'>$1</span> ");
+        return line;
     }
 };
