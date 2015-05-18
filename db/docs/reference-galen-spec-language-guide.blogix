@@ -1089,7 +1089,7 @@ $$ galen-specs
 @scripti18n.function.js
 
 greeting-text:
-    text is ${i18n("header.greeting.text")}
+    text is "${i18n('header.greeting.text')}"
 $$
 
 Same way you can implement a custom function that would allow you to parameterize checks against only even items of a list. Create a script @allEven.js@:
@@ -1121,9 +1121,7 @@ $$
 
 h2. if Statement
 
-
-
-We have three different banners:
+It is also possible to declare conditional checks using JavaScript expressions. Lets take a look at the following example. Imagine we have three different banners:
 
 $$ galen-specs
 @objects
@@ -1264,7 +1262,7 @@ $$ galen-specs
 header-logo:
     inside header 5 to 15px top, 0 to 10px left
     near header-text 5 to 30px left
-    "should be squared" width: 100% of header-logo/height
+    "should be squared" width 100% of header-logo/height
 $$
 
 In the resulting report you would get something like this. As you can see on the screenshot, Galen creates a subsection under test object and puts that single spec inside it:
