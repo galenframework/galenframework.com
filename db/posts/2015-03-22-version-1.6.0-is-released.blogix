@@ -102,7 +102,7 @@ $$ bash
 galen test . --groups "homepage,temp"
 $$
 
-Ore you can run all tests excluding a specific group:
+Or you can run all tests excluding a specific group:
 $$ bash
 galen test . --exclude-groups "temp"
 $$
