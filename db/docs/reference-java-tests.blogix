@@ -85,7 +85,7 @@ public class MyTest {
             Arrays.asList("mobile"), null, null, null);
 
         // Creating a list of tests
-        List<GalenTestInfo> tests = new LinkedList<GalebTestInfo>();
+        List<GalenTestInfo> tests = new LinkedList<GalenTestInfo>();
 
         // Creating an object that will contain the information about the test
         GalenTestInfo test = GalenTestInfo.fromString("Login page on mobile device test");
