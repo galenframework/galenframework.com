@@ -1,6 +1,6 @@
 
 
-var GalenHighlight = GalenHighlight || {
+var GalenHighlightV1 = GalenHighlightV1 || {
     processLines: function (lines, func) {
         var string = "";
         for (var i=0; i<lines.length; i++) {
@@ -26,10 +26,10 @@ var GalenHighlight = GalenHighlight || {
     suites: function (html) {
         var lines = html.split("\n");
         return this.processLines(lines, function (line) {
-            if (GalenHighlight.startsWith(line, "#")) {
+            if (GalenHighlightV1.startsWith(line, "#")) {
                 return "<span class='galen-comment'>" + line + "</span>";
             }
-            else if (GalenHighlight.startsWith(line, "@") || GalenHighlight.containsOnly(line, "-")){
+            else if (GalenHighlightV1.startsWith(line, "@") || GalenHighlightV1.containsOnly(line, "-")){
                 return "<span class='galen-tag'>" + line + "</span>";
             }
             return line.replace(/\$\{(.*?)\}/gi, "<span class='galen-tag'>${$1}</span>");
@@ -43,11 +43,11 @@ var GalenHighlight = GalenHighlight || {
         var state = SIMPLE;
 
         return this.processLines(lines, function (line) {
-            if (GalenHighlight.startsWith(line, "#")) {
+            if (GalenHighlightV1.startsWith(line, "#")) {
                 return "<span class='galen-comment'>" + line + "</span>";
             }
 
-            if (GalenHighlight.containsOnly(line, "=")) {
+            if (GalenHighlightV1.containsOnly(line, "=")) {
                 if (state == OBJECT_DEF) {
                     state = SIMPLE;
                 }
@@ -61,10 +61,10 @@ var GalenHighlight = GalenHighlight || {
                 return "<span class='galen-object-def'>" + line + "</span>";
             }
             else {
-                if (GalenHighlight.startsWith(line, "@") || GalenHighlight.containsOnly(line, "-")){
+                if (GalenHighlightV1.startsWith(line, "@") || GalenHighlightV1.containsOnly(line, "-")){
                     return "<span class='galen-tag'>" + line + "</span>";
                 }
-                else if (GalenHighlight.startsWith(line, "  ")){
+                else if (GalenHighlightV1.startsWith(line, "  ")){
                     var colonIndex = line.indexOf(":");
                     if (colonIndex > 0) {
                         return "<span class='galen-spec'>" + line.slice(0, colonIndex) + "</span>" + line.slice(colonIndex);
@@ -73,7 +73,7 @@ var GalenHighlight = GalenHighlight || {
                         return "<span class='galen-spec'>" + line + "</span>";
                     }
                 }
-                else if (GalenHighlight.startsWith(line, "[")) {
+                else if (GalenHighlightV1.startsWith(line, "[")) {
                     return "<span class='galen-template'>" + line + "</span>";
                 }
                 else {

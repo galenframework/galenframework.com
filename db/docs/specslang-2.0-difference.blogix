@@ -1,0 +1,197 @@
+--------------------------------
+title
+   Galen Specs Language 2.0 comparison with old version
+--------------------------------
+date
+   2015-06-13 15:54
+--------------------------------
+allowComments
+   true
+--------------------------------
+categories
+   
+================================
+
+
+h3. Defining objects
+
+@@
+<div class="row">
+    <div class="col-sm-6 col-lg-6">
+        <h4>Old Syntax</h4>
+<code class="block" data-language="galen-specs-v1">
+==============================
+header        #header
+header.icon   #header img.icon
+header.title  #header h3
+==============================
+</code>
+    </div>
+    <div class="col-sm-6 col-lg-6">
+        <h4>New Syntax</h4>
+<code class="block" data-language="galen-specs">
+@objects
+    header     #header
+        icon   img.icon
+        title  h3
+
+</code>
+    </div>
+</div>
+@@
+
+
+h3. Sections and tags definition
+
+@@
+<div class="row">
+    <div class="col-sm-6 col-lg-6">
+        <h4>Old Syntax</h4>
+<code class="block" data-language="galen-specs-v1">
+@ Section name | mobile, tablet
+ ------------------------------
+# ...
+# ...
+@ ^ | desktop
+ ------------------------------
+# ...
+# ...
+</code>
+    </div>
+    <div class="col-sm-6 col-lg-6">
+        <h4>New Syntax</h4>
+<code class="block" data-language="galen-specs">
+= Section name =
+    @on mobile, tablet
+        # ...
+        # ...
+    @on desktop
+        # ...
+        # ...
+
+</code>
+    </div>
+</div>
+@@
+
+
+h3. Objects and specs
+
+@@
+<div class="row">
+    <div class="col-sm-6 col-lg-6">
+        <h4>Old Syntax</h4>
+<code class="block" data-language="galen-specs-v1">
+menu-item-1
+    height: 30px
+    aligned horizontally all: menu-item-2
+</code>
+    </div>
+    <div class="col-sm-6 col-lg-6">
+        <h4>New Syntax</h4>
+<code class="block" data-language="galen-specs">
+menu-item-1:
+    height 30px
+    aligned horizontally all menu-item-2
+</code>
+    </div>
+</div>
+@@
+
+
+h3. Some specs renamed
+
+@@
+<div class="row">
+    <div class="col-sm-6 col-lg-6">
+        <h4>Old Syntax</h4>
+<code class="block" data-language="galen-specs-v1">
+object
+    left of: another-object 10 px
+    right of: other-object 5px
+    color sheme: 10% black
+</code>
+    </div>
+    <div class="col-sm-6 col-lg-6">
+        <h4>New Syntax</h4>
+<code class="block" data-language="galen-specs">
+object:
+    left-of another-object 10 px
+    right-of other-object 5px
+    color-sheme 10% black
+</code>
+    </div>
+</div>
+@@
+
+
+h3. Iterating over objects
+
+@@
+<div class="row">
+    <div class="col-sm-6 col-lg-6">
+        <h4>Old Syntax</h4>
+<code class="block" data-language="galen-specs-v1">
+[ 1 - 5 ]
+menu-item-@
+    width: 100px
+</code>
+    </div>
+    <div class="col-sm-6 col-lg-6">
+        <h4>New Syntax</h4>
+<code class="block" data-language="galen-specs">
+@for [1 - 5] as i
+    menu-item-${i}:
+        width 100px
+</code>
+    </div>
+</div>
+@@
+
+
+h3. Iterating over all objects matching expression
+
+@@
+<div class="row">
+    <div class="col-sm-6 col-lg-6">
+        <h4>Old Syntax</h4>
+<code class="block" data-language="galen-specs-v1">
+[ 1 - ${count("menu-item-*")} ]
+menu-item-@
+    width: 100px
+</code>
+    </div>
+    <div class="col-sm-6 col-lg-6">
+        <h4>New Syntax</h4>
+<code class="block" data-language="galen-specs">
+@forEach [menu-item-*] as menuItem
+    ${menuItem}:
+        width 100px
+</code>
+    </div>
+</div>
+@@
+
+
+h3. Refferencing previous item when iterating
+
+@@
+<div class="row">
+    <div class="col-sm-6 col-lg-6">
+        <h4>Old Syntax</h4>
+<code class="block" data-language="galen-specs-v1">
+[ 2 - ${count("menu-item-*")} ]
+menu-item-@
+    right of: menu-item-@{-1} 10px
+</code>
+    </div>
+    <div class="col-sm-6 col-lg-6">
+        <h4>New Syntax</h4>
+<code class="block" data-language="galen-specs">
+@forEach [menu-item-*] as mi, prev as pi
+    ${mi}:
+        right-of ${pi} 10px
+</code>
+    </div>
+</div>
+@@

@@ -50,7 +50,7 @@ var GalenHighlightV2 = GalenHighlightV2 || {
                 state = OBJECT_DEFINITION;
             }
 
-            if (GalenHighlightV2.startsWith(line, "#")) {
+            if (GalenHighlightV2.startsWith(line.trim(), "#")) {
                 return "<span class='galen-comment'>" + line + "</span>";
             }
             if (GalenHighlightV2.startsWith(line.trim(), "=") &&

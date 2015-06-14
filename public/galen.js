@@ -14,6 +14,10 @@ function highlightCodeBlocks() {
                 var codeBlock = $(this).find("pre code");
                 codeBlock.html(GalenHighlightV2.suites(codeBlock.html()));
             }
+            else if (className == "galen-specs-v1") {
+                var codeBlock = $(this).find("pre code");
+                codeBlock.html(GalenHighlightV1.specs(codeBlock.html()));
+            }
             else {
                 hljs.highlightBlock($(this).find("pre code").get(0));
             }
