@@ -387,6 +387,11 @@ The example above would give us 9 runs for the same test. The resulting report w
 * Home page on Tablet device in ie browser
 * Home page on Desktop device in ie browser
 
+ *IMPORTANT!* Keep in mind to pass Chrome Driver URL during test execution:
+ 
+ $$ bash
+ galen test <TESTFILE> -DwebsiteUrl=<URL> --htmlreport <REPORT_DIR> -Dwebdriver.chrome.driver=<PATH_TO_CHROMEDRIVER>
+ $$
 
 h1. Tables
 

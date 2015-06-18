@@ -37,6 +37,7 @@ Command line arguments:
 * *htmlreport* _- path to folder in which Galen should generate html reports_
 * *testngreport* _- path to xml file in which Galen should write testng report_
 * *jsonreport* _- path to folder in which Galen should generate json reports_
+* *-Dwebdriver.chrome.driver* _- = path to Chrome Webdriver
 
 
 h2. Running test suites
