@@ -25,6 +25,8 @@ categories
 * "inject":#inject
 * "createTestDataProvider":#createTestDataProvider
 * "dumpPage":#dumpPage
+* "logged":#logged
+* "loggedFunction":#loggedFunction
 
 h2. load
 
@@ -254,3 +256,23 @@ Creates a dump for a current open page in a browser
 $$ javascript
 dumpPage(driver, "Home page", "specs/homepage.spec", "dumps/homepage", 200, 200);
 $$
+
+
+h2. logged
+
+*logged(text, callback)*
+
+Wraps the callback into report section for html report
+
+* *text* - a report section text 
+* *callback* - the callback that will be called within report section
+
+
+h2. loggedFunction
+
+*loggedFunction(textExpression, callback)*
+
+Creates a function that will be logged in html report once it is called. The @textExpression@ argument is used for generating the report text message based on the function arguments that were used during the call.
+
+* *textExpression* - an expression that is used to generate log text based on the arguments of the initial function call. To refference the argument in the expression you can use @${...}@ syntax in expression. Each argument can be refferenced with undescore and argument index. E.g. of valid expression @"Log as ${_1} with password ${_2}"@
+* *callback* - a callback function that will be executed once the returned function is called. All the arguments passed to the returned function will be passed to a @callback@

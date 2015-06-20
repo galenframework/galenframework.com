@@ -412,6 +412,26 @@ $$
 
 !files/report2.png!
 
+h3. Advanced reporting
+
+You can create functions that will be automatically logged in the html report with the passed arguments based on the provided log expression. Just use @loggedFunction@ instead of @function@
+
+$$ javascript
+this.LoginPage = $page("Login page", {
+    email: ".email",
+    password: ".password",
+    submitButton: "#submit",
+
+    loginAs: loggedFunction("Login as ${_1.email} with password ${_2.password}", 
+        function (user) {
+        this.email.typeText(user.email);
+        this.password.typeText(user.password);
+        this.submitButton.click();
+    })
+});
+$$
+
+
 h2. Test Session
 
 Each test has a session in which it stores its data. This way it is easier to share data accross all your custom components.
