@@ -80,15 +80,22 @@ var GalenHighlightV2 = GalenHighlightV2 || {
         })
 
     },
+    keywords: [
+        "edge", "width", "height", "image", "below", "component", 
+        "centered", "text", "near", "partly", "horizontally", 
+        "vertically", "all", "is", "starts", "ends", "contains", 
+        "matches", "uppercase", "lowercase", "inside", "on",
+        "css", "aligned", "right", "left", "top", "bottom", "absent", "visible",
+        "right-of", "left-of", "above"
+    ],
     highlightIndividualSpec: function (line) {
-        line = line.replace(/([a-z\-\*]+)\s(.*)/gi, "<span class='galen-spec'>$1</span> $2");
         line = line.replace(/(#[a-z0-9]+|[0-9]+)/gi, "<span class='galen-number'>$1</span>");
-        line = line.replace(/(absent|visible)/gi, "<span class='galen-spec'>$1</span>");
-        line = line.replace(/ (edge|partly|horizontally|vertically|all|is|starts|ends|contains|matches|uppercase|lowercase|inside|on) /gi,
-            " <span class='galen-spec'>$1</span> ");
 
-        line = line.replace(/ (left|top|bottom|right)\s*/gi, " <span class='galen-spec'>$1</span> ");
-        line = line.replace(/ (left)/gi, " <span class='galen-spec'>$1</span> ");
+        for (var i = 0; i < this.keywords.length; i++) {
+            line = line.replace(" " + this.keywords[i] + " ", " <span class='galen-spec'>" + this.keywords[i] + "</span> ");
+        }
+
+        line = line.replace(/(\".*\")/gi, "<span class='galen-note'>$1</span>");
         return line;
     }
 };

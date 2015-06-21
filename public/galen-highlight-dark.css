@@ -12,6 +12,10 @@ pre code span.galen-tag {
     color: #F7BAFF;
 }
 
+pre code span.galen-note {
+    color: #FFAF75;
+}
+
 pre code span.galen-object {
     color: #FCFFA8;
 }

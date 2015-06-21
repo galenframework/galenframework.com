@@ -397,7 +397,7 @@ textfield:
     left-of button 10px
 
 button:
-    right-of: textfield 10px
+    right-of textfield 10px
 $$
 
 h2. Inside
@@ -622,12 +622,12 @@ h2. CSS Properties
 By analogy of "text spec":#Text the @css@ spec allows you to test the value of a CSS property of a specific element. For instance you can check the @font-size@, @font-family@, @background-color@ or any other CSS property you want. Use it in a same way as @text@ property:
 
 $$ galen-specs
-login-button
-    css font-size is: 18px
-    css font-family starts: Helvetica
-    css font-family ends: sans-serif
-    css font-family contains: Arial
-    css font-family matches: .*Arial.*
+login-button:
+    css font-size is "18px"
+    css font-family starts "Helvetica"
+    css font-family ends "sans-serif"
+    css font-family contains "Arial"
+    css font-family matches ".*Arial.*"
 $$
 
 At the moment text operations lowercase and uppercase are not available in @css@ spec.
