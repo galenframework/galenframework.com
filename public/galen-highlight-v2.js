@@ -86,7 +86,7 @@ var GalenHighlightV2 = GalenHighlightV2 || {
         "vertically", "all", "is", "starts", "ends", "contains", 
         "matches", "uppercase", "lowercase", "inside", "on",
         "css", "aligned", "right", "left", "top", "bottom", "absent", "visible",
-        "right-of", "left-of", "above"
+        "right-of", "left-of", "above", "color-scheme"
     ],
     highlightIndividualSpec: function (line) {
         line = line.replace(/(#[a-z0-9]+|[0-9]+)/gi, "<span class='galen-number'>$1</span>");

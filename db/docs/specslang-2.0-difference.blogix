@@ -109,7 +109,7 @@ h3. Some specs renamed
 object
     left of: another-object 10 px
     right of: other-object 5px
-    color sheme: 10% black
+    color scheme: 10% black
 </code>
     </div>
     <div class="col-sm-6 col-lg-6">
@@ -118,7 +118,7 @@ object
 object:
     left-of another-object 10 px
     right-of other-object 5px
-    color-sheme 10% black
+    color-scheme 10% black
 </code>
     </div>
 </div>
@@ -195,3 +195,79 @@ menu-item-@
     </div>
 </div>
 @@
+
+
+h3. Conditions
+
+@@
+<div class="row">
+    <div class="col-sm-6 col-lg-6">
+        <h4>Old Syntax</h4>
+<code class="block" data-language="galen-specs-v1">
+@@ if
+banner-1
+    visible
+@@ do
+banner-1
+    inside: container 0px top left
+@@ otherwise
+banner-2
+    inside: container 0px top left
+@@ end
+</code>
+    </div>
+    <div class="col-sm-6 col-lg-6">
+        <h4>New Syntax</h4>
+<code class="block" data-language="galen-specs">
+@if ${isVisible("banner-1")}
+    banner-1:
+        inside container 0px top left 
+@else
+    banner-2:
+        inside container 0px top left 
+
+
+
+
+</code>
+    </div>
+</div>
+@@
+
+
+h3. Conditions. Another example
+
+@@
+<div class="row">
+    <div class="col-sm-6 col-lg-6">
+        <h4>Old Syntax</h4>
+<code class="block" data-language="galen-specs-v1">
+@@ if
+banner-1
+    width: 400px
+@@ do
+banner-1
+    centered horizontally inside: main
+@@ otherwise
+banner-1
+    inside: main 0px left right
+@@ end
+</code>
+    </div>
+    <div class="col-sm-6 col-lg-6">
+        <h4>New Syntax</h4>
+<code class="block" data-language="galen-specs">
+banner-1:
+    @if ${find("banner-1").width() == 400}
+        centered horizontally inside main
+    @else
+        inside main 0px left right 
+
+
+
+
+</code>
+    </div>
+</div>
+@@
+
