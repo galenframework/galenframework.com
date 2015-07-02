@@ -98,6 +98,29 @@ menu-item-1:
 </div>
 @@
 
+h3. Text validations
+
+@@
+<div class="row">
+    <div class="col-sm-6 col-lg-6">
+        <h4>Old Syntax</h4>
+<code class="block" data-language="galen-specs-v1">
+menu-item-1
+    css font-family is: Arial
+    text is: Home
+</code>
+    </div>
+    <div class="col-sm-6 col-lg-6">
+        <h4>New Syntax</h4>
+<code class="block" data-language="galen-specs">
+menu-item-1:
+    css font-family is "Arial"
+    text is "Home"
+</code>
+    </div>
+</div>
+@@
+
 
 h3. Some specs renamed
 
