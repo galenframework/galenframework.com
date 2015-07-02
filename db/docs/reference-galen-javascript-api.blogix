@@ -133,6 +133,18 @@ You can also use @checkLayout@ with a single argument like this
 ** *excludedTags* - String[] type _(optional)_ - An array of tags that should be excluded when checking layout
 ** *screenshot* - String type _(optional)_ - A path to a screenshot. In case this property is provided Galen will not make a screenshot and will use the provided screenshot instead in reports and for image analysis
 ** *properties* - "Properties":http://docs.oracle.com/javase/6/docs/api/java/util/Properties.html type _(optional)_. Used for providing custom properties when parsing a spec file.
+** *vars* - Map type _(optional)_ - A set of key value pairs which will be used in spec as variables.
+
+$$ javascript
+checkLayout({
+    driver: driver,
+    spec: "specs/homepage.spec",
+    tags: ["mobile", "iphone"],
+    vars: {
+        customVariable: "custom value"
+    }
+});
+$$
 
 h2. loadProperties
 
@@ -276,3 +288,22 @@ Creates a function that will be logged in html report once it is called. The @te
 
 * *textExpression* - an expression that is used to generate log text based on the arguments of the initial function call. To refference the argument in the expression you can use @${...}@ syntax in expression. Each argument can be refferenced with undescore and argument index. E.g. of valid expression @"Log as ${_1} with password ${_2}"@
 * *callback* - a callback function that will be executed once the returned function is called. All the arguments passed to the returned function will be passed to a @callback@
+
+
+$$ javascript
+this.LoginPage = $page("Login", {
+    emailTextfield: ".email",
+    passwordTextfield: ".password",
+    submitButton: "#submit",
+
+    loginAs: loggedFunction("Log-in as ${_1} with password ${_2}", function (email, password) {
+        this.emailTextfield.typeText(email);
+        this.passwordTextfield.typeText(password);
+        this.submitButton.click();
+    });
+});
+
+var loginPage = new LoginPage(driver);
+loginPage.loginAs("testuser@example.com", "qwerty");
+$$
+
