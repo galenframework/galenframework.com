@@ -19,23 +19,21 @@ h1. Quick introduction
 Here is the simple code snippet for building a page object for a Login page
 
 $$ javascript
-this.LoginPage = function (driver) {
-  GalenPages.extendPage(this, driver, {
-    email: "input.email", // css locator
-    password: "xpath: //input[@class='password']", // xpath locator
-    submitButton: "id: submit", // id locator
+this.LoginPage = $page("Login page", {
+  email: "input.email", // css locator
+  password: "xpath: //input[@class='password']", // xpath locator
+  submitButton: "id: submit", // id locator
 
-    load: function () {
-      this.open("http://example.com/login");
-      return this.waitForIt();
-    },
-    loginAs: function (userName, password) {
-      this.email.typeText(userName);
-      this.password.typeText(password);
-      this.submitButton.click();
-    }
-  });
-};
+  load: function () {
+    this.open("http://example.com/login");
+    return this.waitForIt();
+  },
+  loginAs: function (userName, password) {
+    this.email.typeText(userName);
+    this.password.typeText(password);
+    this.submitButton.click();
+  }
+});
 // now you can use it like this
 var loginPage = new LoginPage(driver).load();
 loginPage.loginAs("testuser@example.com", "password");
@@ -62,6 +60,59 @@ $$ javascript
 // to disable caching of WebElement objects in your tests
 GalenPages.settings.cacheWebElements = false;
 $$
+
+h2. $page
+
+*$page(pageName, primaryFields, [ secondaryFields ])*
+
+Returns a function which can be used in order to instantiate the page with all of its primary and secondary fields
+
+$$ javascript
+this.LoginPage = $page("Login page", {
+  email: "input.email", // css locator
+  password: "xpath: //input[@class='password']", // xpath locator
+  submitButton: "id: submit", // id locator
+
+  load: function () {
+    this.open("http://example.com/login");
+    return this.waitForIt();
+  },
+  loginAs: function (userName, password) {
+    this.email.typeText(userName);
+    this.password.typeText(password);
+    this.submitButton.click();
+  }
+});
+// now you can use it like this
+var loginPage = new LoginPage(driver).load();
+loginPage.loginAs("testuser@example.com", "password");
+$$
+
+
+h2. $list
+
+Creates a list of components on a given page. Returns @GalenPages.PageElementList@ object.
+
+*$list(elementConstructor, locator)*
+
+$$ javascript
+this.NoteComponent = $page("Note", {
+  title: ".note-title",
+  description: ".note-text"
+});
+
+this.MyNotesPage = $page("My notes page", {
+  myNotes: $list(NoteComponent, "div.notes")
+});
+
+
+var myNotesPage = new MyNotesPage(driver);
+
+for (var i = 0; i < myNotesPage.size(); i++) {
+  System.out.println(myNotesPage.get(i).title.getText());
+}
+$$
+
 
 h2. GalenPages.extendPage
 
@@ -119,15 +170,15 @@ Contains the following fields and functions:
 $$ javascript
 myPage.open("http://example.com");
 $$
-* *findChild* - function. Takes a string locator as an argument and searches for a first matching element on page. Returns a WebElement or null if no elements were found on the page
+* *findChild( locator )* - function. Takes a string locator as an argument and searches for a first matching element on page. Returns a WebElement or null if no elements were found on the page
 $$ javascript
 var element = myPage.findChild("a.button");
 $$
-* *findChildren* - function. Takes a string locator as an argument and searches for all matching elements on page. Returns an array of WebElements
+* *findChildren( locator )* - function. Takes a string locator as an argument and searches for all matching elements on page. Returns an array of WebElements
 $$ javascript
 var elements = myPage.findChildren("a.button");
 $$
-* *waitForIt* - function. Waits untill all primary fields appear on page. This function should be used in case the page is dynamically built in a browser. Returns a page object
+* *waitForIt()* - function. Waits untill all primary fields appear on page. This function should be used in case the page is dynamically built in a browser. Returns a page object
 $$ javascript
 myPage.waitForIt();
 $$
@@ -141,51 +192,51 @@ Contains the following fields and functions:
 
 * *name* - a name of page element
 * *locator* - a locator that is used to fetch WebElement on the page
-* *isEnabled* - function. Returns true if page element is enabled and false if it is disabled
+* *isEnabled()* - function. Returns true if page element is enabled and false if it is disabled
 $$ javascript
 if (loginPage.emailTextfield.isEnabled()) {
   // do something
 }
 $$
-* *attribute* - function. Takes a string argument that represents a name of html attribute. Returns value of specified html attribute
+* *attribute( attrName )* - function. Takes a string argument that represents a name of html attribute. Returns value of specified html attribute
 $$ javascript
 var href = myPage.submitLink.attribute("href");
 $$
-* *cssValue* - fucntion. Takes a string argument that represents a name of css property. Returns a value of specified css property
+* *cssValue( cssPropertyName )* - fucntion. Takes a string argument that represents a name of css property. Returns a value of specified css property
 $$ javascript
 var fontWeight = myPage.submitLink.cssValue("font-weight");
 $$
-* *click* - function. Clicks on the page element
+* *click()* - function. Clicks on the page element
 $$ javascript
 loginPage.submitButton.click();
 $$
-* *typeText* - function. Takes a string argument. Types the specified text to the page element
+* *typeText( text )* - function. Takes a string argument. Types the specified text to the page element
 $$ javascript
 loginPage.emailTextfield.typeText("testuser@example.com");
 $$
-* *clear* - function. Removes the text from textfield page element
+* *clear()* - function. Removes the text from textfield page element
 $$ javascript
 loginPage.emailTextfield.clear();
 $$
-* *getText* - function. Returns the text inside page element
+* *getText()* - function. Returns the text inside page element
 $$ javascript
 var text = loginPage.captionLabel.getText();
 $$
-* *hover* - function. Simulates the mouse over event and makes an element hovered
+* *hover()* - function. Simulates the mouse over event and makes an element hovered
 $$ javascript
 loginPage.submitButton.hover();
 $$
-* *getWebElement* - function. Returns WebElement object for current page element
-* *isDisplayed* - function. Returns true if page element is visible on page and false if it is hidden
-* *selectByValue* - function. Takes string argument representing a value of html @option@. This function should only be used in case the page element is a html @select@ tag. 
+* *getWebElement()* - function. Returns WebElement object for current page element
+* *isDisplayed()* - function. Returns true if page element is visible on page and false if it is hidden
+* *selectByValue( value )* - function. Takes string argument representing a value of html @option@. This function should only be used in case the page element is a html @select@ tag. 
 $$ javascript
 myPage.menuList.selectByValue("categories");
 $$
-* *selectByText* - function. Takes string argument representing a text of html @option@. This function should only be used in case the page element is a html @select@ tag. 
+* *selectByText( text )* - function. Takes string argument representing a text of html @option@. This function should only be used in case the page element is a html @select@ tag. 
 $$ javascript
 myPage.menuList.selectByText("Categories");
 $$
-* *waitFor* - function. Takes 3 arguments: callback, messageSuffix, time. Used in order to wait for some specific condition that is controlled by the callback. 
+* *waitFor(callback, messageSuffix, time)* - Used in order to wait for some specific condition that is controlled by the callback. 
 $$ javascript
 loginPage.loginButton.waitFor(function (button) {
   return button.isDisplayed();
@@ -198,7 +249,7 @@ loginPage.loginButton.waitFor(function (button) {
   return button.isDisplayed();
 });
 $$
-* *waitToBeShown* - function. Takes one string argument representing a timeout (default is "10s"). Waits with specified timeout until element appears on page and becomes visible.
+* *waitToBeShown()* - function. Takes one string argument representing a timeout (default is "10s"). Waits with specified timeout until element appears on page and becomes visible.
 $$ javascript
 loginPage.loginButton.waitToBeShown("10s");
 
@@ -206,7 +257,7 @@ loginPage.loginButton.waitToBeShown("10s");
 loginPage.loginButton.waitToBeShown();
 $$
 
-* *waitToBeHidden* - function. Takes one string argument representing a timeout (default is "10s"). Waits with specified timeout until element disappears from the page or becomes invisible.
+* *waitToBeHidden()* - function. Takes one string argument representing a timeout (default is "10s"). Waits with specified timeout until element disappears from the page or becomes invisible.
 $$ javascript
 loginPage.loginButton.waitToBeHidden("10s");
 
@@ -214,7 +265,7 @@ loginPage.loginButton.waitToBeHidden("10s");
 loginPage.loginButton.waitToBeHidden();
 $$
 
-* *waitUntilExists* - function. Takes one string argument representing a timeout (default is "10s"). Waits with specified timeout until element appears on page.
+* *waitUntilExists()* - function. Takes one string argument representing a timeout (default is "10s"). Waits with specified timeout until element appears on page.
 $$ javascript
 loginPage.loginButton.waitUntilExists("10s");
 
@@ -222,7 +273,7 @@ loginPage.loginButton.waitUntilExists("10s");
 loginPage.loginButton.waitUntilExists();
 $$
 
-* *waitUntilGone* - function. Takes one string argument representing a timeout (default is "10s"). Waits with specified timeout until element disappears from page.
+* *waitUntilGone()* - function. Takes one string argument representing a timeout (default is "10s"). Waits with specified timeout until element disappears from page.
 $$ javascript
 loginPage.loginButton.waitUntilGone("10s");
 
@@ -230,13 +281,20 @@ loginPage.loginButton.waitUntilGone("10s");
 loginPage.loginButton.waitUntilGone();
 $$
 
-* *exists* - function. Return true if page element is present in DOM and false if it is missing
+* *exists()* - function. Return true if page element is present in DOM and false if it is missing
 $$ javascript
 if (loginPage.loginButton.exists()) {
   // do something
 }
 $$
 
+h2. GalenPages.PageElementList
+
+This object type is used when the list object is declared on page via @$list@ function. 
+Contains the following functions:
+
+* *get( index )* - a function that returns an element in a list at with specified index
+* *size()* - a function that returns total amount of elements in the list on page
 
 h2. GalenPages.wait
 
@@ -250,7 +308,7 @@ A very usefull function that allows to wait for multiple condition with specifie
 
 Returns a @GalenPages.Wait@ object that has the following function:
 
-* *untilAll* - function. Takes an argument of key/value pairs where key is a name of condition and value is a boolean function that returns state of condition
+* *untilAll()* - function. Takes an argument of key/value pairs where key is a name of condition and value is a boolean function that returns state of condition
 
 $$ javascript
 GalenPages.wait( {time: "10s", period: "1s"}).untilAll({
