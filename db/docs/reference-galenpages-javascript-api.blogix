@@ -91,7 +91,7 @@ $$
 
 h2. $list
 
-Creates a list of components on a given page. Returns @GalenPages.PageElementList@ object.
+Creates a list of components on a given page. Returns @"GalenPages.PageElementList":#GalenPagesPageElementList@ object.
 
 *$list(elementConstructor, locator)*
 
@@ -110,6 +110,28 @@ var myNotesPage = new MyNotesPage(driver);
 
 for (var i = 0; i < myNotesPage.size(); i++) {
   System.out.println(myNotesPage.get(i).title.getText());
+}
+$$
+
+
+h2. $component
+
+Creates a subpage component on a given page and copies all functions from @"GalenPages.PageElement":#GalenPagesPageElement@ to the component.
+
+$$ javascript
+this.Popup = $page("Popup", {
+  title: ".title",
+  closeButton: "a.close"
+});
+
+this.MyPage = $page("My page", {
+  alertPopup: $popup(Popup, "div.alert-popup")
+});
+
+var myPage = new MyPage(driver);
+if (myPage.alertPopup.isDisplayed()) {
+  myPage.closeButton.click();
+  myPage.closeButton.waitToBeHidden();
 }
 $$
 
