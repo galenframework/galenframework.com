@@ -892,6 +892,16 @@ $$
 
 The area parameter takes 4 values: left, top, width and height
 
+
+h3. Offset Analyzer
+
+Sometimes you might have an offset of few pixels on the actual image. That will end up in enormous amount of mismatching pixels. If you want to avoid such situation you can use @analyze-offset@ setting. It takes one integer argument that specifies the maximum size of an offset. Galen will search best fitting offset and will compare images with it.
+
+$$ galen-specs
+menu-item-1:
+    image file imgs/menu-item-1.png, analyze-offset 2
+$$
+
 h3. Image filters
 
 Sometimes you might want to apply some filters to compared images to have a smarter image comparison. For instance you can apply blur to images. This might be handy if compared image contains generated noise. Or you can also apply *denoise* filter to the comparison map. That way you get rid of alone mismatching pixels.
