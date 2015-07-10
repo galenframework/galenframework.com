@@ -48,6 +48,7 @@ If you do want to switch but already have a lot of specs in the old format you c
 ** "Warning level for specs":#Warninglevelforspecs
 ** "Custom rules":#CustomRules
 ** "Notes for specs":#Notesforspecs
+* "Galen Specs JS Api":#GalenSpecsJSApi
 
 
 Galen Specs Language is quite flexible and gives you the oportunity to express exactly how you want your website to behave on different devices. There are two main parts in page specs file: *object definitions* and *object specs*
@@ -1293,3 +1294,33 @@ In the resulting report you would get something like this. As you can see on the
 
 !files/spec-notes.png!
 
+
+h1. Galen Specs JS Api
+
+In the galen specs you can use JavaScript blocks using @${ ... }@ syntax. In these js blocks you can call the functions from Galen API:
+
+* *count( objectPattern )* - counts the amount of objects matching the given @objectPattern@. 
+$$ galen-specs
+@for [ 1 - ${count("menu-item-*")} ] as objectName
+    ...
+    ...
+$$
+
+* *find( objectName )* - finds and returns an element with given name. The returned element has the following properties and functions:
+** *.left()* - return the left edge position from the left edge of the screen
+** *.right()* - return the right edge position from the left edge of the screen
+** *.top()* - return the top edge position from the top edge of the screen
+** *.bottom()* - return the bottom edge position from the top edge of the screen
+** *.width()* - returns the width of the element
+** *.height()* - returns the height of the element
+** *.isVisible()* - returns true if the element is visible on page, false - if hidden or absent
+** *.isPresent()* - returns true if the element is present in the DOM of the page, false - if absent
+** *.name* - a name of the element
+
+$$ galen-specs
+@set menuMargin  ${find("menu-item-2").left() - find("menu-item-1").right()}
+$$
+
+* *isVisible( objectName )* - returns true if the element with given name visible on page, false - if hidden or absent
+* *isPresent( objectName )* - returns true if the element with given name present on page, false - if absent
+* *findAll( objectPattern )* - returns an array of elements which names match the given pattern.
