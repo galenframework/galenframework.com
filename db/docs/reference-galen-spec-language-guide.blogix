@@ -1100,7 +1100,7 @@ $$
 Now you can use it in your specs. Use @script@ in order to load the javascript:
 
 $$ galen-specs
-@scripti18n.function.js
+@script i18n.function.js
 
 greeting-text:
     text is "${i18n('header.greeting.text')}"

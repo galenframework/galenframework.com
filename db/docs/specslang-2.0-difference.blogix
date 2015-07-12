@@ -77,6 +77,8 @@ h3. Sections and tags definition
 
 h3. Objects and specs
 
+Notice that the colon symbol appeared in the object declaration at the end. And also colon was moved from specs declaration
+
 @@
 <div class="row">
     <div class="col-sm-6 col-lg-6">
@@ -99,6 +101,8 @@ menu-item-1:
 @@
 
 h3. Text validations
+
+Now instead of colon you have to define the text using double-quotes.
 
 @@
 <div class="row">
@@ -196,7 +200,7 @@ menu-item-@
 @@
 
 
-h3. Refferencing previous item when iterating
+h3. Referencing previous item when iterating
 
 @@
 <div class="row">
