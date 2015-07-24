@@ -1,0 +1,168 @@
+--------------------------------
+title
+   Released version 2.0. New Galen Specs language implementation
+--------------------------------
+date
+   2015-07-25 09:17
+--------------------------------
+allowComments
+   true
+--------------------------------
+categories
+   
+================================
+
+We are glad to announce that the version 2.0 with new improved "Galen Specs language":/docs/reference-galen-spec-language-guide/ was released. Please note that this is a major release and it is not backwards-compatible. If you already have tests implemented with previous version of Galen Framework you can use this "quick reference":/docs/specslang-2.0-difference/ where you can find hints on how to update your specs.
+
+The major changes in this release are the following:
+
+* "Galen Specs v2":/post/2015-07-25-released-version-2.0.-new-galen-specs-language-implementation/#GalenSpecsv2
+* "Offset analyzer in image spec":/post/2015-07-25-released-version-2.0.-new-galen-specs-language-implementation/#Offsetanalyzerinimagespec
+* "Elements list in GalenPages":/post/2015-07-25-released-version-2.0.-new-galen-specs-language-implementation#ElementslistinGalenPages
+* "Passing JavaScript variables to specs":/post/2015-07-25-released-version-2.0.-new-galen-specs-language-implementation/#PassingJavaScriptvariablestospecs
+
+>>>>
+
+h2. Galen Specs v2
+
+The major difference compared with previous language implementation is that from now on everything is based on indentation. Here is the simple spec file:
+
+$$ galen-specs
+@objects
+    header      #header
+
+= Main section =
+    header:
+        inside screen 0px top
+$$
+
+Also as you might notice the objects are declared with @:@ symbol at the end and the specs are declared without @:@ symbol.
+
+h3. Galen Specs v2. Multi-level objects
+
+From now on you can nest objects under each other. Galen will automatically resolve references to sub-objects via complete object name
+
+$$ galen-specs
+@objects
+    header      #header
+        logo    img.logo
+        caption h1
+
+= Main Section =
+    header.logo:
+        inside header 3 to 10 px top left
+
+    header.caption:
+        text is "Greetings!"
+$$
+
+
+h3. Galen Specs v2. for and forEach loops 
+
+In the new language implementation you can now use @for@ and @forEach@ loops. The @for@ loop allows you to iterate over a numeric range. For example:
+
+$$ galen-specs
+= Main Section =
+    @for [ 1 - 10 ] as index
+        menu-item-${index}:
+            height 35px
+$$
+
+You can also use @forEach@ loop like this:
+
+$$ galen-specs
+= Main Section =
+    @forEach [menu-item-*] as menuItem
+        ${menuItem}:
+            height 35px
+$$
+
+h3. Galen Specs v2. Conditions
+
+The conditional specs were removed from Galen Specs v2 but instead there were added js-based @if@ statements
+
+$$ galen-specs
+= Banners =
+    @if ${isVisible("baner-container")}
+        baner-container:
+            image file imgs/baner.png
+$$
+
+ 
+h2. Offset analyzer in image spec
+
+Sometimes you might have an offset of few pixels on the actual image. That will end up in enormous amount of mismatching pixels. If you want to avoid such situation you can use @analyze-offset@ setting. It takes one integer argument that specifies the maximum size of an offset. Galen will search best fitting offset within that range and will compare images with it.
+
+$$ galen-specs
+menu-item-1:
+    image file imgs/menu-item-1.png, analyze-offset 2
+$$
+
+
+h2. Elements list in GalenPages
+
+In the new version GalenPages has @$list@ function which allows to describe a list of components on the page. Also you might notice that there was @$page@ function added. It automatically creates a function that will take care of all the page elements instantiation. Lets see how those two features would work together.
+
+$$ javascript
+this.NoteComponent = $page("Note", {
+  title: ".note-title",
+  description: ".note-text"
+});
+
+this.MyNotesPage = $page("My notes page", {
+  myNotes: $list(NoteComponent, "div.notes")
+});
+
+
+var myNotesPage = new MyNotesPage(driver);
+
+for (var i = 0; i < myNotesPage.size(); i++) {
+  System.out.println(myNotesPage.get(i).title.getText());
+}
+$$
+
+
+h2. Passing JavaScript variables to specs
+
+Quite often you need to pass some data from your tests to the spec file. Since version 2.0 it is possible to pass a variable that will be accessable from JavaScript statements. Lets say you want to pass a @username@ variable to your spec with @John@ value. Here are examples in different test formats.
+
+*Standard tests suites*:
+
+$$ galen-suites
+Home page test
+    http://example.com 1024x768
+        check homepage.gspec --include desktop --Vusername John
+$$
+
+*In JavaScript tests*:
+
+$$ javascript
+test("Home page test", function () {
+    var driver = createDriver("http://example.com", "1024x768");
+    checkLayout({
+        driver: driver,
+        spec: "homepage.gspec",
+        tags: ["mobile"],
+        vars: {
+            username: "John"
+        }
+    });
+    driver.quit();
+});
+$$
+
+*In Java tests*:
+
+$$ java
+// ....
+public void homePageTest() {
+    Map<String, Object> variables = new HashMap<String, Object>();
+    variables.put("username", "John");
+    Galen.checkLayout(driver, "homepage.gspec", 
+        asList("mobile"), null, 
+        new Properties(), variables);
+}
+// ....
+$$
+
+

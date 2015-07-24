@@ -120,7 +120,7 @@ $$ javascript
 test("Home page", function() {
   var driver = createDriver("http://galenframework.com",
                             "1024x768");
-  checkLayout(driver, "homePage.spec", ["all", "desktop"]);
+  checkLayout(driver, "homePage.gspec", ["all", "desktop"]);
 });
 $$
 
@@ -138,7 +138,7 @@ You can also use @checkLayout@ with a single argument like this
 $$ javascript
 checkLayout({
     driver: driver,
-    spec: "specs/homepage.spec",
+    spec: "specs/homepage.gspec",
     tags: ["mobile", "iphone"],
     vars: {
         customVariable: "custom value"
@@ -267,7 +267,7 @@ Creates a dump for a current open page in a browser
 * *onlyImages* - a boolean argument. If set to true then only images will be saved to specified @exportPath@ without any report files.
 
 $$ javascript
-dumpPage(driver, "Home page", "specs/homepage.spec", "dumps/homepage", 200, 200, false);
+dumpPage(driver, "Home page", "specs/homepage.gspec", "dumps/homepage", 200, 200, false);
 $$
 
 

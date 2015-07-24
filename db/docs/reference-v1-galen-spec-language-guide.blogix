@@ -819,7 +819,7 @@ Used for advanced testing in case there are multiple similar complex snippets on
     image: spec-component.png
 }
 
-For the example above we would need a separate spec file where we can define the specs for a component. Later this file will be used in another page spec. So lets create a component spec named @user-profile.spec@
+For the example above we would need a separate spec file where we can define the specs for a component. Later this file will be used in another page spec. So lets create a component spec named @user-profile.gspec@
 
 $$ galen-specs-v1
 ==================================
@@ -856,7 +856,7 @@ user-profile-*  css   .user-profile
  --------------------------------------
 
 user-profile-*
-    component: user-profile.spec
+    component: user-profile.gspec
 $$
 
 In this case Galen will first fetch all objects *user-profile-1*, *user-profile-2*, *user-profile-3* and then will load a subtest for objects within each user profile scope. This means that you can reuse components within the same page for different object or in general for different pages.
@@ -874,7 +874,7 @@ banner-frame     css  iframe#banner
 ========================
 
 banner-frame
-    component frame: banner.spec
+    component frame: banner.gspec
 $$
 
 
@@ -1042,11 +1042,11 @@ When it comes to testing with Galen you might need to express some more complex 
 
 h2. Importing
 
-Quite often your website has something similar one each page. Normally it is headers, footers and sometimes the side panel. In case you want to test these for each page you can just import the needed specs. Lets say you have defined specs for header and footer in the following files: @header.spec@, @footer.spec@. And now you are working on a @homepage.spec@ where you would like to import the first two specs. You can do it in the following way
+Quite often your website has something similar one each page. Normally it is headers, footers and sometimes the side panel. In case you want to test these for each page you can just import the needed specs. Lets say you have defined specs for header and footer in the following files: @header.gspec@, @footer.gspec@. And now you are working on a @homepage.gspec@ where you would like to import the first two specs. You can do it in the following way
 
 $$ galen-specs-v1
-@@ import header.spec
-@@ import footer.spec
+@@ import header.gspec
+@@ import footer.gspec
 
 # and now goes the spec for your home page
 ===========
@@ -1055,7 +1055,7 @@ $$ galen-specs-v1
 ...
 $$
 
-In the example above Galen will import all objects and spec from @header.spec@ and @footer.spec@ files and merge them with the @homepage.spec@. This means that you can then reuse objects from header and footer in your home page spec.
+In the example above Galen will import all objects and spec from @header.gspec@ and @footer.gspec@ files and merge them with the @homepage.gspec@. This means that you can then reuse objects from header and footer in your home page spec.
 
 
 h2. Multiple objects with same specs

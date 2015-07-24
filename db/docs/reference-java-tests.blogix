@@ -12,7 +12,7 @@ categories
    
 ================================
 
-Since version 1.2 Galen introduced an improved Java API allowing you to perform layout testing in you Java Selenium Tests.
+Since version 2.0 Galen introduced an improved Java API allowing you to perform layout testing in you Java Selenium Tests.
 
 h2. Maven dependency
 
@@ -25,7 +25,7 @@ $$ xml
     <dependency>
         <groupId>net.mindengine</groupId>
         <artifactId>galen</artifactId>
-        <version>1.2</version>
+        <version>2.0.0</version>
     </dependency>
     
     ...
@@ -37,28 +37,19 @@ $$
 h2. Simplest usage
 
 $$ java
-import net.mindengine.galen.api.Galen;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.Dimension;
-import org.testng.annotations.Test;
+public class WelcomePageTest extends GalenTestNgTestBase {
 
-public class MyTest {
+    @Override
+    public WebDriver createDriver(Object[] args) {
+        return new FirefoxDriver();
+    }
 
     @Test
-    public void loginPageShouldLookGood_onMobileDevice() {
-        WebDriver driver = new FirefoxDriver();
-        driver.get("http://testapp.galenframework.com");
-        driver.manage().setSize(new Dimension(400, 500));
-
-        LayoutReport layoutReport = 
-            Galen.checkLayout(driver, "specs/loginPage.spec", 
-            Arrays.asList("mobile"), null, null, null);
-
-        if (layoutReport.errors() > 0) {
-            throw new RuntimeException("Page layout has errors");
-        }
+    public void welcomePage_shouldLookGood_onDesktopDevice() {
+        load("http://example.com", 1024, 768);
+        checkLayout("/specs/welcomePage.spec", asList("mobile"));
     }
+
 }
 $$
 
@@ -69,36 +60,52 @@ It is also possible to save your layout tests into a separate html report in a s
 
 
 $$ java
-import net.mindengine.galen.reports.GalenTestInfo;
-import net.mindengine.galen.reports.TestReport;
-import net.mindengine.galen.reports.model.LayoutReport;
-import net.mindengine.galen.reports.HtmlReportBuilder;
+// ....
 
-public class MyTest {
-    @Test
-    public void loginPageShouldLookGood_onMobileDevice() {
-        // ....
+// Executing layout check and obtaining the layout report
+LayoutReport layoutReport = 
+    Galen.checkLayout(driver, "specs/loginPage.gspec", 
+    Arrays.asList("mobile"), null, null, null);
 
-        // Executing layout check and obtaining the layout report
-        LayoutReport layoutReport = 
-            Galen.checkLayout(driver, "specs/loginPage.spec", 
-            Arrays.asList("mobile"), null, null, null);
+// Creating a list of tests
+List<GalenTestInfo> tests = new LinkedList<GalenTestInfo>();
 
-        // Creating a list of tests
-        List<GalenTestInfo> tests = new LinkedList<GalenTestInfo>();
+// Creating an object that will contain the information about the test
+GalenTestInfo test = GalenTestInfo.fromString("Login page on mobile device test");
 
-        // Creating an object that will contain the information about the test
-        GalenTestInfo test = GalenTestInfo.fromString("Login page on mobile device test");
-
-        // Adding layout report to the test report
-        test.getReport().layout(layoutReport, "check layout on mobile device");
-        tests.add(test);
+// Adding layout report to the test report
+test.getReport().layout(layoutReport, "check layout on mobile device");
+tests.add(test);
 
 
-        // Exporting all test reports to html
-        new HtmlReportBuilder().build(tests, "target/galen-html-reports");
-    }
-}
+// Exporting all test reports to html
+new HtmlReportBuilder().build(tests, "target/galen-html-reports");
 $$
 
+
+h2. Automatic reports generation for Maven project
+
+Galen Framework comes out of the box with reports storage and html reports generator. If you inherit all your test class from @com.galenframework.testng.GalenTestNgTestBase@ then all your test reports will be automatically stored in @com.galenframework.support.GalenReportsContainer@ class. In the end of the test suite you can obtain all the test reports and save them in html format. Actually there is already a TestNg listener for that: @com.galenframework.testng.GalenTestNgReportsListener@. Just add this listener in your pom file like in the example below:
+
+$$ xml
+<!-  ...   -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.17</version>
+        <configuration>
+          <properties>
+            <property>
+                <name>usedefaultlisteners</name>
+                <value>false</value>
+            </property>
+            <property>
+              <name>listener</name>
+              <value>com.galenframework.testng.GalenTestNgReportsListener</value>
+            </property>
+          </properties>
+        </configuration>
+      </plugin>
+<!-  ...   -->
+$$
 

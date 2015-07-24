@@ -283,19 +283,19 @@ forAll(devices, function () {
             <div class="col-sm-12 col-lg-12">
                 <h3 class="text-center">Java API</h3>
 <code class="block" data-language="java">
-public class WelcomePageTest extends GalenTestBase {
+public class WelcomePageTest extends GalenTestNgTestBase {
 
-    @Test(dataProvider = "devices")
-    public void welcomePage_shouldLookGood_onDevice(TestDevice device) {
-        load("/");
-        checkLayout(driver, "/specs/welcomePage.spec", device.getTags());
+    @Override
+    public WebDriver createDriver(Object[] args) {
+        return new FirefoxDriver();
     }
 
-    @Test(dataProvider = "devices")
-    public void loginPage_shouldLookGood_onDevice(TestDevice device) {
-        load("/");
-        checkLayout(driver, "/specs/loginPage.spec", device.getTags());
+    @Test
+    public void welcomePage_shouldLookGood_onDesktopDevice() {
+        load("http://example.com", 1024, 768);
+        checkLayout("/specs/welcomePage.spec", asList("mobile"));
     }
+
 }
 </code>
                 <p class="text-center"><a href="https://github.com/galenframework/galen-sample-java-tests"  target="__blank" class="btn btn-primary home-button-on-dark home-button" role="button">See example</a></p>

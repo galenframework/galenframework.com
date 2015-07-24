@@ -115,7 +115,7 @@ $$ javascript
 test("Home page", function() {
   var driver = createDriver("http://galenframework.com",
                             "1024x768");
-  checkLayout(driver, "homePage.spec", ["all", "desktop"]);
+  checkLayout(driver, "homePage.gspec", ["all", "desktop"]);
 });
 $$
 

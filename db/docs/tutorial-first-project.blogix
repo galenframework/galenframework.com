@@ -18,7 +18,7 @@ You can start working with Galen with minimal project structure. Actually you do
 
 h2. Writting specs
 
-Lets write some Galen specs for the home page. First create an empty folder with your test project name and in it create a file named @home-page.spec@
+Lets write some Galen specs for the home page. First create an empty folder with your test project name and in it create a file named @home-page.gspec@
 We will start with the simplest example. Lets say we want to test that header height is exactly 40 pixels on home page.
 
 
@@ -50,7 +50,7 @@ bq. *IMPORTANT!* Galen relies on Selenium so it supports same browsers as Seleni
 In your terminal go to your project folder and type the following command:
 
 $$ bash
-galen check home-page.spec \
+galen check home-page.gspec \
      --url http://samples.galenframework.com/tutorial1/tutorial1.html  \
      --size 640x480  \
      --htmlreport .
