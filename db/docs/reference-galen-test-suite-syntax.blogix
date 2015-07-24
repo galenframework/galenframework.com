@@ -185,8 +185,8 @@ In case you would like to take full control over instantiation of WebDriver you 
 $$ javascript
 importClass(org.openqa.selenium.firefox.FirefoxDriver);
 importClass(org.openqa.selenium.firefox.FirefoxProfile);
-importClass(net.mindengine.galen.utils.GalenUtils);
-importClass(net.mindengine.galen.browser.SeleniumBrowser);
+importClass(com.galenframework.utils.GalenUtils);
+importClass(com.galenframework.browser.SeleniumBrowser);
 
 var pageUrl = args[0];
 var size = GalenUtils.readSize(args[1]);
