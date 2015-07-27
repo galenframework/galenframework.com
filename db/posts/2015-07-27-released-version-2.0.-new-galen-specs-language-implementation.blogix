@@ -3,7 +3,7 @@ title
    Released version 2.0. New Galen Specs language implementation
 --------------------------------
 date
-   2015-07-25 09:17
+   2015-07-27 21:29
 --------------------------------
 allowComments
    true
@@ -12,7 +12,7 @@ categories
    
 ================================
 
-We are glad to announce that the version 2.0 with new improved "Galen Specs language":/docs/reference-galen-spec-language-guide/ was released. Please note that this is a major release and it is not backwards-compatible. If you already have tests implemented with previous version of Galen Framework you can use this "quick reference":/docs/specslang-2.0-difference/ where you can find hints on how to update your specs.
+We are glad to announce that the version 2.0 with new improved "Galen Specs language":/docs/reference-galen-spec-language-guide/ was released. Please note that this is a major release and it is not backwards compatible. If you already have tests implemented with previous version of Galen Framework you can use this "quick reference":/docs/specslang-2.0-difference/ where you can find hints on how to update your specs.
 
 The major changes in this release are the following:
 
