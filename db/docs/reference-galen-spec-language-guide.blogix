@@ -1256,7 +1256,7 @@ rule("%{objectPattern} are equally distant from each other", function (objectNam
             var nextObject = allObjects[i + 1];
 
             this.addObjectSpecs(allObjects[i].name, [
-                "near: " + allObjects[i + 1].name + " " + distance + " px left"
+                "near " + allObjects[i + 1].name + " " + distance + " px left"
             ]);
         }
     } else {

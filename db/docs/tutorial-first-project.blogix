@@ -25,7 +25,7 @@ We will start with the simplest example. Lets say we want to test that header he
 bq. *IMPORTANT!* Indentation in Galen is done with 1 to 8 spaces. Tabs are ignored.
 
 $$ galen-specs
-@objcts
+@objects
     header              id      header
 
 = Main section =
