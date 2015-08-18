@@ -21,6 +21,7 @@ If you do want to switch but already have a lot of specs in the old format you c
 * "Objects corrections":#Objectscorrections
 * "Ranges":#Ranges
 * "Tagging and Sections":#TaggingandSections
+* "Variables":#Variables
 * "Specs Reference":#SpecsReference
 ** "Near":#Near
 ** "Below and Above":#BelowandAbove
@@ -287,6 +288,27 @@ $$ galen-specs
         menu:
             height 300 px
 $$
+
+
+h1. Variables
+
+In case you want to use common values for different specs you can declare variables on page like this:
+
+$$ galen-specs
+@set
+    commonHeaderMargin    10 to 20px
+    contentMargin  ~ 20px
+
+= Header =
+    header-icon:
+        inside header ${commonHeaderMargin} top left
+
+= Content =
+    article-description:
+        inside main ${contentMargin} left right
+$$
+
+
 
 
 h1. Specs Reference

@@ -28,6 +28,7 @@ To give more flexibility and maintanability to user Galen came up with another s
 ** "Open and Resize":#PageActionsOpenandResize
 * "Parameterization":#Parameterization
 * "Tables":#Tables
+* "Loading Properties":#LoadingProperties
 * "Disabling Tests":#DisablingTests
 * "Test Groups":#TestGroups
 * "Waiting for dynamic content":#Waitingfordynamiccontent
@@ -439,6 +440,41 @@ $$ galen-suites
 Login page on ${deviceName} device
     http://example.com/login ${size}
         check login.gspec --include "${tags}"
+$$
+
+
+h1. Loading Properties
+
+Sometimes you might want to define some specific values in a property file and share its contents across multiple spec files. Here is how you can do it. For example we can create a @custom.properties@ file and put the following content in it:
+
+$$ bash
+header.desktop.height= 80 to 90px
+header.mobile.height= ~ 45px
+$$
+
+In the test suite we can load the properties right before the @check@ command:
+
+$$ galen-suites
+Home page test on desktop
+    http://example.com 1024x768
+        properties custom.properties
+        check homepage.gspec --include desktop
+$$
+
+
+Here are the contents of @homepage.gspec@
+
+$$ galen-specs
+@objects
+    header          #header
+
+= Header = 
+    header:
+        @on desktop
+            height ${header.desktop.height} 
+        @on mobile
+            height ${header.mobile.height} 
+        
 $$
 
 
