@@ -555,14 +555,6 @@ menu-item-1:
     aligned horizontally all menu-item-2
 $$
 
-You can also skip the word *all* and use like this:
-
-$$ galen-specs
-# By top and bottom edges
-menu-item-1:
-    aligned horizontally menu-item-2
-$$
-
 
 And now alignment by only one edge
 
@@ -592,7 +584,7 @@ There is also a posibility to define the error rate within which we don't care i
 
 $$ galen-specs
 menu-item-1:
-    aligned horizontally menu-item-2 1px
+    aligned horizontally all menu-item-2 1px
 $$
 
 In the code above we have defined the 1 pixel error rate so galen will not complain if object are misaligned by only one pixel.
