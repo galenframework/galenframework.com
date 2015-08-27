@@ -138,12 +138,13 @@ $$
 
 h2. GalenPages.extendPage
 
-*GalenPages.extendPage( page, driver, primaryFields, [ secondaryFields ])*
+*GalenPages.extendPage( page, driver, name, primaryFields, [ secondaryFields ])*
 
 Creates an instance of @"GalenPages.Page":#GalenPagesPage@ and copies all its fields to the specified page. Also based on @primaryFields@ and @secondaryFields@ it creates page elements using @"GalenPages.PageElement":#GalenPagesPageElement@ constructor
 
 * *page* - an object represeting a page 
 * *driver* - an instance of WebDriver
+* *name* - a name of a page to be used in reports
 * *primaryFields* - a set of key/values pairs containing page elements and functions that will be in-built into the page
 * *secondaryFields* - same as primaryFields but the elements defined inside this structure will not be used in @waitForIt@ function
 
@@ -151,7 +152,7 @@ h3. Declaration
 
 $$ javascript
 this.LoginPage = function (driver) {
-  GalenPages.extendPage(this, driver, {
+  GalenPages.extendPage(this, driver, "Login page", {
     email: "input.email", // css locator
     password: "xpath: //input[@class='password']", // xpath locator
     submitButton: "id: submit", // id locator
