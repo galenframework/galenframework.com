@@ -802,7 +802,7 @@ $$ galen-specs
         near user-pic 10px
 $$
 
-Now we are going to test the the user profile using the component spec file we have prepared.
+Now we are going to test the user profile using the component spec file we have prepared.
 
 $$ galen-specs
 @objects
@@ -815,7 +815,6 @@ $$
 
 In this case Galen will first fetch all objects *user-profile-1*, *user-profile-2*, *user-profile-3* and then will load a subtest for objects within each user profile scope. This means that you can reuse components within the same page for different object or in general for different pages.
 
-bq. *Important!* In component spec file you also have to specify all tags as Galen also filters specs in it. If you don't specify tags and use "include" filter from command line then those checks in component spec file will not be picked up
 
 
 h3. Frame support
