@@ -22,6 +22,7 @@ If you do want to switch but already have a lot of specs in the old format you c
 * "Ranges":#Ranges
 * "Tagging and Sections":#TaggingandSections
 * "Variables":#Variables
+* "Special Objects":#SpecialObjects
 * "Specs Reference":#SpecsReference
 ** "Near":#Near
 ** "Below and Above":#BelowandAbove
@@ -309,6 +310,45 @@ $$ galen-specs
 $$
 
 
+h1. Special Objects
+
+There are several special objects in Galen Framework that you can use in your spec without defining them
+
+h3. viewport
+
+Represents the visible area on the page.
+
+$$ galen-specs
+= Main =
+    feeback-button:
+        inside viewport 0px right
+        centered vertically inside viewport
+$$
+
+
+h3. screen
+
+Represents the whole page area inside browser even that which is not visible.  
+
+$$ galen-specs
+= Main =
+    menu:
+        aligned horizontally screen
+$$
+
+h3. parent, self
+
+This element can only be referenced inside a "component":#Component spec. @parent@ and @self@ are the same and represent the component element itself
+
+
+$$ galen-specs
+= Component =
+    icon:
+        inside parent 0px top left
+
+    self:
+        image imgs/component.png
+$$
 
 
 h1. Specs Reference
