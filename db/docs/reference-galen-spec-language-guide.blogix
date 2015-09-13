@@ -38,6 +38,7 @@ If you do want to switch but already have a lot of specs in the old format you c
 ** "Contains":#Contains
 ** "On":#On
 ** "Component":#Component
+** "Count":#Count
 ** "Color scheme":#Colorscheme
 ** "Image":#Image
 * "Advanced Specs":#AdvancedSpecs
@@ -348,6 +349,15 @@ $$ galen-specs
 
     self:
         image imgs/component.png
+$$
+
+h3. global
+
+Reserved for global validations that are not related to a specific objects. For instance it could be used for "count":#Count spec
+
+$$ galen-specs
+    global:
+        count any menu-item-* is 4
 $$
 
 
@@ -870,6 +880,46 @@ $$ galen-specs
         component frame banner.gspec
 $$
 
+
+h2. Count
+
+You can validate the amount of objects on page that match some custom expression.
+
+h4. Count all elements on page
+
+$$ galen-specs
+= Main =
+    global:
+        count any menu-item-* is 3
+$$
+
+Count spec takes "range":#Ranges argument but without @px@ so you can use it like this
+
+$$ galen-specs
+        count any menu-item-* is 4 to 5
+$$
+
+Or this
+
+$$ galen-specs
+        count any menu-item-* is < 6
+$$
+
+h4. Count only visible elements on page
+
+If you want to count only the elements that are visible you can use @visible@ argument instead of @any@
+
+$$ galen-specs
+        count visible menu-item-* is 4 to 5
+$$
+
+h4. Count only absent elements
+
+If you need to validate the amount of absent elements that you can use it like this:
+
+$$ galen-specs
+        count absent menu-item-* is 4 to 5
+$$
 
 h2. Color scheme
 

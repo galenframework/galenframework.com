@@ -86,7 +86,8 @@ var GalenHighlightV2 = GalenHighlightV2 || {
         "vertically", "all", "is", "starts", "ends", "contains", 
         "matches", "uppercase", "lowercase", "inside", "on",
         "css", "aligned", "right", "left", "top", "bottom", "absent", "visible",
-        "right-of", "left-of", "above", "color-scheme"
+        "right-of", "left-of", "above", "color-scheme",
+        "count", "any", "to", "frame"
     ],
     highlightIndividualSpec: function (line) {
         line = line + " ";
