@@ -16,6 +16,7 @@ To give more flexibility and maintanability to user Galen came up with another s
 
 * "Basic Format":#BasicFormat
 * "Variables":#Variables
+* "Importing Test Suites":#ImportTestSuites
 * "Browser Factory":#BrowserFactory
 ** "Defining a local browser":#Definingalocalbrowser
 ** "Running in Selenium Grid":#RunninginSeleniumGrid
@@ -103,6 +104,17 @@ $$ galen-suites
 Home page on a small mobile device
     ${base_url} 320x600
         check   homepage.gspec --include "mobile,all" --exclude "nomobile"
+$$
+
+
+h1. Import Test Suites
+
+If you want to reuse objects and tables from other test suites, you can import them like this:
+
+$$ galen-suites
+@@ import base.test
+
+# ....
 $$
 
 
