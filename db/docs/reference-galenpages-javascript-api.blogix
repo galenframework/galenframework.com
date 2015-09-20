@@ -205,6 +205,15 @@ $$
 $$ javascript
 myPage.waitForIt();
 $$
+* *getAllLocators()* - function. Returns a map of all object locators. This could be used in @"checkLayout":/docs/reference-galen-javascript-api/#checkLayout@ function.
+$$ javascript
+checkLayout({
+    driver: driver,
+    spec: "homepage.gspec",
+    tags: ["mobile"],
+    objects: myPage.getAllLocators()
+});
+$$
 
 
 h2. GalenPages.PageElement
