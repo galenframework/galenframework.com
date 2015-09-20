@@ -134,6 +134,7 @@ You can also use @checkLayout@ with a single argument like this
 ** *screenshot* - String type _(optional)_ - A path to a screenshot. In case this property is provided Galen will not make a screenshot and will use the provided screenshot instead in reports and for image analysis
 ** *properties* - "Properties":http://docs.oracle.com/javase/6/docs/api/java/util/Properties.html type _(optional)_. Used for providing custom properties when parsing a spec file.
 ** *vars* - Map type _(optional)_ - A set of key value pairs which will be used in spec as variables.
+** *objects* - Map type _(optional)_ - a set of object locators which can be referenced from spec
 
 $$ javascript
 checkLayout({
@@ -142,6 +143,10 @@ checkLayout({
     tags: ["mobile", "iphone"],
     vars: {
         customVariable: "custom value"
+    },
+    objects: {
+        header: "#header",
+        footer: "xpath: //div[@id='footer']"
     }
 });
 $$
@@ -254,20 +259,31 @@ $$
 
 h2. dumpPage
 
-*dumpPage(driver, pageName, specPath, exportPath, maxWidth, maxHeight, onlyImages)*
+*dumpPage(settings)*
 
 Creates a dump for a current open page in a browser
 
-* *driver* - an instance of WebDriver
-* *pageName* - a name of a page
-* *specPath* - a path to a spec file
-* *exportPath* - a path to a folder where Galen should store page dump
-* *maxWidth* - a maximum width of an element for which it should create an image sample
-* *maxHeight* - a maximum height of an element for which it should create an image sample
-* *onlyImages* - a boolean argument. If set to true then only images will be saved to specified @exportPath@ without any report files.
+* *settings* - an object that contains the following properties:
+** "driver* - an instance of WebDriver
+** *name* - a name of a page
+** *spec* - a path to a spec file
+** *exportPath* - a path to a folder where Galen should store page dump
+** *maxWidth* - a maximum width of an element for which it should create an image sample
+** *maxHeight* - a maximum height of an element for which it should create an image sample
+** *onlyImages* - a boolean argument. If set to true then only images will be saved to specified @exportPath@ without any report files.
+** *excludedObjects* - an array of object names that should be excluded from page dump
 
 $$ javascript
-dumpPage(driver, "Home page", "specs/homepage.gspec", "dumps/homepage", 200, 200, false);
+dumpPage({
+    driver: driver, 
+    name: "Home page", 
+    spec: "specs/homepage.gspec",
+    exportPath: "dumps/homepage", 
+    maxWidth: 200, 
+    maxHeight: 200, 
+    onlyImages: false, 
+    excludedObjects: ["header", "footer"]
+});
 $$
 
 
