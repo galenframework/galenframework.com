@@ -320,6 +320,9 @@ if (loginPage.loginButton.exists()) {
 }
 $$
 
+* *insideFrame(callback)* - function. Switches context to frame, which is represent by the current page element, and executes the given callback. After callback invokation switches back to parent frame.
+
+
 h2. GalenPages.PageElementList
 
 This object type is used when the list object is declared on page via @$list@ function. 
