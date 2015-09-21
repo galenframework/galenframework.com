@@ -3,7 +3,7 @@ title
    Released version 2.1. Spec "count" and heatmap
 --------------------------------
 date
-   2015-09-20 14:22
+   2015-09-21 21:30
 --------------------------------
 allowComments
    true
@@ -53,7 +53,7 @@ The object @global@ in this case is used because spec count is not tied to a spe
 
 h2. Heatmap for layout reports in html report
 
-When running layout tests it might be handy to see which areas on the page a left with minimal validations or not covered at all. Since version 2.1 each layout report has a *Heat map* link. If you click this link it will give you an overview of your layout validations. Here is an example:
+When running layout tests it might be handy to see which areas on the page are left with minimal validations or not covered at all. Since version 2.1 each layout report has a *Heat map* link. If you click it you will get an overview of your layout validations. Here is an example:
 
 !files/heatmap.png!
 
@@ -72,6 +72,6 @@ $$ javascript
 // ...
 $$
 
-And here is how this will be rendered in Html report:
+And here is how it will be rendered in Html report:
 
 !files/extras.png!
