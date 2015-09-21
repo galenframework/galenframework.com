@@ -25,12 +25,12 @@
     <div class="pagination-block">
         <div class="page-navigation">
             <#if currentPage gt 1 >
-                <a class="button" href="${prefixUrl}/page-${currentPage-1}/">&larr;</a>
+                <a class="button" href="${prefixUrl}/news-page-${currentPage-1}/">&larr;</a>
             <#else>
                 <span class="button disabled">&larr;</span>
             </#if>
             <#if currentPage lt pages >
-                <a class="button" href="${prefixUrl}/page-${currentPage+1}/">&rarr;</a>
+                <a class="button" href="${prefixUrl}/news-page-${currentPage+1}/">&rarr;</a>
             <#else>
                 <span class="button disabled">&rarr;</span>
             </#if>
@@ -42,7 +42,7 @@
                     <span class="ellipsis">...</span>
                 <#else>
                     <#if p.active>
-                        <a href="${prefixUrl}/page-${p.number}/">${p.number}</a>
+                        <a href="${prefixUrl}/news-page-${p.number}/">${p.number}</a>
                     <#else>
                         <span>${p.number}</span>
                     </#if>
