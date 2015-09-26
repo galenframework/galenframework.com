@@ -48,12 +48,15 @@ h1. Java Tests
 h1. Video Tutorials
 
 @@
-<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLyhyM1XhqdgWQ1DevSn-Zhxbvee3AQs_j" frameborder="0" allowfullscreen></iframe>
+<div class="video-container">
+    <iframe width="560" height="315" 
+        src="https://www.youtube.com/embed/videoseries?list=PLyhyM1XhqdgWQ1DevSn-Zhxbvee3AQs_j" 
+        frameborder="0" allowfullscreen>
+    </iframe>
+</div>
 @@
 
-h1. Tutorials
-
-Tutorials articles are still in development. For now you can follow the "Complete Reference":#CompleteReference articles as they contain all the documentation. The tutorials section will follow up soon
+h1. Other Tutorials
 
 - "First Project":/docs/tutorial-first-project/ _a short introduction to Galen specs_
 - "Using Galen with a task runner":/docs/tutorial-using-galen-with-a-task-runner/ _run your specs from the command line with gulp or grunt_
