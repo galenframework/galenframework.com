@@ -54,7 +54,7 @@ If you do want to switch but already have a lot of specs in the old format you c
 * "Galen Specs JS Api":#GalenSpecsJSApi
 
 
-Galen Specs Language is quite flexible and gives you the oportunity to express exactly how you want your website to behave on different devices. There are two main parts in page specs file: *object definitions* and *object specs*
+Galen Specs Language is quite flexible and gives you the opportunity to express exactly how you want your website to behave on different devices. There are two main parts in page specs file: *object definitions* and *object specs*
 
 h1. Comments
 
@@ -124,7 +124,7 @@ This way Galen will automatically wrap the locators in the scope of the parent o
 
 h1. Multiple objects definition
 
-Quite often in html we have similar objects which we could fetch with a single locator. This can also be done with Galen. Lets take a look at sample html code for menu 
+Quite often in HTML we have similar objects which we could fetch with a single locator. This can also be done with Galen. Lets take a look at sample HTML code for menu 
 
 $$ html
 <ul id='menu'>
@@ -229,7 +229,7 @@ $$ galen-specs
         height 90 to 100 % of main/height
 $$
 
-Another special Galen object you could use is *viewport*. Similar to *screen* object it takes the browsers client window. It is usefull if you want to check some fixed element on screen which sticks to viewport even when you scroll.
+Another special Galen object you could use is *viewport*. Similar to *screen* object it takes the browsers client window. It is useful if you want to check some fixed element on screen which sticks to viewport even when you scroll.
 
 $$ galen-specs
     width 100% of viewport/width
@@ -282,7 +282,7 @@ $$ galen-specs
 $$
 
 
-You can also combine multimple tags using comma-separated tag notation
+You can also combine multiple tags using comma-separated tag notation
 
 $$ galen-specs
 = Main section =
@@ -321,7 +321,7 @@ Represents the visible area on the page.
 
 $$ galen-specs
 = Main =
-    feeback-button:
+    feedback-button:
         inside viewport 0px right
         centered vertically inside viewport
 $$
@@ -366,9 +366,9 @@ h1. Specs Reference
 Galen supports the following specs:
 
 * "near":#Near _- checks that object is located near another object_
-* "below":#BelowandAbove _- checks thay element is located below other object_
-* "above":#BelowandAbove _- checks thay element is located above other object_
-* "left-of and right-of":#LeftofandRightof _- checks thay element is located above other object_
+* "below":#BelowandAbove _- checks that an element is located below other object_
+* "above":#BelowandAbove _- checks that an element is located above other object_
+* "left-of and right-of":#LeftofandRightof _- checks that an element is located above other object_
 * "inside":#Inside _- checks that object is located inside another object_
 * "width":#WidthandHeight _- checks the width of object_
 * "height":#WidthandHeight _- checks the height of object_
@@ -376,8 +376,8 @@ Galen supports the following specs:
 * "text":#Text _- checks the text that is visible on page_
 * "centered":#Centered _- checks that object is centered inside another object_
 * "absent":#Absent _- checks that object is either missing on page or is not visible_
-* "contains":#Contains _- checks that object visualy contains other objects inside it_
-* "on":#On _- checks that object is visualy located on other object_
+* "contains":#Contains _- checks that object visually contains other objects inside it_
+* "on":#On _- checks that object is visually located on other object_
 * "component":#Component _- runs a subset of specs from another file within the given object context_
 * "color-scheme":#Colorscheme _- checks the color distribution in the given object area_
 
@@ -417,7 +417,7 @@ textfield:
     near button 5px top
 $$
 
-Or even more insteresting case:
+Or even more interesting case:
 
 {@ sketch
     image: spec-near-03.png
@@ -475,7 +475,7 @@ $$
 
 h2. Inside
 
-Spec *inside* verifies that an element is visualy inside another element. There two ways how you could use this spec:
+Spec *inside* verifies that an element is visually inside another element. There two ways how you could use this spec:
 
 * *inside* _- checks that element is completely inside_
 * *inside partly* _- checks only the ranges provided in spec. Doesn't care if the element is not completely inside_
@@ -560,7 +560,7 @@ button:
     width < 101 px
 $$
 
-Relative width and hegiht specs. Lets check that comments sections is stretched to the width of main container
+Relative width and height specs. Lets check that comments sections is stretched to the width of main container
 
 {@ sketch
     image: spec-width-and-height-02.png
@@ -630,7 +630,7 @@ menu-item-1:
     aligned vertically left menu-item-2
 $$
 
-There is also a posibility to define the error rate within which we don't care if objects are not aligned. For instance it could be that one object is by 1px higher than the other one. If we are ok with that we can define it in our spec like this:
+There is also a possibility to define the error rate within which we don't care if objects are not aligned. For instance it could be that one object is by 1px higher than the other one. If we are OK with that we can define it in our spec like this:
 
 $$ galen-specs
 menu-item-1:
@@ -642,7 +642,7 @@ In the code above we have defined the 1 pixel error rate so galen will not compl
 
 h2. Text 
 
-There are various ways you could verify text of an element on page. Note that the text that is seen by Galen is not same as it is in html code. As Galen relies on Selenium - the text will be returned the same way it appears in a real browser (e.g. white space is ignored). At the moment you can verify text with following specs:
+There are various ways you could verify text of an element on page. Note that the text that is seen by Galen is not same as it is in HTML code. As Galen relies on Selenium - the text will be returned the same way it appears in a real browser (e.g. white space is ignored). At the moment you can verify text with following specs:
 
 * *text is* _- checks that text is exactly as expected_
 * *text contains* _-checks element contains expected text_
@@ -758,7 +758,7 @@ $$
 
 h2. Absent
 
-One of the simplest specs in Galen. It doesn't take any parameters. It is used to check that the element is either missing on page _(in html code)_ either it is present but not visible _(e.g. style display:none)_
+One of the simplest specs in Galen. It doesn't take any parameters. It is used to check that the element is either missing on page _(in HTML code)_ either it is present but not visible _(e.g. style display:none)_
 
 $$ galen-specs
 comments:
@@ -1022,7 +1022,7 @@ Here is the list of all available image filters:
 * *blur <radius>* - Blurs the image with the given radius of blur.
 * *saturation <level>* - Removes the colors with the given level. The zero value means complete loss of colors. The 100 value - all the colors are left the same. The level 50 - the image is colored by half.
 * *contrast <level>* - Increases the contrast. The allowed range for level is 0 to 258.
-* *denoise <radius>* - Removes noise from image. Applicaple only as a *map-filter* as it only works with black/white images.
+* *denoise <radius>* - Removes noise from image. Applicable only as a *map-filter* as it only works with black/white images.
 * *quantinize <colorsAmount>* - Makes less colors on the image 
 
 
@@ -1040,7 +1040,7 @@ login-button:
     image file imgs/login-button.png, filter-b contrast 200, error 4%
 $$
 
-Here are some examples of image filters for the original foto:
+Here are some examples of image filters for the original image:
 
 @@
 <div class="row">
@@ -1124,7 +1124,7 @@ menu-*:
     height 50px
 $$
 
-The example above shows the simplest regular expresion. In case you want to match any symbol you can use @*@ symbol. But if you need to match only numbers then you should use @#@ symbol.
+The example above shows the simplest regular expression. In case you want to match any symbol you can use @*@ symbol. But if you need to match only numbers then you should use @#@ symbol.
 
 $$ galen-specs
 menu-item-#:
@@ -1134,7 +1134,7 @@ $$
 
 h2. for Loop
 
-There is also a possiblity to declare for loop in case you need to express complex layout for multiple objects. In the following example it will iterate over 9 menu items and will check that each menu item is located from the left side of the following item. 
+There is also a possibility to declare for loop in case you need to express complex layout for multiple objects. In the following example it will iterate over 9 menu items and will check that each menu item is located from the left side of the following item. 
 
 $$ galen-specs
 = Main section =
@@ -1145,7 +1145,7 @@ $$
 
 As you can see you can declare a variable inside a loop and later use it even in javascript statements.
 
-The @for@ loop statment also allow to declare more complex sequence.
+The @for@ loop statement also allow to declare more complex sequence.
 
 $$ galen-specs
 = Main section =
@@ -1159,7 +1159,7 @@ $$
 
 h2. forEach Loop
 
-In case you don't want to hardcode the numbers and want to match whatever objects you have on the page, you can use @forEach@ loop. It allows to iterate over all objects matching the defined pattern:
+In case you don't want to hard code the numbers and want to match whatever objects you have on the page, you can use @forEach@ loop. It allows to iterate over all objects matching the defined pattern:
 
 $$ galen-specs
 = Main section =
@@ -1270,7 +1270,7 @@ $$
 
 h2. Warning level for specs
 
-Since version 1.2 it is possible to mark a specific check in your spec file so that once it fails - it is reported with a warning level and does not affect the status of the whole test suite. This might be usefull in case you have a bug on your website that you already know and are working on but you don't want to be constantly reminded about it. As a temporary solution you can put @%@ symbol before the failing check and thats it. In the resulting html report this check will be shown with yellow color.
+Since version 1.2 it is possible to mark a specific check in your spec file so that once it fails - it is reported with a warning level and does not affect the status of the whole test suite. This might be useful in case you have a bug on your website that you already know and are working on but you don't want to be constantly reminded about it. As a temporary solution you can put @%@ symbol before the failing check and that's it. In the resulting HTML report this check will be shown with yellow color.
 
 $$ galen-specs
 login-button:
@@ -1319,7 +1319,7 @@ As you can see we didn't provide any custom parameters but still Galen provides 
 
 h3. Custom Rules: user-defined regular expressions for parameters
 
-By default Galen Framework uses @.*@ regular expression to match the parameter name in rule text. But you can change this behaviour by providing custom regex. For example you could have a situation where you need only to match digits
+By default Galen Framework uses @.*@ regular expression to match the parameter name in rule text. But you can change this behavior by providing custom regex. For example you could have a situation where you need only to match digits
 
 $$ galen-specs
 @rule %{object} should be squared with %{size: [0-9]+} pixel size
@@ -1334,7 +1334,7 @@ $$
 
 h3. Custom Rules: JavaScript based rules
 
-If you need to describe a more complex situation you could use JavaScript for rules. Here is an example how to create a JavaScript-based rule that check that the elements are equally distant from each other. You need to define a rule in a separate js file. The rule representa a callback which takes two arguments: *objectName* and *parameters*: 
+If you need to describe a more complex situation you could use JavaScript for rules. Here is an example how to create a JavaScript-based rule that check that the elements are equally distant from each other. You need to define a rule in a separate js file. The rule represents a callback which takes two arguments: *objectName* and *parameters*: 
 
 * *objectName* - represents the name of an object on which the rule was applied. Passed as @null@ in case the rule was applied on a section level without any object.
 * *parameters* - represents an object with fields that were defined in the rule text. For instance if you defined a rule with text @located near %{name} with %{distance} pixel margin@ in the end Galen will parse that rule and will provide a structure which you can use as @parameters.name@ and @parameters.distance@
@@ -1383,7 +1383,7 @@ $$
 
 h2. Notes for specs
 
-Sometimes it is hard to understand why a certain validation was chosen in a spec file. Comments could help but what to do with resulting html report. You would not be able to see those comments in it. Just for this situation in version 1.6 was introduced a small improvement that allows you to add notes for a specific spec. Just a add a text surrounded with double-quotes before the spec.
+Sometimes it is hard to understand why a certain validation was chosen in a spec file. Comments could help but what to do with resulting HTML report. You would not be able to see those comments in it. Just for this situation in version 1.6 was introduced a small improvement that allows you to add notes for a specific spec. Just a add a text surrounded with double-quotes before the spec.
 
 $$ galen-specs
 

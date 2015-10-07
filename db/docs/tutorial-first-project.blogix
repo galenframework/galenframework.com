@@ -16,7 +16,7 @@ The simplest thing we can start with is checking the home page for our website. 
 You can start working with Galen with minimal project structure. Actually you don't really need anything to perform the simple check of look-and-feel of your website.
 
 
-h2. Writting specs
+h2. Writing specs
 
 Lets write some Galen specs for the home page. First create an empty folder with your test project name and in it create a file named @home-page.gspec@
 We will start with the simplest example. Lets say we want to test that header height is exactly 40 pixels on home page.
@@ -33,7 +33,7 @@ $$ galen-specs
         height 40px
 $$
 
-In our spec above we have defined an object called *header* and specified the locator for it (by id "header-container"). Then we have defined the simplest check of headers height. Here we basically state that the height of header should be exatly 40 px. If you don't want to be that strict you can define a range (e.g. from 35 to 45 px)
+In our spec above we have defined an object called *header* and specified the locator for it (by id "header-container"). Then we have defined the simplest check of headers height. Here we basically state that the height of header should be exactly 40 px. If you don't want to be that strict you can define a range (e.g. from 35 to 45 px)
 
 $$ galen-specs
 header:
@@ -56,5 +56,5 @@ galen check home-page.gspec \
      --htmlreport .
 $$
 
-The command above will launch Firefox browser and open our test website and perform the check. In the end it will create html report in your projects folder in @report.html@ file.
+The command above will launch Firefox browser and open our test website and perform the check. In the end it will create HTML report in your projects folder in @report.html@ file.
 

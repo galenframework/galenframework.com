@@ -2,7 +2,7 @@
 title
     About
 ==================================================
-"Galen Framework":http://galenframework.com is a test framework which was originaly introduced for testing layout of web-applications in a real browser. Nowadays it became a fully functional testing framework with rich reporting and test management system. It supports both JavaScript and Java tests.
+"Galen Framework":http://galenframework.com is a test framework which was originally introduced for testing layout of web-applications in a real browser. Nowadays it became a fully functional testing framework with rich reporting and test management system. It supports both JavaScript and Java tests.
 
 Galen Framework was made with responsive design in mind. It works in a following way:
 # Galen opens a page in browser

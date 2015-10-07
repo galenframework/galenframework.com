@@ -54,9 +54,9 @@ public class WelcomePageTest extends GalenTestNgTestBase {
 $$
 
 
-h2. Html reports
+h2. HTML reports
 
-It is also possible to save your layout tests into a separate html report in a same way it is generated during regular Galen tests.
+It is also possible to save your layout tests into a separate HTML report in a same way it is generated during regular Galen tests.
 
 
 $$ java
@@ -85,7 +85,7 @@ $$
 
 h2. Automatic reports generation for Maven project
 
-Galen Framework comes out of the box with reports storage and html reports generator. If you inherit all your test class from @com.galenframework.testng.GalenTestNgTestBase@ then all your test reports will be automatically stored in @com.galenframework.support.GalenReportsContainer@ class. In the end of the test suite you can obtain all the test reports and save them in html format. Actually there is already a TestNg listener for that: @com.galenframework.testng.GalenTestNgReportsListener@. Just add this listener in your pom file like in the example below:
+Galen Framework comes out of the box with reports storage and HTML reports generator. If you inherit all your test class from @com.galenframework.testng.GalenTestNgTestBase@ then all your test reports will be automatically stored in @com.galenframework.support.GalenReportsContainer@ class. In the end of the test suite you can obtain all the test reports and save them in HTML format. Actually there is already a TestNG listener for that: @com.galenframework.testng.GalenTestNgReportsListener@. Just add this listener in your pom file like in the example below:
 
 $$ xml
 <!-  ...   -->
