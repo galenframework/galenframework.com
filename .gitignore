@@ -2,3 +2,6 @@
 .websync
 www
 
+# aspell-generated files
+.stopwords.aspell
+*.bak
