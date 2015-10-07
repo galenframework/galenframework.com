@@ -47,7 +47,7 @@ Contains some basic configurations for GalenPages framework
 
 h3. GalenPages.settings.allowReporting
 
-*GalenPages.settings.allowReporting* - boolean type. A property that is set to true by default and is used in order to allow basic page elements action to report their activity (e.g. click, typeText etc.)
+*GalenPages.settings.allowReporting* - Boolean type. A property that is set to true by default and is used in order to allow basic page elements action to report their activity (e.g. click, typeText etc.)
 $$ javascript
 // to disable reporting in your tests
 GalenPages.settings.allowReporting = false;
@@ -55,7 +55,7 @@ $$
 
 h3. GalenPages.settings.cacheWebElements
 
-*GalenPages.settings.cacheWebElements* - boolean type. A property thay is set to true by default and is used in @getWebElement@ function of @"GalenPages.PageElement":#GalenPagesPageElement@
+*GalenPages.settings.cacheWebElements* - Boolean type. A property that is set to true by default and is used in @getWebElement@ function of @"GalenPages.PageElement":#GalenPagesPageElement@
 $$ javascript
 // to disable caching of WebElement objects in your tests
 GalenPages.settings.cacheWebElements = false;
@@ -142,7 +142,7 @@ h2. GalenPages.extendPage
 
 Creates an instance of @"GalenPages.Page":#GalenPagesPage@ and copies all its fields to the specified page. Also based on @primaryFields@ and @secondaryFields@ it creates page elements using @"GalenPages.PageElement":#GalenPagesPageElement@ constructor
 
-* *page* - an object represeting a page 
+* *page* - an object representing a page 
 * *driver* - an instance of WebDriver
 * *name* - a name of a page to be used in reports
 * *primaryFields* - a set of key/values pairs containing page elements and functions that will be in-built into the page
@@ -230,11 +230,11 @@ if (loginPage.emailTextfield.isEnabled()) {
   // do something
 }
 $$
-* *attribute( attrName )* - function. Takes a string argument that represents a name of html attribute. Returns value of specified html attribute
+* *attribute( attrName )* - function. Takes a string argument that represents a name of HTML attribute. Returns value of specified HTML attribute
 $$ javascript
 var href = myPage.submitLink.attribute("href");
 $$
-* *cssValue( cssPropertyName )* - fucntion. Takes a string argument that represents a name of css property. Returns a value of specified css property
+* *cssValue( cssPropertyName )* - fucntion. Takes a string argument that represents a name of CSS property. Returns a value of specified CSS property
 $$ javascript
 var fontWeight = myPage.submitLink.cssValue("font-weight");
 $$
@@ -260,11 +260,11 @@ loginPage.submitButton.hover();
 $$
 * *getWebElement()* - function. Returns WebElement object for current page element
 * *isDisplayed()* - function. Returns true if page element is visible on page and false if it is hidden
-* *selectByValue( value )* - function. Takes string argument representing a value of html @option@. This function should only be used in case the page element is a html @select@ tag. 
+* *selectByValue( value )* - function. Takes string argument representing a value of HTML @option@. This function should only be used in case the page element is a HTML @select@ tag. 
 $$ javascript
 myPage.menuList.selectByValue("categories");
 $$
-* *selectByText( text )* - function. Takes string argument representing a text of html @option@. This function should only be used in case the page element is a html @select@ tag. 
+* *selectByText( text )* - function. Takes string argument representing a text of HTML @option@. This function should only be used in case the page element is a HTML @select@ tag. 
 $$ javascript
 myPage.menuList.selectByText("Categories");
 $$
@@ -320,7 +320,7 @@ if (loginPage.loginButton.exists()) {
 }
 $$
 
-* *insideFrame(callback)* - function. Switches context to frame, which is represent by the current page element, and executes the given callback. After callback invokation switches back to parent frame.
+* *insideFrame(callback)* - function. Switches context to frame, which is represent by the current page element, and executes the given callback. After callback invocation switches back to parent frame.
 
 
 h2. GalenPages.PageElementList
@@ -333,17 +333,17 @@ Contains the following functions:
 
 h2. GalenPages.wait
 
-A very usefull function that allows to wait for multiple condition with specified timeout. It has a good error messaging in case one of conditions fails.
+A very useful function that allows to wait for multiple condition with specified timeout. It has a good error messaging in case one of conditions fails.
 
 *GalenPages.wait( settings );*
 
 * *settings* - a set of key/value pairs for configuring the wait component
-** *time* - string or number type. The timeout for wait componet. A number represent milliseconds. A string is allowed in the following format: "10s" or "1m"
+** *time* - string or number type. The timeout for wait component. A number represent milliseconds. A string is allowed in the following format: "10s" or "1m"
 ** *period* - string or number type. The time interval with which it checks all the conditions. A number represent milliseconds. A string is allowed in the following format: "10s" or "1m"
 
 Returns a @GalenPages.Wait@ object that has the following function:
 
-* *untilAll()* - function. Takes an argument of key/value pairs where key is a name of condition and value is a boolean function that returns state of condition
+* *untilAll()* - function. Takes an argument of key/value pairs where key is a name of condition and value is a Boolean function that returns state of condition
 
 $$ javascript
 GalenPages.wait( {time: "10s", period: "1s"}).untilAll({

@@ -29,14 +29,14 @@ galen check homepage.gspec
 $$
 
 Command line arguments:
-* *url* _- a url of page for Galen to test on_
+* *url* _- a URL of page for Galen to test on_
 * *javascript* _- a path for javascript file which Galen will inject in web page_
 * *include* _- a comma separated list of tags for spec sections which will be included in testing_
 * *exclude* _- a comma separated list of tags for spec sections to be excluded from the filtered group_
 * *size* _- dimensions of browser window. Consists of two numbers separated by "x" symbol_
-* *htmlreport* _- path to folder in which Galen should generate html reports_
-* *testngreport* _- path to xml file in which Galen should write testng report_
-* *jsonreport* _- path to folder in which Galen should generate json reports_
+* *htmlreport* _- path to folder in which Galen should generate HTML reports_
+* *testngreport* _- path to xml file in which Galen should write TestNG report_
+* *jsonreport* _- path to folder in which Galen should generate JSON reports_
 
 
 h2. Running test suites
@@ -53,8 +53,8 @@ galen test mytest01.test
 $$
 
 Command line arguments:
-* *htmlreport* _- path to folder in which Galen should generate html reports_
-* *testngreport* _- path to xml file in which Galen should write testng report_
+* *htmlreport* _- path to folder in which Galen should generate HTML reports_
+* *testngreport* _- path to xml file in which Galen should write TestNG report_
 * *parallel-tests* _- amount of threads for running tests in parallel_
 * *recursive* _- flag which is used in case you want to search for all @.test@ files recursively in folder_
 * *filter* _- a filter for a test name_
@@ -123,7 +123,7 @@ galen dump "specs/homepage.gspec"
 $$
 
 Command line arguments:
-* *url* _- a url of a web page for which you want to create a page dump_
+* *url* _- a URL of a web page for which you want to create a page dump_
 * *size* _- a browser window size_
 * *export* _- a path to page dump folder_
 * *max-width* _- a maximum width of an element for which it should create an image sample_

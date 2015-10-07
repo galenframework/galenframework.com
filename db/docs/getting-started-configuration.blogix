@@ -71,10 +71,10 @@ galen.default.browser=firefox
 spec.colorscheme.precision = 256
 
 
-# Using page urls from last checked page in HTML report
+# Using page URLs from last checked page in HTML report
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# This property enables the use of last page url in a page test
-# Needed when for some pages on the website there is no way to open it by direct url 
+# This property enables the use of last page URL in a page test
+# Needed when for some pages on the website there is no way to open it by direct URL 
 # galen.reporting.html.useLastPageUrls = true
 
 
@@ -90,7 +90,7 @@ spec.colorscheme.testrange = 6
 # You can run your tests in Selenium Grid without modifying the tests.
 # Just enable the "galen.browserFactory.selenium.runInGrid" property
 # and Galen will always choose a Selenium Grid instead of running tests against local browsers
-# Also make sure you provide the proper url to grid
+# Also make sure you provide the proper URL to grid
 #
 galen.browserFactory.selenium.runInGrid = true
 galen.browserFactory.selenium.grid.url = http://localhost:4444/wd/hub 

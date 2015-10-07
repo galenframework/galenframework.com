@@ -12,7 +12,7 @@ categories
    
 ================================
 
-To give more flexibility and maintanability to user Galen came up with another simple format for defining test suites. Test suites are just a set of pages that needs to be checked with a propriate test specs. But there is something more in there which gives a lot of power in testing.
+To give more flexibility and maintainability to user Galen came up with another simple format for defining test suites. Test suites are just a set of pages that needs to be checked with the appropriate test specs. But there is something more in there which gives a lot of power in testing.
 
 * "Basic Format":#BasicFormat
 * "Variables":#Variables
@@ -94,7 +94,7 @@ Home page on a small mobile device
         check   homepage.gspec --include "mobile,all" --exclude "nomobile"
 $$
 
-Or you can also use varible reference when defining another variable:
+Or you can also use variable reference when defining another variable:
 
 $$ galen-suites
 @@ set 
@@ -193,7 +193,7 @@ $$
 
 h2. JavaScript Browser Factory
 
-In case you would like to take full control over instantiation of WebDriver you can use the so called @jsfactory@. It delegates the creation of browser to a user-defined script. This might be very handy in case you need to provide some additional settings in a profile. Lets image you need to open browser with specific language settings. Here is an example of a script @mydriver.js@ that does that:
+In case you would like to take full control over instantiating the WebDriver you can use the so called @jsfactory@. It delegates the creation of browser to a user-defined script. This might be very handy in case you need to provide some additional settings in a profile. Lets image you need to open browser with specific language settings. Here is an example of a script @mydriver.js@ that does that:
 
 $$ javascript
 importClass(org.openqa.selenium.firefox.FirefoxDriver);
@@ -238,7 +238,7 @@ $$
 
 h2. Replacing page url in reports
 
-Once the test is done Galen will generate html report and in it it will use the browser factory that you defined in your spec. If you would like to change the way it appears there you can use '|' symbol like in the following example
+Once the test is done Galen will generate HTML report and in it it will use the browser factory that you defined in your spec. If you would like to change the way it appears there you can use '|' symbol like in the following example
 
 $$ galen-suites
 Login page test
@@ -246,7 +246,7 @@ Login page test
         check login.gspec
 $$
 
-In the end galen will use everything before '|' in html report. So only the @Login page url /login@ part will be shown. 
+In the end galen will use everything before '|' in HTML report. So only the @Login page url /login@ part will be shown. 
 
 h1. Page Actions
 
@@ -267,7 +267,7 @@ h2. Page Actions: JavaScript Injection
 
 Sometimes you need to test things that are not easy accessible. For example user profile page. Normally you need to authorize first. Or another example: there could be a hidden menu that pops up only in case you interact with something on a page. For both problems there two different solutions: *javascript injection* and *selenium interaction*
 
-You can inject your own javascript with wich you can change your page. For that you need to save a javascript in a separate file e.g. @open-popup.js@:
+You can inject your own javascript with which you can change your page. For that you need to save a javascript in a separate file e.g. @open-popup.js@:
 
 
 $$ javascript
@@ -288,7 +288,7 @@ h2. Page Actions: Selenium Interaction
 
 Another thing that you might need sometimes - is doing something on website before testing with Galen Specs. Lets say you need to login to get to your profile. Galen allows you to run javascript in which you can take over the browser using WebDriver.
 
-bq. *IMPORTANT!* Even though this page action also uses javascript please note its not getting injected in your webpage. It is actually being executed separately and in it you can operate with your browser: click the elements, type text to textfields and even change the size of a window.
+bq. *IMPORTANT!* Even though this page action also uses javascript please note its not getting injected in your web page. It is actually being executed separately and in it you can operate with your browser: click the elements, type text to text fields and even change the size of a window.
 
 
 The content of some login flow in file @login.js@
@@ -340,7 +340,7 @@ $$
 
 h2. Page Actions: Open and Resize 
 
-In case you use your own factory for creating a browser and you don't want to handle url openin in there you can use @open@ page action
+In case you use your own factory for creating a browser and you don't want to handle url opening in there you can use @open@ page action
 
 $$ galen-suites
 Home page test
@@ -492,7 +492,7 @@ $$
 
 h1. Disabling Tests
 
-In case you want to temporarely disable a test just put the @disabled@ special instruction before it.
+In case you want to temporarily disable a test just put the @disabled@ special instruction before it.
 
 $$ galen-suites
 @@ disabled
@@ -508,7 +508,7 @@ $$
 
 h1. Test Groups
 
-Since version 1.6 you can tag your tests with groups. That will allow you to group your tests in Html report and choose which group to run in command line. To mark a specific test as a group just use @groups@ keyword:
+Since version 1.6 you can tag your tests with groups. That will allow you to group your tests in HTML report and choose which group to run in command line. To mark a specific test as a group just use @groups@ keyword:
 
 $$ galen-suites
 @@ groups mobile, homepage, temp

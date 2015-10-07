@@ -19,7 +19,7 @@ For Galen you need to have a Java version 1.7 or greater installed. If you don't
 
 h2. NPM-based Installation
 
-If you're using  "NPM":https://nodejs.org/download/ you can just install galen via the following commmand
+If you're using  "NPM":https://nodejs.org/download/ you can just install galen via the following command
 
 $$ bash
 sudo npm install -g galenframework-cli
@@ -28,7 +28,7 @@ $$
 
 h2. Manual Installation
 
-h3. Install on OSX and Linux
+h3. Install on OS X and Linux
 
 Download the archive from "download page":/download/ and extract it anywhere. Go to folder and execute the following command
 
@@ -36,7 +36,7 @@ $$ bash
 sudo ./install.sh
 $$
 
-Thats it! Now you can check if Galen is successfully install by the following command:
+That's it! Now you can check if Galen is successfully install by the following command:
 
 $$ bash
 galen -v
@@ -44,7 +44,7 @@ $$
 
 The above should print out the installed version of galen. 
 
-h2. Update on OSX and Linux
+h2. Update on OS X and Linux
 
 There is no command for updating Galen. Once you have it installed with one version you can always install a new version on top of the previous. So just again download new version, extract it and run:
 

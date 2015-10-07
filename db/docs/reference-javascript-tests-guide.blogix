@@ -55,9 +55,9 @@ $$
 
 h2. Creating driver
 
-While in "basic test suites":/docs/reference-galen-test-suite-syntax/ you didn't have to control the driver creation here in JavaScript test suites you have to do it yourself. Therefore you have the complete control over driver instantiation. Stil there is a good API for creating a driver that mimics the behaviour from "basic test suites":/docs/reference-galen-test-suite-syntax/#BrowserFactory.
+While in "basic test suites":/docs/reference-galen-test-suite-syntax/ you didn't have to control the driver creation here in JavaScript test suites you have to do it yourself. Therefore you have the complete control over driver instantiation. Still there is a good API for creating a driver that mimics the behavior from "basic test suites":/docs/reference-galen-test-suite-syntax/#BrowserFactory.
 
-The function for creating a driver is @"createDriver":/docs/reference-galen-javascript-api/#createDriver@. By default it creates a firefox driver. That behaviour can also be overriden in "config file":/docs/getting-started-configuration/ so later you can easily switch to Selenium Grid.
+The function for creating a driver is @"createDriver":/docs/reference-galen-javascript-api/#createDriver@. By default it creates a firefox driver. That behavior can also be overridden in "config file":/docs/getting-started-configuration/ so later you can easily switch to Selenium Grid.
 
 $$ javascript
 test("Home page test on mobile device", function () {
@@ -145,7 +145,7 @@ $$
 
 h3. Using structures
 
-A more convinient way for paramaterization would be using structures. Galen will iterate over each element in a structure and pass its value to the test. 
+A more convenient way for parameterization would be using structures. Galen will iterate over each element in a structure and pass its value to the test. 
 With this it also allows to use basic templating expression in test name
 
 $$ javascript
@@ -333,7 +333,7 @@ $$
 
 h3. Before test
 
-Caled before a test execution. Passes a TestInfo object as an argument
+Called before a test execution. Passes a TestInfo object as an argument
 
 $$ javascript
 beforeTest(function (testInfo) {
@@ -346,7 +346,7 @@ A TestInfo object has the following fields.
 * *name* - a name of the test
 * *startedAt* - Java "Date":http://docs.oracle.com/javase/6/docs/api/java/util/Date.html object representing time when the test has started
 * *endedAt* - Java "Date":http://docs.oracle.com/javase/6/docs/api/java/util/Date.html object representing time when the test has finished
-* *isFailed* - a boolean function return the state of test (true if failed, false if passed)
+* *isFailed* - a Boolean function return the state of test (true if failed, false if passed)
 * *report* - an instance of test report
 
 
@@ -373,7 +373,7 @@ test("Some basic test", function () {
 });
 $$
 
-Reports in Galen Framework are hierarchal which means that you can design the structre of reports yourself. Here is another interesting trick with @logged@ function
+Reports in Galen Framework are hierarchical which means that you can design the structure of reports yourself. Here is another interesting trick with @logged@ function
 
 
 $$ javascript
@@ -414,7 +414,7 @@ $$
 
 h3. Advanced reporting
 
-You can create functions that will be automatically logged in the html report with the passed arguments based on the provided log expression. Just use @loggedFunction@ instead of @function@
+You can create functions that will be automatically logged in the HTML report with the passed arguments based on the provided log expression. Just use @loggedFunction@ instead of @function@
 
 $$ javascript
 this.LoginPage = $page("Login page", {
@@ -434,7 +434,7 @@ $$
 
 h2. Test Session
 
-Each test has a session in which it stores its data. This way it is easier to share data accross all your custom components.
+Each test has a session in which it stores its data. This way it is easier to share data across all your custom components.
 This is how you can put your data in session:
 
 $$ javascript
@@ -489,7 +489,7 @@ $$
 
 In the example above the output will be @["Feature1", "Feature2", "Feature3"]@
 
-This doesn't really look usefull uless you have some defined some kind of basic test template and then reusing it everywhere. Lets check out this example
+This doesn't really look useful unless you have some defined some kind of basic test template and then reusing it everywhere. Lets check out this example
 
 $$ javascript
 this.featureSwitched = createTestDataProvider("featureSwitches");
@@ -564,7 +564,7 @@ $$ javascript
 var screenshotFile = takeScreenshot(driver);
 $$
 
-You can also use it together with the reportso
+You can also use it together with the reports
 
 $$ javascript
 test("Some basic test", function () {
@@ -576,7 +576,7 @@ $$
 
 h2. Injecting client-side javascript
 
-Sometimes you need to inject a custom client-side javascript on the test page. This can done with @"inject":/docs/reference-galen-javascript-api/#inject@ funtion
+Sometimes you need to inject a custom client-side javascript on the test page. This can done with @"inject":/docs/reference-galen-javascript-api/#inject@ function
 
 $$ javascript
 test("Some basic test", function () {
@@ -616,7 +616,7 @@ $$
 
 h1. Retrying a failed test
 
-If you want to retry a failed test you can create your own handler which checks whether a certain test should be retried or not. For that you should use @testRetry@ function. With this function you can provide a callback which will be used for checking if a specific failed test should be retried. The callback is a boolean function and takes two parameters: *test* and *retryCount*:
+If you want to retry a failed test you can create your own handler which checks whether a certain test should be retried or not. For that you should use @testRetry@ function. With this function you can provide a callback which will be used for checking if a specific failed test should be retried. The callback is a Boolean function and takes two parameters: *test* and *retryCount*:
 * *test* - an instance of a test
 * *retryCount* - a number representing the amount of times this test was already retried.
 
