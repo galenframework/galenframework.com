@@ -92,8 +92,8 @@ gulp.task('test', ['clean'], function (done) {
                 file.path,
                 '--htmlreport',
                 reportsDir + '/' + file.relative.replace(/\.test/, '')
-            ], {'stdio' : 'inherit'}).on('close', function () {
-                callback();
+            ], {'stdio' : 'inherit'}).on('close', function (code) {
+                callback(code === 0);
             });
         };
 
@@ -118,10 +118,17 @@ gulp.task('test', ['clean'], function (done) {
             files.push(file);
         }))
         .on('end', function () {
-            async.mapSeries(files, function (file, finished) {
+            async.rejectSeries(files, function (file, finished) {
                 galen(file, finished);
-            }, function () {
-                done();
+            }, function (errors) {
+               if (errors && errors.length > 0) {
+                  done("Galen reported failed tests: " + (errors.map(function(f) {
+                     return f.relative;
+                  }).join(", ")));
+               }
+               else {
+                  done();
+               }
             });
         });
 });
