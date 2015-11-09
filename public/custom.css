@@ -590,3 +590,13 @@ ul.task-tracker-stories li.story .story-author a {
     height: 100%;
 }
 
+
+table.releases ul.assets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+table.releases .binary-asset .download-counter {
+    font-size: 0.7em;
+    color: #555;
+}

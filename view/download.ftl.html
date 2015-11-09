@@ -27,5 +27,131 @@
     </div>
 
     Older versions you can find on <a href="https://github.com/galenframework/galen/releases">GitHub Releases</a>
-    
+
+    <h2>Recent releases</h2>
+    <div id="download-statistic-container">
+    </div>
 </div>
+<script>
+    function toDoubleDigitString(value) {
+        if (value < 10) {
+            return "0" + value;
+        } else {
+            return "" + value;
+        }
+    }
+
+    var _MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+    Handlebars.registerHelper("formatUTCDate", function(utcDateText) {
+        var d = new Date(Date.parse(utcDateText));
+        var year = d.getFullYear();
+        var month = _MONTHS[d.getMonth()];
+
+        var date = toDoubleDigitString(d.getDate());
+        var hours = toDoubleDigitString(d.getHours());
+        var minutes = toDoubleDigitString(d.getMinutes());
+        var seconds = toDoubleDigitString(d.getSeconds());
+
+        return new Handlebars.SafeString(
+            month + " " + date + ", " + year + " " + hours + ":" + minutes + ":" + seconds
+        );
+    });
+
+    function isBinary(fileName) {
+        var arr = fileName.split(".");
+        if (arr.length > 2) {
+            return arr[arr.length - 1] === "zip" && fileName.indexOf("galen-bin") === 0;
+        }
+
+        return false;
+    }
+    function convertReleases(data) {
+        var totalDownloadCounter = 0;
+
+        var max = 20;
+        var releases = [];
+
+        for (var i = 0; i < data.length; i++) {
+            if (!data[i].prerelease) {
+                if (data[i].assets != undefined && data[i].assets != null) {
+
+                    var binaryAsset = null;
+
+                    for (var j = 0; j < data[i].assets.length; j++) {
+                        totalDownloadCounter += data[i].assets[j].download_count || 0;
+                        if (isBinary(data[i].assets[j].name)) {
+                            binaryAsset = data[i].assets[j];
+                        }
+                    }
+
+                    if (releases.length < max && binaryAsset !== null) {
+                        var release = data[i];
+                        release.binaryAsset = binaryAsset;
+                        release.binaryAsset.sizeInMb = (binaryAsset.size / (1024 * 1024)).toFixed(1);
+                        releases.push(release);
+                    }
+                }
+            }
+        }
+        return {
+            totalDownloadCounter: totalDownloadCounter,
+            releases: releases
+        };
+    }
+
+    function renderDownloadStatistic(data) {
+        var tpl = Handlebars.compile($("#download-statistic-tpl").html());
+        $("#download-statistic-container").html(tpl(convertReleases(data)));
+    }
+    $(function () {
+        $.ajax({
+            url: "https://api.github.com/repos/galenframework/galen/releases",
+            jsonp: "callback",
+            dataType: "jsonp",
+            data: {
+                access_token: "d2f9cf142182ae97e848fd1da31b91c23c56c682"
+            },
+            success: function (response) {
+                renderDownloadStatistic(response.data);
+            }
+        });
+    });
+</script>
+<script id="download-statistic-tpl" language="text/x-handlebars-template">
+    <p>
+        Total downloads: <b>{{totalDownloadCounter}}</b>
+    </p>
+    <table class="table releases">
+        <thead>
+            <tr>
+                <th>Release</th>
+                <th>Binary</th>
+                <th>Size</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each releases}}
+            <tr>
+                <td>
+                    <a href="{{html_url}}"><i class="fa fa-github"></i> {{tag_name}}</a>
+                </td>
+                <td>
+                    {{#with binaryAsset}}
+                    <div class="binary-asset">
+                        <a href="{{browser_download_url}}"><i class="fa fa-download"></i> {{name}}</a> <span class="download-counter">(downloaded {{download_count}})</span>
+                    </div>
+                    {{/with}}
+                </td>
+                <td>
+                    {{binaryAsset/sizeInMb}} Mb
+                </td>
+                <td>
+                    {{formatUTCDate created_at}}
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</script>
