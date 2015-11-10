@@ -1087,6 +1087,17 @@ Here are some examples of image filters for the original image:
 </div>
 @@
 
+h3. Cropping
+
+The specification of relative layout sizes (@rem@, @em@ in CSS) can lead to rounding errors in the computed image area sizes, causing areas to seemingly stretch over image borders. The @crop-if-outside@ parameter can be used to force cropping areas to proper image dimensions:
+
+$$ galen-specs
+menu-item-1:
+    image file imgs/menu-item-1.png, crop-if-outside
+$$
+
+If the parameter is left out and an out-of-border area is detected, Galen will report that the specified area is outside the original image.
+
 h1. Advanced Specs
 
 When it comes to testing with Galen you might need to express some more complex specs in your code. In the following paragraphs you can find different ways to make your testing a bit more advanced
