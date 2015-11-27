@@ -1411,7 +1411,7 @@ In the resulting report you would get something like this. As you can see on the
 
 h1. Galen Specs JS Api
 
-In the galen specs you can use JavaScript blocks using @${ ... }@ syntax. In these js blocks you can call the functions from Galen API:
+In the galen specs you can use JavaScript blocks using @${ ... }@ syntax. In these js blocks you can access these variables and functions from Galen API:
 
 * *count( objectPattern )* - counts the amount of objects matching the given @objectPattern@. 
 $$ galen-specs
@@ -1438,3 +1438,21 @@ $$
 * *isVisible( objectName )* - returns true if the element with given name visible on page, false - if hidden or absent
 * *isPresent( objectName )* - returns true if the element with given name present on page, false - if absent
 * *findAll( objectPattern )* - returns an array of elements which names match the given pattern.
+
+Also you can have access to @viewport@ and @screen@ objects
+
+* *viewport* - A page element which represent a current viewport in a browser
+$$ galen-specs
+    ...
+    header:
+        width ${viewport.width() - 100} px
+    ...
+$$
+* *screen* - A page element which represent a current screen in a browser
+$$ galen-specs
+    ...
+    header:
+        width ${screen.width()} px
+    ...
+$$
+
