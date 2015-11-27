@@ -24,8 +24,9 @@ galen check homepage.gspec
     --include "mobile,all"
     --exclude "toexclude"
     --htmlreport "htmlreport-dir"
-    --testngreport "report/testng.xml"
+    --testngreport "testng-report.xml"
     --jsonreport "jsonreport-dir"
+    --junitreport "junit-report.xml"
 $$
 
 Command line arguments:
@@ -37,6 +38,7 @@ Command line arguments:
 * *htmlreport* _- path to folder in which Galen should generate HTML reports_
 * *testngreport* _- path to xml file in which Galen should write TestNG report_
 * *jsonreport* _- path to folder in which Galen should generate JSON reports_
+* *junitreport* _- path to junit xml report file_
 
 
 h2. Running test suites
@@ -49,12 +51,14 @@ galen test mytest01.test
     --htmlreport "htmlreport-dir"
     --testngreport "report/testng.xml"
     --jsonreport "jsonreport-dir"
+    --junitreport "junit-report.xml"
     --parallel-tests 4
 $$
 
 Command line arguments:
 * *htmlreport* _- path to folder in which Galen should generate HTML reports_
 * *testngreport* _- path to xml file in which Galen should write TestNG report_
+* *junitreport* _- path to junit xml report file_
 * *parallel-tests* _- amount of threads for running tests in parallel_
 * *recursive* _- flag which is used in case you want to search for all @.test@ files recursively in folder_
 * *filter* _- a filter for a test name_
@@ -68,6 +72,7 @@ $$ bash
 galen test mytest01.test
     --htmlreport "htmlreport-dir"
     --testngreport "report/testng.xml"
+    --junitreport "junit-report.xml"
     --parallel-tests 4
     --filter "Home page on * device"
 $$
