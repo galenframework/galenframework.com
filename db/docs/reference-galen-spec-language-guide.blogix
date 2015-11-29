@@ -881,6 +881,27 @@ $$ galen-specs
 $$
 
 
+h3. Component arguments
+
+If you need to pass some custom arguments to your component, you can do it like this
+
+$$ galen-specs
+= Main section =
+    header:
+        component header-component.gspec, isUserLogged true, userName "John Johnson"
+$$
+
+In the component these arguments will be accessible from @${ ... }@ blocks. Here is how you can use the arguments from above in @header-component.gspec@
+$$ galen-specs
+@objects
+    user_name       .user-name
+
+= Header =
+    @if ${isUserLogged}
+        user_name:
+            text is "${userName}"
+$$
+
 h2. Count
 
 You can validate the amount of objects on page that match some custom expression.
