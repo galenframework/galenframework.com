@@ -12,7 +12,7 @@ categories
    
 ================================
 
-Galen allows to configure each project separately. You just need to create a @config@ file in your test project directory or you can run this command and Galen will create a config file for you:
+Galen allows to configure each project separately. You just need to create a @galen.config@ file in your test project directory or you can run this command and Galen will create a config file for you:
 
 $$
 galen config
