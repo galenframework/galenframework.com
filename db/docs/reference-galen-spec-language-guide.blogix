@@ -1392,6 +1392,40 @@ $$ galen-specs
 $$
 
 
+h3. Rules Body
+
+When writting custom rules in your page spec you can also create rules that will have a callback (body). A callback is invoked via *@ruleBody* statement. For example you can create a custom condition like this:
+
+$$ galen-specs
+@rule if %{objectName} is visible
+    @if ${isVisible(objectName)}
+        @ruleBody
+$$
+
+Later in your spec file you can use this rule instead of standard if conditions:
+
+$$ gale-specs
+= Main section =
+    | if banner is visible
+        banner 
+            width 1000px
+$$
+
+
+h3. Rules Body using JavaScript
+
+In JavaScript based rules you can invoke rule body with @doRuleBody@ function:
+
+$$ javascript
+rule("if %{objectName} is visible", function (scopeObject, parameters) {
+    if (isVisible(parameters.objectName)) {
+        this.doRuleBody();
+    }
+});
+$$
+
+
+
 h2. Notes for specs
 
 Sometimes it is hard to understand why a certain validation was chosen in a spec file. Comments could help but what to do with resulting HTML report. You would not be able to see those comments in it. Just for this situation in version 1.6 was introduced a small improvement that allows you to add notes for a specific spec. Just a add a text surrounded with double-quotes before the spec.
