@@ -17,8 +17,9 @@ If you do want to switch but already have a lot of specs in the old format you c
 
 * "Comments":#Comments
 * "Object definition":#Objectdefinition
-* "Multiple objects definition":#Multipleobjectsdefinition
-* "Objects corrections":#Objectscorrections
+** "Multiple objects definition":#Multipleobjectsdefinition
+** "Objects corrections":#Objectscorrections
+** "Object Groups":#ObjectGroups
 * "Ranges":#Ranges
 * "Tagging and Sections":#TaggingandSections
 * "Variables":#Variables
@@ -122,7 +123,7 @@ This way Galen will automatically wrap the locators in the scope of the parent o
 
 
 
-h1. Multiple objects definition
+h2. Multiple objects definition
 
 Quite often in HTML we have similar objects which we could fetch with a single locator. This can also be done with Galen. Lets take a look at sample HTML code for menu 
 
@@ -145,7 +146,7 @@ $$
 As you can see we used asterisk in object name. In this case Galen will find all elements on page and will give them names @menu-item-1@, @menu-item-2@, @menu-item-3@, @menu-item-4@. As you can see it replaces asterisk with a number of on object on page.
 
 
-h1. Objects corrections
+h2. Objects corrections
 
 Sometimes it is hard to fetch the real size and position of page element. This happens rarely but when it happens it gives a lot of headache. You can fix this by using so called *corrections*. For instance we have an element on page that is located correctly but its width should be by 50 pixels less then what Galen gets. Lets write down this in our spec file:
 
@@ -173,6 +174,75 @@ Sometimes we need to specify the exact value in corrections
 $$ galen-specs
 @objects
     some-test-object    @(0, 0, 0, =200)   id  some-container
+$$
+
+
+h2. Object Groups
+
+Since version @2.2@ you can group objects and iterate over all objects in specific group. To declare an object group you can use the following syntax. In the example below we are going to group all major element in @skeleton_elements@ group.
+
+$$ galen-specs
+@objects
+    header          #header
+    menu            ul.menu
+    content         #content
+    footer          #footer
+
+@groups
+    skeleton_elements   header, menu, content, footer
+$$
+
+Now we can access all elements in @skeleton_elements@ group by using @&@ symbol:
+
+$$ galen-specs
+= Skeleton =
+    &skeleton_elements:
+        inside screen 0px left right
+$$
+
+The statement above is equal to this:
+
+$$ galen-specs
+= Skeleton =
+    header, menu, content, footer:
+        inside screen 0px left right
+$$
+
+In case you want to assing multiple elements to multiple groups, you can declare groups with square brackets @(@. For example lets add another group @mainframe@ that will have same elements as in @skeleton_elements@ group but with extra one
+
+$$ galen-specs
+@objects
+    header          #header
+    menu            ul.menu
+    content         #content
+    footer          #footer
+    navigation_bar  #navigation
+
+@groups
+    (skeleton_elements, mainframe)  header, menu, content, footer
+    mainframe                       navigation_bar
+$$
+
+In the example above group @mainframe@ will contain same elements as @skeleton_elements@ group plus @navigation_bar@ element.
+
+Also you can use groups within @forEach@ loop:
+
+$$ galen-specs
+= Mainframe =
+    @forEach [&mainframe] as item
+        ${item}:
+            inside screen 10px left
+$$
+
+h3. Declaring groups inline with objects
+
+If you don't want to declare groups in @groups@ section you can do it inside object definition:
+
+$$ galen-specs
+@objects
+    header          #header
+        logo @grouped(image_validation)  img.logo
+    
 $$
 
 h1. Ranges
