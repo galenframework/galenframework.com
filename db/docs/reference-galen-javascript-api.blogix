@@ -17,6 +17,7 @@ categories
 * "createGridDriver":#createGridDriver
 * "resize":#resize
 * "checkLayout":#checkLayout
+* "parseSpec":#parseSpec
 * "loadProperties":#loadProperties
 * "readFile":#readFile
 * "retry":#retry
@@ -57,7 +58,7 @@ h2. createDriver
 
 Creates a WebDriver instance. Also creates a RemoteWebDriver in Grid in case it was configured in @config@ file
 
-* *url* - String type. A url to be loaded in a brower
+* *url* - String type. A url to be loaded in a browser
 * *browserSize* - String type (e.g. "650x480"). Dimensions of browser window size
 * *browserType* - String type. A name of a browser. Could be one of these values: @firefox@, @chrome@, @ie@, @phantomjs@
 
@@ -150,6 +151,39 @@ checkLayout({
     }
 });
 $$
+
+
+h2. parseSpec
+
+*parseSpec( settings )*
+
+Takes same arguments as @"checkLayout":#checkLayout@ function but instead of checking layout it parses a page spec and return a @PageSpec@ object.
+
+* *settings* - PlainObject. A set of key/value that specifies different properties for checking layout. 
+** *driver* - "WebDriver":https://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/WebDriver.html type. An instance of WebDriver
+** *spec* - String type. A path to spec file
+** *tags* - String[] type _(optional)_ - An array of tags that should be included when checking layout
+** *excludedTags* - String[] type _(optional)_ - An array of tags that should be excluded when checking layout
+** *screenshot* - String type _(optional)_ - A path to a screenshot. In case this property is provided Galen will not make a screenshot and will use the provided screenshot instead in reports and for image analysis
+** *properties* - "Properties":http://docs.oracle.com/javase/6/docs/api/java/util/Properties.html type _(optional)_. Used for providing custom properties when parsing a spec file.
+** *vars* - Map type _(optional)_ - A set of key value pairs which will be used in spec as variables.
+** *objects* - Map type _(optional)_ - a set of object locators which can be referenced from spec
+
+$$ javascript
+var pageSpec = parseSpec({
+    driver: driver,
+    spec: "specs/homepage.gspec",
+    tags: ["mobile", "iphone"],
+    vars: {
+        customVariable: "custom value"
+    },
+    objects: {
+        header: "#header",
+        footer: "xpath: //div[@id='footer']"
+    }
+});
+$$
+
 
 h2. loadProperties
 
