@@ -1114,7 +1114,8 @@ Here is the list of all available image filters:
 * *saturation <level>* - Removes the colors with the given level. The zero value means complete loss of colors. The 100 value - all the colors are left the same. The level 50 - the image is colored by half.
 * *contrast <level>* - Increases the contrast. The allowed range for level is 0 to 258.
 * *denoise <radius>* - Removes noise from image. Applicable only as a *map-filter* as it only works with black/white images.
-* *quantinize <colorsAmount>* - Makes less colors on the image 
+* *quantinize <colorsAmount>* - Makes less colors on the image.
+* *mask <maskImagePath>* - Applies a mask to an image alpha channel which makes pixels transparent according to the color of corresponding mask image pixel. This might be useful if you need to avoid comparison of specific area of the image. Black color on mask means complete transparency and white means no transparency.
 
 
 In case you want to apply filter only to original image - you can use @filter-a@ expression like this:
