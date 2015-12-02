@@ -1033,7 +1033,9 @@ menu-item-1:
     image file imgs/menu-item-1.png, error 12px
 $$
 
+
 The above spec will compare object on the screen pixel to pixel with image @imgs/menu-item-1.png@ and will notify if amount of mismatching pixel is higher than maximum allowed 12 pixels.
+Galen framework also uses channel on sample image in order to avoid validation of specific area of the image. If you want you can manipulate alpha channel by applying "mask filter":#Imagefilters.
 
 You can also change the assertion from absolute pixels values to percentage like this:
 
