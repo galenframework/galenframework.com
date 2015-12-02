@@ -201,6 +201,7 @@
             {{#each issues}}
             <li class="story {{../style}}">
                 <a href="{{url}}" class="title">{{title}}</a>
+                <span class="story-label story-number">&#35;{{number}}</span>
                 <span class="story-label story-priority story-priority-{{priority}}" title="Priority {{priority}}">P {{priority}}</span>
                 <span class="story-label story-complexity story-complexity-{{complexity}}" title="Complexity {{complexity}}">C {{complexity}}</span>
                 {{#if needsDocumentation}}
