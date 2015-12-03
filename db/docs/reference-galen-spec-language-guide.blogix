@@ -92,9 +92,9 @@ Now lets try out all available locators in Galen spec for the example above
 
 $$ galen-specs
 @objects
-    search-panel            id      search-bar
-    search-panel-input      xpath   //div[@id='search-bar']/input[@type='text']
-    search-panel-button     css     #search-bar a
+    search_panel            id      search-bar
+    search_panel_input      xpath   //div[@id='search-bar']/input[@type='text']
+    search_panel_button     css     #search-bar a
 $$
 
 
@@ -102,24 +102,24 @@ Also you can skip the locator type definition. In that case Galen will consider 
 
 $$ galen-specs
 @objects
-    search-panel            #search-bar
-    search-panel-input      #search-bar input[type='text']
-    search-panel-button     #search-bar a
+    search_panel            #search-bar
+    search_panel_input      #search-bar input[type='text']
+    search_panel_button     #search-bar a
 $$
 
 Also you can optimize your locators by nesting objects
 
 $$ galen-specs
 @objects
-    search-panel   #search-bar
+    search_panel   #search-bar
         input      input[type='text']
         button     a
 $$
 
 This way Galen will automatically wrap the locators in the scope of the parent object and will create object references with the following names:
-* *search-panel*
-* *search-panel.input*
-* *search-panel.button*
+* *search_panel*
+* *search_panel.input*
+* *search_panel.button*
 
 
 
@@ -140,10 +140,10 @@ It would be nice to define all these menu items with a single css locator like @
 
 $$ galen-specs
 @objects
-    menu-item-*     css     #menu li a
+    menu_item-*     css     #menu li a
 $$
 
-As you can see we used asterisk in object name. In this case Galen will find all elements on page and will give them names @menu-item-1@, @menu-item-2@, @menu-item-3@, @menu-item-4@. As you can see it replaces asterisk with a number of on object on page.
+As you can see we used asterisk in object name. In this case Galen will find all elements on page and will give them names @menu_item-1@, @menu_item-2@, @menu_item-3@, @menu_item-4@. As you can see it replaces asterisk with a number of on object on page.
 
 
 h2. Objects corrections
@@ -152,28 +152,28 @@ Sometimes it is hard to fetch the real size and position of page element. This h
 
 $$ galen-specs
 @objects
-    some-test-object    @(0, 0, -50, 0)   id  some-container
+    some_test_object    @(0, 0, -50, 0)   id  some-container
 $$
 
 Or lets say we have an object but we want to move its boundary box down by 100 pixels and also to the left by 30 pixels
 
 $$ galen-specs
 @objects
-    some-test-object    @(-30, +100, 0, 0)   id  some-container
+    some_test_object    @(-30, +100, 0, 0)   id  some-container
 $$
 
 Or maybe we need to extend the height of the element by 200 px
 
 $$ galen-specs
 @objects
-    some-test-object    @(0, 0, 0, +200)   id  some-container
+    some_test_object    @(0, 0, 0, +200)   id  some-container
 $$
 
 Sometimes we need to specify the exact value in corrections
 
 $$ galen-specs
 @objects
-    some-test-object    @(0, 0, 0, =200)   id  some-container
+    some_test_object    @(0, 0, 0, =200)   id  some-container
 $$
 
 
@@ -372,7 +372,7 @@ $$ galen-specs
     contentMargin  ~ 20px
 
 = Header =
-    header-icon:
+    header_icon:
         inside header ${commonHeaderMargin} top left
 
 = Content =
@@ -391,7 +391,7 @@ Represents the visible area on the page.
 
 $$ galen-specs
 = Main =
-    feedback-button:
+    feedback_button:
         inside viewport 0px right
         centered vertically inside viewport
 $$
@@ -427,7 +427,7 @@ Reserved for global validations that are not related to a specific objects. For 
 
 $$ galen-specs
     global:
-        count any menu-item-* is 4
+        count any menu_item-* is 4
 $$
 
 
@@ -671,8 +671,8 @@ Now lets take a look at the following scheme and lets write down the according G
 
 $$ galen-specs
 # By top and bottom edges
-menu-item-1:
-    aligned horizontally all menu-item-2
+menu_item-1:
+    aligned horizontally all menu_item-2
 $$
 
 
@@ -684,8 +684,8 @@ And now alignment by only one edge
 
 $$ galen-specs
 # By top edge
-menu-item-1:
-    aligned horizontally top menu-item-2
+menu_item-1:
+    aligned horizontally top menu_item-2
 $$
 
 
@@ -696,15 +696,15 @@ Vertical alignment by left edge:
 }
 
 $$ galen-specs
-menu-item-1:
-    aligned vertically left menu-item-2
+menu_item-1:
+    aligned vertically left menu_item-2
 $$
 
 There is also a possibility to define the error rate within which we don't care if objects are not aligned. For instance it could be that one object is by 1px higher than the other one. If we are OK with that we can define it in our spec like this:
 
 $$ galen-specs
-menu-item-1:
-    aligned horizontally all menu-item-2 1px
+menu_item-1:
+    aligned horizontally all menu_item-2 1px
 $$
 
 In the code above we have defined the 1 pixel error rate so galen will not complain if object are misaligned by only one pixel.
@@ -855,11 +855,11 @@ comments:
     contains comment-header, comment-send-button, comment-textfield
 $$
 
-You can also use asterisk to match all other objects so you write less text. For example lets say we have an object @menu@ and in it there other object like: @menu-item-home@, @menu-item-categories@, @menu-item-about@, @menu-item-contact@. Instead of enumerating all of them in same spec we can write a shorter version:
+You can also use asterisk to match all other objects so you write less text. For example lets say we have an object @menu@ and in it there other object like: @menu_item-home@, @menu_item-categories@, @menu_item-about@, @menu_item-contact@. Instead of enumerating all of them in same spec we can write a shorter version:
 
 $$ galen-specs
 menu:
-    contains menu-item-*
+    contains menu_item-*
 $$
 
 Another case that you might have is when an element is not completely inside. For that you can use spec *contains partly*. Take a look at the following example
@@ -981,19 +981,19 @@ h4. Count all elements on page
 $$ galen-specs
 = Main =
     global:
-        count any menu-item-* is 3
+        count any menu_item-* is 3
 $$
 
 Count spec takes "range":#Ranges argument but without @px@ so you can use it like this
 
 $$ galen-specs
-        count any menu-item-* is 4 to 5
+        count any menu_item-* is 4 to 5
 $$
 
 Or this
 
 $$ galen-specs
-        count any menu-item-* is < 6
+        count any menu_item-* is < 6
 $$
 
 h4. Count only visible elements on page
@@ -1001,7 +1001,7 @@ h4. Count only visible elements on page
 If you want to count only the elements that are visible you can use @visible@ argument instead of @any@
 
 $$ galen-specs
-        count visible menu-item-* is 4 to 5
+        count visible menu_item-* is 4 to 5
 $$
 
 h4. Count only absent elements
@@ -1009,7 +1009,7 @@ h4. Count only absent elements
 If you need to validate the amount of absent elements that you can use it like this:
 
 $$ galen-specs
-        count absent menu-item-* is 4 to 5
+        count absent menu_item-* is 4 to 5
 $$
 
 h2. Color scheme
@@ -1029,19 +1029,19 @@ h2. Image
 Galen Framework also allows to perform more advanced check like image comparison. When you need to make sure your buttons or logos stay the same you can compare them by predefined image pixel to pixel. Example:
 
 $$ galen-specs
-menu-item-1:
-    image file imgs/menu-item-1.png, error 12px
+menu_item-1:
+    image file imgs/menu_item-1.png, error 12px
 $$
 
 
-The above spec will compare object on the screen pixel to pixel with image @imgs/menu-item-1.png@ and will notify if amount of mismatching pixel is higher than maximum allowed 12 pixels.
+The above spec will compare object on the screen pixel to pixel with image @imgs/menu_item-1.png@ and will notify if amount of mismatching pixel is higher than maximum allowed 12 pixels.
 Galen framework also uses channel on sample image in order to avoid validation of specific area of the image. If you want you can manipulate alpha channel by applying "mask filter":#Imagefilters.
 
 You can also change the assertion from absolute pixels values to percentage like this:
 
 $$ galen-specs
-menu-item-1:
-    image file imgs/menu-item-1.png, error 4%
+menu_item-1:
+    image file imgs/menu_item-1.png, error 4%
 $$
 
 In the generated report you can see which image was expected and also you can find the comparison map
@@ -1051,8 +1051,8 @@ In the generated report you can see which image was expected and also you can fi
 The red pixels on comparison map are the mismatching pixels that are far away from the *tolerance* value. The yellow pixels are in the range of 30 to 80 color difference from tolerance. The green pixels are the closest to the tolerance value. You can play a bit with this spec by changing the tolerance value:
 
 $$ galen-specs
-menu-item-1:
-    image file imgs/menu-item-1.png, error 4%, tolerance 80
+menu_item-1:
+    image file imgs/menu_item-1.png, error 4%, tolerance 80
 $$
 
 The *tolerance* - is the maximum allowed color difference of two compared pixels. By default the tolerance is set to 30. If you increase this parameter - the amount of mismatching pixels will be decreased but than you risk of not having the proper comparison.
@@ -1073,8 +1073,8 @@ h3. Stretching images
 When comparing images of different sizes Galen Framework just puts on image on top of another and assumes that the missing pixels are of a black color. But you can change this behavior by stretching the image to fit the original size. Example:
 
 $$ galen-specs
-menu-item-1:
-    image file imgs/menu-item-1.png, error 4%, stretch
+menu_item-1:
+    image file imgs/menu_item-1.png, error 4%, stretch
 $$
 
 
@@ -1083,8 +1083,8 @@ h3. Selecting the area in the sample image
 You can also define an area which should be used from the sample image like this:
 
 $$ galen-specs
-menu-item-1:
-    image file imgs/menu-item-1.png, error 4%, area 10 10 100 30
+menu_item-1:
+    image file imgs/menu_item-1.png, error 4%, area 10 10 100 30
 $$
 
 The area parameter takes 4 values: left, top, width and height
@@ -1095,8 +1095,8 @@ h3. Offset Analyzer
 Sometimes you might have an offset of few pixels on the actual image. That will end up in enormous amount of mismatching pixels. If you want to avoid such situation you can use @analyze-offset@ setting. It takes one integer argument that specifies the maximum size of an offset. Galen will search best fitting offset and will compare images with it.
 
 $$ galen-specs
-menu-item-1:
-    image file imgs/menu-item-1.png, analyze-offset 2
+menu_item-1:
+    image file imgs/menu_item-1.png, analyze-offset 2
 $$
 
 h3. Image filters
@@ -1105,7 +1105,7 @@ Sometimes you might want to apply some filters to compared images to have a smar
 Take a look at the following example:
 
 $$ galen-specs
-menu-item-1:
+menu_item-1:
     image file item-1.png, error 1%, filter blur 4, filter saturation 0, map-filter denoise 5
 $$
 
@@ -1186,8 +1186,8 @@ h3. Cropping
 The specification of relative layout sizes (@rem@, @em@ in CSS) can lead to rounding errors in the computed image area sizes, causing areas to seemingly stretch over image borders. The @crop-if-outside@ parameter can be used to force cropping areas to proper image dimensions:
 
 $$ galen-specs
-menu-item-1:
-    image file imgs/menu-item-1.png, crop-if-outside
+menu_item-1:
+    image file imgs/menu_item-1.png, crop-if-outside
 $$
 
 If the parameter is left out and an out-of-border area is detected, Galen will report that the specified area is outside the original image.
@@ -1216,7 +1216,7 @@ h2. Multiple objects with same specs
 So till now you have seen various specs for page objects. But what to do if you want to test exactly the same specs for other objects? In Galen you can use comma separated object notation and simple regex
 
 $$ galen-specs
-menu-item-1, menu-item-2, menu-item-3:
+menu_item-1, menu_item-2, menu_item-3:
     width 100 to 150px
     height 50px
 $$
@@ -1232,7 +1232,7 @@ $$
 The example above shows the simplest regular expression. In case you want to match any symbol you can use @*@ symbol. But if you need to match only numbers then you should use @#@ symbol.
 
 $$ galen-specs
-menu-item-#:
+menu_item-#:
     width 100px
 $$
 
@@ -1244,8 +1244,8 @@ There is also a possibility to declare for loop in case you need to express comp
 $$ galen-specs
 = Main section =
     @for [1 - 9] as index
-        menu-item-${index}:
-            left-of menu-item-${index + 1} 10px
+        menu_item-${index}:
+            left-of menu_item-${index + 1} 10px
 $$
 
 As you can see you can declare a variable inside a loop and later use it even in javascript statements.
@@ -1255,8 +1255,8 @@ The @for@ loop statement also allow to declare more complex sequence.
 $$ galen-specs
 = Main section =
     @for [1 - 5, 7, 9, 14, 20 - 25] as index
-        menu-item-${index}:
-            left-of menu-item-${index + 1} 10px
+        menu_item-${index}:
+            left-of menu_item-${index + 1} 10px
 $$
 
 
@@ -1268,7 +1268,7 @@ In case you don't want to hard code the numbers and want to match whatever objec
 
 $$ galen-specs
 = Main section =
-    @forEach [menu-item-*] as itemName
+    @forEach [menu_item-*] as itemName
         ${itemName}:
             height 30px
 $$
@@ -1277,7 +1277,7 @@ But what is more interesting is that you can also define a variable for previous
 
 $$ galen-specs
 = Main section =
-    @forEach [menu-item-*] as itemName, next as nextItem
+    @forEach [menu_item-*] as itemName, next as nextItem
         ${itemName}:
             left-of ${nextItem} 10px
 $$
@@ -1286,7 +1286,7 @@ That way it will iterate over all elements until last one. If you want to change
 
 $$ galen-specs
 = Main section =
-    @forEach [menu-item-*] as itemName, prev as previousItem
+    @forEach [menu_item-*] as itemName, prev as previousItem
         ${itemName}:
             right-of ${previousItem} 10px
 $$
@@ -1333,8 +1333,8 @@ In spec file call it like this:
 $$ galen-specs
 @script allEven.js
 
-@for  [${allEven("menu-item-*")}] as index
-    menu-item-${index}:
+@for  [${allEven("menu_item-*")}] as index
+    menu_item-${index}:
         height 100px
 $$
 
@@ -1479,10 +1479,10 @@ $$ galen-specs
 @script my-rules.js
 
 @objects
-    menu-item-*        #menu li a
+    menu_item-*        #menu li a
 
 = Menu =
-    | menu-item-* are equally distant from each other
+    | menu_item-* are equally distant from each other
 $$
 
 
@@ -1543,7 +1543,7 @@ In the galen specs you can use JavaScript blocks using @${ ... }@ syntax. In the
 
 * *count( objectPattern )* - counts the amount of objects matching the given @objectPattern@. 
 $$ galen-specs
-@for [ 1 - ${count("menu-item-*")} ] as objectName
+@for [ 1 - ${count("menu_item-*")} ] as objectName
     ...
     ...
 $$
@@ -1560,7 +1560,7 @@ $$
 ** *.name* - a name of the element
 
 $$ galen-specs
-@set menuMargin  ${find("menu-item-2").left() - find("menu-item-1").right()}
+@set menuMargin  ${find("menu_item-2").left() - find("menu_item-1").right()}
 $$
 
 * *isVisible( objectName )* - returns true if the element with given name visible on page, false - if hidden or absent

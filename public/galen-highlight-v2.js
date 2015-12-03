@@ -68,7 +68,7 @@ var GalenHighlightV2 = GalenHighlightV2 || {
             }
             else if (GalenHighlightV2.startsWith(line, "  ")){
                 if (state == OBJECT_DEFINITION) {
-                    return line.replace(/([a-z\-\*]+)\s(.*)/gi, "<span class='galen-object'>$1</span> $2");
+                    return line.replace(/([a-zA-Z0-9\-\_\*]+)\s(.*)/gi, "<span class='galen-object'>$1</span> $2");
                 } else if (GalenHighlightV2.startsWith(line.trim(), "|")){
                     return "<span class='galen-spec'>" + line + "</span>";
                 } else {
