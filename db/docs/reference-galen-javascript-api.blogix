@@ -298,7 +298,7 @@ h2. dumpPage
 Creates a dump for a current open page in a browser
 
 * *settings* - an object that contains the following properties:
-** "driver* - an instance of WebDriver
+** *driver* - an instance of WebDriver
 ** *name* - a name of a page
 ** *spec* - a path to a spec file
 ** *exportPath* - a path to a folder where Galen should store page dump
