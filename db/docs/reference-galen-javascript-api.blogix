@@ -17,9 +17,14 @@ categories
 * "createGridDriver":#createGridDriver
 * "resize":#resize
 * "checkLayout":#checkLayout
-* "parseSpec":#parseSpec
+* "checkPageSpecLayout":#checkPageSpecLayout
+* "parsePageSpec":#parsePageSpec
 * "loadProperties":#loadProperties
 * "readFile":#readFile
+* "listDirectory":#listDirectory
+* "makeDirectory":#makeDirectory
+* "fileExists":#fileExists
+* "isDirectory":#isDirectory
 * "retry":#retry
 * "takeScreenshot":#takeScreenshot
 * "cookie":#cookie
@@ -153,11 +158,62 @@ checkLayout({
 $$
 
 
-h2. parseSpec
+h2. checkPageSpecLayout
 
-*parseSpec( settings )*
+*checkPageSpecLayout( driver, pageSpec, [ tagsToInclude, tagsToExclude ] )*
+* *driver* - "WebDriver":https://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/WebDriver.html type. An instance of WebDriver
+* *pageSpec* - "PageSpec":http://jdoc.galenframework.com/com/galenframework/specs/page/PageSpec.html type. A path to spec file
+* *tagsToInclude*  - String[] type _(optional)_ - An array of tags that should be included when checking layout
+* *tagsToExclude* - String[] type _(optional)_ - An array of tags that should be excluded when checking layout
 
-Takes same arguments as @"checkLayout":#checkLayout@ function but instead of checking layout it parses a page spec and return a @PageSpec@ object.
+$$ javascript
+test("Home page", function() {
+  var driver = createDriver("http://galenframework.com",
+                            "1024x768");
+
+  var pageSpec = parsePageSpec({
+    driver: driver, 
+    spec: "homePage.gspec",
+    tags: ["all", "desktop"]
+  });
+
+  checkPageSpecLayout(driver, pageSpec, ["all", "desktop"]);
+});
+$$
+
+You can also use @checkPageSpecLayout@ with a single argument like this
+*checkPageSpecLayout( settings )*
+* *settings* - PlainObject. A set of key/value that specifies different properties for checking layout. 
+** *driver* - "WebDriver":https://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/WebDriver.html type. An instance of WebDriver
+** *pageSpec* - "PageSpec":http://jdoc.galenframework.com/com/galenframework/specs/page/PageSpec.html type. A path to spec file
+** *tags* - String[] type _(optional)_ - An array of tags that should be included when checking layout
+** *excludedTags* - String[] type _(optional)_ - An array of tags that should be excluded when checking layout
+** *screenshot* - String type _(optional)_ - A path to a screenshot. In case this property is provided Galen will not make a screenshot and will use the provided screenshot instead in reports and for image analysis
+** *properties* - "Properties":http://docs.oracle.com/javase/6/docs/api/java/util/Properties.html type _(optional)_. Used for providing custom properties when parsing a spec file.
+** *vars* - Map type _(optional)_ - A set of key value pairs which will be used in spec as variables.
+** *objects* - Map type _(optional)_ - a set of object locators which can be referenced from spec
+
+$$ javascript
+checkPageSpecLayout({
+    driver: driver,
+    pageSpec: pageSpec,
+    tags: ["mobile", "iphone"],
+    vars: {
+        customVariable: "custom value"
+    },
+    objects: {
+        header: "#header",
+        footer: "xpath: //div[@id='footer']"
+    }
+});
+$$
+
+
+h2. parsePageSpec
+
+*parsePageSpec( settings )*
+
+Takes same arguments as @"checkLayout":#checkLayout@ function but instead of checking layout it parses a page spec and return a @"PageSpec":http://jdoc.galenframework.com/com/galenframework/specs/page/PageSpec.html@ object.
 
 * *settings* - PlainObject. A set of key/value that specifies different properties for checking layout. 
 ** *driver* - "WebDriver":https://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/WebDriver.html type. An instance of WebDriver
@@ -170,7 +226,7 @@ Takes same arguments as @"checkLayout":#checkLayout@ function but instead of che
 ** *objects* - Map type _(optional)_ - a set of object locators which can be referenced from spec
 
 $$ javascript
-var pageSpec = parseSpec({
+var pageSpec = parsePageSpec({
     driver: driver,
     spec: "specs/homepage.gspec",
     tags: ["mobile", "iphone"],
@@ -210,6 +266,56 @@ Reads the content of specified file and returns a String with file content
 
 $$ javascript
 var content = readFile("/path/to/file/names.txt");
+$$
+
+
+h2. listDirectory
+*listDirectory( directoryPath )*
+
+Returns an array of files and directories in specified path
+
+$$ javascript
+var list = listDirectory("/path/to/directory");
+$$
+
+
+h2. makeDirectory
+
+*makeDirectory( directoryPath )*
+
+Creates directories in all specified path. Returns true if the directory was created, false - otherwise.
+
+$$ javascript
+makeDirectory("/path/to/new/directory");
+$$
+
+
+h2. fileExists
+
+*fileExists( filePath )*
+
+Checks whether the specified directory or file exists and returns true or false.
+
+$$ javascript
+var path = "someFile.txt";
+var text = "";
+if (fileExists(path)) {
+    text = readFile(path);
+}
+$$
+
+h2. isDirectory
+
+*isDirectory( directoryPath )*
+
+Returns true if the given path is a directory, false - otherwise
+
+$$ javascript
+var path = "/opt/logs";
+
+if (!isDirectory(path)) {
+    throw new Error("The give log path is a not directory");
+}
 $$
 
 h2. retry

@@ -208,7 +208,7 @@ $$ galen-specs
         inside screen 0px left right
 $$
 
-In case you want to assing multiple elements to multiple groups, you can declare groups with square brackets @(@. For example lets add another group @mainframe@ that will have same elements as in @skeleton_elements@ group but with extra one
+In case you want to assign multiple elements to multiple groups, you can declare groups with square brackets @(@. For example lets add another group @mainframe@ that will have same elements as in @skeleton_elements@ group but with extra one
 
 $$ galen-specs
 @objects
