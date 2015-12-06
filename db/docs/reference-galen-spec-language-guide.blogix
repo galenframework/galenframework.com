@@ -438,7 +438,7 @@ Galen supports the following specs:
 * "near":#Near _- checks that object is located near another object_
 * "below":#BelowandAbove _- checks that an element is located below other object_
 * "above":#BelowandAbove _- checks that an element is located above other object_
-* "left-of and right-of":#LeftofandRightof _- checks that an element is located above other object_
+* "left-of and right-of":#LeftofandRightof _- check that the object is located near another object from left or right_
 * "inside":#Inside _- checks that object is located inside another object_
 * "width":#WidthandHeight _- checks the width of object_
 * "height":#WidthandHeight _- checks the height of object_
