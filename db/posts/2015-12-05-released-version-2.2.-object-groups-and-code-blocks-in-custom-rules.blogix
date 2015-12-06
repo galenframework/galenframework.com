@@ -1,0 +1,132 @@
+--------------------------------
+title
+   Released version 2.2. Object groups and code blocks in custom rules
+--------------------------------
+date
+   2015-12-05 23:02
+--------------------------------
+allowComments
+   true
+--------------------------------
+categories
+   
+================================
+
+
+I am very excited to announce that the version 2.2 was just released with lots of new features and improvements in Galen Specs language. The complete list of changes is "here":https://github.com/galenframework/galen/releases/tag/galen-2.2.0. The major features added to version 2.2 are:
+
+* "Object Groups":/post/2015-12-05-released-version-2.2.-object-groups-and-code-blocks-in-custom-rules/#ObjectGroups
+* "Code blocks in custom rules":/post/2015-12-05-released-version-2.2.-object-groups-and-code-blocks-in-custom-rules/#Codeblocksincustomrules
+* "Mask filter and alpha channel in image spec":/post/2015-12-05-released-version-2.2.-object-groups-and-code-blocks-in-custom-rules/#Maskfilterandalphachannelinimagespec
+* "Arguments for component spec":/post/2015-12-05-released-version-2.2.-object-groups-and-code-blocks-in-custom-rules/#Argumentsforcomponentspec
+
+
+>>>>
+
+
+h2. Object Groups
+
+From now on you can declare groups of objects that allows you to have more readable specs in your tests. Also with spec groups you can perform different types of testing only for a selected group. Imagine that you want to use image spec but only for a specific set of objects. Here is what you can do:
+
+$$ galen-specs
+# You can declare all objects on your page
+@objects
+    header          #header
+        icon            img
+        caption         h1
+    menu            #menu
+        item-*          ul li
+
+# Now you can group objects like this
+@groups
+    image_validation    header.*,menu.item-*
+$$
+
+In the example above we grouped only @header.icon@, @header.caption@ and all @menu.item-*@ objects under @image_validation@ group. We didn't group @header@ and @menu@ objects. So now if we want to run image comparison tests we can do it like this:
+
+$$ galen-specs
+= Image validation =
+    @forEach [&image_validation] as item:
+        ${item}:
+            image file imgs/${item}.png
+$$
+
+In the example above galen will generate image validations for @header.icon,header.caption,menu.item-*@. As you can see, "object groups":/docs/reference-galen-spec-language-guide/#ObjectGroups feature allows you to build a more flexible and expressive page spec. But when combined together with "custom rules":/docs/reference-galen-spec-language-guide/#CustomRules, you can bring your tests to a new level and achieve estonishing results like in this "example":https://github.com/galenframework/galen-extras/blob/master/examples.gspec
+
+
+h2. Code blocks in custom rules
+
+In previous versions we have built a "custom rules":/docs/reference-galen-spec-language-guide/#CustomRules feature that allows you to generate specs based on your custom expressions. In the version @2.2@ we have added the support of "rules body":/docs/reference-galen-spec-language-guide/#RulesBody which could be used as a callback from the rule. This allows you to define your own loops or conditions in a more readable way. Here is an example:
+
+$$ galen-specs
+@rule if %{objectName} is visible
+    @if ${isVisible(objectName)}
+    @ruleBody
+
+= Main section =
+    # now you can use this rule like this
+    | if banner is visible
+        banner:
+            width 400px
+            height 200px
+            above main_section 20px
+$$
+
+Or for example you can create your own loop
+
+$$ galen-specs
+@rule every %{objectPattern} is %{spec}
+    @forEach [${objectPattern}] as item:
+        ${item}:
+            ${spec}
+
+= Main section =
+    | every menu.item-* is below header 0px
+$$
+
+
+h2. Mask filter and alpha channel in image spec
+
+Sometimes, when using image comparison, you might need to ignore some specific area on the image. This is now possible with version 2.2 because of added alpha channel support. From now on if the pixel has alpha value close to 0 - it will be ingored in image validation. But that is not all of it. If you don't want to edit all your image samples but you want to change the alpha value for specific region, you can make use of @mask@ filter. The mask filter takes another image and in areas where mask image has white pixel it will not change the alpha value. But on the areas where it has black pixels, it will change the alpha value to zero, so that it is completely ignored in image validation.
+
+$$ galen-specs
+= Image validation =
+    header.icon:
+        image file header.icon.png, filter mask header.icon-mask.png
+$$
+
+
+h2. Arguments for component spec
+
+Very useful feature when you want to make your components generic. A very common situation is when you want to move all validation for an object into a separate component (e.g. header), but that object contains elements that vary depending on whether the user is logged in or not. That is just one of the many examples. Lets imagine that you want your component to take two arguments: @isUserLogged@ and @loggedUserName@. Here is an example of @header-component.gspec@:
+
+$$ galen-specs
+@objects
+    caption         #header-caption
+
+= Header =
+    caption:
+        @if ${isUserLogged}
+            text is "Welcome, ${loggedUserName}!"
+        @else
+            text is "Welcome!"
+$$
+
+Now you can call this component from your main spec file like this:
+
+$$ galen-specs
+@objects
+    header      #header
+
+= Main section = 
+    header:
+        component header-component.gspec, isUserLogged true, loggedUserName "Johny"
+$$
+
+h2. Download
+
+These are not all features that were implemented in version 2.2. You can find the detailed list of changes "here":https://github.com/galenframework/galen/releases/tag/galen-2.2.0.
+To download the new version just follow this "link":https://github.com/galenframework/galen/releases/download/galen-2.2.0/galen-bin-2.2.0.zip. If you notice anything wrong with it, then let us know on "Galen Framework Forum":https://groups.google.com/forum/#!forum/galen-framework
+
+Kind regards,
+Ivan
