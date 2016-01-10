@@ -245,11 +245,6 @@ img.home-slide {
     width: 40%;
     opacity: 0.5;
 }
-#test-like-a-pro {
-    background: #222;
-    background: url('/public/back-dark.png'); 
-    color:#ddd;
-}
 
 .home-code-samples {
     background: #222;
