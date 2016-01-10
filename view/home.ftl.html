@@ -27,23 +27,6 @@
         </div>
     </div>
 </article>
-<article id="video-intro" class="hidden-xs">
-    <div class="home-spacer">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-sm-2 col-lg-2">
-                </div>
-                <div class="col-sm-8 col-lg-8">
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="//www.youtube.com/embed/mW9lWZtI7AE" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <div class="col-sm-2 col-lg-2">
-                </div>
-            </div>
-        </div>
-    </div>
-</article>
 <article id="home-slides">
     <div class="home-spacer">
         <div class="container">
@@ -164,6 +147,42 @@
                 </p>
                 <p class="home-description text-center">
                     There a lot of techniques that can help you optimize your specs. Together with that Galen Framework provides you with rich functionality for visual testing like image comparison and color scheme verification
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row home-spacer">
+            <div class="col-sm-12 col-lg-12 text-center">
+                <h1>Test Like a Pro</h1>
+            </div>
+            <div class="col-sm-12 col-lg-12">
+<#noparse>
+<code class="block" data-language="galen-specs">
+= Login box =
+    login_box:
+        | at the top inside content with ${content_vertical_margin} margin
+        centered horizontally inside content 1px
+
+    | every &amp;login_box_element is more or less readable
+    | every &amp;login_box_textfield has height ${form_textfield_height}
+    | every &amp;login_box_button is tapable
+
+    @on desktop, tablet
+        | &amp;login_box_form_elements are aligned vertically above each other with ${login_box_elements_vertical_margin} margin
+        | first &amp;login_box_form_element is inside login_box ${login_box_elements_side_margin} top
+        | last &amp;login_box_form_element is above login_button ${login_box_elements_vertical_margin}
+        | &amp;login_box_buttons are aligned horizontally next to each other with 0 to 5px margin
+    @on mobile
+        | &amp;login_box_elements are aligned vertically above each other with ${login_box_elements_vertical_margin} margin
+        | &amp;login_box_elements sides are vertically inside login_box with ${login_box_elements_side_margin} margin
+</code>
+</#noparse>
+                <p class="text-center">
+                    <a href="https://github.com/galenframework/galen-extras#galen-extras" target="__blank" class="btn btn-primary home-button home-button-on-dark">Galen Extras</a>
+                </p>
+                <p class="home-description text-center">
+                    In Galen Framework you can build your own expressions to test multiple elements in a single line. Also this way you can write clear specs and highly maintainable and reliable test code.
                 </p>
             </div>
         </div>
