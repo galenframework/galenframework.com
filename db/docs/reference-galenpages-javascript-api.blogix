@@ -125,7 +125,7 @@ this.Popup = $page("Popup", {
 });
 
 this.MyPage = $page("My page", {
-  alertPopup: $popup(Popup, "div.alert-popup")
+  alertPopup: $component(Popup, "div.alert-popup")
 });
 
 var myPage = new MyPage(driver);
