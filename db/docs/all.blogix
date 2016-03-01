@@ -62,4 +62,5 @@ h1. Other Tutorials
 - "Using Galen with a task runner":/docs/tutorial-using-galen-with-a-task-runner/ _run your specs from the command line with gulp or grunt_
 - "TDD for Responsive Design. Or how to automate testing of website layout for different devices":http://mindengine.net/post/2013-11-16-tdd-for-responsive-design-or-how-to-automate-testing-of-website-layout-for-different-devices/
 - "Testing colors on your website with Galen Framework":http://mindengine.net/post/2014-01-14-testing-colors-on-your-website-with-galen-framework/
+- "Integrating Galen with BrowserStack":https://github.com/browserstack/Galen-BrowserStack _run your galen tests on a cloud service_
 - More tutorials you can find on "MindEngine.net":http://mindengine.net/category/galen/ 
