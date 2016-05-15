@@ -1,0 +1,1085 @@
+<html>
+    <head>
+        <title>Galen Reports</title>
+        <link rel="stylesheet" type="text/css" href="report.css"></link>
+        <script src="jquery-1.11.2.min.js"></script>
+        <script src="handlebars-v2.0.0.js"></script>
+        <script src="galen-report.js"></script>
+        <script>
+var reportData = {
+  "testId" : "11-add-note-page-on-mobile-emulation-device",
+  "name" : "Add note page on mobile emulation device",
+  "report" : {
+    "nodes" : [ {
+      "name" : "Open http://testapp.galenframework.com/",
+      "status" : "info",
+      "time" : 1463301770195,
+      "type" : "node"
+    }, {
+      "name" : "Click loginButton on Welcome page",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "css: #welcome-page .button-login",
+        "type" : "text"
+      } ],
+      "time" : 1463301770422,
+      "type" : "node"
+    }, {
+      "name" : "Log in as testuser@example.com with password test123",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "Type \"testuser@example.com\" to username on Login page",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "css: input[name='login.username']",
+          "type" : "text"
+        } ],
+        "time" : 1463301770531,
+        "type" : "node"
+      }, {
+        "name" : "Type \"test123\" to password on Login page",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "css: input[name='login.password']",
+          "type" : "text"
+        } ],
+        "time" : 1463301770608,
+        "type" : "node"
+      }, {
+        "name" : "Click loginButton on Login page",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "css: button.button-login",
+          "type" : "text"
+        } ],
+        "time" : 1463301770649,
+        "type" : "node"
+      } ],
+      "time" : 1463301770531,
+      "type" : "node"
+    }, {
+      "name" : "Click addNoteButton on My notes page",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "xpath: //button[.='Add note']",
+        "type" : "text"
+      } ],
+      "time" : 1463301770745,
+      "type" : "node"
+    }, {
+      "name" : "Check layout: specs/addNotePage.gspec included tags: mobile",
+      "status" : "info",
+      "time" : 1463301772518,
+      "includedTags" : [ "mobile" ],
+      "sections" : [ {
+        "name" : "Skeleton",
+        "objects" : [ ],
+        "sections" : [ {
+          "name" : "&skeleton_elements sides are vertically inside screen",
+          "objects" : [ {
+            "name" : "header",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "<unknown source>",
+                "lineNumber" : -1
+              },
+              "name" : "inside screen -1 to 1 px top",
+              "highlight" : [ "header", "screen" ]
+            } ]
+          }, {
+            "name" : "menu",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "<unknown source>",
+                "lineNumber" : -1
+              },
+              "name" : "inside screen",
+              "highlight" : [ "menu", "screen" ]
+            } ]
+          }, {
+            "name" : "content",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "<unknown source>",
+                "lineNumber" : -1
+              },
+              "name" : "inside screen",
+              "highlight" : [ "content", "screen" ]
+            } ]
+          }, {
+            "name" : "footer",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "<unknown source>",
+                "lineNumber" : -1
+              },
+              "name" : "inside screen -1 to 1 px bottom",
+              "highlight" : [ "footer", "screen" ]
+            } ]
+          } ]
+        }, {
+          "name" : "&skeleton_elements are aligned vertically above each other",
+          "objects" : [ {
+            "name" : "header",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 138
+              },
+              "name" : "aligned vertically all menu",
+              "highlight" : [ "header", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 139
+              },
+              "name" : "above menu -1 to 1px",
+              "highlight" : [ "header", "menu" ]
+            } ]
+          }, {
+            "name" : "menu",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 138
+              },
+              "name" : "aligned vertically all content",
+              "highlight" : [ "menu", "content" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 139
+              },
+              "name" : "above content -1 to 1px",
+              "highlight" : [ "menu", "content" ]
+            } ]
+          }, {
+            "name" : "content",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 138
+              },
+              "name" : "aligned vertically all footer",
+              "highlight" : [ "content", "footer" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 139
+              },
+              "name" : "above footer -1 to 1px",
+              "highlight" : [ "content", "footer" ]
+            } ]
+          } ]
+        }, {
+          "name" : "A page should be centered horizontally inside screen with 900px on desktop, but on mobile and tablet it should stretch to screen",
+          "objects" : [ ],
+          "sections" : [ {
+            "name" : "every &skeleton_element is centered horizontally inside screen",
+            "objects" : [ {
+              "name" : "header",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                  "lineNumber" : 265
+                },
+                "name" : "centered horizontally inside screen",
+                "highlight" : [ "header", "screen" ]
+              } ]
+            }, {
+              "name" : "menu",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                  "lineNumber" : 265
+                },
+                "name" : "centered horizontally inside screen",
+                "highlight" : [ "menu", "screen" ]
+              } ]
+            }, {
+              "name" : "content",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                  "lineNumber" : 265
+                },
+                "name" : "centered horizontally inside screen",
+                "highlight" : [ "content", "screen" ]
+              } ]
+            }, {
+              "name" : "footer",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                  "lineNumber" : 265
+                },
+                "name" : "centered horizontally inside screen",
+                "highlight" : [ "footer", "screen" ]
+              } ]
+            } ]
+          }, {
+            "name" : "every &skeleton_element is aligned vertically all screen",
+            "objects" : [ {
+              "name" : "header",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                  "lineNumber" : 265
+                },
+                "name" : "aligned vertically all screen",
+                "highlight" : [ "header", "screen" ]
+              } ]
+            }, {
+              "name" : "menu",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                  "lineNumber" : 265
+                },
+                "name" : "aligned vertically all screen",
+                "highlight" : [ "menu", "screen" ]
+              } ]
+            }, {
+              "name" : "content",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                  "lineNumber" : 265
+                },
+                "name" : "aligned vertically all screen",
+                "highlight" : [ "content", "screen" ]
+              } ]
+            }, {
+              "name" : "footer",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                  "lineNumber" : 265
+                },
+                "name" : "aligned vertically all screen",
+                "highlight" : [ "footer", "screen" ]
+              } ]
+            } ]
+          } ]
+        } ]
+      }, {
+        "name" : "Header",
+        "objects" : [ {
+          "name" : "header",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 17
+            },
+            "name" : "height 70px",
+            "highlight" : [ "header" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 19
+            },
+            "name" : "text is \"Sample Website\"",
+            "highlight" : [ "header" ]
+          } ]
+        } ]
+      }, {
+        "name" : "Menu",
+        "objects" : [ ],
+        "sections" : [ {
+          "name" : "amount of visible &menu_items should be > 3",
+          "objects" : [ {
+            "name" : "global",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 113
+              },
+              "name" : "count visible \"&menu_items\" is > 3",
+              "highlight" : [ "menu.item-3", "menu.item-4", "menu.item-1", "menu.item-2" ]
+            } ]
+          } ]
+        }, {
+          "name" : "every &menu_item is inside menu and has height 64px",
+          "objects" : [ {
+            "name" : "menu.item-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 279
+              },
+              "name" : "inside menu",
+              "highlight" : [ "menu.item-1", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 280
+              },
+              "name" : "height 64px",
+              "highlight" : [ "menu.item-1" ]
+            } ]
+          }, {
+            "name" : "menu.item-2",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 279
+              },
+              "name" : "inside menu",
+              "highlight" : [ "menu.item-2", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 280
+              },
+              "name" : "height 64px",
+              "highlight" : [ "menu.item-2" ]
+            } ]
+          }, {
+            "name" : "menu.item-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 279
+              },
+              "name" : "inside menu",
+              "highlight" : [ "menu.item-3", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 280
+              },
+              "name" : "height 64px",
+              "highlight" : [ "menu.item-3" ]
+            } ]
+          }, {
+            "name" : "menu.item-4",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 279
+              },
+              "name" : "inside menu",
+              "highlight" : [ "menu.item-4", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 280
+              },
+              "name" : "height 64px",
+              "highlight" : [ "menu.item-4" ]
+            } ]
+          } ]
+        }, {
+          "name" : "first &menu_item is inside menu 0px top left",
+          "objects" : [ {
+            "name" : "menu.item-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 296
+              },
+              "name" : "inside menu 0px top left",
+              "highlight" : [ "menu.item-1", "menu" ]
+            } ]
+          } ]
+        }, {
+          "name" : "&menu_items are rendered in 2 column table layout",
+          "objects" : [ {
+            "name" : "menu.item-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "<unknown source>",
+                "lineNumber" : -1
+              },
+              "name" : "left-of menu.item-2 -1 to 1px",
+              "highlight" : [ "menu.item-1", "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "<unknown source>",
+                "lineNumber" : -1
+              },
+              "name" : "aligned horizontally all menu.item-2",
+              "highlight" : [ "menu.item-1", "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "<unknown source>",
+                "lineNumber" : -1
+              },
+              "name" : "above menu.item-3 -1 to 1px",
+              "highlight" : [ "menu.item-1", "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "<unknown source>",
+                "lineNumber" : -1
+              },
+              "name" : "aligned vertically all menu.item-3",
+              "highlight" : [ "menu.item-1", "menu.item-3" ]
+            } ]
+          }, {
+            "name" : "menu.item-2",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "<unknown source>",
+                "lineNumber" : -1
+              },
+              "name" : "above menu.item-4 -1 to 1px",
+              "highlight" : [ "menu.item-2", "menu.item-4" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "<unknown source>",
+                "lineNumber" : -1
+              },
+              "name" : "aligned vertically all menu.item-4",
+              "highlight" : [ "menu.item-2", "menu.item-4" ]
+            } ]
+          }, {
+            "name" : "menu.item-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "<unknown source>",
+                "lineNumber" : -1
+              },
+              "name" : "left-of menu.item-4 -1 to 1px",
+              "highlight" : [ "menu.item-3", "menu.item-4" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "<unknown source>",
+                "lineNumber" : -1
+              },
+              "name" : "aligned horizontally all menu.item-4",
+              "highlight" : [ "menu.item-3", "menu.item-4" ]
+            } ]
+          } ]
+        } ]
+      }, {
+        "name" : "Footer",
+        "objects" : [ {
+          "name" : "footer",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 38
+            },
+            "name" : "height 150px",
+            "highlight" : [ "footer" ]
+          } ]
+        } ]
+      }, {
+        "name" : "Add note page",
+        "objects" : [ {
+          "name" : "title_textfield",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/addNotePage.gspec",
+              "lineNumber" : 37
+            },
+            "name" : "height 34px",
+            "highlight" : [ "title_textfield" ]
+          } ]
+        }, {
+          "name" : "description_textfield",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/addNotePage.gspec",
+              "lineNumber" : 40
+            },
+            "name" : "height 150 to 350px",
+            "highlight" : [ "description_textfield" ]
+          } ]
+        } ],
+        "sections" : [ {
+          "name" : "caption should be located at the top inside content with 20 to 45px margin",
+          "objects" : [ {
+            "name" : "caption",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 512
+              },
+              "name" : "inside content 20 to 45px top",
+              "highlight" : [ "caption", "content" ]
+            } ]
+          } ]
+        }, {
+          "name" : "&add_note_elements should be more or less readable",
+          "objects" : [ {
+            "name" : "caption",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 360
+              },
+              "name" : "width > 30px",
+              "highlight" : [ "caption" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 361
+              },
+              "name" : "height > 10px",
+              "highlight" : [ "caption" ]
+            } ]
+          }, {
+            "name" : "title_textfield",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 360
+              },
+              "name" : "width > 30px",
+              "highlight" : [ "title_textfield" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 361
+              },
+              "name" : "height > 10px",
+              "highlight" : [ "title_textfield" ]
+            } ]
+          }, {
+            "name" : "description_textfield",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 360
+              },
+              "name" : "width > 30px",
+              "highlight" : [ "description_textfield" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 361
+              },
+              "name" : "height > 10px",
+              "highlight" : [ "description_textfield" ]
+            } ]
+          }, {
+            "name" : "add_button",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 360
+              },
+              "name" : "width > 30px",
+              "highlight" : [ "add_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 361
+              },
+              "name" : "height > 10px",
+              "highlight" : [ "add_button" ]
+            } ]
+          }, {
+            "name" : "cancel_button",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 360
+              },
+              "name" : "width > 30px",
+              "highlight" : [ "cancel_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 361
+              },
+              "name" : "height > 10px",
+              "highlight" : [ "cancel_button" ]
+            } ]
+          } ]
+        }, {
+          "name" : "&add_note_form_elements should stretch to content with ~ 20px margin",
+          "objects" : [ {
+            "name" : "caption",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 424
+              },
+              "name" : "inside content ~ 20px left right",
+              "highlight" : [ "caption", "content" ]
+            } ]
+          }, {
+            "name" : "title_textfield",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 424
+              },
+              "name" : "inside content ~ 20px left right",
+              "highlight" : [ "title_textfield", "content" ]
+            } ]
+          }, {
+            "name" : "description_textfield",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 424
+              },
+              "name" : "inside content ~ 20px left right",
+              "highlight" : [ "description_textfield", "content" ]
+            } ]
+          } ]
+        }, {
+          "name" : "&add_note_form_button should be tapable",
+          "objects" : [ {
+            "name" : "add_button",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 379
+              },
+              "name" : "width > 50px",
+              "highlight" : [ "add_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 380
+              },
+              "name" : "height > 30px",
+              "highlight" : [ "add_button" ]
+            } ]
+          }, {
+            "name" : "cancel_button",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 379
+              },
+              "name" : "width > 50px",
+              "highlight" : [ "cancel_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 380
+              },
+              "name" : "height > 30px",
+              "highlight" : [ "cancel_button" ]
+            } ]
+          } ]
+        }, {
+          "name" : "&add_note_elements are aligned vertically above each other with 5 to 20px margin",
+          "objects" : [ {
+            "name" : "caption",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 197
+              },
+              "name" : "aligned vertically all title_textfield",
+              "highlight" : [ "caption", "title_textfield" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 198
+              },
+              "name" : "above title_textfield 5 to 20px",
+              "highlight" : [ "caption", "title_textfield" ]
+            } ]
+          }, {
+            "name" : "title_textfield",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 197
+              },
+              "name" : "aligned vertically all description_textfield",
+              "highlight" : [ "title_textfield", "description_textfield" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 198
+              },
+              "name" : "above description_textfield 5 to 20px",
+              "highlight" : [ "title_textfield", "description_textfield" ]
+            } ]
+          }, {
+            "name" : "description_textfield",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 197
+              },
+              "name" : "aligned vertically all add_button",
+              "highlight" : [ "description_textfield", "add_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 198
+              },
+              "name" : "above add_button 5 to 20px",
+              "highlight" : [ "description_textfield", "add_button" ]
+            } ]
+          }, {
+            "name" : "add_button",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 197
+              },
+              "name" : "aligned vertically all cancel_button",
+              "highlight" : [ "add_button", "cancel_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 198
+              },
+              "name" : "above cancel_button 5 to 20px",
+              "highlight" : [ "add_button", "cancel_button" ]
+            } ]
+          } ]
+        } ]
+      } ],
+      "objects" : {
+        "menu.item-3" : {
+          "area" : [ 0, 134, 218, 64 ]
+        },
+        "cancel_button" : {
+          "area" : [ 20, 629, 396, 46 ]
+        },
+        "menu.item-4" : {
+          "area" : [ 218, 134, 218, 64 ]
+        },
+        "footer" : {
+          "area" : [ 0, 705, 436, 150 ]
+        },
+        "add_button" : {
+          "area" : [ 20, 573, 396, 46 ]
+        },
+        "screen" : {
+          "area" : [ 0, 0, 436, 855 ]
+        },
+        "caption" : {
+          "area" : [ 20, 238, 396, 33 ]
+        },
+        "menu" : {
+          "area" : [ 0, 70, 436, 128 ]
+        },
+        "content" : {
+          "area" : [ 0, 198, 436, 507 ]
+        },
+        "menu.item-1" : {
+          "area" : [ 0, 70, 218, 64 ]
+        },
+        "menu.item-2" : {
+          "area" : [ 218, 70, 218, 64 ]
+        },
+        "title_textfield" : {
+          "area" : [ 20, 281, 396, 34 ]
+        },
+        "header" : {
+          "area" : [ 0, 0, 436, 70 ]
+        },
+        "description_textfield" : {
+          "area" : [ 20, 325, 396, 228 ]
+        }
+      },
+      "screenshot" : "layout-21-screenshot.png",
+      "type" : "layout"
+    } ]
+  }
+};
+        </script>
+        <script>
+
+            $(function () {
+                var galenReport = createGalenReport();
+                galenReport.render("main", reportData);
+            });
+        </script>
+    </head>
+    <body>
+        <script id="report-tpl" type="text/x-handlebars-template">
+            <ul class="report-nodes">
+            {{#each report.nodes}}
+                {{renderNode this}}
+            {{/each}}
+            </ul>
+        </script>
+        <script id="report-node-tpl" type="text/x-handlebars-template">
+            <li>
+                <span class="report-time">{{formatReportTime time}}</span>
+                <a class="expand-link node-expand-button node-status-{{status}} contains-children-{{hasChildElements nodes}} collapsed" href="#">{{status}}</a>
+                <div class="node-name node-status-{{status}}">{{name}}</div>
+                {{#if extras}}
+                    {{renderNodeExtras extras}}
+                {{/if}}
+                {{#if stacktrace}}
+                    <div class="stacktrace">{{stacktrace}}</div>
+                {{/if}}
+                {{#if attachments}}
+                    <ul class="report-node-attachments">
+                        {{#each attachments}}
+                            <li>
+                                <a class="icon-sprite-before node-attachment" href="{{this}}">{{this}}</a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                {{/if}}
+                <div class="node-details expand-container">
+                    {{#if nodes}}
+                        <ul class="report-nodes">
+                            {{#each nodes}}
+                                {{renderNode this}}
+                            {{/each}}
+                        </ul>
+                    {{/if}}
+                </div>
+            </li>
+        </script>
+        <script id="report-node-text-tpl" type="text/x-handlebars-template">
+            <li>
+                <div class="node-simple-text">
+                    {{name}}
+                </div>
+            </li>
+        </script>
+        <script id="report-layout-tpl" type="text/x-handlebars-template">
+            <li>
+                <span class="report-time">{{formatReportTime time}}</span>
+                <a class="expand-link node-expand-button node-status-label node-status-info contains-children-true collapsed" href="#">LAYOUT</a>
+                <div class="node-name">{{name}}</div>
+                <div class="node-horizontal-menu" data-layout-id="{{layoutId}}"><a class="layout-heatmap-link" href="#">Heat Map</a></div>
+                <div class="node-details expand-container">
+                    {{renderSublayout this}}
+                </div>
+            </li>
+        </script>
+        <script id="report-layout-sublayout-tpl" type="text/x-handlebars-template">
+            <div class="layout-report" data-layout-id="{{layoutId}}" {{#if screenshot}}data-screenshot="{{screenshot}}"{{/if}}>
+                <ul class="layout-sections">
+                    {{#each sections}}
+                        {{renderLayoutSection this}}
+                    {{/each}}
+                </ul>
+            </div>
+        </script>
+        <script id="report-layout-section-tpl" type="text/x-handlebars-template">
+            <li>
+                <a class="layout-section icon-sprite-before expand-link contains-children-true" href="#">{{name}}</a>
+                <div class="layout-details expand-container">
+                    {{#if sections}}
+                        <ul class="layout-sections">
+                        {{#each sections}}
+                            {{renderLayoutSection this}}
+                        {{/each}}
+                        </ul>
+                    {{/if}}
+                    {{#if objects}}
+                        <ul class="layout-objects">
+                            {{#each objects}}
+                                {{renderLayoutObject this}}
+                            {{/each}}
+                        </ul>
+                    {{/if}}
+                </div>
+            </li>
+        </script>
+
+        <script id="report-layout-object-tpl" type="text/x-handlebars-template">
+            <li>
+                <a class="layout-object icon-sprite-before expand-link contains-children-true" href="#">{{name}}</a>
+                <ul class="layout-checks expand-container">
+                    {{#each specs}}
+                        {{renderLayoutCheck this}}
+                    {{/each}}
+                    {{#each specGroups}}
+                    <li>
+                        <a class="layout-specgroup icon-sprite-before expand-link contains-children-true" href="#">{{name}}</a>
+                        <ul class="layout-checks expand-container">
+                            {{#each specs}}
+                                {{renderLayoutCheck this}}
+                            {{/each}}
+                        </ul>
+                    </li>
+                    {{/each}}
+                </ul>
+            </li>
+        </script>
+        <script id="report-layout-check-tpl" type="text/x-handlebars-template">
+            <li>
+            <a class="layout-check icon-sprite-before layout-check-status-{{status}}" href="#"
+                data-highlight-objects="{{commaSeparated highlight}}"
+                title="{{place.filePath}}#{{place.lineNumber}}"
+                >{{name}}</a>
+
+                {{#if errors}}
+                    <div class="layout-check-error-message">
+                        {{#if imageComparison}}
+                        <a class="image-comparison-link"
+                            data-actual-image="{{imageComparison.actualImage}}"
+                            data-expected-image="{{imageComparison.expectedImage}}"
+                            data-map-image="{{imageComparison.comparisonMapImage}}"
+                            href="#">Show image comparison</a>
+                        {{/if}}
+                        <div class="layout-check-error-message-text">
+                            <ul>
+                            {{#each errors}}
+                                <li>{{this}}</li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+                {{/if}}
+
+                {{#if subLayout}}
+                {{renderSublayout subLayout}}
+                {{/if}}
+            </li>
+        </script>
+        <script id="screenshot-popup-tpl" type="text/x-handlebars-template">
+            <div class="screenshot-canvas">
+                {{#if screenshot}}
+                <img src="{{screenshot}}"/>
+                {{else}}
+                <div class="empty-screenshot" style="width: {{width}}; height: {{height}};"></div>
+                {{/if}}
+                {{#each objects}}
+                <div class="canvas-rect" style="left: {{area.left}}px; top: {{area.top}}px; width: {{area.width}}px; height: {{area.height}}px; {{#if drawBorder}}border-color: {{color}};{{else}}border:none;{{/if}}{{#if fillBackground}}background: {{color}};{{else}}background:none;{{/if}}">
+                    <div class="canvas-rect-wrapper">
+                        <div class="canvas-rect-hint" style="background: {{color}};">{{name}}</div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </script>
+        <script id="image-comparison-tpl" type="text/x-handlebars-template">
+            <div class="image-comparison image-comparison-layout-{{layout}}">
+                <div class="actual-image">
+                    <h5>Actual</h5>
+                    <img src="{{actual}}"/>
+                </div>
+
+                <div class="expected-image">
+                    <h5>Expected</h5>
+                    <img src="{{expected}}"/>
+                </div>
+
+                <div class="comparison-map">
+                    <h5>Comparison map</h5>
+                    <img src="{{map}}"/>
+                </div>
+            </div>
+        </script>
+        <script id="node-extras-tpl" type="text/x-handlebars-template">
+            <div class="node-extras">
+                <a class="node-extras" href="#">extras</a>
+                <div class="node-extras-content">
+                    <table class="node-extras-table">
+                        <tbody>
+                        {{#each this}}
+                        <tr>
+                            <td><label>{{@key}}</label></td>
+                            {{#ifCond type 'text'}}
+                            <td>{{value}}</td>
+                            {{/ifCond}}
+                            {{#ifCond type 'link'}}
+                            <td><a href="{{value}}">{{value}}</a></td>
+                            {{/ifCond}}
+                            {{#ifCond type 'image'}}
+                            <td><a href="{{value}}"><img src="{{value}}"/></a></td>
+                            {{/ifCond}}
+                        </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </script>
+
+
+
+        <div id="menu">
+            <ul>
+                <li><a href="report.html">Back to Test Overview</a></li>
+                <li><a class="menu-op-expand-all" href="#">Expand All</a></li>
+                <li><a class="menu-op-collapse-all" href="#">Collapse All</a></li>
+                <li><a class="menu-op-expand-errors" href="#">Expand Errors</a></li>
+            </ul>
+        </div>
+        <h2>Add note page on mobile emulation device</h2>
+        <div id="main"></div>
+        <div id="screen-shadow"></div>
+        <div id="popup" class="popup">
+            <div class="popup-wrapper">
+                <a class="popup-close-link" href="#">close</a>
+                <div class="popup-content"></div>
+            </div>
+        </div>
+        <div id="notification" class="notification">
+            <div class="notification-wrapper">
+                <a class="notification-close-link" href="#">close</a>
+                <div class="notification-summary"></div>
+                <div class="notification-message"></div>
+            </div>
+        </div>
+    </body>
+</html>

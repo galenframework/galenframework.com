@@ -1,0 +1,5149 @@
+<html>
+    <head>
+        <title>Galen Reports</title>
+        <link rel="stylesheet" type="text/css" href="report.css"></link>
+        <script src="jquery-1.11.2.min.js"></script>
+        <script src="handlebars-v2.0.0.js"></script>
+        <script src="galen-report.js"></script>
+        <script>
+var reportData = {
+  "testId" : "1-random-size-test-on-tablet-device",
+  "name" : "Random size test on tablet device",
+  "report" : {
+    "nodes" : [ {
+      "name" : "Resizing to width 615",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "Check layout: specs/welcomePage.gspec included tags: tablet",
+        "status" : "info",
+        "time" : 1449433265251,
+        "includedTags" : [ "tablet" ],
+        "sections" : [ {
+          "name" : "Header",
+          "objects" : [ {
+            "name" : "header",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 15
+              },
+              "name" : "inside screen 0px top",
+              "highlight" : [ "header", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "header", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 17
+              },
+              "name" : "height ~ 70px",
+              "highlight" : [ "header" ]
+            } ]
+          }, {
+            "name" : "header.logo",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 20
+              },
+              "name" : "inside header 5 to 15px top, 0 to 10px left",
+              "highlight" : [ "header.logo", "header" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 21
+              },
+              "name" : "near header.text 5 to 30px left",
+              "highlight" : [ "header.logo", "header.text" ]
+            } ]
+          }, {
+            "name" : "header.text",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 24
+              },
+              "name" : "inside header 10 to 25px top",
+              "highlight" : [ "header.text", "header" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 36
+              },
+              "name" : "text is \"Sample Website\"",
+              "highlight" : [ "header.text" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Menu",
+          "objects" : [ {
+            "name" : "menu",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 43
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "menu", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 44
+              },
+              "name" : "below header ~ 0px",
+              "highlight" : [ "menu", "header" ]
+            } ]
+          }, {
+            "name" : "menu.item-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 54
+              },
+              "name" : "inside menu ~ 0px top left bottom",
+              "highlight" : [ "menu.item-1", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-1", "menu" ]
+            } ]
+          }, {
+            "name" : "menu.item-2",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-2", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-1 0 to 5px",
+              "highlight" : [ "menu.item-2", "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-1",
+              "highlight" : [ "menu.item-2", "menu.item-1" ]
+            } ]
+          }, {
+            "name" : "menu.item-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-3", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-2 0 to 5px",
+              "highlight" : [ "menu.item-3", "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-2",
+              "highlight" : [ "menu.item-3", "menu.item-2" ]
+            } ]
+          }, {
+            "name" : "menu.item-4",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-4" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-4" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-4", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-3 0 to 5px",
+              "highlight" : [ "menu.item-4", "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-3",
+              "highlight" : [ "menu.item-4", "menu.item-3" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Content",
+          "objects" : [ {
+            "name" : "content",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 83
+              },
+              "name" : "below menu ~ 0px",
+              "highlight" : [ "content", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 84
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "content", "screen" ]
+            } ]
+          }, {
+            "name" : "welcome_block",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 13
+              },
+              "name" : "inside content ~ 20px top left right",
+              "highlight" : [ "welcome_block", "content" ]
+            } ]
+          }, {
+            "name" : "text_block-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "text_block-1", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 23
+              },
+              "name" : "height > 20px",
+              "highlight" : [ "text_block-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 24
+              },
+              "name" : "above login_button 10 to 50 px",
+              "highlight" : [ "text_block-1", "login_button" ]
+            } ]
+          }, {
+            "name" : "login_button",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "login_button", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 27
+              },
+              "name" : "height ~ 45px",
+              "highlight" : [ "login_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 28
+              },
+              "name" : "text is \"Login\"",
+              "highlight" : [ "login_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 29
+              },
+              "name" : "above text_block-3 10 to 50px",
+              "highlight" : [ "login_button", "text_block-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 47
+              },
+              "name" : "width ~ 78px",
+              "highlight" : [ "login_button" ]
+            } ]
+          }, {
+            "name" : "text_block-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "text_block-3", "welcome_block" ]
+            } ]
+          }, {
+            "name" : "greeting",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 19
+              },
+              "name" : "above text_block-1 10 to 50 px",
+              "highlight" : [ "greeting", "text_block-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 20
+              },
+              "name" : "inside welcome_block ~ 30px left",
+              "highlight" : [ "greeting", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 43
+              },
+              "name" : "height ~ 39px",
+              "highlight" : [ "greeting" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 44
+              },
+              "name" : "inside welcome_block ~ 50 px top",
+              "highlight" : [ "greeting", "welcome_block" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Footer",
+          "objects" : [ {
+            "name" : "footer",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 94
+              },
+              "name" : "height ~ 200px",
+              "highlight" : [ "footer" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 95
+              },
+              "name" : "below content 0px",
+              "highlight" : [ "footer", "content" ]
+            } ]
+          } ]
+        } ],
+        "objects" : {
+          "screen" : {
+            "area" : [ 0, 0, 601, 745 ]
+          },
+          "menu.item-3" : {
+            "area" : [ 218, 70, 100, 64 ]
+          },
+          "menu.item-4" : {
+            "area" : [ 322, 70, 100, 64 ]
+          },
+          "greeting" : {
+            "area" : [ 50, 204, 501, 40 ]
+          },
+          "menu" : {
+            "area" : [ 0, 70, 601, 64 ]
+          },
+          "text_block-3" : {
+            "area" : [ 50, 390, 501, 61 ]
+          },
+          "header.logo" : {
+            "area" : [ 0, 13, 48, 48 ]
+          },
+          "menu.item-1" : {
+            "area" : [ 0, 70, 100, 64 ]
+          },
+          "menu.item-2" : {
+            "area" : [ 104, 70, 110, 64 ]
+          },
+          "welcome_block" : {
+            "area" : [ 20, 154, 561, 341 ]
+          },
+          "header" : {
+            "area" : [ 0, 0, 601, 70 ]
+          },
+          "header.text" : {
+            "area" : [ 70, 20, 262, 40 ]
+          },
+          "footer" : {
+            "area" : [ 0, 545, 601, 200 ]
+          },
+          "content" : {
+            "area" : [ 0, 134, 601, 411 ]
+          },
+          "text_block-1" : {
+            "area" : [ 50, 254, 501, 60 ]
+          },
+          "login_button" : {
+            "area" : [ 50, 329, 78, 46 ]
+          }
+        },
+        "screenshot" : "layout-1-screenshot.png",
+        "type" : "layout"
+      } ],
+      "time" : 1449433263382,
+      "type" : "node"
+    }, {
+      "name" : "Resizing to width 637",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "Check layout: specs/welcomePage.gspec included tags: tablet",
+        "status" : "info",
+        "time" : 1449433266658,
+        "includedTags" : [ "tablet" ],
+        "sections" : [ {
+          "name" : "Header",
+          "objects" : [ {
+            "name" : "header",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 15
+              },
+              "name" : "inside screen 0px top",
+              "highlight" : [ "header", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "header", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 17
+              },
+              "name" : "height ~ 70px",
+              "highlight" : [ "header" ]
+            } ]
+          }, {
+            "name" : "header.logo",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 20
+              },
+              "name" : "inside header 5 to 15px top, 0 to 10px left",
+              "highlight" : [ "header.logo", "header" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 21
+              },
+              "name" : "near header.text 5 to 30px left",
+              "highlight" : [ "header.logo", "header.text" ]
+            } ]
+          }, {
+            "name" : "header.text",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 24
+              },
+              "name" : "inside header 10 to 25px top",
+              "highlight" : [ "header.text", "header" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 36
+              },
+              "name" : "text is \"Sample Website\"",
+              "highlight" : [ "header.text" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Menu",
+          "objects" : [ {
+            "name" : "menu",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 43
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "menu", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 44
+              },
+              "name" : "below header ~ 0px",
+              "highlight" : [ "menu", "header" ]
+            } ]
+          }, {
+            "name" : "menu.item-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 54
+              },
+              "name" : "inside menu ~ 0px top left bottom",
+              "highlight" : [ "menu.item-1", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-1", "menu" ]
+            } ]
+          }, {
+            "name" : "menu.item-2",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-2", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-1 0 to 5px",
+              "highlight" : [ "menu.item-2", "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-1",
+              "highlight" : [ "menu.item-2", "menu.item-1" ]
+            } ]
+          }, {
+            "name" : "menu.item-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-3", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-2 0 to 5px",
+              "highlight" : [ "menu.item-3", "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-2",
+              "highlight" : [ "menu.item-3", "menu.item-2" ]
+            } ]
+          }, {
+            "name" : "menu.item-4",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-4" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-4" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-4", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-3 0 to 5px",
+              "highlight" : [ "menu.item-4", "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-3",
+              "highlight" : [ "menu.item-4", "menu.item-3" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Content",
+          "objects" : [ {
+            "name" : "content",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 83
+              },
+              "name" : "below menu ~ 0px",
+              "highlight" : [ "content", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 84
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "content", "screen" ]
+            } ]
+          }, {
+            "name" : "welcome_block",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 13
+              },
+              "name" : "inside content ~ 20px top left right",
+              "highlight" : [ "welcome_block", "content" ]
+            } ]
+          }, {
+            "name" : "text_block-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "text_block-1", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 23
+              },
+              "name" : "height > 20px",
+              "highlight" : [ "text_block-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 24
+              },
+              "name" : "above login_button 10 to 50 px",
+              "highlight" : [ "text_block-1", "login_button" ]
+            } ]
+          }, {
+            "name" : "login_button",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "login_button", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 27
+              },
+              "name" : "height ~ 45px",
+              "highlight" : [ "login_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 28
+              },
+              "name" : "text is \"Login\"",
+              "highlight" : [ "login_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 29
+              },
+              "name" : "above text_block-3 10 to 50px",
+              "highlight" : [ "login_button", "text_block-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 47
+              },
+              "name" : "width ~ 78px",
+              "highlight" : [ "login_button" ]
+            } ]
+          }, {
+            "name" : "text_block-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "text_block-3", "welcome_block" ]
+            } ]
+          }, {
+            "name" : "greeting",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 19
+              },
+              "name" : "above text_block-1 10 to 50 px",
+              "highlight" : [ "greeting", "text_block-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 20
+              },
+              "name" : "inside welcome_block ~ 30px left",
+              "highlight" : [ "greeting", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 43
+              },
+              "name" : "height ~ 39px",
+              "highlight" : [ "greeting" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 44
+              },
+              "name" : "inside welcome_block ~ 50 px top",
+              "highlight" : [ "greeting", "welcome_block" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Footer",
+          "objects" : [ {
+            "name" : "footer",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 94
+              },
+              "name" : "height ~ 200px",
+              "highlight" : [ "footer" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 95
+              },
+              "name" : "below content 0px",
+              "highlight" : [ "footer", "content" ]
+            } ]
+          } ]
+        } ],
+        "objects" : {
+          "screen" : {
+            "area" : [ 0, 0, 623, 745 ]
+          },
+          "menu.item-3" : {
+            "area" : [ 218, 70, 100, 64 ]
+          },
+          "menu.item-4" : {
+            "area" : [ 322, 70, 100, 64 ]
+          },
+          "greeting" : {
+            "area" : [ 50, 204, 523, 40 ]
+          },
+          "menu" : {
+            "area" : [ 0, 70, 623, 64 ]
+          },
+          "text_block-3" : {
+            "area" : [ 50, 390, 523, 61 ]
+          },
+          "header.logo" : {
+            "area" : [ 0, 13, 48, 48 ]
+          },
+          "menu.item-1" : {
+            "area" : [ 0, 70, 100, 64 ]
+          },
+          "menu.item-2" : {
+            "area" : [ 104, 70, 110, 64 ]
+          },
+          "welcome_block" : {
+            "area" : [ 20, 154, 583, 341 ]
+          },
+          "header" : {
+            "area" : [ 0, 0, 623, 70 ]
+          },
+          "header.text" : {
+            "area" : [ 70, 20, 262, 40 ]
+          },
+          "footer" : {
+            "area" : [ 0, 545, 623, 200 ]
+          },
+          "content" : {
+            "area" : [ 0, 134, 623, 411 ]
+          },
+          "text_block-1" : {
+            "area" : [ 50, 254, 523, 60 ]
+          },
+          "login_button" : {
+            "area" : [ 50, 329, 78, 46 ]
+          }
+        },
+        "screenshot" : "layout-2-screenshot.png",
+        "type" : "layout"
+      } ],
+      "time" : 1449433265253,
+      "type" : "node"
+    }, {
+      "name" : "Resizing to width 658",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "Check layout: specs/welcomePage.gspec included tags: tablet",
+        "status" : "info",
+        "time" : 1449433268018,
+        "includedTags" : [ "tablet" ],
+        "sections" : [ {
+          "name" : "Header",
+          "objects" : [ {
+            "name" : "header",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 15
+              },
+              "name" : "inside screen 0px top",
+              "highlight" : [ "header", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "header", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 17
+              },
+              "name" : "height ~ 70px",
+              "highlight" : [ "header" ]
+            } ]
+          }, {
+            "name" : "header.logo",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 20
+              },
+              "name" : "inside header 5 to 15px top, 0 to 10px left",
+              "highlight" : [ "header.logo", "header" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 21
+              },
+              "name" : "near header.text 5 to 30px left",
+              "highlight" : [ "header.logo", "header.text" ]
+            } ]
+          }, {
+            "name" : "header.text",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 24
+              },
+              "name" : "inside header 10 to 25px top",
+              "highlight" : [ "header.text", "header" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 36
+              },
+              "name" : "text is \"Sample Website\"",
+              "highlight" : [ "header.text" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Menu",
+          "objects" : [ {
+            "name" : "menu",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 43
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "menu", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 44
+              },
+              "name" : "below header ~ 0px",
+              "highlight" : [ "menu", "header" ]
+            } ]
+          }, {
+            "name" : "menu.item-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 54
+              },
+              "name" : "inside menu ~ 0px top left bottom",
+              "highlight" : [ "menu.item-1", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-1", "menu" ]
+            } ]
+          }, {
+            "name" : "menu.item-2",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-2", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-1 0 to 5px",
+              "highlight" : [ "menu.item-2", "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-1",
+              "highlight" : [ "menu.item-2", "menu.item-1" ]
+            } ]
+          }, {
+            "name" : "menu.item-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-3", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-2 0 to 5px",
+              "highlight" : [ "menu.item-3", "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-2",
+              "highlight" : [ "menu.item-3", "menu.item-2" ]
+            } ]
+          }, {
+            "name" : "menu.item-4",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-4" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-4" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-4", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-3 0 to 5px",
+              "highlight" : [ "menu.item-4", "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-3",
+              "highlight" : [ "menu.item-4", "menu.item-3" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Content",
+          "objects" : [ {
+            "name" : "content",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 83
+              },
+              "name" : "below menu ~ 0px",
+              "highlight" : [ "content", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 84
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "content", "screen" ]
+            } ]
+          }, {
+            "name" : "welcome_block",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 13
+              },
+              "name" : "inside content ~ 20px top left right",
+              "highlight" : [ "welcome_block", "content" ]
+            } ]
+          }, {
+            "name" : "text_block-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "text_block-1", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 23
+              },
+              "name" : "height > 20px",
+              "highlight" : [ "text_block-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 24
+              },
+              "name" : "above login_button 10 to 50 px",
+              "highlight" : [ "text_block-1", "login_button" ]
+            } ]
+          }, {
+            "name" : "login_button",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "login_button", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 27
+              },
+              "name" : "height ~ 45px",
+              "highlight" : [ "login_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 28
+              },
+              "name" : "text is \"Login\"",
+              "highlight" : [ "login_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 29
+              },
+              "name" : "above text_block-3 10 to 50px",
+              "highlight" : [ "login_button", "text_block-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 47
+              },
+              "name" : "width ~ 78px",
+              "highlight" : [ "login_button" ]
+            } ]
+          }, {
+            "name" : "text_block-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "text_block-3", "welcome_block" ]
+            } ]
+          }, {
+            "name" : "greeting",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 19
+              },
+              "name" : "above text_block-1 10 to 50 px",
+              "highlight" : [ "greeting", "text_block-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 20
+              },
+              "name" : "inside welcome_block ~ 30px left",
+              "highlight" : [ "greeting", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 43
+              },
+              "name" : "height ~ 39px",
+              "highlight" : [ "greeting" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 44
+              },
+              "name" : "inside welcome_block ~ 50 px top",
+              "highlight" : [ "greeting", "welcome_block" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Footer",
+          "objects" : [ {
+            "name" : "footer",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 94
+              },
+              "name" : "height ~ 200px",
+              "highlight" : [ "footer" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 95
+              },
+              "name" : "below content 0px",
+              "highlight" : [ "footer", "content" ]
+            } ]
+          } ]
+        } ],
+        "objects" : {
+          "screen" : {
+            "area" : [ 0, 0, 644, 734 ]
+          },
+          "menu.item-3" : {
+            "area" : [ 218, 70, 100, 64 ]
+          },
+          "menu.item-4" : {
+            "area" : [ 322, 70, 100, 64 ]
+          },
+          "greeting" : {
+            "area" : [ 50, 204, 544, 40 ]
+          },
+          "menu" : {
+            "area" : [ 0, 70, 644, 64 ]
+          },
+          "text_block-3" : {
+            "area" : [ 50, 360, 544, 61 ]
+          },
+          "header.logo" : {
+            "area" : [ 0, 13, 48, 48 ]
+          },
+          "menu.item-1" : {
+            "area" : [ 0, 70, 100, 64 ]
+          },
+          "menu.item-2" : {
+            "area" : [ 104, 70, 110, 64 ]
+          },
+          "welcome_block" : {
+            "area" : [ 20, 154, 604, 311 ]
+          },
+          "header" : {
+            "area" : [ 0, 0, 644, 70 ]
+          },
+          "header.text" : {
+            "area" : [ 70, 20, 262, 40 ]
+          },
+          "footer" : {
+            "area" : [ 0, 534, 644, 200 ]
+          },
+          "content" : {
+            "area" : [ 0, 134, 644, 400 ]
+          },
+          "text_block-1" : {
+            "area" : [ 50, 254, 544, 30 ]
+          },
+          "login_button" : {
+            "area" : [ 50, 299, 78, 46 ]
+          }
+        },
+        "screenshot" : "layout-3-screenshot.png",
+        "type" : "layout"
+      } ],
+      "time" : 1449433266658,
+      "type" : "node"
+    }, {
+      "name" : "Resizing to width 674",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "Check layout: specs/welcomePage.gspec included tags: tablet",
+        "status" : "info",
+        "time" : 1449433269392,
+        "includedTags" : [ "tablet" ],
+        "sections" : [ {
+          "name" : "Header",
+          "objects" : [ {
+            "name" : "header",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 15
+              },
+              "name" : "inside screen 0px top",
+              "highlight" : [ "header", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "header", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 17
+              },
+              "name" : "height ~ 70px",
+              "highlight" : [ "header" ]
+            } ]
+          }, {
+            "name" : "header.logo",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 20
+              },
+              "name" : "inside header 5 to 15px top, 0 to 10px left",
+              "highlight" : [ "header.logo", "header" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 21
+              },
+              "name" : "near header.text 5 to 30px left",
+              "highlight" : [ "header.logo", "header.text" ]
+            } ]
+          }, {
+            "name" : "header.text",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 24
+              },
+              "name" : "inside header 10 to 25px top",
+              "highlight" : [ "header.text", "header" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 36
+              },
+              "name" : "text is \"Sample Website\"",
+              "highlight" : [ "header.text" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Menu",
+          "objects" : [ {
+            "name" : "menu",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 43
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "menu", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 44
+              },
+              "name" : "below header ~ 0px",
+              "highlight" : [ "menu", "header" ]
+            } ]
+          }, {
+            "name" : "menu.item-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 54
+              },
+              "name" : "inside menu ~ 0px top left bottom",
+              "highlight" : [ "menu.item-1", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-1", "menu" ]
+            } ]
+          }, {
+            "name" : "menu.item-2",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-2", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-1 0 to 5px",
+              "highlight" : [ "menu.item-2", "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-1",
+              "highlight" : [ "menu.item-2", "menu.item-1" ]
+            } ]
+          }, {
+            "name" : "menu.item-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-3", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-2 0 to 5px",
+              "highlight" : [ "menu.item-3", "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-2",
+              "highlight" : [ "menu.item-3", "menu.item-2" ]
+            } ]
+          }, {
+            "name" : "menu.item-4",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-4" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-4" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-4", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-3 0 to 5px",
+              "highlight" : [ "menu.item-4", "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-3",
+              "highlight" : [ "menu.item-4", "menu.item-3" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Content",
+          "objects" : [ {
+            "name" : "content",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 83
+              },
+              "name" : "below menu ~ 0px",
+              "highlight" : [ "content", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 84
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "content", "screen" ]
+            } ]
+          }, {
+            "name" : "welcome_block",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 13
+              },
+              "name" : "inside content ~ 20px top left right",
+              "highlight" : [ "welcome_block", "content" ]
+            } ]
+          }, {
+            "name" : "text_block-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "text_block-1", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 23
+              },
+              "name" : "height > 20px",
+              "highlight" : [ "text_block-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 24
+              },
+              "name" : "above login_button 10 to 50 px",
+              "highlight" : [ "text_block-1", "login_button" ]
+            } ]
+          }, {
+            "name" : "login_button",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "login_button", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 27
+              },
+              "name" : "height ~ 45px",
+              "highlight" : [ "login_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 28
+              },
+              "name" : "text is \"Login\"",
+              "highlight" : [ "login_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 29
+              },
+              "name" : "above text_block-3 10 to 50px",
+              "highlight" : [ "login_button", "text_block-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 47
+              },
+              "name" : "width ~ 78px",
+              "highlight" : [ "login_button" ]
+            } ]
+          }, {
+            "name" : "text_block-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "text_block-3", "welcome_block" ]
+            } ]
+          }, {
+            "name" : "greeting",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 19
+              },
+              "name" : "above text_block-1 10 to 50 px",
+              "highlight" : [ "greeting", "text_block-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 20
+              },
+              "name" : "inside welcome_block ~ 30px left",
+              "highlight" : [ "greeting", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 43
+              },
+              "name" : "height ~ 39px",
+              "highlight" : [ "greeting" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 44
+              },
+              "name" : "inside welcome_block ~ 50 px top",
+              "highlight" : [ "greeting", "welcome_block" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Footer",
+          "objects" : [ {
+            "name" : "footer",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 94
+              },
+              "name" : "height ~ 200px",
+              "highlight" : [ "footer" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 95
+              },
+              "name" : "below content 0px",
+              "highlight" : [ "footer", "content" ]
+            } ]
+          } ]
+        } ],
+        "objects" : {
+          "screen" : {
+            "area" : [ 0, 0, 660, 734 ]
+          },
+          "menu.item-3" : {
+            "area" : [ 218, 70, 100, 64 ]
+          },
+          "menu.item-4" : {
+            "area" : [ 322, 70, 100, 64 ]
+          },
+          "greeting" : {
+            "area" : [ 50, 204, 560, 40 ]
+          },
+          "menu" : {
+            "area" : [ 0, 70, 660, 64 ]
+          },
+          "text_block-3" : {
+            "area" : [ 50, 360, 560, 61 ]
+          },
+          "header.logo" : {
+            "area" : [ 0, 13, 48, 48 ]
+          },
+          "menu.item-1" : {
+            "area" : [ 0, 70, 100, 64 ]
+          },
+          "menu.item-2" : {
+            "area" : [ 104, 70, 110, 64 ]
+          },
+          "welcome_block" : {
+            "area" : [ 20, 154, 620, 311 ]
+          },
+          "header" : {
+            "area" : [ 0, 0, 660, 70 ]
+          },
+          "header.text" : {
+            "area" : [ 70, 20, 262, 40 ]
+          },
+          "footer" : {
+            "area" : [ 0, 534, 660, 200 ]
+          },
+          "content" : {
+            "area" : [ 0, 134, 660, 400 ]
+          },
+          "text_block-1" : {
+            "area" : [ 50, 254, 560, 30 ]
+          },
+          "login_button" : {
+            "area" : [ 50, 299, 78, 46 ]
+          }
+        },
+        "screenshot" : "layout-4-screenshot.png",
+        "type" : "layout"
+      } ],
+      "time" : 1449433268018,
+      "type" : "node"
+    }, {
+      "name" : "Resizing to width 683",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "Check layout: specs/welcomePage.gspec included tags: tablet",
+        "status" : "info",
+        "time" : 1449433270740,
+        "includedTags" : [ "tablet" ],
+        "sections" : [ {
+          "name" : "Header",
+          "objects" : [ {
+            "name" : "header",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 15
+              },
+              "name" : "inside screen 0px top",
+              "highlight" : [ "header", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "header", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 17
+              },
+              "name" : "height ~ 70px",
+              "highlight" : [ "header" ]
+            } ]
+          }, {
+            "name" : "header.logo",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 20
+              },
+              "name" : "inside header 5 to 15px top, 0 to 10px left",
+              "highlight" : [ "header.logo", "header" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 21
+              },
+              "name" : "near header.text 5 to 30px left",
+              "highlight" : [ "header.logo", "header.text" ]
+            } ]
+          }, {
+            "name" : "header.text",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 24
+              },
+              "name" : "inside header 10 to 25px top",
+              "highlight" : [ "header.text", "header" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 36
+              },
+              "name" : "text is \"Sample Website\"",
+              "highlight" : [ "header.text" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Menu",
+          "objects" : [ {
+            "name" : "menu",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 43
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "menu", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 44
+              },
+              "name" : "below header ~ 0px",
+              "highlight" : [ "menu", "header" ]
+            } ]
+          }, {
+            "name" : "menu.item-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 54
+              },
+              "name" : "inside menu ~ 0px top left bottom",
+              "highlight" : [ "menu.item-1", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-1", "menu" ]
+            } ]
+          }, {
+            "name" : "menu.item-2",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-2", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-1 0 to 5px",
+              "highlight" : [ "menu.item-2", "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-1",
+              "highlight" : [ "menu.item-2", "menu.item-1" ]
+            } ]
+          }, {
+            "name" : "menu.item-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-3", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-2 0 to 5px",
+              "highlight" : [ "menu.item-3", "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-2",
+              "highlight" : [ "menu.item-3", "menu.item-2" ]
+            } ]
+          }, {
+            "name" : "menu.item-4",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-4" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-4" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-4", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-3 0 to 5px",
+              "highlight" : [ "menu.item-4", "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-3",
+              "highlight" : [ "menu.item-4", "menu.item-3" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Content",
+          "objects" : [ {
+            "name" : "content",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 83
+              },
+              "name" : "below menu ~ 0px",
+              "highlight" : [ "content", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 84
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "content", "screen" ]
+            } ]
+          }, {
+            "name" : "welcome_block",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 13
+              },
+              "name" : "inside content ~ 20px top left right",
+              "highlight" : [ "welcome_block", "content" ]
+            } ]
+          }, {
+            "name" : "text_block-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "text_block-1", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 23
+              },
+              "name" : "height > 20px",
+              "highlight" : [ "text_block-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 24
+              },
+              "name" : "above login_button 10 to 50 px",
+              "highlight" : [ "text_block-1", "login_button" ]
+            } ]
+          }, {
+            "name" : "login_button",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "login_button", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 27
+              },
+              "name" : "height ~ 45px",
+              "highlight" : [ "login_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 28
+              },
+              "name" : "text is \"Login\"",
+              "highlight" : [ "login_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 29
+              },
+              "name" : "above text_block-3 10 to 50px",
+              "highlight" : [ "login_button", "text_block-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 47
+              },
+              "name" : "width ~ 78px",
+              "highlight" : [ "login_button" ]
+            } ]
+          }, {
+            "name" : "text_block-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "text_block-3", "welcome_block" ]
+            } ]
+          }, {
+            "name" : "greeting",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 19
+              },
+              "name" : "above text_block-1 10 to 50 px",
+              "highlight" : [ "greeting", "text_block-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 20
+              },
+              "name" : "inside welcome_block ~ 30px left",
+              "highlight" : [ "greeting", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 43
+              },
+              "name" : "height ~ 39px",
+              "highlight" : [ "greeting" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 44
+              },
+              "name" : "inside welcome_block ~ 50 px top",
+              "highlight" : [ "greeting", "welcome_block" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Footer",
+          "objects" : [ {
+            "name" : "footer",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 94
+              },
+              "name" : "height ~ 200px",
+              "highlight" : [ "footer" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 95
+              },
+              "name" : "below content 0px",
+              "highlight" : [ "footer", "content" ]
+            } ]
+          } ]
+        } ],
+        "objects" : {
+          "screen" : {
+            "area" : [ 0, 0, 669, 734 ]
+          },
+          "menu.item-3" : {
+            "area" : [ 218, 70, 100, 64 ]
+          },
+          "menu.item-4" : {
+            "area" : [ 322, 70, 100, 64 ]
+          },
+          "greeting" : {
+            "area" : [ 50, 204, 569, 40 ]
+          },
+          "menu" : {
+            "area" : [ 0, 70, 669, 64 ]
+          },
+          "text_block-3" : {
+            "area" : [ 50, 360, 569, 61 ]
+          },
+          "header.logo" : {
+            "area" : [ 0, 13, 48, 48 ]
+          },
+          "menu.item-1" : {
+            "area" : [ 0, 70, 100, 64 ]
+          },
+          "menu.item-2" : {
+            "area" : [ 104, 70, 110, 64 ]
+          },
+          "welcome_block" : {
+            "area" : [ 20, 154, 629, 311 ]
+          },
+          "header" : {
+            "area" : [ 0, 0, 669, 70 ]
+          },
+          "header.text" : {
+            "area" : [ 70, 20, 262, 40 ]
+          },
+          "footer" : {
+            "area" : [ 0, 534, 669, 200 ]
+          },
+          "content" : {
+            "area" : [ 0, 134, 669, 400 ]
+          },
+          "text_block-1" : {
+            "area" : [ 50, 254, 569, 30 ]
+          },
+          "login_button" : {
+            "area" : [ 50, 299, 78, 46 ]
+          }
+        },
+        "screenshot" : "layout-5-screenshot.png",
+        "type" : "layout"
+      } ],
+      "time" : 1449433269392,
+      "type" : "node"
+    }, {
+      "name" : "Resizing to width 711",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "Check layout: specs/welcomePage.gspec included tags: tablet",
+        "status" : "info",
+        "time" : 1449433272514,
+        "includedTags" : [ "tablet" ],
+        "sections" : [ {
+          "name" : "Header",
+          "objects" : [ {
+            "name" : "header",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 15
+              },
+              "name" : "inside screen 0px top",
+              "highlight" : [ "header", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "header", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 17
+              },
+              "name" : "height ~ 70px",
+              "highlight" : [ "header" ]
+            } ]
+          }, {
+            "name" : "header.logo",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 20
+              },
+              "name" : "inside header 5 to 15px top, 0 to 10px left",
+              "highlight" : [ "header.logo", "header" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 21
+              },
+              "name" : "near header.text 5 to 30px left",
+              "highlight" : [ "header.logo", "header.text" ]
+            } ]
+          }, {
+            "name" : "header.text",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 24
+              },
+              "name" : "inside header 10 to 25px top",
+              "highlight" : [ "header.text", "header" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 36
+              },
+              "name" : "text is \"Sample Website\"",
+              "highlight" : [ "header.text" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Menu",
+          "objects" : [ {
+            "name" : "menu",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 43
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "menu", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 44
+              },
+              "name" : "below header ~ 0px",
+              "highlight" : [ "menu", "header" ]
+            } ]
+          }, {
+            "name" : "menu.item-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 54
+              },
+              "name" : "inside menu ~ 0px top left bottom",
+              "highlight" : [ "menu.item-1", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-1", "menu" ]
+            } ]
+          }, {
+            "name" : "menu.item-2",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-2", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-1 0 to 5px",
+              "highlight" : [ "menu.item-2", "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-1",
+              "highlight" : [ "menu.item-2", "menu.item-1" ]
+            } ]
+          }, {
+            "name" : "menu.item-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-3", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-2 0 to 5px",
+              "highlight" : [ "menu.item-3", "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-2",
+              "highlight" : [ "menu.item-3", "menu.item-2" ]
+            } ]
+          }, {
+            "name" : "menu.item-4",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-4" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-4" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-4", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-3 0 to 5px",
+              "highlight" : [ "menu.item-4", "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-3",
+              "highlight" : [ "menu.item-4", "menu.item-3" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Content",
+          "objects" : [ {
+            "name" : "content",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 83
+              },
+              "name" : "below menu ~ 0px",
+              "highlight" : [ "content", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 84
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "content", "screen" ]
+            } ]
+          }, {
+            "name" : "welcome_block",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 13
+              },
+              "name" : "inside content ~ 20px top left right",
+              "highlight" : [ "welcome_block", "content" ]
+            } ]
+          }, {
+            "name" : "text_block-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "text_block-1", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 23
+              },
+              "name" : "height > 20px",
+              "highlight" : [ "text_block-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 24
+              },
+              "name" : "above login_button 10 to 50 px",
+              "highlight" : [ "text_block-1", "login_button" ]
+            } ]
+          }, {
+            "name" : "login_button",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "login_button", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 27
+              },
+              "name" : "height ~ 45px",
+              "highlight" : [ "login_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 28
+              },
+              "name" : "text is \"Login\"",
+              "highlight" : [ "login_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 29
+              },
+              "name" : "above text_block-3 10 to 50px",
+              "highlight" : [ "login_button", "text_block-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 47
+              },
+              "name" : "width ~ 78px",
+              "highlight" : [ "login_button" ]
+            } ]
+          }, {
+            "name" : "text_block-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "text_block-3", "welcome_block" ]
+            } ]
+          }, {
+            "name" : "greeting",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 19
+              },
+              "name" : "above text_block-1 10 to 50 px",
+              "highlight" : [ "greeting", "text_block-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 20
+              },
+              "name" : "inside welcome_block ~ 30px left",
+              "highlight" : [ "greeting", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 43
+              },
+              "name" : "height ~ 39px",
+              "highlight" : [ "greeting" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 44
+              },
+              "name" : "inside welcome_block ~ 50 px top",
+              "highlight" : [ "greeting", "welcome_block" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Footer",
+          "objects" : [ {
+            "name" : "footer",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 94
+              },
+              "name" : "height ~ 200px",
+              "highlight" : [ "footer" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 95
+              },
+              "name" : "below content 0px",
+              "highlight" : [ "footer", "content" ]
+            } ]
+          } ]
+        } ],
+        "objects" : {
+          "screen" : {
+            "area" : [ 0, 0, 697, 734 ]
+          },
+          "menu.item-3" : {
+            "area" : [ 218, 70, 100, 64 ]
+          },
+          "menu.item-4" : {
+            "area" : [ 322, 70, 100, 64 ]
+          },
+          "greeting" : {
+            "area" : [ 50, 204, 597, 40 ]
+          },
+          "menu" : {
+            "area" : [ 0, 70, 697, 64 ]
+          },
+          "text_block-3" : {
+            "area" : [ 50, 360, 597, 61 ]
+          },
+          "header.logo" : {
+            "area" : [ 0, 13, 48, 48 ]
+          },
+          "menu.item-1" : {
+            "area" : [ 0, 70, 100, 64 ]
+          },
+          "menu.item-2" : {
+            "area" : [ 104, 70, 110, 64 ]
+          },
+          "welcome_block" : {
+            "area" : [ 20, 154, 657, 312 ]
+          },
+          "header" : {
+            "area" : [ 0, 0, 697, 70 ]
+          },
+          "header.text" : {
+            "area" : [ 70, 20, 262, 40 ]
+          },
+          "footer" : {
+            "area" : [ 0, 534, 697, 200 ]
+          },
+          "content" : {
+            "area" : [ 0, 134, 697, 400 ]
+          },
+          "text_block-1" : {
+            "area" : [ 50, 254, 597, 30 ]
+          },
+          "login_button" : {
+            "area" : [ 50, 299, 78, 46 ]
+          }
+        },
+        "screenshot" : "layout-6-screenshot.png",
+        "type" : "layout"
+      } ],
+      "time" : 1449433270740,
+      "type" : "node"
+    }, {
+      "name" : "Resizing to width 723",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "Check layout: specs/welcomePage.gspec included tags: tablet",
+        "status" : "info",
+        "time" : 1449433273892,
+        "includedTags" : [ "tablet" ],
+        "sections" : [ {
+          "name" : "Header",
+          "objects" : [ {
+            "name" : "header",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 15
+              },
+              "name" : "inside screen 0px top",
+              "highlight" : [ "header", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "header", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 17
+              },
+              "name" : "height ~ 70px",
+              "highlight" : [ "header" ]
+            } ]
+          }, {
+            "name" : "header.logo",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 20
+              },
+              "name" : "inside header 5 to 15px top, 0 to 10px left",
+              "highlight" : [ "header.logo", "header" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 21
+              },
+              "name" : "near header.text 5 to 30px left",
+              "highlight" : [ "header.logo", "header.text" ]
+            } ]
+          }, {
+            "name" : "header.text",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 24
+              },
+              "name" : "inside header 10 to 25px top",
+              "highlight" : [ "header.text", "header" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 36
+              },
+              "name" : "text is \"Sample Website\"",
+              "highlight" : [ "header.text" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Menu",
+          "objects" : [ {
+            "name" : "menu",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 43
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "menu", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 44
+              },
+              "name" : "below header ~ 0px",
+              "highlight" : [ "menu", "header" ]
+            } ]
+          }, {
+            "name" : "menu.item-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 54
+              },
+              "name" : "inside menu ~ 0px top left bottom",
+              "highlight" : [ "menu.item-1", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-1", "menu" ]
+            } ]
+          }, {
+            "name" : "menu.item-2",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-2", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-1 0 to 5px",
+              "highlight" : [ "menu.item-2", "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-1",
+              "highlight" : [ "menu.item-2", "menu.item-1" ]
+            } ]
+          }, {
+            "name" : "menu.item-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-3", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-2 0 to 5px",
+              "highlight" : [ "menu.item-3", "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-2",
+              "highlight" : [ "menu.item-3", "menu.item-2" ]
+            } ]
+          }, {
+            "name" : "menu.item-4",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-4" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-4" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-4", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-3 0 to 5px",
+              "highlight" : [ "menu.item-4", "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-3",
+              "highlight" : [ "menu.item-4", "menu.item-3" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Content",
+          "objects" : [ {
+            "name" : "content",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 83
+              },
+              "name" : "below menu ~ 0px",
+              "highlight" : [ "content", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 84
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "content", "screen" ]
+            } ]
+          }, {
+            "name" : "welcome_block",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 13
+              },
+              "name" : "inside content ~ 20px top left right",
+              "highlight" : [ "welcome_block", "content" ]
+            } ]
+          }, {
+            "name" : "text_block-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "text_block-1", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 23
+              },
+              "name" : "height > 20px",
+              "highlight" : [ "text_block-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 24
+              },
+              "name" : "above login_button 10 to 50 px",
+              "highlight" : [ "text_block-1", "login_button" ]
+            } ]
+          }, {
+            "name" : "login_button",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "login_button", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 27
+              },
+              "name" : "height ~ 45px",
+              "highlight" : [ "login_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 28
+              },
+              "name" : "text is \"Login\"",
+              "highlight" : [ "login_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 29
+              },
+              "name" : "above text_block-3 10 to 50px",
+              "highlight" : [ "login_button", "text_block-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 47
+              },
+              "name" : "width ~ 78px",
+              "highlight" : [ "login_button" ]
+            } ]
+          }, {
+            "name" : "text_block-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "text_block-3", "welcome_block" ]
+            } ]
+          }, {
+            "name" : "greeting",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 19
+              },
+              "name" : "above text_block-1 10 to 50 px",
+              "highlight" : [ "greeting", "text_block-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 20
+              },
+              "name" : "inside welcome_block ~ 30px left",
+              "highlight" : [ "greeting", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 43
+              },
+              "name" : "height ~ 39px",
+              "highlight" : [ "greeting" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 44
+              },
+              "name" : "inside welcome_block ~ 50 px top",
+              "highlight" : [ "greeting", "welcome_block" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Footer",
+          "objects" : [ {
+            "name" : "footer",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 94
+              },
+              "name" : "height ~ 200px",
+              "highlight" : [ "footer" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 95
+              },
+              "name" : "below content 0px",
+              "highlight" : [ "footer", "content" ]
+            } ]
+          } ]
+        } ],
+        "objects" : {
+          "screen" : {
+            "area" : [ 0, 0, 709, 734 ]
+          },
+          "menu.item-3" : {
+            "area" : [ 218, 70, 100, 64 ]
+          },
+          "menu.item-4" : {
+            "area" : [ 322, 70, 100, 64 ]
+          },
+          "greeting" : {
+            "area" : [ 50, 204, 609, 40 ]
+          },
+          "menu" : {
+            "area" : [ 0, 70, 709, 64 ]
+          },
+          "text_block-3" : {
+            "area" : [ 50, 360, 609, 61 ]
+          },
+          "header.logo" : {
+            "area" : [ 0, 13, 48, 48 ]
+          },
+          "menu.item-1" : {
+            "area" : [ 0, 70, 100, 64 ]
+          },
+          "menu.item-2" : {
+            "area" : [ 104, 70, 110, 64 ]
+          },
+          "welcome_block" : {
+            "area" : [ 20, 154, 669, 312 ]
+          },
+          "header" : {
+            "area" : [ 0, 0, 709, 70 ]
+          },
+          "header.text" : {
+            "area" : [ 70, 20, 262, 40 ]
+          },
+          "footer" : {
+            "area" : [ 0, 534, 709, 200 ]
+          },
+          "content" : {
+            "area" : [ 0, 134, 709, 400 ]
+          },
+          "text_block-1" : {
+            "area" : [ 50, 254, 609, 30 ]
+          },
+          "login_button" : {
+            "area" : [ 50, 299, 78, 46 ]
+          }
+        },
+        "screenshot" : "layout-7-screenshot.png",
+        "type" : "layout"
+      } ],
+      "time" : 1449433272514,
+      "type" : "node"
+    }, {
+      "name" : "Resizing to width 746",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "Check layout: specs/welcomePage.gspec included tags: tablet",
+        "status" : "info",
+        "time" : 1449433275228,
+        "includedTags" : [ "tablet" ],
+        "sections" : [ {
+          "name" : "Header",
+          "objects" : [ {
+            "name" : "header",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 15
+              },
+              "name" : "inside screen 0px top",
+              "highlight" : [ "header", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "header", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 17
+              },
+              "name" : "height ~ 70px",
+              "highlight" : [ "header" ]
+            } ]
+          }, {
+            "name" : "header.logo",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 20
+              },
+              "name" : "inside header 5 to 15px top, 0 to 10px left",
+              "highlight" : [ "header.logo", "header" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 21
+              },
+              "name" : "near header.text 5 to 30px left",
+              "highlight" : [ "header.logo", "header.text" ]
+            } ]
+          }, {
+            "name" : "header.text",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 24
+              },
+              "name" : "inside header 10 to 25px top",
+              "highlight" : [ "header.text", "header" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 36
+              },
+              "name" : "text is \"Sample Website\"",
+              "highlight" : [ "header.text" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Menu",
+          "objects" : [ {
+            "name" : "menu",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 43
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "menu", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 44
+              },
+              "name" : "below header ~ 0px",
+              "highlight" : [ "menu", "header" ]
+            } ]
+          }, {
+            "name" : "menu.item-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 54
+              },
+              "name" : "inside menu ~ 0px top left bottom",
+              "highlight" : [ "menu.item-1", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-1", "menu" ]
+            } ]
+          }, {
+            "name" : "menu.item-2",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-2", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-1 0 to 5px",
+              "highlight" : [ "menu.item-2", "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-1",
+              "highlight" : [ "menu.item-2", "menu.item-1" ]
+            } ]
+          }, {
+            "name" : "menu.item-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-3", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-2 0 to 5px",
+              "highlight" : [ "menu.item-3", "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-2",
+              "highlight" : [ "menu.item-3", "menu.item-2" ]
+            } ]
+          }, {
+            "name" : "menu.item-4",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-4" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-4" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-4", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-3 0 to 5px",
+              "highlight" : [ "menu.item-4", "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-3",
+              "highlight" : [ "menu.item-4", "menu.item-3" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Content",
+          "objects" : [ {
+            "name" : "content",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 83
+              },
+              "name" : "below menu ~ 0px",
+              "highlight" : [ "content", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 84
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "content", "screen" ]
+            } ]
+          }, {
+            "name" : "welcome_block",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 13
+              },
+              "name" : "inside content ~ 20px top left right",
+              "highlight" : [ "welcome_block", "content" ]
+            } ]
+          }, {
+            "name" : "text_block-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "text_block-1", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 23
+              },
+              "name" : "height > 20px",
+              "highlight" : [ "text_block-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 24
+              },
+              "name" : "above login_button 10 to 50 px",
+              "highlight" : [ "text_block-1", "login_button" ]
+            } ]
+          }, {
+            "name" : "login_button",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "login_button", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 27
+              },
+              "name" : "height ~ 45px",
+              "highlight" : [ "login_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 28
+              },
+              "name" : "text is \"Login\"",
+              "highlight" : [ "login_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 29
+              },
+              "name" : "above text_block-3 10 to 50px",
+              "highlight" : [ "login_button", "text_block-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 47
+              },
+              "name" : "width ~ 78px",
+              "highlight" : [ "login_button" ]
+            } ]
+          }, {
+            "name" : "text_block-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "text_block-3", "welcome_block" ]
+            } ]
+          }, {
+            "name" : "greeting",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 19
+              },
+              "name" : "above text_block-1 10 to 50 px",
+              "highlight" : [ "greeting", "text_block-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 20
+              },
+              "name" : "inside welcome_block ~ 30px left",
+              "highlight" : [ "greeting", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 43
+              },
+              "name" : "height ~ 39px",
+              "highlight" : [ "greeting" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 44
+              },
+              "name" : "inside welcome_block ~ 50 px top",
+              "highlight" : [ "greeting", "welcome_block" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Footer",
+          "objects" : [ {
+            "name" : "footer",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 94
+              },
+              "name" : "height ~ 200px",
+              "highlight" : [ "footer" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 95
+              },
+              "name" : "below content 0px",
+              "highlight" : [ "footer", "content" ]
+            } ]
+          } ]
+        } ],
+        "objects" : {
+          "screen" : {
+            "area" : [ 0, 0, 732, 734 ]
+          },
+          "menu.item-3" : {
+            "area" : [ 218, 70, 100, 64 ]
+          },
+          "menu.item-4" : {
+            "area" : [ 322, 70, 100, 64 ]
+          },
+          "greeting" : {
+            "area" : [ 50, 204, 632, 40 ]
+          },
+          "menu" : {
+            "area" : [ 0, 70, 732, 64 ]
+          },
+          "text_block-3" : {
+            "area" : [ 50, 360, 632, 61 ]
+          },
+          "header.logo" : {
+            "area" : [ 0, 13, 48, 48 ]
+          },
+          "menu.item-1" : {
+            "area" : [ 0, 70, 100, 64 ]
+          },
+          "menu.item-2" : {
+            "area" : [ 104, 70, 110, 64 ]
+          },
+          "welcome_block" : {
+            "area" : [ 20, 154, 692, 312 ]
+          },
+          "header" : {
+            "area" : [ 0, 0, 732, 70 ]
+          },
+          "header.text" : {
+            "area" : [ 70, 20, 262, 40 ]
+          },
+          "footer" : {
+            "area" : [ 0, 534, 732, 200 ]
+          },
+          "content" : {
+            "area" : [ 0, 134, 732, 400 ]
+          },
+          "text_block-1" : {
+            "area" : [ 50, 254, 632, 30 ]
+          },
+          "login_button" : {
+            "area" : [ 50, 299, 78, 46 ]
+          }
+        },
+        "screenshot" : "layout-8-screenshot.png",
+        "type" : "layout"
+      } ],
+      "time" : 1449433273892,
+      "type" : "node"
+    }, {
+      "name" : "Resizing to width 763",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "Check layout: specs/welcomePage.gspec included tags: tablet",
+        "status" : "info",
+        "time" : 1449433276615,
+        "includedTags" : [ "tablet" ],
+        "sections" : [ {
+          "name" : "Header",
+          "objects" : [ {
+            "name" : "header",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 15
+              },
+              "name" : "inside screen 0px top",
+              "highlight" : [ "header", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "header", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 17
+              },
+              "name" : "height ~ 70px",
+              "highlight" : [ "header" ]
+            } ]
+          }, {
+            "name" : "header.logo",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 20
+              },
+              "name" : "inside header 5 to 15px top, 0 to 10px left",
+              "highlight" : [ "header.logo", "header" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 21
+              },
+              "name" : "near header.text 5 to 30px left",
+              "highlight" : [ "header.logo", "header.text" ]
+            } ]
+          }, {
+            "name" : "header.text",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 24
+              },
+              "name" : "inside header 10 to 25px top",
+              "highlight" : [ "header.text", "header" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 36
+              },
+              "name" : "text is \"Sample Website\"",
+              "highlight" : [ "header.text" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Menu",
+          "objects" : [ {
+            "name" : "menu",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 43
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "menu", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 44
+              },
+              "name" : "below header ~ 0px",
+              "highlight" : [ "menu", "header" ]
+            } ]
+          }, {
+            "name" : "menu.item-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 54
+              },
+              "name" : "inside menu ~ 0px top left bottom",
+              "highlight" : [ "menu.item-1", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-1", "menu" ]
+            } ]
+          }, {
+            "name" : "menu.item-2",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-2", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-1 0 to 5px",
+              "highlight" : [ "menu.item-2", "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-1",
+              "highlight" : [ "menu.item-2", "menu.item-1" ]
+            } ]
+          }, {
+            "name" : "menu.item-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-3", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-2 0 to 5px",
+              "highlight" : [ "menu.item-3", "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-2",
+              "highlight" : [ "menu.item-3", "menu.item-2" ]
+            } ]
+          }, {
+            "name" : "menu.item-4",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-4" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-4" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-4", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-3 0 to 5px",
+              "highlight" : [ "menu.item-4", "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-3",
+              "highlight" : [ "menu.item-4", "menu.item-3" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Content",
+          "objects" : [ {
+            "name" : "content",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 83
+              },
+              "name" : "below menu ~ 0px",
+              "highlight" : [ "content", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 84
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "content", "screen" ]
+            } ]
+          }, {
+            "name" : "welcome_block",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 13
+              },
+              "name" : "inside content ~ 20px top left right",
+              "highlight" : [ "welcome_block", "content" ]
+            } ]
+          }, {
+            "name" : "text_block-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "text_block-1", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 23
+              },
+              "name" : "height > 20px",
+              "highlight" : [ "text_block-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 24
+              },
+              "name" : "above login_button 10 to 50 px",
+              "highlight" : [ "text_block-1", "login_button" ]
+            } ]
+          }, {
+            "name" : "login_button",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "login_button", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 27
+              },
+              "name" : "height ~ 45px",
+              "highlight" : [ "login_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 28
+              },
+              "name" : "text is \"Login\"",
+              "highlight" : [ "login_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 29
+              },
+              "name" : "above text_block-3 10 to 50px",
+              "highlight" : [ "login_button", "text_block-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 47
+              },
+              "name" : "width ~ 78px",
+              "highlight" : [ "login_button" ]
+            } ]
+          }, {
+            "name" : "text_block-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "text_block-3", "welcome_block" ]
+            } ]
+          }, {
+            "name" : "greeting",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 19
+              },
+              "name" : "above text_block-1 10 to 50 px",
+              "highlight" : [ "greeting", "text_block-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 20
+              },
+              "name" : "inside welcome_block ~ 30px left",
+              "highlight" : [ "greeting", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 43
+              },
+              "name" : "height ~ 39px",
+              "highlight" : [ "greeting" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 44
+              },
+              "name" : "inside welcome_block ~ 50 px top",
+              "highlight" : [ "greeting", "welcome_block" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Footer",
+          "objects" : [ {
+            "name" : "footer",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 94
+              },
+              "name" : "height ~ 200px",
+              "highlight" : [ "footer" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 95
+              },
+              "name" : "below content 0px",
+              "highlight" : [ "footer", "content" ]
+            } ]
+          } ]
+        } ],
+        "objects" : {
+          "screen" : {
+            "area" : [ 0, 0, 749, 734 ]
+          },
+          "menu.item-3" : {
+            "area" : [ 218, 70, 100, 64 ]
+          },
+          "menu.item-4" : {
+            "area" : [ 322, 70, 100, 64 ]
+          },
+          "greeting" : {
+            "area" : [ 50, 204, 649, 40 ]
+          },
+          "menu" : {
+            "area" : [ 0, 70, 749, 64 ]
+          },
+          "text_block-3" : {
+            "area" : [ 50, 360, 649, 61 ]
+          },
+          "header.logo" : {
+            "area" : [ 0, 13, 48, 48 ]
+          },
+          "menu.item-1" : {
+            "area" : [ 0, 70, 100, 64 ]
+          },
+          "menu.item-2" : {
+            "area" : [ 104, 70, 110, 64 ]
+          },
+          "welcome_block" : {
+            "area" : [ 20, 154, 709, 312 ]
+          },
+          "header" : {
+            "area" : [ 0, 0, 749, 70 ]
+          },
+          "header.text" : {
+            "area" : [ 70, 20, 262, 40 ]
+          },
+          "footer" : {
+            "area" : [ 0, 534, 749, 200 ]
+          },
+          "content" : {
+            "area" : [ 0, 134, 749, 400 ]
+          },
+          "text_block-1" : {
+            "area" : [ 50, 254, 649, 30 ]
+          },
+          "login_button" : {
+            "area" : [ 50, 299, 78, 46 ]
+          }
+        },
+        "screenshot" : "layout-9-screenshot.png",
+        "type" : "layout"
+      } ],
+      "time" : 1449433275228,
+      "type" : "node"
+    }, {
+      "name" : "Resizing to width 799",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "Check layout: specs/welcomePage.gspec included tags: tablet",
+        "status" : "error",
+        "time" : 1449433278016,
+        "includedTags" : [ "tablet" ],
+        "sections" : [ {
+          "name" : "Header",
+          "objects" : [ {
+            "name" : "header",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 15
+              },
+              "name" : "inside screen 0px top",
+              "highlight" : [ "header", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "header", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 17
+              },
+              "name" : "height ~ 70px",
+              "highlight" : [ "header" ]
+            } ]
+          }, {
+            "name" : "header.logo",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 20
+              },
+              "name" : "inside header 5 to 15px top, 0 to 10px left",
+              "highlight" : [ "header.logo", "header" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 21
+              },
+              "name" : "near header.text 5 to 30px left",
+              "highlight" : [ "header.logo", "header.text" ]
+            } ]
+          }, {
+            "name" : "header.text",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 24
+              },
+              "name" : "inside header 10 to 25px top",
+              "highlight" : [ "header.text", "header" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 36
+              },
+              "name" : "text is \"Sample Website\"",
+              "highlight" : [ "header.text" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Menu",
+          "objects" : [ {
+            "name" : "menu",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 43
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "menu", "screen" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 44
+              },
+              "name" : "below header ~ 0px",
+              "highlight" : [ "menu", "header" ]
+            } ]
+          }, {
+            "name" : "menu.item-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 54
+              },
+              "name" : "inside menu ~ 0px top left bottom",
+              "highlight" : [ "menu.item-1", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-1", "menu" ]
+            } ]
+          }, {
+            "name" : "menu.item-2",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-2", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-1 0 to 5px",
+              "highlight" : [ "menu.item-2", "menu.item-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-1",
+              "highlight" : [ "menu.item-2", "menu.item-1" ]
+            } ]
+          }, {
+            "name" : "menu.item-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-3", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-2 0 to 5px",
+              "highlight" : [ "menu.item-3", "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-2",
+              "highlight" : [ "menu.item-3", "menu.item-2" ]
+            } ]
+          }, {
+            "name" : "menu.item-4",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 57
+              },
+              "name" : "width 90 to 130px",
+              "highlight" : [ "menu.item-4" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 58
+              },
+              "name" : "height ~ 64px",
+              "highlight" : [ "menu.item-4" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 59
+              },
+              "name" : "inside menu ~ 0px top",
+              "highlight" : [ "menu.item-4", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 63
+              },
+              "name" : "right-of menu.item-3 0 to 5px",
+              "highlight" : [ "menu.item-4", "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 64
+              },
+              "name" : "aligned horizontally all menu.item-3",
+              "highlight" : [ "menu.item-4", "menu.item-3" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Content",
+          "objects" : [ {
+            "name" : "content",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 83
+              },
+              "name" : "below menu ~ 0px",
+              "highlight" : [ "content", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 84
+              },
+              "name" : "centered horizontally inside screen 1px",
+              "highlight" : [ "content", "screen" ]
+            } ]
+          }, {
+            "name" : "welcome_block",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 13
+              },
+              "name" : "inside content ~ 20px top left right",
+              "highlight" : [ "welcome_block", "content" ]
+            } ]
+          }, {
+            "name" : "text_block-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "text_block-1", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 23
+              },
+              "name" : "height > 20px",
+              "highlight" : [ "text_block-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 24
+              },
+              "name" : "above login_button 10 to 50 px",
+              "highlight" : [ "text_block-1", "login_button" ]
+            } ]
+          }, {
+            "name" : "login_button",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "login_button", "welcome_block" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 27
+              },
+              "name" : "height ~ 45px",
+              "highlight" : [ "login_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 28
+              },
+              "name" : "text is \"Login\"",
+              "highlight" : [ "login_button" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 29
+              },
+              "name" : "above text_block-3 10 to 50px",
+              "highlight" : [ "login_button", "text_block-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 47
+              },
+              "name" : "width ~ 78px",
+              "highlight" : [ "login_button" ]
+            } ]
+          }, {
+            "name" : "text_block-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 16
+              },
+              "name" : "inside welcome_block ~30px left",
+              "highlight" : [ "text_block-3", "welcome_block" ]
+            } ]
+          }, {
+            "name" : "greeting",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 19
+              },
+              "name" : "above text_block-1 10 to 50 px",
+              "highlight" : [ "greeting", "text_block-1" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 20
+              },
+              "name" : "inside welcome_block ~ 30px left",
+              "highlight" : [ "greeting", "welcome_block" ]
+            }, {
+              "status" : "error",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 43
+              },
+              "name" : "height ~ 39px",
+              "errors" : [ "\"greeting\" height is 139px which is not in range of 37 to 41px" ],
+              "highlight" : [ "greeting" ]
+            }, {
+              "status" : "error",
+              "place" : {
+                "filePath" : "specs/welcomePage.gspec",
+                "lineNumber" : 44
+              },
+              "name" : "inside welcome_block ~ 50 px top",
+              "errors" : [ "\"greeting\" is 68px top which is not in range of 48 to 52px" ],
+              "highlight" : [ "greeting", "welcome_block" ]
+            } ]
+          } ]
+        }, {
+          "name" : "Footer",
+          "objects" : [ {
+            "name" : "footer",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 94
+              },
+              "name" : "height ~ 200px",
+              "highlight" : [ "footer" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/common.gspec",
+                "lineNumber" : 95
+              },
+              "name" : "below content 0px",
+              "highlight" : [ "footer", "content" ]
+            } ]
+          } ]
+        } ],
+        "objects" : {
+          "screen" : {
+            "area" : [ 0, 0, 785, 851 ]
+          },
+          "menu.item-3" : {
+            "area" : [ 218, 70, 100, 64 ]
+          },
+          "menu.item-4" : {
+            "area" : [ 322, 70, 100, 64 ]
+          },
+          "greeting" : {
+            "area" : [ 50, 222, 685, 139 ]
+          },
+          "menu" : {
+            "area" : [ 0, 70, 785, 64 ]
+          },
+          "text_block-3" : {
+            "area" : [ 50, 477, 685, 61 ]
+          },
+          "header.logo" : {
+            "area" : [ 0, 13, 48, 48 ]
+          },
+          "menu.item-1" : {
+            "area" : [ 0, 70, 100, 64 ]
+          },
+          "menu.item-2" : {
+            "area" : [ 104, 70, 110, 64 ]
+          },
+          "welcome_block" : {
+            "area" : [ 20, 154, 745, 447 ]
+          },
+          "header" : {
+            "area" : [ 0, 0, 785, 70 ]
+          },
+          "header.text" : {
+            "area" : [ 70, 20, 262, 40 ]
+          },
+          "footer" : {
+            "area" : [ 0, 651, 785, 200 ]
+          },
+          "content" : {
+            "area" : [ 0, 134, 785, 517 ]
+          },
+          "text_block-1" : {
+            "area" : [ 50, 371, 685, 30 ]
+          },
+          "login_button" : {
+            "area" : [ 50, 416, 78, 46 ]
+          }
+        },
+        "screenshot" : "layout-10-screenshot.png",
+        "type" : "layout"
+      } ],
+      "time" : 1449433276615,
+      "type" : "node"
+    }, {
+      "name" : "Screenshot",
+      "status" : "info",
+      "attachments" : [ "file-11-Screenshot" ],
+      "time" : 1449433278017,
+      "type" : "node"
+    } ]
+  }
+};
+        </script>
+        <script>
+
+            $(function () {
+                var galenReport = createGalenReport();
+                galenReport.render("main", reportData);
+            });
+        </script>
+    </head>
+    <body>
+        <script id="report-tpl" type="text/x-handlebars-template">
+            <ul class="report-nodes">
+            {{#each report.nodes}}
+                {{renderNode this}}
+            {{/each}}
+            </ul>
+        </script>
+        <script id="report-node-tpl" type="text/x-handlebars-template">
+            <li>
+                <span class="report-time">{{formatReportTime time}}</span>
+                <a class="expand-link node-expand-button node-status-{{status}} contains-children-{{hasChildElements nodes}} collapsed" href="#">{{status}}</a>
+                <div class="node-name node-status-{{status}}">{{name}}</div>
+                {{#if extras}}
+                    {{renderNodeExtras extras}}
+                {{/if}}
+                {{#if stacktrace}}
+                    <div class="stacktrace">{{stacktrace}}</div>
+                {{/if}}
+                {{#if attachments}}
+                    <ul class="report-node-attachments">
+                        {{#each attachments}}
+                            <li>
+                                <a class="icon-sprite-before node-attachment" href="{{this}}">{{this}}</a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                {{/if}}
+                <div class="node-details expand-container">
+                    {{#if nodes}}
+                        <ul class="report-nodes">
+                            {{#each nodes}}
+                                {{renderNode this}}
+                            {{/each}}
+                        </ul>
+                    {{/if}}
+                </div>
+            </li>
+        </script>
+        <script id="report-node-text-tpl" type="text/x-handlebars-template">
+            <li>
+                <div class="node-simple-text">
+                    {{name}}
+                </div>
+            </li>
+        </script>
+        <script id="report-layout-tpl" type="text/x-handlebars-template">
+            <li>
+                <span class="report-time">{{formatReportTime time}}</span>
+                <a class="expand-link node-expand-button node-status-label node-status-info contains-children-true collapsed" href="#">LAYOUT</a>
+                <div class="node-name">{{name}}</div>
+                <div class="node-horizontal-menu" data-layout-id="{{layoutId}}"><a class="layout-heatmap-link" href="#">Heat Map</a></div>
+                <div class="node-details expand-container">
+                    {{renderSublayout this}}
+                </div>
+            </li>
+        </script>
+        <script id="report-layout-sublayout-tpl" type="text/x-handlebars-template">
+            <div class="layout-report" data-layout-id="{{layoutId}}" data-screenshot="{{screenshot}}">
+                <ul class="layout-sections">
+                    {{#each sections}}
+                        {{renderLayoutSection this}}
+                    {{/each}}
+                </ul>
+            </div>
+        </script>
+        <script id="report-layout-section-tpl" type="text/x-handlebars-template">
+            <li>
+                <a class="layout-section icon-sprite-before expand-link contains-children-true" href="#">{{name}}</a>
+                <div class="layout-details expand-container">
+                    {{#if sections}}
+                        <ul class="layout-sections">
+                        {{#each sections}}
+                            {{renderLayoutSection this}}
+                        {{/each}}
+                        </ul>
+                    {{/if}}
+                    {{#if objects}}
+                        <ul class="layout-objects">
+                            {{#each objects}}
+                                {{renderLayoutObject this}}
+                            {{/each}}
+                        </ul>
+                    {{/if}}
+                </div>
+            </li>
+        </script>
+
+        <script id="report-layout-object-tpl" type="text/x-handlebars-template">
+            <li>
+                <a class="layout-object icon-sprite-before expand-link contains-children-true" href="#">{{name}}</a>
+                <ul class="layout-checks expand-container">
+                    {{#each specs}}
+                        {{renderLayoutCheck this}}
+                    {{/each}}
+                    {{#each specGroups}}
+                    <li>
+                        <a class="layout-specgroup icon-sprite-before expand-link contains-children-true" href="#">{{name}}</a>
+                        <ul class="layout-checks expand-container">
+                            {{#each specs}}
+                                {{renderLayoutCheck this}}
+                            {{/each}}
+                        </ul>
+                    </li>
+                    {{/each}}
+                </ul>
+            </li>
+        </script>
+        <script id="report-layout-check-tpl" type="text/x-handlebars-template">
+            <li>
+            <a class="layout-check icon-sprite-before layout-check-status-{{status}}" href="#"
+                data-highlight-objects="{{commaSeparated highlight}}"
+                title="{{place.filePath}}#{{place.lineNumber}}"
+                >{{name}}</a>
+
+                {{#if errors}}
+                    <div class="layout-check-error-message">
+                        {{#if imageComparison}}
+                        <a class="image-comparison-link"
+                            data-actual-image="{{imageComparison.actualImage}}"
+                            data-expected-image="{{imageComparison.expectedImage}}"
+                            data-map-image="{{imageComparison.comparisonMapImage}}"
+                            href="#">Show image comparison</a>
+                        {{/if}}
+                        <div class="layout-check-error-message-text">
+                            <ul>
+                            {{#each errors}}
+                                <li>{{this}}</li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+                {{/if}}
+
+                {{#if subLayout}}
+                {{renderSublayout subLayout}}
+                {{/if}}
+            </li>
+        </script>
+        <script id="screenshot-popup-tpl" type="text/x-handlebars-template">
+            <div class="screenshot-canvas">
+                {{#if screenshot}}
+                <img src="{{screenshot}}"/>
+                {{else}}
+                <div class="empty-screenshot" style="width: {{width}}; height: {{height}};"></div>
+                {{/if}}
+                {{#each objects}}
+                <div class="canvas-rect" style="left: {{area.left}}px; top: {{area.top}}px; width: {{area.width}}px; height: {{area.height}}px; {{#if drawBorder}}border-color: {{color}};{{else}}border:none;{{/if}}{{#if fillBackground}}background: {{color}};{{else}}background:none;{{/if}}">
+                    <div class="canvas-rect-wrapper">
+                        <div class="canvas-rect-hint" style="background: {{color}};">{{name}}</div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </script>
+        <script id="image-comparison-tpl" type="text/x-handlebars-template">
+            <div class="image-comparison image-comparison-layout-{{layout}}">
+                <div class="actual-image">
+                    <h5>Actual</h5>
+                    <img src="{{actual}}"/>
+                </div>
+
+                <div class="expected-image">
+                    <h5>Expected</h5>
+                    <img src="{{expected}}"/>
+                </div>
+
+                <div class="comparison-map">
+                    <h5>Comparison map</h5>
+                    <img src="{{map}}"/>
+                </div>
+            </div>
+        </script>
+        <script id="node-extras-tpl" type="text/x-handlebars-template">
+            <div class="node-extras">
+                <a class="node-extras" href="#">extras</a>
+                <div class="node-extras-content">
+                    <table class="node-extras-table">
+                        <tbody>
+                        {{#each this}}
+                        <tr>
+                            <td><label>{{@key}}</label></td>
+                            {{#ifCond type 'text'}}
+                            <td>{{value}}</td>
+                            {{/ifCond}}
+                            {{#ifCond type 'link'}}
+                            <td><a href="{{value}}">{{value}}</a></td>
+                            {{/ifCond}}
+                            {{#ifCond type 'image'}}
+                            <td><a href="{{value}}"><img src="{{value}}"/></a></td>
+                            {{/ifCond}}
+                        </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </script>
+
+
+
+        <div id="menu">
+            <ul>
+                <li><a href="report.html">Back to Test Overview</a></li>
+                <li><a class="menu-op-expand-all" href="#">Expand All</a></li>
+                <li><a class="menu-op-collapse-all" href="#">Collapse All</a></li>
+                <li><a class="menu-op-expand-errors" href="#">Expand Errors</a></li>
+            </ul>
+        </div>
+        <h2>Random size test on tablet device</h2>
+        <div id="main"></div>
+        <div id="screen-shadow"></div>
+        <div id="popup" class="popup">
+            <div class="popup-wrapper">
+                <a class="popup-close-link" href="#">close</a>
+                <div class="popup-content"></div>
+            </div>
+        </div>
+        <div id="notification" class="notification">
+            <div class="notification-wrapper">
+                <a class="notification-close-link" href="#">close</a>
+                <div class="notification-summary"></div>
+                <div class="notification-message"></div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,86 @@
+{
+  "testId" : "4-menu-highlight-on-desktop-device",
+  "name" : "Menu Highlight on desktop device",
+  "report" : {
+    "nodes" : [ {
+      "name" : "Checking color for menu item",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "Check layout: specs/menuHighlight.gspec included tags: usual",
+        "status" : "error",
+        "time" : 1451336837214,
+        "includedTags" : [ "usual" ],
+        "sections" : [ {
+          "name" : "Menu highlight",
+          "objects" : [ {
+            "name" : "menu_item-1",
+            "specs" : [ {
+              "status" : "error",
+              "place" : {
+                "filePath" : "specs/menuHighlight.gspec",
+                "lineNumber" : 8
+              },
+              "name" : "color-scheme 90 to 96 % #2d6ca2, 1 to 4 % white",
+              "errors" : [ "color #2d6ca2 on \"menu_item-1\" is 14% which is not in range of 90 to 96%", "color #ffffff on \"menu_item-1\" is 0% which is not in range of 1 to 4%" ],
+              "highlight" : [ "menu_item-1" ]
+            } ]
+          } ]
+        } ],
+        "objects" : {
+          "menu_item-1" : {
+            "area" : [ 93, 70, 100, 64 ]
+          }
+        },
+        "screenshot" : "layout-4-screenshot.png",
+        "type" : "layout"
+      } ],
+      "time" : 1451336836644,
+      "type" : "node"
+    }, {
+      "name" : "Checking color for highlighted menu item",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "Hover first menu item",
+        "status" : "info",
+        "time" : 1451336837214,
+        "type" : "node"
+      }, {
+        "name" : "Check layout: specs/menuHighlight.gspec included tags: hovered",
+        "status" : "error",
+        "time" : 1451336837901,
+        "includedTags" : [ "hovered" ],
+        "sections" : [ {
+          "name" : "Menu highlight",
+          "objects" : [ {
+            "name" : "menu_item-1",
+            "specs" : [ {
+              "status" : "error",
+              "place" : {
+                "filePath" : "specs/menuHighlight.gspec",
+                "lineNumber" : 14
+              },
+              "name" : "color-scheme 90 to 96 % #205380, 1 to 4 % white",
+              "errors" : [ "color #205380 on \"menu_item-1\" is 6% which is not in range of 90 to 96%" ],
+              "highlight" : [ "menu_item-1" ]
+            } ]
+          } ]
+        } ],
+        "objects" : {
+          "menu_item-1" : {
+            "area" : [ 93, 70, 100, 64 ]
+          }
+        },
+        "screenshot" : "layout-5-screenshot.png",
+        "type" : "layout"
+      } ],
+      "time" : 1451336837214,
+      "type" : "node"
+    }, {
+      "name" : "Screenshot",
+      "status" : "info",
+      "attachments" : [ "file-6-Screenshot" ],
+      "time" : 1451336837901,
+      "type" : "node"
+    } ]
+  }
+}
