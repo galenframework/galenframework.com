@@ -45,6 +45,12 @@ h1. Java Tests
 
 - "Java + Maven + TestNG + Galen":/docs/reference-java-tests/ _how to use Galen inside Java tests_
 
+h1. IDE Support
+
+- "Intellij Galen Specs language support (by Martin Reinhardt)":https://plugins.jetbrains.com/plugin/8302?pr=phpStorm&showAllUpdates=true
+- "Sublime syntax highlighter for Galen Framework v2+ (by David Rubio)":https://github.com/davidrv87/syntax-sublime-galen2
+- "Vim syntax highlighting and snippets":https://github.com/galenframework/galen.vim
+
 h1. Video Tutorials
 
 @@
