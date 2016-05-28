@@ -1067,6 +1067,13 @@ header-text:
 $$
 
 This way Galen compares page element area with each image and selects the one that has less mismatching pixels.
+Also you can use a simple expression to match multiple files using star operator:
+
+$$ galen-specs
+header-text:
+    image file image-*.png, error 20px
+$$
+
 
 h3. Stretching images
 
