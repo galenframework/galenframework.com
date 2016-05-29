@@ -1300,6 +1300,22 @@ $$
 
 That way it will iterate starting from second element in the loop
 
+Also you can refer to index (starting from 1) when iterating with @forEach@ loop. This could be useful in case you want to store expected text in a separate array and use it in a loop.
+
+$$ galen-specs
+@objects
+    menu_item-*        #menu ul li
+
+@script
+    data = ["Home", "My Notes", "About", "Contact"];
+
+= Menu =
+    @forEach [menu_item-*] as item, index as i
+        ${item}:
+            text is "${data[i-1]}"
+$$
+
+
 
 h2. Custom javascript functions in specs
 
