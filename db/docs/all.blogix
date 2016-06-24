@@ -27,6 +27,7 @@ Will help you to install Galen and configure it properly.
 - "Install Galen":/docs/getting-started-install-galen/ _download and install the latest version of Galen_
 - "Configuration":/docs/getting-started-configuration/ _configure Galen project_
 - "Running Galen":/docs/reference-working-in-command-line/ _run sample project with Galen_
+- "Configuring browsers":/docs/browsers/ _setup different browsers like Chrome or PhantomJs_
 
 
 h1. Complete Reference
