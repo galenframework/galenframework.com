@@ -1149,6 +1149,7 @@ Here is the list of all available image filters:
 * *denoise <radius>* - Removes noise from image. Applicable only as a *map-filter* as it only works with black/white images.
 * *quantinize <colorsAmount>* - Makes less colors on the image.
 * *mask <maskImagePath>* - Applies a mask to an image alpha channel which makes pixels transparent according to the color of corresponding mask image pixel. This might be useful if you need to avoid comparison of specific area of the image. Black color on mask means complete transparency and white means no transparency.
+* *replace-colors <replaceColors ...> with <finalColor> tolerance <toleranceValue> radius <radiusValue>* - Allows to selectively replace colors on image. Example @image imgs/object.png, filter-a replace-colors #111 #555-#777 with #fff tolerance 10 radius 2@
 
 
 In case you want to apply filter only to original image - you can use @filter-a@ expression like this:
