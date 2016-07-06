@@ -1063,6 +1063,24 @@ $$
 
 The *tolerance* - is the maximum allowed color difference of two compared pixels. By default the tolerance is set to 30. If you increase this parameter - the amount of mismatching pixels will be decreased but than you risk of not having the proper comparison.
 
+
+h3. Ignoring regions of other objects
+
+Often you need to exclude some specific elements from image validation. This can be achieved using @ignore-objects@ property
+
+$$ galen-specs
+content:
+    image file imgs/content.png, ignore-objects banner
+$$
+
+Also you can list multiple objects with galen object matching syntax
+
+$$ galen-specs
+content:
+    image file imgs/content.png, ignore-objects [banner-*, ad]
+$$
+
+
 h3. Multiple image comparison
 
 Sometimes you might have different images for different browsers and this will break all your tests. Just for this case you can define different image samples in one image spec like this:
