@@ -262,6 +262,12 @@ $$ galen-specs
 # Less than
     width < 40 px
 
+# Greater than or equals
+    width >= 40 px
+
+# Less than or equals
+    width <= 40 px
+
 # Approximate
     width ~ 100 px
 $$
