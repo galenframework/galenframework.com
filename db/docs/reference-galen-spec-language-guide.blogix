@@ -50,6 +50,7 @@ If you do want to switch but already have a lot of specs in the old format you c
 ** "Custom javascript functions in specs":#Customjavascriptfunctionsinspecs
 ** "if statement":#ifStatement
 ** "Warning level for specs":#Warninglevelforspecs
+** "Throwing error":#Throwingerror
 ** "Custom rules":#CustomRules
 ** "Notes for specs":#Notesforspecs
 * "Galen Specs JS Api":#GalenSpecsJSApi
@@ -1431,6 +1432,15 @@ login-button:
     % width 100px
 $$
 
+
+h2. Throwing error
+
+Since version 2.3 you can throw an error from your spec file using *@die* operator:
+
+$$ galen-specs
+@if ${count("menu.item-*") === 0}
+    @die "There are no menu items"
+$$
 
 h2. Custom Rules
 
