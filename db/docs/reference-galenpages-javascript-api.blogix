@@ -223,51 +223,89 @@ h2. GalenPages.PageElement
 Contains the following fields and functions: 
 
 * *name* - a name of page element
+
 * *locator* - a locator that is used to fetch WebElement on the page
+
+* *attribute( attrName )* - function. Takes a string argument that represents a name of HTML attribute. Returns value of specified HTML attribute
+$$ javascript
+var href = myPage.submitLink.attribute("href");
+$$
+
+* *click()* - function. Clicks on the page element
+$$ javascript
+loginPage.submitButton.click();
+$$
+
+* *clickAt(x, y)* - function. Clicks on the page element with specified offset from the top-left corner of the element
+$$ javascript
+loginPage.submitButton.clickAt(10, 15);
+$$
+
+* *clear()* - function. Removes the text from textfield page element
+$$ javascript
+loginPage.emailTextfield.clear();
+$$
+
+* *cssValue( cssPropertyName )* - fucntion. Takes a string argument that represents a name of CSS property. Returns a value of specified CSS property
+$$ javascript
+var fontWeight = myPage.submitLink.cssValue("font-weight");
+$$
+
+* *dragAndDropTo(destinationElement)* - function. Drags element and drops on specified destination element
+$$ javascript
+myPage.someElement.dragAndDropTo(myPage.anotherElement);
+$$
+
+* *dragByOffset(x, y)* - function. Drags element to a specified offset
+$$ javascript
+myPage.someElement.dragByOffset(0, 100);
+$$
+
+* *exists()* - function. Return true if page element is present in DOM and false if it is missing
+$$ javascript
+if (loginPage.loginButton.exists()) {
+  // do something
+}
+$$
+
+* *getText()* - function. Returns the text inside page element
+$$ javascript
+var text = loginPage.captionLabel.getText();
+$$
+
+* *getWebElement()* - function. Returns WebElement object for current page element
+
+* *hover()* - function. Simulates the mouse over event and makes an element hovered
+$$ javascript
+loginPage.submitButton.hover();
+$$
+
 * *isEnabled()* - function. Returns true if page element is enabled and false if it is disabled
 $$ javascript
 if (loginPage.emailTextfield.isEnabled()) {
   // do something
 }
 $$
-* *attribute( attrName )* - function. Takes a string argument that represents a name of HTML attribute. Returns value of specified HTML attribute
-$$ javascript
-var href = myPage.submitLink.attribute("href");
-$$
-* *cssValue( cssPropertyName )* - fucntion. Takes a string argument that represents a name of CSS property. Returns a value of specified CSS property
-$$ javascript
-var fontWeight = myPage.submitLink.cssValue("font-weight");
-$$
-* *click()* - function. Clicks on the page element
-$$ javascript
-loginPage.submitButton.click();
-$$
-* *typeText( text )* - function. Takes a string argument. Types the specified text to the page element
-$$ javascript
-loginPage.emailTextfield.typeText("testuser@example.com");
-$$
-* *clear()* - function. Removes the text from textfield page element
-$$ javascript
-loginPage.emailTextfield.clear();
-$$
-* *getText()* - function. Returns the text inside page element
-$$ javascript
-var text = loginPage.captionLabel.getText();
-$$
-* *hover()* - function. Simulates the mouse over event and makes an element hovered
-$$ javascript
-loginPage.submitButton.hover();
-$$
-* *getWebElement()* - function. Returns WebElement object for current page element
+
+* *insideFrame(callback)* - function. Switches context to frame, which is represent by the current page element, and executes the given callback. After callback invocation switches back to parent frame.
+
 * *isDisplayed()* - function. Returns true if page element is visible on page and false if it is hidden
+
 * *selectByValue( value )* - function. Takes string argument representing a value of HTML @option@. This function should only be used in case the page element is a HTML @select@ tag. 
 $$ javascript
 myPage.menuList.selectByValue("categories");
 $$
+
 * *selectByText( text )* - function. Takes string argument representing a text of HTML @option@. This function should only be used in case the page element is a HTML @select@ tag. 
 $$ javascript
 myPage.menuList.selectByText("Categories");
 $$
+
+* *typeText( text )* - function. Takes a string argument. Types the specified text to the page element
+$$ javascript
+loginPage.emailTextfield.typeText("testuser@example.com");
+$$
+
 * *waitFor(callback, messageSuffix, time)* - Used in order to wait for some specific condition that is controlled by the callback. 
 $$ javascript
 loginPage.loginButton.waitFor(function (button) {
@@ -281,6 +319,7 @@ loginPage.loginButton.waitFor(function (button) {
   return button.isDisplayed();
 });
 $$
+
 * *waitToBeShown()* - function. Takes one string argument representing a timeout (default is "10s"). Waits with specified timeout until element appears on page and becomes visible.
 $$ javascript
 loginPage.loginButton.waitToBeShown("10s");
@@ -313,14 +352,6 @@ loginPage.loginButton.waitUntilGone("10s");
 loginPage.loginButton.waitUntilGone();
 $$
 
-* *exists()* - function. Return true if page element is present in DOM and false if it is missing
-$$ javascript
-if (loginPage.loginButton.exists()) {
-  // do something
-}
-$$
-
-* *insideFrame(callback)* - function. Switches context to frame, which is represent by the current page element, and executes the given callback. After callback invocation switches back to parent frame.
 
 
 h2. GalenPages.PageElementList
@@ -329,6 +360,7 @@ This object type is used when the list object is declared on page via @$list@ fu
 Contains the following functions:
 
 * *get( index )* - a function that returns an element in a list at with specified index
+
 * *size()* - a function that returns total amount of elements in the list on page
 
 h2. GalenPages.wait
@@ -338,7 +370,9 @@ A very useful function that allows to wait for multiple condition with specified
 *GalenPages.wait( settings );*
 
 * *settings* - a set of key/value pairs for configuring the wait component
+
 ** *time* - string or number type. The timeout for wait component. A number represent milliseconds. A string is allowed in the following format: "10s" or "1m"
+
 ** *period* - string or number type. The time interval with which it checks all the conditions. A number represent milliseconds. A string is allowed in the following format: "10s" or "1m"
 
 Returns a @GalenPages.Wait@ object that has the following function:
