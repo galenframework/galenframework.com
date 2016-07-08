@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+        <meta charset="utf-8" />
+        <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <title>Sample Website for Galen Framework</title>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
+        <link rel="stylesheet" href="main.css?v=6" />
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <script src="js/handlebars-v1.3.0.js"></script>
+    </head>
+    <body>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="js/jquery-1.8.3.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/myapp.js?v=3"></script>
+        <script>
+            $(function () {
+                App.init();
+                App.showWelcomePage();
+                // App.showLoginPage();
+            });
+        </script>
+
+        <div id="header">
+            <div class="middle-wrapper">
+                <img src="images/header-icon.png" id="header-logo" /> <h1> Sample Website <span class="not-on-mobile not-on-tablet">for Galen Framework</span></h1>
+            </div>
+        </div>
+        <div id="middle">
+            <div id="menu">
+                <div class="middle-wrapper">
+                    <ul>
+                        <li cass="when-not-logged"><a href="#">Home</a></li>
+                        <li class="when-logged"><a href="#">My Notes</a></li>
+                        <li class="when-logged"><a href="#">About</a></li>
+                        <li class="when-logged"><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="middle-wrapper">
+                <div id="content">
+            <div class="dialog-panel" id="login-page">
+                <h2>Login</h2>
+
+                <p>
+                    <input type="text" name="login.username" placeholder="Username" class="form-control" />
+                </p>
+                <p>
+                    <input type="text" name="login.password" placeholder="Password" class="form-control" />
+                </p>
+
+                <div style="" class="alert alert-danger" id="login-error-message">The username or password are incorrect</div>
+
+                <p>
+                    <button onclick="App.login()" type="button" class="btn btn-lg btn-primary button-login">Login</button>
+                    <button onclick="App.showWelcomePage()" type="button" class="btn btn-lg btn-default button-cancel">Cancel</button>
+                </p>
+            </div>
+        </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="middle-wrapper">
+                <div class="footer-signature">
+                    Copyright (c) 2015
+                </div>
+            </div>
+        </div>
+
+        <script type="text/x-handlebars-template" id="tpl-welcome-page">
+            &lt;div id="welcome-page" class="jumbotron"&gt;
+                &lt;h1&gt;Welcome to our test page!&lt;/h1&gt;
+                &lt;p&gt;This app is used as a playground for &lt;a href="http://galenframework.com"&gt;Galen Framework&lt;/a&gt;&lt;/p&gt;
+                &lt;p&gt;&lt;button class="btn btn-lg btn-primary button-login" type="button" onclick="App.showLoginPage();"&gt;Login&lt;/button&gt;&lt;/p&gt;
+                &lt;p&gt;To log in this website use the email &lt;b&gt;testuser@example.com&lt;/b&gt; and password &lt;b&gt;test123&lt;/b&gt;
+            &lt;/div&gt;
+        </script>
+
+        <script type="text/x-handlebars-template" id="tpl-login-page">
+            &lt;div id="login-page" class="dialog-panel"&gt;
+                &lt;h2&gt;Login&lt;/h2&gt;
+
+                &lt;p&gt;
+                    &lt;input type="text" class="form-control" placeholder="Username" name="login.username"&gt;
+                &lt;/p&gt;
+                &lt;p&gt;
+                    &lt;input type="text" class="form-control" placeholder="Password" name="login.password"&gt;
+                &lt;/p&gt;
+
+                &lt;div id="login-error-message" class="alert alert-danger" style="display: none"&gt;&lt;/div&gt;
+
+                &lt;p&gt;
+                    &lt;button class="btn btn-lg btn-primary button-login" type="button" onclick="App.login()"&gt;Login&lt;/button&gt;
+                    &lt;button class="btn btn-lg btn-default button-cancel" type="button" onclick="App.showWelcomePage()"&gt;Cancel&lt;/button&gt;
+                &lt;/p&gt;
+            &lt;/div&gt;
+        </script>
+
+        <script type="text/x-handlebars-template" id="tpl-my-notes-page">
+            &lt;div id="my-notes-page"&gt;
+                &lt;h2&gt;My Notes&lt;/h2&gt;
+                &lt;div class="list-group"&gt;
+                    {{#each notes}}
+                    &lt;a href="javascript: App.showMyNote({{id}});" class="list-group-item"&gt;
+                        &lt;h4 class="list-group-item-heading"&gt;{{title}}&lt;/h4&gt;
+                        &lt;p class="list-group-item-text"&gt;{{shortText description}}&lt;/p&gt;
+                    &lt;/a&gt;
+                    {{/each}}
+                &lt;/div&gt;
+                &lt;button class="btn btn-lg btn-primary" type="button" onclick="App.showAddNotePage();"&gt;Add note&lt;/button&gt;
+            &lt;/div&gt;
+        </script>
+
+        <script type="text/x-handlebars-template" id="tpl-add-note-page">
+            &lt;div id="ad-note-page"&gt;
+                &lt;h2&gt;{{heading}}&lt;/h2&gt;
+
+                &lt;p&gt;
+                &lt;input type="text" class="form-control" placeholder="Title" name="note.title" value="{{title}}"&gt;
+                &lt;/p&gt;
+                &lt;p&gt;
+                &lt;textarea rows="10" class="form-control" placeholder="Description" name="note.description"&gt;{{description}}&lt;/textarea&gt;
+                &lt;/p&gt;
+                &lt;div id="note-error-message" class="alert alert-danger" style="display: none"&gt;&lt;/div&gt;
+                &lt;p&gt;
+                    &lt;button class="btn btn-lg btn-primary" type="button" onclick="App.addNote()"&gt;{{operation}}&lt;/button&gt;
+                    &lt;button class="btn btn-lg btn-default" type="button" onclick="App.showMyNotesPage()"&gt;Cancel&lt;/button&gt;
+                &lt;/p&gt;
+            &lt;/div&gt;
+        </script>
+    
+
+
+</body><canvas id="fxdriver-screenshot-canvas" style="display: none;" width="1024" height="697"></canvas></html>

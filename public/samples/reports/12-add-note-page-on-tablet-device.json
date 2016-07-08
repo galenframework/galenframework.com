@@ -1,0 +1,592 @@
+{
+  "testId" : "12-add-note-page-on-tablet-device",
+  "name" : "Add note page on tablet device",
+  "report" : {
+    "nodes" : [ {
+      "name" : "Click loginButton on Welcome page",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "css: #welcome-page .button-login",
+        "type" : "text"
+      } ],
+      "time" : 1451336853631,
+      "type" : "node"
+    }, {
+      "name" : "Log in as testuser@example.com with password test123",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "Type \"testuser@example.com\" to username on Login page",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "css: input[name='login.username']",
+          "type" : "text"
+        } ],
+        "time" : 1451336853750,
+        "type" : "node"
+      }, {
+        "name" : "Type \"test123\" to password on Login page",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "css: input[name='login.password']",
+          "type" : "text"
+        } ],
+        "time" : 1451336853810,
+        "type" : "node"
+      }, {
+        "name" : "Click loginButton on Login page",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "css: button.button-login",
+          "type" : "text"
+        } ],
+        "time" : 1451336853849,
+        "type" : "node"
+      } ],
+      "time" : 1451336853749,
+      "type" : "node"
+    }, {
+      "name" : "Click addNoteButton on My notes page",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "xpath: //button[.='Add note']",
+        "type" : "text"
+      } ],
+      "time" : 1451336853930,
+      "type" : "node"
+    }, {
+      "name" : "Check layout: specs/addNotePage.gspec included tags: tablet",
+      "status" : "info",
+      "time" : 1451336855295,
+      "includedTags" : [ "tablet" ],
+      "sections" : [ {
+        "name" : "Header",
+        "objects" : [ {
+          "name" : "header",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 15
+            },
+            "name" : "inside screen 0px top",
+            "highlight" : [ "header", "screen" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 16
+            },
+            "name" : "centered horizontally inside screen 1px",
+            "highlight" : [ "header", "screen" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 17
+            },
+            "name" : "height ~ 70px",
+            "highlight" : [ "header" ]
+          } ]
+        }, {
+          "name" : "header.logo",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 20
+            },
+            "name" : "inside header 5 to 15px top, 0 to 10px left",
+            "highlight" : [ "header.logo", "header" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 21
+            },
+            "name" : "near header.text 5 to 30px left",
+            "highlight" : [ "header.logo", "header.text" ]
+          } ]
+        }, {
+          "name" : "header.text",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 24
+            },
+            "name" : "inside header 10 to 25px top",
+            "highlight" : [ "header.text", "header" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 36
+            },
+            "name" : "text is \"Sample Website\"",
+            "highlight" : [ "header.text" ]
+          } ]
+        } ]
+      }, {
+        "name" : "Menu",
+        "objects" : [ {
+          "name" : "menu",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 43
+            },
+            "name" : "centered horizontally inside screen 1px",
+            "highlight" : [ "menu", "screen" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 44
+            },
+            "name" : "below header ~ 0px",
+            "highlight" : [ "menu", "header" ]
+          } ]
+        }, {
+          "name" : "menu.item-1",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 54
+            },
+            "name" : "inside menu ~ 0px top left bottom",
+            "highlight" : [ "menu.item-1", "menu" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 57
+            },
+            "name" : "width 90 to 130px",
+            "highlight" : [ "menu.item-1" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 58
+            },
+            "name" : "height ~ 64px",
+            "highlight" : [ "menu.item-1" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 59
+            },
+            "name" : "inside menu ~ 0px top",
+            "highlight" : [ "menu.item-1", "menu" ]
+          } ]
+        }, {
+          "name" : "menu.item-2",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 57
+            },
+            "name" : "width 90 to 130px",
+            "highlight" : [ "menu.item-2" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 58
+            },
+            "name" : "height ~ 64px",
+            "highlight" : [ "menu.item-2" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 59
+            },
+            "name" : "inside menu ~ 0px top",
+            "highlight" : [ "menu.item-2", "menu" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 63
+            },
+            "name" : "right-of menu.item-1 0 to 5px",
+            "highlight" : [ "menu.item-2", "menu.item-1" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 64
+            },
+            "name" : "aligned horizontally all menu.item-1",
+            "highlight" : [ "menu.item-2", "menu.item-1" ]
+          } ]
+        }, {
+          "name" : "menu.item-3",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 57
+            },
+            "name" : "width 90 to 130px",
+            "highlight" : [ "menu.item-3" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 58
+            },
+            "name" : "height ~ 64px",
+            "highlight" : [ "menu.item-3" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 59
+            },
+            "name" : "inside menu ~ 0px top",
+            "highlight" : [ "menu.item-3", "menu" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 63
+            },
+            "name" : "right-of menu.item-2 0 to 5px",
+            "highlight" : [ "menu.item-3", "menu.item-2" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 64
+            },
+            "name" : "aligned horizontally all menu.item-2",
+            "highlight" : [ "menu.item-3", "menu.item-2" ]
+          } ]
+        }, {
+          "name" : "menu.item-4",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 57
+            },
+            "name" : "width 90 to 130px",
+            "highlight" : [ "menu.item-4" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 58
+            },
+            "name" : "height ~ 64px",
+            "highlight" : [ "menu.item-4" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 59
+            },
+            "name" : "inside menu ~ 0px top",
+            "highlight" : [ "menu.item-4", "menu" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 63
+            },
+            "name" : "right-of menu.item-3 0 to 5px",
+            "highlight" : [ "menu.item-4", "menu.item-3" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 64
+            },
+            "name" : "aligned horizontally all menu.item-3",
+            "highlight" : [ "menu.item-4", "menu.item-3" ]
+          } ]
+        } ]
+      }, {
+        "name" : "Content",
+        "objects" : [ {
+          "name" : "content",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 83
+            },
+            "name" : "below menu ~ 0px",
+            "highlight" : [ "content", "menu" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 84
+            },
+            "name" : "centered horizontally inside screen 1px",
+            "highlight" : [ "content", "screen" ]
+          } ]
+        } ]
+      }, {
+        "name" : "Footer",
+        "objects" : [ {
+          "name" : "footer",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 94
+            },
+            "name" : "height ~ 200px",
+            "highlight" : [ "footer" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 95
+            },
+            "name" : "below content 0px",
+            "highlight" : [ "footer", "content" ]
+          } ]
+        } ]
+      }, {
+        "name" : "Add note page",
+        "objects" : [ {
+          "name" : "caption",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/addNotePage.gspec",
+              "lineNumber" : 14
+            },
+            "name" : "below menu 20 to 45 px",
+            "highlight" : [ "caption", "menu" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/addNotePage.gspec",
+              "lineNumber" : 15
+            },
+            "name" : "inside content ~ 20px left right",
+            "highlight" : [ "caption", "content" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/addNotePage.gspec",
+              "lineNumber" : 16
+            },
+            "name" : "height 20 to 40px",
+            "highlight" : [ "caption" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/addNotePage.gspec",
+              "lineNumber" : 17
+            },
+            "name" : "above title_textfield 10 to 20px",
+            "highlight" : [ "caption", "title_textfield" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/addNotePage.gspec",
+              "lineNumber" : 18
+            },
+            "name" : "aligned vertically all title_textfield",
+            "highlight" : [ "caption", "title_textfield" ]
+          } ]
+        }, {
+          "name" : "title_textfield",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/addNotePage.gspec",
+              "lineNumber" : 21
+            },
+            "name" : "inside content ~ 20px left right",
+            "highlight" : [ "title_textfield", "content" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/addNotePage.gspec",
+              "lineNumber" : 22
+            },
+            "name" : "below caption 10 to 20px",
+            "highlight" : [ "title_textfield", "caption" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/addNotePage.gspec",
+              "lineNumber" : 23
+            },
+            "name" : "inside content ~ 20px left right",
+            "highlight" : [ "title_textfield", "content" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/addNotePage.gspec",
+              "lineNumber" : 24
+            },
+            "name" : "height 25 to 40px",
+            "highlight" : [ "title_textfield" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/addNotePage.gspec",
+              "lineNumber" : 25
+            },
+            "name" : "above description_textfield 10 to 20px",
+            "highlight" : [ "title_textfield", "description_textfield" ]
+          } ]
+        }, {
+          "name" : "description_textfield",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/addNotePage.gspec",
+              "lineNumber" : 28
+            },
+            "name" : "aligned vertically all title_textfield",
+            "highlight" : [ "description_textfield", "title_textfield" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/addNotePage.gspec",
+              "lineNumber" : 29
+            },
+            "name" : "height 150 to 350px",
+            "highlight" : [ "description_textfield" ]
+          } ]
+        }, {
+          "name" : "button_add",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/addNotePage.gspec",
+              "lineNumber" : 33
+            },
+            "name" : "height 40 to 50px",
+            "highlight" : [ "button_add" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/addNotePage.gspec",
+              "lineNumber" : 38
+            },
+            "name" : "width 80 to 140px",
+            "highlight" : [ "button_add" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/addNotePage.gspec",
+              "lineNumber" : 39
+            },
+            "name" : "aligned horizontally all button_cancel",
+            "highlight" : [ "button_add", "button_cancel" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/addNotePage.gspec",
+              "lineNumber" : 40
+            },
+            "name" : "below description_textfield 10 to 20px",
+            "highlight" : [ "button_add", "description_textfield" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/addNotePage.gspec",
+              "lineNumber" : 41
+            },
+            "name" : "aligned vertically left description_textfield",
+            "highlight" : [ "button_add", "description_textfield" ]
+          } ]
+        }, {
+          "name" : "button_cancel",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/addNotePage.gspec",
+              "lineNumber" : 33
+            },
+            "name" : "height 40 to 50px",
+            "highlight" : [ "button_cancel" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/addNotePage.gspec",
+              "lineNumber" : 44
+            },
+            "name" : "near button_add 0 to 10px right",
+            "highlight" : [ "button_cancel", "button_add" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/addNotePage.gspec",
+              "lineNumber" : 45
+            },
+            "name" : "width 80 to 140px",
+            "highlight" : [ "button_cancel" ]
+          } ]
+        } ]
+      } ],
+      "objects" : {
+        "screen" : {
+          "area" : [ 0, 0, 586, 775 ]
+        },
+        "menu.item-3" : {
+          "area" : [ 210, 70, 100, 64 ]
+        },
+        "description_textfield" : {
+          "area" : [ 20, 261, 546, 228 ]
+        },
+        "menu.item-4" : {
+          "area" : [ 310, 70, 100, 64 ]
+        },
+        "menu" : {
+          "area" : [ 0, 70, 586, 64 ]
+        },
+        "button_add" : {
+          "area" : [ 20, 499, 109, 46 ]
+        },
+        "caption" : {
+          "area" : [ 20, 174, 546, 33 ]
+        },
+        "header.logo" : {
+          "area" : [ 0, 13, 48, 48 ]
+        },
+        "menu.item-1" : {
+          "area" : [ 0, 70, 100, 64 ]
+        },
+        "menu.item-2" : {
+          "area" : [ 100, 70, 110, 64 ]
+        },
+        "header" : {
+          "area" : [ 0, 0, 586, 70 ]
+        },
+        "header.text" : {
+          "area" : [ 70, 20, 262, 40 ]
+        },
+        "content" : {
+          "area" : [ 0, 134, 586, 441 ]
+        },
+        "footer" : {
+          "area" : [ 0, 575, 586, 200 ]
+        },
+        "button_cancel" : {
+          "area" : [ 133, 499, 90, 46 ]
+        },
+        "title_textfield" : {
+          "area" : [ 20, 217, 546, 34 ]
+        }
+      },
+      "screenshot" : "layout-17-screenshot.png",
+      "type" : "layout"
+    } ]
+  }
+}

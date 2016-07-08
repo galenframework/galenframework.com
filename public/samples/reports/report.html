@@ -1,168 +1,305 @@
 <html>
     <head>
-        <title>Galen Report</title>
-        <link rel="stylesheet" type="text/css" href="galen-report.css"></link>
-        <script src="jquery-1.10.2.min.js"></script>
+        <title>Galen Reports</title>
+        <link rel="stylesheet" type="text/css" href="report.css"></link>
+        <link rel="stylesheet" type="text/css" href="tablesorter.css"></link>
+        <script src="jquery-1.11.2.min.js"></script>
+        <script src="handlebars-v2.0.0.js"></script>
+        <script src="tablesorter.js"></script>
         <script src="galen-report.js"></script>
+        <script>
+var reportData = {
+  "tests" : [ {
+    "name" : "Welcome page on mobile emulation device",
+    "startedAt" : 1463301732263,
+    "endedAt" : 1463301742291,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 68,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 68
+    },
+    "testId" : "1-welcome-page-on-mobile-emulation-device",
+    "groups" : [ ],
+    "failed" : false,
+    "duration" : 10028
+  }, {
+    "name" : "Welcome page on tablet emulation device",
+    "startedAt" : 1463301742292,
+    "endedAt" : 1463301744978,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 70,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 70
+    },
+    "testId" : "2-welcome-page-on-tablet-emulation-device",
+    "groups" : [ ],
+    "failed" : false,
+    "duration" : 2686
+  }, {
+    "name" : "Welcome page on desktop emulation device",
+    "startedAt" : 1463301744979,
+    "endedAt" : 1463301747385,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 70,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 70
+    },
+    "testId" : "3-welcome-page-on-desktop-emulation-device",
+    "groups" : [ ],
+    "failed" : false,
+    "duration" : 2406
+  }, {
+    "name" : "Menu Highlight on desktop emulation device",
+    "startedAt" : 1463301747388,
+    "endedAt" : 1463301748896,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 3,
+      "errors" : 2,
+      "warnings" : 0,
+      "total" : 5
+    },
+    "testId" : "4-menu-highlight-on-desktop-emulation-device",
+    "groups" : [ ],
+    "failed" : true,
+    "duration" : 1508
+  }, {
+    "name" : "My notes page on mobile emulation device",
+    "startedAt" : 1463301749279,
+    "endedAt" : 1463301753149,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 83,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 83
+    },
+    "testId" : "5-my-notes-page-on-mobile-emulation-device",
+    "groups" : [ ],
+    "failed" : false,
+    "duration" : 3870
+  }, {
+    "name" : "My notes page on tablet emulation device",
+    "startedAt" : 1463301753149,
+    "endedAt" : 1463301757035,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 81,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 81
+    },
+    "testId" : "6-my-notes-page-on-tablet-emulation-device",
+    "groups" : [ ],
+    "failed" : false,
+    "duration" : 3886
+  }, {
+    "name" : "My notes page on desktop emulation device",
+    "startedAt" : 1463301757036,
+    "endedAt" : 1463301760031,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 81,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 81
+    },
+    "testId" : "7-my-notes-page-on-desktop-emulation-device",
+    "groups" : [ ],
+    "failed" : false,
+    "duration" : 2995
+  }, {
+    "name" : "Login page on mobile emulation device",
+    "startedAt" : 1463301760032,
+    "endedAt" : 1463301763243,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 84,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 84
+    },
+    "testId" : "8-login-page-on-mobile-emulation-device",
+    "groups" : [ ],
+    "failed" : false,
+    "duration" : 3211
+  }, {
+    "name" : "Login page on tablet emulation device",
+    "startedAt" : 1463301763243,
+    "endedAt" : 1463301766118,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 79,
+      "errors" : 1,
+      "warnings" : 0,
+      "total" : 80
+    },
+    "testId" : "9-login-page-on-tablet-emulation-device",
+    "groups" : [ ],
+    "failed" : true,
+    "duration" : 2875
+  }, {
+    "name" : "Login page on desktop emulation device",
+    "startedAt" : 1463301766356,
+    "endedAt" : 1463301769853,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 80,
+      "errors" : 1,
+      "warnings" : 0,
+      "total" : 81
+    },
+    "testId" : "10-login-page-on-desktop-emulation-device",
+    "groups" : [ ],
+    "failed" : true,
+    "duration" : 3497
+  }, {
+    "name" : "Add note page on mobile emulation device",
+    "startedAt" : 1463301770195,
+    "endedAt" : 1463301772518,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 73,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 73
+    },
+    "testId" : "11-add-note-page-on-mobile-emulation-device",
+    "groups" : [ ],
+    "failed" : false,
+    "duration" : 2323
+  }, {
+    "name" : "Add note page on tablet emulation device",
+    "startedAt" : 1463301772519,
+    "endedAt" : 1463301775373,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 74,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 74
+    },
+    "testId" : "12-add-note-page-on-tablet-emulation-device",
+    "groups" : [ ],
+    "failed" : false,
+    "duration" : 2854
+  }, {
+    "name" : "Add note page on desktop emulation device",
+    "startedAt" : 1463301775373,
+    "endedAt" : 1463301777874,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 74,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 74
+    },
+    "testId" : "13-add-note-page-on-desktop-emulation-device",
+    "groups" : [ ],
+    "failed" : false,
+    "duration" : 2501
+  } ]
+};
+
+        </script>
+        <script>
+            $(function () {
+                var galenReport = createGalenTestOverview();
+                galenReport.renderTestsTable("tests-table", reportData);
+                galenReport.renderGroupsTable("groups-table", reportData);
+
+                window.onhashchange = function () {
+                    galenReport.handleHash(window.location.hash.substr(1));
+                };
+
+                galenReport.handleHash(window.location.hash.substr(1));
+            });
+        </script>
     </head>
     <body>
-        <script>$(function() {Galen.formatMainOverview();});</script>
-        <div class="suites-overview">
-            <h1>Galen Report</h1>
-            <div class="suites">
-                <div class="status-header">
-                    <div>Passed</div>
-                    <div>Failed</div>
-                    <div>Warnings</div>
-                    <div>Total</div>
-                    <div>Started</div>
-                    <div>Duration</div>
-                    <div>Test</div>
-                </div>
-                                <div class="suite">
-                    <div class="status passed">35</div>
-                    <div class="status failed">1</div>
-                    <div class="status warnings">0</div>
-                    <div class="status total">36</div>
-                    <div class="time">2014-10-17 11:23:36</div>
-                    <div class="time">5s</div>
-                    <div class="suite-link">
-                        <a href="report-1-welcome-page-on-mobile-device.html">Welcome page on mobile device</a>
-                    </div>
-                </div>
-                <div class="suite">
-                    <div class="status passed">46</div>
-                    <div class="status failed">1</div>
-                    <div class="status warnings">0</div>
-                    <div class="status total">47</div>
-                    <div class="time">2014-10-17 11:23:42</div>
-                    <div class="time">4s</div>
-                    <div class="suite-link">
-                        <a href="report-2-welcome-page-on-tablet-device.html">Welcome page on tablet device</a>
-                    </div>
-                </div>
-                <div class="suite">
-                    <div class="status passed">49</div>
-                    <div class="status failed">1</div>
-                    <div class="status warnings">0</div>
-                    <div class="status total">50</div>
-                    <div class="time">2014-10-17 11:23:46</div>
-                    <div class="time">4s</div>
-                    <div class="suite-link">
-                        <a href="report-3-welcome-page-on-desktop-device.html">Welcome page on desktop device</a>
-                    </div>
-                </div>
-                <div class="suite">
-                    <div class="status passed">2</div>
-                    <div class="status failed">0</div>
-                    <div class="status warnings">0</div>
-                    <div class="status total">2</div>
-                    <div class="time">2014-10-17 11:23:51</div>
-                    <div class="time">4s</div>
-                    <div class="suite-link">
-                        <a href="report-4-menu-highlight-on-desktop-device.html">Menu Highlight on desktop device</a>
-                    </div>
-                </div>
-                <div class="suite">
-                    <div class="status passed">47</div>
-                    <div class="status failed">0</div>
-                    <div class="status warnings">0</div>
-                    <div class="status total">47</div>
-                    <div class="time">2014-10-17 11:23:55</div>
-                    <div class="time">4s</div>
-                    <div class="suite-link">
-                        <a href="report-5-my-notes-page-on-mobile-device.html">My notes page on mobile device</a>
-                    </div>
-                </div>
-                <div class="suite">
-                    <div class="status passed">60</div>
-                    <div class="status failed">0</div>
-                    <div class="status warnings">0</div>
-                    <div class="status total">60</div>
-                    <div class="time">2014-10-17 11:24:00</div>
-                    <div class="time">5s</div>
-                    <div class="suite-link">
-                        <a href="report-6-my-notes-page-on-tablet-device.html">My notes page on tablet device</a>
-                    </div>
-                </div>
-                <div class="suite">
-                    <div class="status passed">63</div>
-                    <div class="status failed">0</div>
-                    <div class="status warnings">0</div>
-                    <div class="status total">63</div>
-                    <div class="time">2014-10-17 11:24:05</div>
-                    <div class="time">4s</div>
-                    <div class="suite-link">
-                        <a href="report-7-my-notes-page-on-desktop-device.html">My notes page on desktop device</a>
-                    </div>
-                </div>
-                <div class="suite">
-                    <div class="status passed">50</div>
-                    <div class="status failed">0</div>
-                    <div class="status warnings">0</div>
-                    <div class="status total">50</div>
-                    <div class="time">2014-10-17 11:24:10</div>
-                    <div class="time">4s</div>
-                    <div class="suite-link">
-                        <a href="report-8-login-page-on-mobile-device.html">Login page on mobile device</a>
-                    </div>
-                </div>
-                <div class="suite">
-                    <div class="status passed">62</div>
-                    <div class="status failed">0</div>
-                    <div class="status warnings">0</div>
-                    <div class="status total">62</div>
-                    <div class="time">2014-10-17 11:24:14</div>
-                    <div class="time">4s</div>
-                    <div class="suite-link">
-                        <a href="report-9-login-page-on-tablet-device.html">Login page on tablet device</a>
-                    </div>
-                </div>
-                <div class="suite">
-                    <div class="status passed">65</div>
-                    <div class="status failed">0</div>
-                    <div class="status warnings">0</div>
-                    <div class="status total">65</div>
-                    <div class="time">2014-10-17 11:24:19</div>
-                    <div class="time">4s</div>
-                    <div class="suite-link">
-                        <a href="report-10-login-page-on-desktop-device.html">Login page on desktop device</a>
-                    </div>
-                </div>
-                <div class="suite">
-                    <div class="status passed">43</div>
-                    <div class="status failed">0</div>
-                    <div class="status warnings">0</div>
-                    <div class="status total">43</div>
-                    <div class="time">2014-10-17 11:24:24</div>
-                    <div class="time">3s</div>
-                    <div class="suite-link">
-                        <a href="report-11-add-note-page-on-mobile-device.html">Add note page on mobile device</a>
-                    </div>
-                </div>
-                <div class="suite">
-                    <div class="status passed">57</div>
-                    <div class="status failed">0</div>
-                    <div class="status warnings">0</div>
-                    <div class="status total">57</div>
-                    <div class="time">2014-10-17 11:24:28</div>
-                    <div class="time">4s</div>
-                    <div class="suite-link">
-                        <a href="report-12-add-note-page-on-tablet-device.html">Add note page on tablet device</a>
-                    </div>
-                </div>
-                <div class="suite">
-                    <div class="status passed">60</div>
-                    <div class="status failed">0</div>
-                    <div class="status warnings">0</div>
-                    <div class="status total">60</div>
-                    <div class="time">2014-10-17 11:24:32</div>
-                    <div class="time">4s</div>
-                    <div class="suite-link">
-                        <a href="report-13-add-note-page-on-desktop-device.html">Add note page on desktop device</a>
-                    </div>
-                </div>
+
+
+        <div class="tests-overview">
+            <h2>Galen Test Report</h2>
+            <div class="tabs">
+                <a class="tab tab-tests" href="#tests">Tests</a>
+                <a class="tab tab-groups" href="#groups">Groups</a>
             </div>
+            <div id="tests-table">
+            </div>
+            <div id="groups-table">
+            </div>
+
+            <script id="tests-table-tpl" type="text/x-handlebars-template">
+                <table class="tests tablesorter">
+                    <thead>
+                        <tr>
+                            <th>Test</th>
+                            <th>Passed</th>
+                            <th>Failed</th>
+                            <th>Warnings</th>
+                            <th>Total</th>
+                            <th>Groups</th>
+                            <th>Started</th>
+                            <th>Duration</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each tests}}
+                        <tr data-groups="{{groups}}">
+                            <td class="suite-link">
+                                <a href="{{testId}}.html">{{name}}</a>
+                            </td>
+                            <td class="status passed">{{statistic.passed}}</td>
+                            <td class="status failed">{{statistic.errors}}</td>
+                            <td class="status warnings">{{statistic.warnings}}</td>
+                            <td class="status total">{{statistic.total}}</td>
+                            <td class="tags">{{formatGroupsPretty groups}}</td>
+                            <td class="time">{{formatDateTime startedAt}}</td>
+                            <td class="time">{{formatDurationHumanReadable duration}}</td>
+                            <td class="progressbar">
+                                {{renderProgressBar statistic}}
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </script>
+            <script id="groups-table-tpl" type="text/x-handlebars-template">
+                <table class="groups tablesorter">
+                    <thead>
+                        <tr>
+                            <th>Group</th>
+                            <th>Passed</th>
+                            <th>Failed</th>
+                            <th>Tests</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each this}}
+                        <tr>
+                            <td class="group-link">
+                                <a href="#tests|grouped|{{name}}">{{name}}</a>
+                            </td>
+                            <td class="status passed">{{passed}}</td>
+                            <td class="status failed">{{failed}}</td>
+                            <td class="status total">{{tests}}</td>
+                            <td class="progressbar">
+                                {{renderGroupsProgressBar this}}
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </script>
         </div>
     </body>
 </html>

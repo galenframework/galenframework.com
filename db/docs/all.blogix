@@ -27,6 +27,7 @@ Will help you to install Galen and configure it properly.
 - "Install Galen":/docs/getting-started-install-galen/ _download and install the latest version of Galen_
 - "Configuration":/docs/getting-started-configuration/ _configure Galen project_
 - "Running Galen":/docs/reference-working-in-command-line/ _run sample project with Galen_
+- "Configuring browsers":/docs/browsers/ _setup different browsers like Chrome or PhantomJs_
 
 
 h1. Complete Reference
@@ -44,6 +45,12 @@ h1. JavaScript Tests
 h1. Java Tests
 
 - "Java + Maven + TestNG + Galen":/docs/reference-java-tests/ _how to use Galen inside Java tests_
+
+h1. IDE Support
+
+- "Intellij Galen Specs language support (by Martin Reinhardt)":https://plugins.jetbrains.com/plugin/8302?pr=phpStorm&showAllUpdates=true
+- "Sublime syntax highlighter for Galen Framework v2+ (by David Rubio)":https://github.com/davidrv87/syntax-sublime-galen2
+- "Vim syntax highlighting and snippets":https://github.com/galenframework/galen.vim
 
 h1. Video Tutorials
 

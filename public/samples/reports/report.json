@@ -1,0 +1,198 @@
+{
+  "tests" : [ {
+    "name" : "Welcome page on mobile emulation device",
+    "startedAt" : 1463301732263,
+    "endedAt" : 1463301742291,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 68,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 68
+    },
+    "testId" : "1-welcome-page-on-mobile-emulation-device",
+    "groups" : [ ],
+    "failed" : false,
+    "duration" : 10028
+  }, {
+    "name" : "Welcome page on tablet emulation device",
+    "startedAt" : 1463301742292,
+    "endedAt" : 1463301744978,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 70,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 70
+    },
+    "testId" : "2-welcome-page-on-tablet-emulation-device",
+    "groups" : [ ],
+    "failed" : false,
+    "duration" : 2686
+  }, {
+    "name" : "Welcome page on desktop emulation device",
+    "startedAt" : 1463301744979,
+    "endedAt" : 1463301747385,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 70,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 70
+    },
+    "testId" : "3-welcome-page-on-desktop-emulation-device",
+    "groups" : [ ],
+    "failed" : false,
+    "duration" : 2406
+  }, {
+    "name" : "Menu Highlight on desktop emulation device",
+    "startedAt" : 1463301747388,
+    "endedAt" : 1463301748896,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 3,
+      "errors" : 2,
+      "warnings" : 0,
+      "total" : 5
+    },
+    "testId" : "4-menu-highlight-on-desktop-emulation-device",
+    "groups" : [ ],
+    "failed" : true,
+    "duration" : 1508
+  }, {
+    "name" : "My notes page on mobile emulation device",
+    "startedAt" : 1463301749279,
+    "endedAt" : 1463301753149,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 83,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 83
+    },
+    "testId" : "5-my-notes-page-on-mobile-emulation-device",
+    "groups" : [ ],
+    "failed" : false,
+    "duration" : 3870
+  }, {
+    "name" : "My notes page on tablet emulation device",
+    "startedAt" : 1463301753149,
+    "endedAt" : 1463301757035,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 81,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 81
+    },
+    "testId" : "6-my-notes-page-on-tablet-emulation-device",
+    "groups" : [ ],
+    "failed" : false,
+    "duration" : 3886
+  }, {
+    "name" : "My notes page on desktop emulation device",
+    "startedAt" : 1463301757036,
+    "endedAt" : 1463301760031,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 81,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 81
+    },
+    "testId" : "7-my-notes-page-on-desktop-emulation-device",
+    "groups" : [ ],
+    "failed" : false,
+    "duration" : 2995
+  }, {
+    "name" : "Login page on mobile emulation device",
+    "startedAt" : 1463301760032,
+    "endedAt" : 1463301763243,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 84,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 84
+    },
+    "testId" : "8-login-page-on-mobile-emulation-device",
+    "groups" : [ ],
+    "failed" : false,
+    "duration" : 3211
+  }, {
+    "name" : "Login page on tablet emulation device",
+    "startedAt" : 1463301763243,
+    "endedAt" : 1463301766118,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 79,
+      "errors" : 1,
+      "warnings" : 0,
+      "total" : 80
+    },
+    "testId" : "9-login-page-on-tablet-emulation-device",
+    "groups" : [ ],
+    "failed" : true,
+    "duration" : 2875
+  }, {
+    "name" : "Login page on desktop emulation device",
+    "startedAt" : 1463301766356,
+    "endedAt" : 1463301769853,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 80,
+      "errors" : 1,
+      "warnings" : 0,
+      "total" : 81
+    },
+    "testId" : "10-login-page-on-desktop-emulation-device",
+    "groups" : [ ],
+    "failed" : true,
+    "duration" : 3497
+  }, {
+    "name" : "Add note page on mobile emulation device",
+    "startedAt" : 1463301770195,
+    "endedAt" : 1463301772518,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 73,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 73
+    },
+    "testId" : "11-add-note-page-on-mobile-emulation-device",
+    "groups" : [ ],
+    "failed" : false,
+    "duration" : 2323
+  }, {
+    "name" : "Add note page on tablet emulation device",
+    "startedAt" : 1463301772519,
+    "endedAt" : 1463301775373,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 74,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 74
+    },
+    "testId" : "12-add-note-page-on-tablet-emulation-device",
+    "groups" : [ ],
+    "failed" : false,
+    "duration" : 2854
+  }, {
+    "name" : "Add note page on desktop emulation device",
+    "startedAt" : 1463301775373,
+    "endedAt" : 1463301777874,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 74,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 74
+    },
+    "testId" : "13-add-note-page-on-desktop-emulation-device",
+    "groups" : [ ],
+    "failed" : false,
+    "duration" : 2501
+  } ]
+}

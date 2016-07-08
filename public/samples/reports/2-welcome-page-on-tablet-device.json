@@ -1,0 +1,652 @@
+{
+  "testId" : "2-welcome-page-on-tablet-device",
+  "name" : "Welcome page on tablet device",
+  "report" : {
+    "nodes" : [ {
+      "name" : "Check layout: specs/welcomePage.gspec included tags: tablet",
+      "status" : "info",
+      "time" : 1451340024471,
+      "includedTags" : [ "tablet" ],
+      "sections" : [ {
+        "name" : "Skeleton",
+        "objects" : [ ],
+        "sections" : [ {
+          "name" : "&skeleton_elements sides are vertically inside screen",
+          "objects" : [ {
+            "name" : "header",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "<unknown source>",
+                "lineNumber" : -1
+              },
+              "name" : "inside screen 0 to 1 px top",
+              "highlight" : [ "header", "screen" ]
+            } ]
+          }, {
+            "name" : "menu",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "<unknown source>",
+                "lineNumber" : -1
+              },
+              "name" : "inside screen",
+              "highlight" : [ "menu", "screen" ]
+            } ]
+          }, {
+            "name" : "content",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "<unknown source>",
+                "lineNumber" : -1
+              },
+              "name" : "inside screen",
+              "highlight" : [ "content", "screen" ]
+            } ]
+          }, {
+            "name" : "footer",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "<unknown source>",
+                "lineNumber" : -1
+              },
+              "name" : "inside screen 0 to 1 px bottom",
+              "highlight" : [ "footer", "screen" ]
+            } ]
+          } ]
+        }, {
+          "name" : "&skeleton_elements are aligned vertically above each other",
+          "objects" : [ {
+            "name" : "header",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 114
+              },
+              "name" : "aligned vertically all menu",
+              "highlight" : [ "header", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 115
+              },
+              "name" : "above menu 0px",
+              "highlight" : [ "header", "menu" ]
+            } ]
+          }, {
+            "name" : "menu",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 114
+              },
+              "name" : "aligned vertically all content",
+              "highlight" : [ "menu", "content" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 115
+              },
+              "name" : "above content 0px",
+              "highlight" : [ "menu", "content" ]
+            } ]
+          }, {
+            "name" : "content",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 114
+              },
+              "name" : "aligned vertically all footer",
+              "highlight" : [ "content", "footer" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 115
+              },
+              "name" : "above footer 0px",
+              "highlight" : [ "content", "footer" ]
+            } ]
+          } ]
+        }, {
+          "name" : "A page should be centered horizontally inside screen with 900px on desktop, but on mobile and tablet it should stretch to screen",
+          "objects" : [ ],
+          "sections" : [ {
+            "name" : "every &skeleton_element is centered horizontally inside screen",
+            "objects" : [ {
+              "name" : "header",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                  "lineNumber" : 229
+                },
+                "name" : "centered horizontally inside screen",
+                "highlight" : [ "header", "screen" ]
+              } ]
+            }, {
+              "name" : "menu",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                  "lineNumber" : 229
+                },
+                "name" : "centered horizontally inside screen",
+                "highlight" : [ "menu", "screen" ]
+              } ]
+            }, {
+              "name" : "content",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                  "lineNumber" : 229
+                },
+                "name" : "centered horizontally inside screen",
+                "highlight" : [ "content", "screen" ]
+              } ]
+            }, {
+              "name" : "footer",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                  "lineNumber" : 229
+                },
+                "name" : "centered horizontally inside screen",
+                "highlight" : [ "footer", "screen" ]
+              } ]
+            } ]
+          }, {
+            "name" : "every &skeleton_element is aligned vertically all screen",
+            "objects" : [ {
+              "name" : "header",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                  "lineNumber" : 229
+                },
+                "name" : "aligned vertically all screen",
+                "highlight" : [ "header", "screen" ]
+              } ]
+            }, {
+              "name" : "menu",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                  "lineNumber" : 229
+                },
+                "name" : "aligned vertically all screen",
+                "highlight" : [ "menu", "screen" ]
+              } ]
+            }, {
+              "name" : "content",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                  "lineNumber" : 229
+                },
+                "name" : "aligned vertically all screen",
+                "highlight" : [ "content", "screen" ]
+              } ]
+            }, {
+              "name" : "footer",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                  "lineNumber" : 229
+                },
+                "name" : "aligned vertically all screen",
+                "highlight" : [ "footer", "screen" ]
+              } ]
+            } ]
+          } ]
+        } ]
+      }, {
+        "name" : "Header",
+        "objects" : [ {
+          "name" : "header",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 42
+            },
+            "name" : "height 70px",
+            "highlight" : [ "header" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 44
+            },
+            "name" : "text is \"Sample Website\"",
+            "highlight" : [ "header" ]
+          } ]
+        } ]
+      }, {
+        "name" : "Menu",
+        "objects" : [ ],
+        "sections" : [ {
+          "name" : "amount of visible &menu_items should be > 3",
+          "objects" : [ {
+            "name" : "global",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 89
+              },
+              "name" : "count visible \"&menu_items\" is > 3",
+              "highlight" : [ "menu.item-3", "menu.item-4", "menu.item-1", "menu.item-2" ]
+            } ]
+          } ]
+        }, {
+          "name" : "every &menu_item is inside menu and has height 64px",
+          "objects" : [ {
+            "name" : "menu.item-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 213
+              },
+              "name" : "inside menu",
+              "highlight" : [ "menu.item-1", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 214
+              },
+              "name" : "height 64px",
+              "highlight" : [ "menu.item-1" ]
+            } ]
+          }, {
+            "name" : "menu.item-2",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 213
+              },
+              "name" : "inside menu",
+              "highlight" : [ "menu.item-2", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 214
+              },
+              "name" : "height 64px",
+              "highlight" : [ "menu.item-2" ]
+            } ]
+          }, {
+            "name" : "menu.item-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 213
+              },
+              "name" : "inside menu",
+              "highlight" : [ "menu.item-3", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 214
+              },
+              "name" : "height 64px",
+              "highlight" : [ "menu.item-3" ]
+            } ]
+          }, {
+            "name" : "menu.item-4",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 213
+              },
+              "name" : "inside menu",
+              "highlight" : [ "menu.item-4", "menu" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 214
+              },
+              "name" : "height 64px",
+              "highlight" : [ "menu.item-4" ]
+            } ]
+          } ]
+        }, {
+          "name" : "first &menu_item is inside menu 0px top left",
+          "objects" : [ {
+            "name" : "menu.item-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 245
+              },
+              "name" : "inside menu 0px top left",
+              "highlight" : [ "menu.item-1", "menu" ]
+            } ]
+          } ]
+        }, {
+          "name" : "&menu_items are aligned horizontally next to each other",
+          "objects" : [ {
+            "name" : "menu.item-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 101
+              },
+              "name" : "aligned horizontally all menu.item-2",
+              "highlight" : [ "menu.item-1", "menu.item-2" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 102
+              },
+              "name" : "left-of menu.item-2 0px",
+              "highlight" : [ "menu.item-1", "menu.item-2" ]
+            } ]
+          }, {
+            "name" : "menu.item-2",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 101
+              },
+              "name" : "aligned horizontally all menu.item-3",
+              "highlight" : [ "menu.item-2", "menu.item-3" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 102
+              },
+              "name" : "left-of menu.item-3 0px",
+              "highlight" : [ "menu.item-2", "menu.item-3" ]
+            } ]
+          }, {
+            "name" : "menu.item-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 101
+              },
+              "name" : "aligned horizontally all menu.item-4",
+              "highlight" : [ "menu.item-3", "menu.item-4" ]
+            }, {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 102
+              },
+              "name" : "left-of menu.item-4 0px",
+              "highlight" : [ "menu.item-3", "menu.item-4" ]
+            } ]
+          } ]
+        }, {
+          "name" : "every &menu_item is aligned horizontally all menu",
+          "objects" : [ {
+            "name" : "menu.item-1",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 229
+              },
+              "name" : "aligned horizontally all menu",
+              "highlight" : [ "menu.item-1", "menu" ]
+            } ]
+          }, {
+            "name" : "menu.item-2",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 229
+              },
+              "name" : "aligned horizontally all menu",
+              "highlight" : [ "menu.item-2", "menu" ]
+            } ]
+          }, {
+            "name" : "menu.item-3",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 229
+              },
+              "name" : "aligned horizontally all menu",
+              "highlight" : [ "menu.item-3", "menu" ]
+            } ]
+          }, {
+            "name" : "menu.item-4",
+            "specs" : [ {
+              "status" : "info",
+              "place" : {
+                "filePath" : "specs/galen-extras/galen-extras-rules.gspec",
+                "lineNumber" : 229
+              },
+              "name" : "aligned horizontally all menu",
+              "highlight" : [ "menu.item-4", "menu" ]
+            } ]
+          } ]
+        } ]
+      }, {
+        "name" : "Footer",
+        "objects" : [ {
+          "name" : "footer",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/common.gspec",
+              "lineNumber" : 63
+            },
+            "name" : "height 150px",
+            "highlight" : [ "footer" ]
+          } ]
+        } ]
+      }, {
+        "name" : "Content",
+        "objects" : [ {
+          "name" : "welcome_block",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/welcomePage.gspec",
+              "lineNumber" : 13
+            },
+            "name" : "inside content ~ 20px top left right",
+            "highlight" : [ "welcome_block", "content" ]
+          } ]
+        }, {
+          "name" : "text_block-1",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/welcomePage.gspec",
+              "lineNumber" : 16
+            },
+            "name" : "inside welcome_block ~30px left",
+            "highlight" : [ "text_block-1", "welcome_block" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/welcomePage.gspec",
+              "lineNumber" : 23
+            },
+            "name" : "height > 20px",
+            "highlight" : [ "text_block-1" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/welcomePage.gspec",
+              "lineNumber" : 24
+            },
+            "name" : "above login_button 10 to 50 px",
+            "highlight" : [ "text_block-1", "login_button" ]
+          } ]
+        }, {
+          "name" : "login_button",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/welcomePage.gspec",
+              "lineNumber" : 16
+            },
+            "name" : "inside welcome_block ~30px left",
+            "highlight" : [ "login_button", "welcome_block" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/welcomePage.gspec",
+              "lineNumber" : 27
+            },
+            "name" : "height ~ 45px",
+            "highlight" : [ "login_button" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/welcomePage.gspec",
+              "lineNumber" : 28
+            },
+            "name" : "text is \"Login\"",
+            "highlight" : [ "login_button" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/welcomePage.gspec",
+              "lineNumber" : 29
+            },
+            "name" : "above text_block-3 10 to 50px",
+            "highlight" : [ "login_button", "text_block-3" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/welcomePage.gspec",
+              "lineNumber" : 47
+            },
+            "name" : "width ~ 78px",
+            "highlight" : [ "login_button" ]
+          } ]
+        }, {
+          "name" : "text_block-3",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/welcomePage.gspec",
+              "lineNumber" : 16
+            },
+            "name" : "inside welcome_block ~30px left",
+            "highlight" : [ "text_block-3", "welcome_block" ]
+          } ]
+        }, {
+          "name" : "greeting",
+          "specs" : [ {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/welcomePage.gspec",
+              "lineNumber" : 19
+            },
+            "name" : "above text_block-1 10 to 50 px",
+            "highlight" : [ "greeting", "text_block-1" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/welcomePage.gspec",
+              "lineNumber" : 20
+            },
+            "name" : "inside welcome_block ~ 30px left",
+            "highlight" : [ "greeting", "welcome_block" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/welcomePage.gspec",
+              "lineNumber" : 43
+            },
+            "name" : "height ~ 39px",
+            "highlight" : [ "greeting" ]
+          }, {
+            "status" : "info",
+            "place" : {
+              "filePath" : "specs/welcomePage.gspec",
+              "lineNumber" : 44
+            },
+            "name" : "inside welcome_block ~ 50 px top",
+            "highlight" : [ "greeting", "welcome_block" ]
+          } ]
+        } ]
+      } ],
+      "objects" : {
+        "footer" : {
+          "area" : [ 0, 545, 586, 150 ]
+        },
+        "content" : {
+          "area" : [ 0, 134, 586, 411 ]
+        },
+        "screen" : {
+          "area" : [ 0, 0, 586, 695 ]
+        },
+        "menu.item-3" : {
+          "area" : [ 210, 70, 100, 64 ]
+        },
+        "menu.item-4" : {
+          "area" : [ 310, 70, 100, 64 ]
+        },
+        "text_block-1" : {
+          "area" : [ 50, 254, 486, 60 ]
+        },
+        "greeting" : {
+          "area" : [ 50, 204, 486, 40 ]
+        },
+        "menu" : {
+          "area" : [ 0, 70, 586, 64 ]
+        },
+        "text_block-3" : {
+          "area" : [ 50, 390, 486, 61 ]
+        },
+        "menu.item-1" : {
+          "area" : [ 0, 70, 100, 64 ]
+        },
+        "login_button" : {
+          "area" : [ 50, 329, 78, 46 ]
+        },
+        "welcome_block" : {
+          "area" : [ 20, 154, 546, 341 ]
+        },
+        "menu.item-2" : {
+          "area" : [ 100, 70, 110, 64 ]
+        },
+        "header" : {
+          "area" : [ 0, 0, 586, 70 ]
+        }
+      },
+      "screenshot" : "layout-2-screenshot.png",
+      "type" : "layout"
+    } ]
+  }
+}

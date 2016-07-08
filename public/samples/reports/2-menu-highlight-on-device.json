@@ -1,0 +1,28 @@
+{
+  "testId" : "2-menu-highlight-on-device",
+  "name" : "Menu Highlight on  device",
+  "report" : {
+    "nodes" : [ {
+      "name" : "Open http://testapp.galenframework.com/",
+      "status" : "info",
+      "time" : 1456685034515,
+      "type" : "node"
+    }, {
+      "name" : "EcmaError: TypeError: Cannot call method \"initDriver\" of undefined (/home/ishubin/workspace/galen-sample-tests/tests/galen-bootstrap/galen-bootstrap.js#58)",
+      "status" : "error",
+      "time" : 1456685034516,
+      "stacktrace" : "org.mozilla.javascript.EcmaError: TypeError: Cannot call method \"initDriver\" of undefined (/home/ishubin/workspace/galen-sample-tests/tests/galen-bootstrap/galen-bootstrap.js#58)\n\tat org.mozilla.javascript.ScriptRuntime.constructError(ScriptRuntime.java:3689)\n\tat org.mozilla.javascript.ScriptRuntime.constructError(ScriptRuntime.java:3667)\n\tat org.mozilla.javascript.ScriptRuntime.typeError(ScriptRuntime.java:3695)\n\tat org.mozilla.javascript.ScriptRuntime.typeError2(ScriptRuntime.java:3714)\n\tat org.mozilla.javascript.ScriptRuntime.undefCallError(ScriptRuntime.java:3731)\n\tat org.mozilla.javascript.ScriptRuntime.getPropFunctionAndThisHelper(ScriptRuntime.java:2257)\n\tat org.mozilla.javascript.ScriptRuntime.getPropFunctionAndThis(ScriptRuntime.java:2250)\n\tat org.mozilla.javascript.gen._home_ishubin_workspace_galen_sample_tests_tests_galen_bootstrap_galen_bootstrap_js_22._c_openDriverForDevice_6(/home/ishubin/workspace/galen-sample-tests/tests/galen-bootstrap/galen-bootstrap.js:58)\n\tat org.mozilla.javascript.gen._home_ishubin_workspace_galen_sample_tests_tests_galen_bootstrap_galen_bootstrap_js_22.call(/home/ishubin/workspace/galen-sample-tests/tests/galen-bootstrap/galen-bootstrap.js)\n\tat org.mozilla.javascript.optimizer.OptRuntime.callName(OptRuntime.java:63)\n\tat org.mozilla.javascript.gen._home_ishubin_workspace_galen_sample_tests_tests_galen_bootstrap_galen_bootstrap_js_22._c_anonymous_9(/home/ishubin/workspace/galen-sample-tests/tests/galen-bootstrap/galen-bootstrap.js:83)\n\tat org.mozilla.javascript.gen._home_ishubin_workspace_galen_sample_tests_tests_galen_bootstrap_galen_bootstrap_js_22.call(/home/ishubin/workspace/galen-sample-tests/tests/galen-bootstrap/galen-bootstrap.js)\n\tat org.mozilla.javascript.ScriptRuntime.applyOrCall(ScriptRuntime.java:2429)\n\tat org.mozilla.javascript.BaseFunction.execIdCall(BaseFunction.java:269)\n\tat org.mozilla.javascript.IdFunctionObject.call(IdFunctionObject.java:97)\n\tat org.mozilla.javascript.optimizer.OptRuntime.call2(OptRuntime.java:42)\n\tat org.mozilla.javascript.gen._cmd__17._c_invokeFunc_2(<cmd>:33)\n\tat org.mozilla.javascript.gen._cmd__17.call(<cmd>)\n\tat org.mozilla.javascript.optimizer.OptRuntime.callName(OptRuntime.java:63)\n\tat org.mozilla.javascript.gen._cmd__17._c_anonymous_22(<cmd>:280)\n\tat org.mozilla.javascript.gen._cmd__17.call(<cmd>)\n\tat org.mozilla.javascript.ContextFactory.doTopCall(ContextFactory.java:394)\n\tat org.mozilla.javascript.ScriptRuntime.doTopCall(ScriptRuntime.java:3090)\n\tat org.mozilla.javascript.gen._cmd__17.call(<cmd>)\n\tat org.mozilla.javascript.JavaAdapter.doCall(JavaAdapter.java:606)\n\tat org.mozilla.javascript.JavaAdapter.access$000(JavaAdapter.java:15)\n\tat org.mozilla.javascript.JavaAdapter$1.run(JavaAdapter.java:586)\n\tat org.mozilla.javascript.Context.call(Context.java:489)\n\tat org.mozilla.javascript.ContextFactory.call(ContextFactory.java:504)\n\tat org.mozilla.javascript.JavaAdapter.callMethod(JavaAdapter.java:583)\n\tat adapter3.execute(<adapter>)\n\tat com.galenframework.TestRunnable.runTest(TestRunnable.java:75)\n\tat com.galenframework.TestRunnable.run(TestRunnable.java:101)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)\n\tat java.lang.Thread.run(Thread.java:745)\n",
+      "type" : "node"
+    }, {
+      "name" : "Screenshot & Page source",
+      "status" : "info",
+      "time" : 1456685034520,
+      "type" : "node"
+    }, {
+      "name" : "Couldn't retrieve page information: InternalError: Can't find method com.galenframework.utils.GalenUtils.takeScreenshot(org.mozilla.javascript.Undefined). (<cmd>#174)",
+      "status" : "warn",
+      "time" : 1456685034521,
+      "type" : "node"
+    } ]
+  }
+}
