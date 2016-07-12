@@ -27,6 +27,7 @@ galen check homepage.gspec
     --testngreport "testng-report.xml"
     --jsonreport "jsonreport-dir"
     --junitreport "junit-report.xml"
+    --config "path/to/galen.config"
 $$
 
 Command line arguments:
@@ -39,6 +40,7 @@ Command line arguments:
 * *testngreport* _- path to xml file in which Galen should write TestNG report_
 * *jsonreport* _- path to folder in which Galen should generate JSON reports_
 * *junitreport* _- path to junit xml report file_
+* *config* _- path to config file_
 
 
 h2. Running test suites
@@ -53,6 +55,7 @@ galen test mytest01.test
     --jsonreport "jsonreport-dir"
     --junitreport "junit-report.xml"
     --parallel-tests 4
+    --config "path/to/galen.config"
 $$
 
 Command line arguments:
@@ -62,6 +65,7 @@ Command line arguments:
 * *parallel-tests* _- amount of threads for running tests in parallel_
 * *recursive* _- flag which is used in case you want to search for all @.test@ files recursively in folder_
 * *filter* _- a filter for a test name_
+* *config* _- path to config file_
 
 
 h3. Running test suites with test filter
