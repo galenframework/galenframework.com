@@ -1028,7 +1028,12 @@ login-form:
     color-scheme 10% white, 4 to 5 % black, < 30% #f845b7
 $$
 
+Also since version @2.3@ you can declare a gradient color scheme like this:
 
+$$ galen-specs
+login-form:
+    color-scheme ~80% white-gray, ~20% #000-#555-#955
+$$
 
 
 h2. Image
