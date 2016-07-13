@@ -1,0 +1,92 @@
+--------------------------------
+title
+   Version 2.3 is released
+--------------------------------
+date
+   2016-07-13 21:53
+--------------------------------
+allowComments
+   true
+--------------------------------
+categories
+   
+================================
+
+I am pleased to announce that version 2.3.0 is now released. With this version we also decided to switch to Java 1.8. That means that you will need to upgrade your Java installation as well. The version 2.3.0 has the following major features:
+
+* "Ignoring regions in image spec":/post/2016-07-13-version-2.3-is-released/#Ignoringregionsinimagespec
+* "Wildcard in image specs":/post/2016-07-13-version-2.3-is-released/#Wildcardinimagespecs
+* "replace-colors filter in image spec":/post/2016-07-13-version-2.3-is-released/#replacecolorsfilterinimagespec
+* "Gradient color support in color-scheme spec":/post/2016-07-13-version-2.3-is-released/#Gradientcolorsupportincolorschemespec
+* "Greater or equals and less or equals operators support":/post/2016-07-13-version-2.3-is-released/#Greaterorequalsandlessorequalsoperatorssupport
+
+>>>>
+
+h2. Ignoring regions in image spec
+
+From now on you can boost your image comparison to a next level with multiple new features. One of them is "ignore-objects":/docs/reference-galen-spec-language-guide/#Ignoringregionsofotherobjects parameter. It allows you to exclude the area of other elements on page, which makes it possible to compare large images. For instance you can combine this feature with "object groups":/docs/reference-galen-spec-language-guide/#ObjectGroups and perform image validation on @screen@ object.
+
+$$ galen-specs
+
+@objects
+    banner_*            .banner
+    comment_*           #comments .comment
+
+@groups
+    ignored_objects     banner_*,comment_*
+
+
+= Image comparison =
+    screen:
+        image file imgs/screen.png, ignore-objects [&ignored_objects]
+$$
+
+
+h2. Wildcard in image specs
+
+Quite often you have to execute your tests on different machines with different font settings. This means that you need to store multiple image samples for the same object. Previously you had to list all of them in image spec definition. But in new version you can use wildcard character like this:
+
+$$ galen-specs
+= Image comparison =
+    login_button:
+        image file imgs/login_button_*.png
+$$
+
+Galen will search for all files that match that expression and will report results with the one that has less mismatching pixels.
+
+
+h2. replace-colors filter in image spec
+
+Sometimes it might be useful to ignore a text on specific image. This could be achieved with @replace-colors@ filter. It has two extra setting: @tolerance@ and @radius@ and allows you to list multiple colors with gradient support.
+
+$$ galen-specs
+= Image comparison =
+    comment_1:
+        image file imgs/comment.png, filter replace-colors #000-#333 with white tolerance 60
+$$
+
+
+h2. Gradient color support in color-scheme spec
+
+Previously you could only declare a single color per check. In new version you can give a range of colors using @-@ symbol:
+
+$$ galen-specs
+= Styling =
+    submit_button:
+        color-scheme 70 to 90% #000-#333, 10 to 30% white
+$$
+
+
+h2. Greater or equals and less or equals operators support
+
+From now on you can declare validations like this.
+
+$$ galen-specs
+= Buttons =
+    cancel_button:
+        left-of submit_button >= 10px
+$$
+
+
+Kind regards,
+Ivan
