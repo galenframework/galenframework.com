@@ -747,7 +747,11 @@ $$
 
 h3. Text operations
 
-Sometimes you don't want to check the text case sensitive. For this purpose you can rely on special text operations. At the moment only these operations are supported: *lowercase* and *uppercase*.
+Sometimes you don't want to check the text case sensitive. For this purpose you can rely on special text operations. At the moment only these operations are supported: 
+
+* @lowercase@ - changes all letters to lower case
+* @uppercase@ - changes all letters to upper case
+* @singleline@ - replaces all newline symbols with space
 
 $$ galen-specs
 greeting:
@@ -756,7 +760,9 @@ greeting:
     text lowercase ends "website!"
     text lowercase contains "to our cool"
     text lowercase matches "welcome .* to our cool website!"
+    text singleline is "welcome user@example.com to our cool website!"
 $$
+
 
 
 h2. CSS Properties

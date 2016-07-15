@@ -84,7 +84,7 @@ var GalenHighlightV2 = GalenHighlightV2 || {
         "edge", "width", "height", "image", "below", "component", 
         "centered", "text", "near", "partly", "horizontally", 
         "vertically", "all", "is", "starts", "ends", "contains", 
-        "matches", "uppercase", "lowercase", "inside", "on",
+        "matches", "uppercase", "lowercase", "singleline", "inside", "on",
         "css", "aligned", "right", "left", "top", "bottom", "absent", "visible",
         "right-of", "left-of", "above", "color-scheme",
         "count", "any", "to", "frame"
