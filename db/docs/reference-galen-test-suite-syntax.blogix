@@ -323,7 +323,7 @@ function waitFor(func) {
     }
 
     if (!func()) {
-        throw new Exception("Wait timeout");
+        throw new Error("Wait timeout");
     }
 }
 $$
