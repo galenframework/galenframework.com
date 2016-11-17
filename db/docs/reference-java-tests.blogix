@@ -109,3 +109,13 @@ $$ xml
 <!-  ...   -->
 $$
 
+h2. Parallel Execution
+
+When using Maven Surefire, you can run the tests in parallel. Either include it in your pom or via parameters:
+
+$$
+mvn verify -DforkCount=2 -DreuseForks=true
+$$
+
+Don't use parallel excution via method-level!
+
