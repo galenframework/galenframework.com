@@ -41,11 +41,25 @@ header:
 $$
 
 
+h2. Configure
+
+In order for galen to be able to communicate with browser we need to get a special driver for it. For Firefox you will need a "geckodriver":https://github.com/mozilla/geckodriver. For Chrome - "chromedriver":https://sites.google.com/a/chromium.org/chromedriver/. Download a driver for whatever browser you have and extract it somewhere on your file system. Now you need to define path for that driver in your global config. Simply type @galen config --global@ in your comand line and it will output something like this:
+
+$$ bash
+Created config file: /home/ishubin/.galen.config
+$$
+
+Edit that generated config file and add a path to your driver. In the example below we used geckodriver which is used for Firefox browser:
+
+$$
+$webdriver.gecko.driver=/path/to/geckodriver
+$$
+
 
 h2. Launching Galen
 
 
-bq. *IMPORTANT!* Galen relies on Selenium so it supports same browsers as Selenium does. If you have problem running Galen in your browser please check the Selenium compatibility. You might have to downgrade your browser.
+bq. *IMPORTANT!* Galen relies on Selenium so it supports same browsers as Selenium does. If you have problem running Galen in your browser please check the Selenium compatibility. You might have to downgrade your browser or get the latest driver (gecko, chrome etc.) for your browser and define it in your config
 
 In your terminal go to your project folder and type the following command:
 

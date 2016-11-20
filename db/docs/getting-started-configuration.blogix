@@ -12,11 +12,39 @@ categories
    
 ================================
 
+h2. Project configuration
+
 Galen allows to configure each project separately. You just need to create a @galen.config@ file in your test project directory or you can run this command and Galen will create a config file for you:
 
 $$
 galen config
 $$
+
+
+h2. Global configuration
+
+In some cases you might want to have some basic settings defined for all of your projects. Since version @2.3.2@ this can be achieved with @--global@ flag:
+
+$$
+galen config --galen
+$$
+
+The command above will generate a basic @.galen.config@ file in your home directory. Actually it might be handy to configure all external drivers for different browsers in a global config. For instance if you need to declare a path to a "geckodriver":https://github.com/mozilla/geckodriver to be able to run test in Firefox you can do it with this property in galen.config file:
+
+$$
+$webdriver.gecko.driver=/path/to/your/geckodriver
+$$
+
+@$@ symbol means that the this property should be set on a system level. You can use it for configuring other drivers as well.
+
+$$
+$webdriver.gecko.driver=/path/to/geckodriver
+$webdriver.chrome.driver=/path/to/chromedriver
+$phantomjs.binary.path=/path/to/phantomjs
+$$
+
+
+h3. Config example:
 
 Here is the example of galen config file with all properties explained
 
