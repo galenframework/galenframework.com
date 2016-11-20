@@ -52,7 +52,7 @@ $$
 Edit that generated config file and add a path to your driver. In the example below we used geckodriver which is used for Firefox browser:
 
 $$
-$webdriver.gecko.driver=/path/to/geckodriver
+$.webdriver.gecko.driver=/path/to/geckodriver
 $$
 
 
