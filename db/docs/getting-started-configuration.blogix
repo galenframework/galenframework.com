@@ -26,7 +26,7 @@ h2. Global configuration
 In some cases you might want to have some basic settings defined for all of your projects. Since version @2.3.2@ this can be achieved with @--global@ flag:
 
 $$
-galen config --galen
+galen config --global
 $$
 
 The command above will generate a basic @.galen.config@ file in your home directory. Actually it might be handy to configure all external drivers for different browsers in a global config. For instance if you need to declare a path to a "geckodriver":https://github.com/mozilla/geckodriver to be able to run test in Firefox you can do it with this property in galen.config file:
