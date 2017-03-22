@@ -139,3 +139,26 @@ Command line arguments:
 * *max-height* _- a maximum height of an element for which it should create an image sample_
 
 Once the page dump is finished Galen will create a folder with specified path and will put all image samples in @objects@ folder. It also provides a @page.html@ file in which you can see all your page objects and see different spec suggestions for them.
+
+
+h2. Usage in Node-Projects
+
+You can directly use Galen in your node project. Just use a package.json like this:
+
+$$ javascript
+  "scripts": {
+    "galen": "galen"
+  },
+  ...
+  "devDependencies": {
+    "galenframework-cli": "2.3.2"
+  }
+  
+$$ javascript
+
+Then you can run one spec like this:
+
+$$ bash
+npm run galen -- check test/specs/google_success1.gspec --url 'https://www.google.com' --size '1280x800' --htmlreport dist/galen-report
+$$
+
