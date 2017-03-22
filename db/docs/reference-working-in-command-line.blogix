@@ -153,8 +153,7 @@ $$ javascript
   "devDependencies": {
     "galenframework-cli": "2.3.2"
   }
-  
-$$ javascript
+$$
 
 Then you can run one spec like this:
 
