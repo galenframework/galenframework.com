@@ -130,8 +130,8 @@ this.MyPage = $page("My page", {
 
 var myPage = new MyPage(driver);
 if (myPage.alertPopup.isDisplayed()) {
-  myPage.closeButton.click();
-  myPage.closeButton.waitToBeHidden();
+  myPage.alertPopup.closeButton.click();
+  myPage.alertPopup.closeButton.waitToBeHidden();
 }
 $$
 
