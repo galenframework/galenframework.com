@@ -1,0 +1,486 @@
+--------------------------------
+title
+   Galen Extras
+--------------------------------
+date
+   2018-01-13 13:07
+--------------------------------
+allowComments
+   true
+--------------------------------
+categories
+   
+================================
+Galen Extras is a library for extending the Galen Specs Language with most common complex expressions, which allows you to have minimal code and maximum test coverage.
+
+Here is a small example which describes all layouts of menu items on responsive website:
+
+
+$$ galen-specs
+@lib galen-extras
+
+@objects
+    menu                #menu  .middle-wrapper
+        item-*              ul li
+
+@groups
+    (menu_item, menu_items)     menu.item-*
+
+= Menu items should adapt layout  =
+    @on *
+        | amount of visible &menu_items should be 4
+        | every &menu_item has height ~ 64px
+        | first &menu_item is inside menu 0px top left
+
+    @on desktop, tablet
+        | &menu_items are aligned horizontally next to each other with 0 to 5px margin
+
+    @on mobile
+        | &menu_items are rendered in 2 column table layout, with 0 to 4px vertical and 1px horizontal margin 
+$$
+
+
+
+h2. Readable expressions
+
+TBD
+
+
+h3. Squared elements
+
+Allows to check that element has equal width and height.
+
+!http://galenframework.github.io/galen-extras/images/sketch-squared.png!
+
+h4. For multiple elements
+
+Scope: Section
+
+Syntax: @%{objectPattern} should be squared@
+
+$$ galen-specs
+    | header_icon, menu_button should be squared
+$$
+
+h4. For single elements
+
+Scope: Object
+
+Syntax: @squared@
+
+$$ galen-specs
+    header_icon:
+        | squared
+$$
+
+
+h3. Almost squared elements
+
+Same as @squared@ rule but it allows an error rate of 10%
+
+!http://galenframework.github.io/galen-extras/images/sketch-squared-almost.png!
+
+h4. For multiple elements
+
+Scope: Section
+
+Syntax: @%{objectPattern} should be almost squared@
+
+$$ galen-specs
+    | header_icon, menu_button should be almost squared
+$$
+
+
+h4. For single elements
+
+Scope: Object
+
+Syntax: @almost squared@
+
+$$ galen-specs
+    header_icon:
+        | almost squared
+$$
+
+
+h3. Width/Height Ratio
+
+You can check the exact ratio of width/height in percentage
+
+!http://galenframework.github.io/galen-extras/images/sketch-width-ratio.png!
+
+h4. Multiple elements
+
+Scope: Section
+
+Syntax: @%{itemPattern} should have %{ratio}% width/height ratio@
+
+$$ galen-specs
+    | login_button, cancel_button should have 140 % width/height ratio
+$$
+
+h4. Single elements
+
+Scope: Object
+
+Syntax: @%{ratio}% width/height ratio@
+
+$$ galen-specs
+    login_button:
+        | 140 % width/height ratio
+$$
+
+
+h3. Testing amount of objects
+
+In Galen you can check the amount of objects using just the 2 lines of code:
+
+$$ galen-specs
+    global:
+        count any menu.item-* is 3 
+$$
+
+But it is not very human readable. By using the rule below you can express this validation in simple sentence
+
+Scope: Section
+
+Syntax: @amount of %{visibilityType} %{objectPattern} should be %{amount}@
+
+where @visibilityType@ can take @any@, @visible@ or @absent@ values
+
+e.g. amount of any elements:
+$$ galen-specs
+    | amount of any menu.item-* should be 5
+$$
+
+e.g. testing only visible elements
+$$ galen-specs
+    | amount of visible menu.item-* should be 5
+$$
+
+Giving a range of expected values
+$$ galen-specs
+    | amount of visible menu.item-* should be 4 to 7
+$$
+
+or
+
+$$ galen-specs
+    | amount of visible menu.item-* should be > 4
+$$
+
+h3. Alignment of multiple elements with zero margin
+
+A very common situation when you have elements on the page aligned either vertically or horizontally. 
+
+h4. Horizontal
+!http://galenframework.github.io/galen-extras/images/sketch-horizontal-align.png!
+
+Scope: Section
+
+Syntax: @%{objectPattern} are aligned horizontally next to each other@
+
+$$ galen-specs
+    | menu.item-* are aligned horizontally next to each other
+$$
+
+h4. Vertical
+!http://galenframework.github.io/galen-extras/images/sketch-vertical-align.png!
+
+Scope: Section
+
+Syntax: @%{objectPattern} are aligned vertically above each other@
+
+$$ galen-specs
+    | menu.item-* are aligned vertically above each other
+$$
+
+h3. Alignment of multiple elements with equal distance
+
+A very common situation when you have elements on the page aligned either vertically or horizontally. At the same time their margin might change depending on page width.
+The following rules will help you when you can't know the exact margin and you just want to check that it is consistent.
+
+h4. Horizontal
+!http://galenframework.github.io/galen-extras/images/sketch-horizontal-align.png!
+
+Scope: Section
+
+Syntax: @%{objectPattern} are aligned horizontally next to each other with equal distance@
+
+$$ galen-specs
+    | menu.item-* are aligned horizontally next to each other with equal distance
+$$
+
+h4. Vertical
+!http://galenframework.github.io/galen-extras/images/sketch-vertical-align.png!
+
+Scope: Section
+
+Syntax: @%{objectPattern} are aligned vertically above each other with equal distance@
+
+$$ galen-specs
+    | menu.item-* are aligned vertically above each other with equal distance
+$$
+
+
+h3. Alignment of multiple elements with specific margin
+
+Similar to the above statement but in this case you can declare a specific margin between elements
+
+h4. Horizontal
+
+Scope: Section
+
+Syntax: @%{objectPattern} are aligned horizontally next to each other with %{margin} margin@
+
+$$ galen-specs
+    | menu.item-* are aligned horizontally next to each other with 5px margin
+    | box-* are aligned horizontally next to each other with 25 to 30px margin
+$$
+
+h4. Vertical
+
+Scope: Section
+
+Syntax: @%{objectPattern} are aligned vertically above each other with %{margin} margin@
+
+$$ galen-specs
+    | menu.item-* are aligned vertically above each other with 5px margin
+    | box-* are aligned vertically above each other with 25 to 30px margin
+$$
+
+h3. Table layout
+
+Allows to check that a set of elements is displayed in simple table. You can define the amount of columns for this table layout.
+!http://galenframework.github.io/galen-extras/images/sketch-table-layout.png!
+
+h4. Table layout with zero margin between cols and rows
+
+Scope: Section
+
+Syntax: @%{itemPattern} are rendered in %{columns} column table layout@
+
+$$ galen-specs
+    | menu.item-* are rendered in 2 column table layout
+$$
+
+h4. Table layout with equal cols and rows margin
+
+Scope: Section
+
+Syntax: @%{itemPattern} are rendered in %{columns} column table layout, with %{margin} margin@
+
+$$ galen-specs
+    | menu.item-* are rendered in 2 column table layout, with 0 to 5px margin
+$$
+
+h4. Table layout with different cols and rows margin
+
+Scope: Section
+
+Syntax: @%{itemPattern} are rendered in %{columns} column table layout, with %{verticalMargin} vertical and %{horizontalMargin} horizontal margins@
+
+$$ galen-specs
+    | menu.item-* are rendered in 2 column table layout, with 0px vertical and 5px horizontal margins
+$$
+
+
+h3. Location of sides of multiple elements inside a container
+
+The following statement checks that a set of elements is located inside specified container and that the first and last element have a specific margin from sides between the container sides.
+
+h4. Horizontal zero margin
+
+Syntax: @%{objectPattern} sides are horizontally inside %{containerObject}@
+
+!http://galenframework.github.io/galen-extras/images/sketch-sides-horizontal.png!
+
+$$ galen-specs
+    | menu.item-* sides are horizontally inside menu
+$$
+
+h4. Vertical zero margin
+
+Syntax: @%{objectPattern} sides are vertically inside %{containerObject}@
+
+!http://galenframework.github.io/galen-extras/images/sketch-sides-vertical.png!
+
+$$ galen-specs
+    | menu.item-* sides are vertically inside menu
+$$
+
+h4. Custom margin for both sides
+
+Syntax: @%{objectPattern} sides are inside %{containerObject} with %{margin} margin from %{sideAName} and %{sideBName}@
+
+where @sideAName@ and @sideBName@ can take the following values: @left@, @right@, @top@, @bottom@
+
+h4. Left and Right
+
+!http://galenframework.github.io/galen-extras/images/sketch-sides-horizontal.png
+
+$$ galen-specs
+    | menu.item-* sides are inside menu with > 0px margin from left and right
+$$
+
+h4. Top and Bottom
+
+!http://galenframework.github.io/galen-extras/images/sketch-sides-vertical.png!
+
+$$ galen-specs
+    | box-* sides are inside box_container with > 0px margin from top and bottom
+$$
+
+
+h3. Common Conditions
+
+The following common conditions allow you to insert your own code block and invoke only if condition succeeds.
+
+h4. If all elements are visible
+
+Scope: Any
+
+Syntax: @if all %{objectPattern} are visible@
+
+$$ galen-specs
+    | if all menu.item-* are visible
+        menu.item-*:
+            height 30px
+$$
+
+h4. If any of elements is visible:
+
+Scope: Any
+
+Syntax: @if any of %{objectPattern} is visible@
+
+$$ galen-specs
+    | if any of menu.item-* is visible
+        menu:
+            height 50px
+$$
+
+h4. If none of elements are visible:
+
+Scope: Any
+
+Syntax: @if none of %{objectPattern} are visible@
+
+$$ galen-specs
+    | if none of menu.item-* are visible
+        main:
+            below header 0px
+$$
+
+
+h3. Appearance of elements per breakpoints
+
+Quite often you have elements of the website that are hidden on small devices and are only shown on large layouts.
+You can use the following statements to express that behaviour
+
+Scope: Section
+
+Syntax: @%{objectPatterns} should be visible on %{tagsVisible} but absent on %{tagsAbsent}@
+
+$$ galen-specs
+    | twitter_button should be visible on desktop, laptop but absent on tablet, mobile
+$$
+
+
+h3. Component validations for multiple elements
+
+Allows to specify a component check for a set of elements
+
+Scope: Section
+
+Syntax: @test all %{objectPattern} with %{componentPath}@
+
+$$ galen-specs
+    | test all box-* with components/box.gspec
+$$
+
+h3. Applying generic checks for multiple elements in a single line
+
+This is usefull when you have repetitive specs for different elements and you don't want to use forEach loops. Basically if you have forEach loop for one iterated object and one spec for it, you can do in a single statement using this rule.
+
+
+Scope: Section
+
+Syntax 1: @every %{objectPattern} is %{spec}@
+
+Syntax 2: @every %{objectPattern} has %{spec}@
+
+$$ galen-specs
+    | every menu.item-* is inside menu 0px top bottom
+    | every menu.item-* has width 100px
+$$
+
+h3. Applying two specs for multiple elements in a single line
+
+Similar to the above statement, this one allows to have two specs separated by word @and@
+
+Scope: Section
+
+Syntax 1: @every %{objectPattern} is %{spec1} and has %{spec2}@
+
+Syntax 2: @every %{objectPattern} has %{spec1} and is %{spec2}@
+
+Syntax 3: @every %{objectPattern} has %{spec1} and has %{spec2}@
+
+Syntax 4: @every %{objectPattern} is %{spec1} and is %{spec2}@
+
+$$ galen-specs
+    | every menu.item-* is inside menu 0px top bottom and has width 100px
+$$
+
+h3. Checking only first element from given expression
+
+Often when working with set of elements you need to check only the first one or the last
+
+Syntax 1: @first %{objectPattern} is %{spec}@
+
+Syntax 2: @first %{objectPattern} has %{spec}@
+
+$$ galen-specs
+    | first menu.item-* is inside menu 0px top bottom
+    | first menu.item-* has width 100px
+$$
+
+h3. Checking only last element from given expression
+
+Same as above, but this time it checks the last element
+
+Syntax 1: @last %{objectPattern} is %{spec}@
+
+Syntax 2: @last %{objectPattern} has %{spec}@
+
+$$ galen-specs
+    | last menu.item-* is inside menu 0px top bottom
+    | last menu.item-* has width 100px
+$$
+
+
+h3. Applying multiple checks for only first element from given expression
+
+Allows to apply multiple specs to only first element
+
+Syntax: @first %{objectPattern}:@
+
+$$ galen-specs
+    | first menu.item-* :
+        below header 10px       
+        inside main_container 0px top left
+$$
+
+
+h3. Applying multiple checks for only last element from given expression
+
+Allows to apply multiple specs to only last element
+
+Syntax: @last %{objectPattern}:@
+
+$$ galen-specs
+    | last menu.item-* :
+        below header 10px       
+        inside main_container 0px top left
+$$
