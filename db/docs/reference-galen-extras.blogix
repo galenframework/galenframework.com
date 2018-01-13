@@ -43,14 +43,34 @@ $$
 
 h2. Readable expressions
 
-TBD
+The following is all possible galen extras expressions which you might find useful in your project
+project
+
+* "Squared elements":#Squaredelements
+* "Almost squared elements":#Almostsquaredelements
+* "Width/Height Ratio":#WidthHeightRatio
+* "Testing amount of objects":#Testingamountofobjects
+* "Alignment of multiple elements with zero margin":#Alignmentofmultipleelementswithzeromargin
+* "Alignment of multiple elements with equal distance":#Alignmentofmultipleelementswithequaldistance
+* "Alignment of multiple elements with specific margin":#Alignmentofmultipleelementswithspecificmargin
+* "Table layout":#Tablelayout
+* "Location of sides of multiple elements inside a container":#Locationofsidesofmultipleelementsinsideacontainer
+* "Common Conditions":#CommonConditions
+* "Appearance of elements per breakpoints":#Appearanceofelementsperbreakpoints
+* "Component validations for multiple elements":#Componentvalidationsformultipleelements
+* "Applying generic checks for multiple elements in a single line":#Applyinggenericchecksformultipleelementsinasingleline
+* "Applying two specs for multiple elements in a single line":#Applyingtwospecsformultipleelementsinasingleline
+* "Checking only first element from given expression":#Checkingonlyfirstelementfromgivenexpression
+* "Checking only last element from given expression":#Checkingonlylastelementfromgivenexpression
+* "Applying multiple checks for only first element from given expression":#Applyingmultiplechecksforonlyfirstelementfromgivenexpression
+* "Applying multiple checks for only last element from given expression":#Applyingmultiplechecksforonlylastelementfromgivenexpression
 
 
 h3. Squared elements
 
 Allows to check that element has equal width and height.
 
-!http://galenframework.github.io/galen-extras/images/sketch-squared.png!
+!/public/images/docs/galen-extras/sketch-squared.png!
 
 h4. For multiple elements
 
@@ -78,7 +98,7 @@ h3. Almost squared elements
 
 Same as @squared@ rule but it allows an error rate of 10%
 
-!http://galenframework.github.io/galen-extras/images/sketch-squared-almost.png!
+!/public/images/docs/galen-extras/sketch-squared-almost.png!
 
 h4. For multiple elements
 
@@ -107,7 +127,7 @@ h3. Width/Height Ratio
 
 You can check the exact ratio of width/height in percentage
 
-!http://galenframework.github.io/galen-extras/images/sketch-width-ratio.png!
+!/public/images/docs/galen-extras/sketch-width-ratio.png!
 
 h4. Multiple elements
 
@@ -174,7 +194,8 @@ h3. Alignment of multiple elements with zero margin
 A very common situation when you have elements on the page aligned either vertically or horizontally. 
 
 h4. Horizontal
-!http://galenframework.github.io/galen-extras/images/sketch-horizontal-align.png!
+
+!/public/images/docs/galen-extras/sketch-horizontal-align.png!
 
 Scope: Section
 
@@ -185,7 +206,8 @@ $$ galen-specs
 $$
 
 h4. Vertical
-!http://galenframework.github.io/galen-extras/images/sketch-vertical-align.png!
+
+!/public/images/docs/galen-extras/sketch-vertical-align.png!
 
 Scope: Section
 
@@ -201,7 +223,7 @@ A very common situation when you have elements on the page aligned either vertic
 The following rules will help you when you can't know the exact margin and you just want to check that it is consistent.
 
 h4. Horizontal
-!http://galenframework.github.io/galen-extras/images/sketch-horizontal-align.png!
+!/public/images/docs/galen-extras/sketch-horizontal-align.png!
 
 Scope: Section
 
@@ -212,7 +234,7 @@ $$ galen-specs
 $$
 
 h4. Vertical
-!http://galenframework.github.io/galen-extras/images/sketch-vertical-align.png!
+!/public/images/docs/galen-extras/sketch-vertical-align.png!
 
 Scope: Section
 
@@ -252,7 +274,7 @@ $$
 h3. Table layout
 
 Allows to check that a set of elements is displayed in simple table. You can define the amount of columns for this table layout.
-!http://galenframework.github.io/galen-extras/images/sketch-table-layout.png!
+!/public/images/docs/galen-extras/sketch-table-layout.png!
 
 h4. Table layout with zero margin between cols and rows
 
@@ -293,7 +315,7 @@ h4. Horizontal zero margin
 
 Syntax: @%{objectPattern} sides are horizontally inside %{containerObject}@
 
-!http://galenframework.github.io/galen-extras/images/sketch-sides-horizontal.png!
+!/public/images/docs/galen-extras/sketch-sides-horizontal.png!
 
 $$ galen-specs
     | menu.item-* sides are horizontally inside menu
@@ -303,7 +325,7 @@ h4. Vertical zero margin
 
 Syntax: @%{objectPattern} sides are vertically inside %{containerObject}@
 
-!http://galenframework.github.io/galen-extras/images/sketch-sides-vertical.png!
+!/public/images/docs/galen-extras/sketch-sides-vertical.png!
 
 $$ galen-specs
     | menu.item-* sides are vertically inside menu
@@ -317,7 +339,7 @@ where @sideAName@ and @sideBName@ can take the following values: @left@, @right@
 
 h4. Left and Right
 
-!http://galenframework.github.io/galen-extras/images/sketch-sides-horizontal.png
+!/public/images/docs/galen-extras/sketch-sides-horizontal.png!
 
 $$ galen-specs
     | menu.item-* sides are inside menu with > 0px margin from left and right
@@ -325,7 +347,7 @@ $$
 
 h4. Top and Bottom
 
-!http://galenframework.github.io/galen-extras/images/sketch-sides-vertical.png!
+!/public/images/docs/galen-extras/sketch-sides-vertical.png!
 
 $$ galen-specs
     | box-* sides are inside box_container with > 0px margin from top and bottom
