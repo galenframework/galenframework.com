@@ -69,6 +69,13 @@ galen.range.approximation=3
 # galen.reporting.listeners=
 
 
+# Headless Mode
+# ~~~~~~~~~~~~~~~~~~~~
+# In some browsers it is possible to use a headless mode where no UI is needed at runtime.
+# Currently only supported on Chrome and Firefox.
+#
+galen.headless = true
+
 # Full screenshots
 # ~~~~~~~~~~~~~~~~~~~~
 # In some browsers it is not possible to create a complete screenshot of whole page.
