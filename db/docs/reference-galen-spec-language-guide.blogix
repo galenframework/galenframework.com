@@ -664,7 +664,7 @@ The syntax is the following
 * *aligned horizontally top* _- check that items are aligned horizontally by top edge only_
 * *aligned horizontally bottom* _- check that items are aligned horizontally by bottom edge only_
 * *aligned horizontally centered* _- check that items are aligned horizontally by center_ 
-* *aligned vertically all* _- checks that items are aligned vertically by their top and bottom edges_
+* *aligned vertically all* _- checks that items are aligned vertically by their left and right edges_
 * *aligned vertically left* _- checks that items are aligned vertically by their left edge_
 * *aligned vertically right* _- checks that items are aligned vertically by their right edge_
 * *aligned vertically centered* _- checks that items are aligned vertically by center_

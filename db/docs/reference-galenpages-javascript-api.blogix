@@ -108,8 +108,8 @@ this.MyNotesPage = $page("My notes page", {
 
 var myNotesPage = new MyNotesPage(driver);
 
-for (var i = 0; i < myNotesPage.size(); i++) {
-  System.out.println(myNotesPage.get(i).title.getText());
+for (var i = 0; i < myNotesPage.myNotes.size(); i++) {
+  System.out.println(myNotesPage.myNotes.get(i).title.getText());
 }
 $$
 
@@ -130,8 +130,8 @@ this.MyPage = $page("My page", {
 
 var myPage = new MyPage(driver);
 if (myPage.alertPopup.isDisplayed()) {
-  myPage.closeButton.click();
-  myPage.closeButton.waitToBeHidden();
+  myPage.alertPopup.closeButton.click();
+  myPage.alertPopup.closeButton.waitToBeHidden();
 }
 $$
 

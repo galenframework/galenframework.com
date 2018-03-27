@@ -51,6 +51,7 @@ h1. IDE Support
 - "Intellij Galen Specs language support (by Martin Reinhardt)":https://plugins.jetbrains.com/plugin/8302?pr=phpStorm&showAllUpdates=true
 - "Sublime syntax highlighter for Galen Framework v2+ (by David Rubio)":https://github.com/davidrv87/syntax-sublime-galen2
 - "Vim syntax highlighting and snippets":https://github.com/galenframework/galen.vim
+- "Visual Studio Code galen syntax support (by Simon Dickson)":https://marketplace.visualstudio.com/items?itemName=simonhdickson.galen
 
 h1. Video Tutorials
 

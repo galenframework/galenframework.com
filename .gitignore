@@ -5,3 +5,6 @@ www
 # aspell-generated files
 .stopwords.aspell
 *.bak
+
+# IDE or text editors
+.idea/
