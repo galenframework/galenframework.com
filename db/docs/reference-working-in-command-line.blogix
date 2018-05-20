@@ -141,6 +141,21 @@ Command line arguments:
 Once the page dump is finished Galen will create a folder with specified path and will put all image samples in @objects@ folder. It also provides a @page.html@ file in which you can see all your page objects and see different spec suggestions for them.
 
 
+h2. Spec Generator
+
+Since version @2.4@ galen allows to generate specs based on "page dump":#Creatingpagedump. It takes a page dump json file as a source of truth for elements positions and generates specs in specified location.
+
+$$ bash
+galen generate "some-page-dump.json" --export "result.gspec"
+$$
+
+The above command will generate specs together with "galen-extras rules":/docs/reference-galen-extras. But, if you want to avoide using galen-extras, you can run it with optional argument @--no-galen-extras@:
+
+$$ bash
+galen generate "some-page-dump.json" --export "result.gspec" --no-galen-extras
+$$
+
+
 h2. Usage in Node-Projects
 
 You can directly use Galen in your node project. Just use a package.json like this:
