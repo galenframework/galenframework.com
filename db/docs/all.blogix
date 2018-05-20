@@ -35,6 +35,7 @@ h1. Complete Reference
 - "Galen Spec Language Guide":/docs/reference-galen-spec-language-guide/ _complete list of all specs_
 - "Galen Test Suite Syntax":/docs/reference-galen-test-suite-syntax/
 - "Working in Command Line":/docs/reference-working-in-command-line/ _execution and reporting from command line_
+- "Galen Extras Lib":/docs/reference-galen-extras/
 
 h1. JavaScript Tests
 

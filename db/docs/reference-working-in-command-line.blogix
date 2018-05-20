@@ -149,7 +149,7 @@ $$ bash
 galen generate "some-page-dump.json" --export "result.gspec"
 $$
 
-The above command will generate specs together with "galen-extras rules":/docs/reference-galen-extras. But, if you want to avoide using galen-extras, you can run it with optional argument @--no-galen-extras@:
+The above command will generate specs together with "galen-extras rules":/docs/reference-galen-extras/. But, if you want to avoide using galen-extras, you can run it with optional argument @--no-galen-extras@:
 
 $$ bash
 galen generate "some-page-dump.json" --export "result.gspec" --no-galen-extras
