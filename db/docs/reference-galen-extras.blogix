@@ -98,7 +98,7 @@ Scope: Section
 
 Syntax: @%{objectPattern} should be almost squared@
 
-$$
+$$ galen-specs
     | header_icon, menu_button should be almost squared
 $$
 
