@@ -23,6 +23,7 @@ galen check homepage.gspec
     --javascript "some.js"
     --include "mobile,all"
     --exclude "toexclude"
+    --section "Some section name"
     --htmlreport "htmlreport-dir"
     --testngreport "testng-report.xml"
     --jsonreport "jsonreport-dir"
@@ -35,6 +36,7 @@ Command line arguments:
 * *javascript* _- a path for javascript file which Galen will inject in web page_
 * *include* _- a comma separated list of tags for spec sections which will be included in testing_
 * *exclude* _- a comma separated list of tags for spec sections to be excluded from the filtered group_
+* *section* _- a simple filter for section_ 
 * *size* _- dimensions of browser window. Consists of two numbers separated by "x" symbol_
 * *htmlreport* _- path to folder in which Galen should generate HTML reports_
 * *testngreport* _- path to xml file in which Galen should write TestNG report_

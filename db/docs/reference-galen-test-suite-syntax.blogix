@@ -59,6 +59,15 @@ Login page on a small mobile device
         check   login.gspec --include "mobile,all" --exclude "nomobile"
 $$
 
+You can also filter some sections with @--section@ argument:
+
+$$ galen-suites
+Home page on a small mobile device
+    http://example.com/home     320x600
+        check   homepage.gspec --section "Login for * device"
+$$
+
+
 h2. Passing JavaScript variables to spec file
 
 You can pass some data from your tests into your spec file so that they are accessible from JavaScript statements. To do this you need to pass it via @--VvariableName variableValue@ argument. For example:
