@@ -9,7 +9,7 @@ allowComments
    true
 --------------------------------
 categories
-   
+
 ================================
 
 h2. Single page test
@@ -36,7 +36,7 @@ Command line arguments:
 * *javascript* _- a path for javascript file which Galen will inject in web page_
 * *include* _- a comma separated list of tags for spec sections which will be included in testing_
 * *exclude* _- a comma separated list of tags for spec sections to be excluded from the filtered group_
-* *section* _- a simple filter for section_ 
+* *section* _- a simple filter for section_
 * *size* _- dimensions of browser window. Consists of two numbers separated by "x" symbol_
 * *htmlreport* _- path to folder in which Galen should generate HTML reports_
 * *testngreport* _- path to xml file in which Galen should write TestNG report_
@@ -122,14 +122,14 @@ $$
 
 h2. Creating page dump
 
-Since version 1.3 Galen has a feature of creating a page dump. With a page dump you can store information about all your test objects on the page together with image samples. 
+Since version 1.3 Galen has a feature of creating a page dump. With a page dump you can store information about all your test objects on the page together with image samples.
 
 $$ bash
 galen dump "specs/homepage.gspec"
     --url "http://galenframework.com"
     --size "1024x768"
-    --export "dumps/homepage-dump" 
-    --max-width "200" 
+    --export "dumps/homepage-dump"
+    --max-width "200"
     --max-height "200"
 $$
 
@@ -158,6 +158,30 @@ galen generate "some-page-dump.json" --export "result.gspec" --no-galen-extras
 $$
 
 
+h2. Mutation Testing
+
+Since version @2.4@ galen lets you perform the so called "mutation testing":https://en.wikipedia.org/wiki/Mutation_testing of your galen specs. It lets you check whether your galen specs are good enough by running "mutations" for each object and checking if it was catched by the spec. It works like the check command and uses same arguments. All you need is a working galen spec (it should always pass, otherwise mutation test will not succeed) and you can run it via the following command
+
+$$ bash
+galen mutate some-page.gspec --url http://example.com --size 1024x768 --include desktop --offset 5 --htmlreport mutation-report
+$$
+
+Command line arguments:
+* *url* _- a URL of page for Galen to test on_
+* *offset* _- an offset in pixels for each mutation (by default it is 5)_
+* *javascript* _- a path for javascript file which Galen will inject in web page_
+* *include* _- a comma separated list of tags for spec sections which will be included in testing_
+* *exclude* _- a comma separated list of tags for spec sections to be excluded from the filtered group_
+* *section* _- a simple filter for section_
+* *size* _- dimensions of browser window. Consists of two numbers separated by "x" symbol_
+* *htmlreport* _- path to folder in which Galen should generate HTML reports_
+* *testngreport* _- path to xml file in which Galen should write TestNG report_
+* *jsonreport* _- path to folder in which Galen should generate JSON reports_
+* *junitreport* _- path to junit xml report file_
+* *config* _- path to config file_
+
+
+
 h2. Usage in Node-Projects
 
 You can directly use Galen in your node project. Just use a package.json like this:
@@ -177,4 +201,3 @@ Then you can run one spec like this:
 $$ bash
 npm run galen -- check test/specs/google_success1.gspec --url 'https://www.google.com' --size '1280x800' --htmlreport dist/galen-report
 $$
-
