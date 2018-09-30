@@ -40,6 +40,7 @@ If you do want to switch but already have a lot of specs in the old format you c
 ** "On":#On
 ** "Component":#Component
 ** "Count":#Count
+** "Ocr":#Ocr
 ** "Color scheme":#Colorscheme
 ** "Image":#Image
 * "Advanced Specs":#AdvancedSpecs
@@ -1024,6 +1025,24 @@ If you need to validate the amount of absent elements that you can use it like t
 $$ galen-specs
         count absent menu_item-* is 4 to 5
 $$
+
+
+h2. Ocr
+
+Since version @2.4@ it is now possible to use Google Vision API in order to indentify text on selected image. For this to work you need to have a working Google account ("check here for more info":https://cloud.google.com/vision/docs/auth). Once you have created an account you need to specify your Google Vision Key with @galen.ocr.google.vision.key@ property. After that you should be ready to start using ocr spec with the following arguments:
+
+* *ocr text is* _- checks that text is exactly as expected_
+* *ocr text contains* _-checks element contains expected text_
+* *ocr text starts* _- element should start with expected text_
+* *ocr text ends* _- element should end with expected text_
+* *ocr text matches* _- verifies that text matches "Java Regular Expression":http://docs.oracle.com/javase/tutorial/essential/regex/_
+
+$$ galen-specs
+= Checking text =
+    header.caption:
+        ocr text is "My Awesome Website!"
+$$
+
 
 h2. Color scheme
 
