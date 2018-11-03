@@ -9,7 +9,7 @@ allowComments
    true
 --------------------------------
 categories
-   
+
 ================================
 
 To give more flexibility and maintainability to user Galen came up with another simple format for defining test suites. Test suites are just a set of pages that needs to be checked with the appropriate test specs. But there is something more in there which gives a lot of power in testing.
@@ -34,6 +34,7 @@ To give more flexibility and maintainability to user Galen came up with another 
 * "Test Groups":#TestGroups
 * "Waiting for dynamic content":#Waitingfordynamiccontent
 * "Page Dump":#PageDump
+* "Mutation Testing":#MutationTesting
 
 h1. Basic Format
 
@@ -58,6 +59,15 @@ Login page on a small mobile device
     http://example.com/login 320x600
         check   login.gspec --include "mobile,all" --exclude "nomobile"
 $$
+
+You can also filter some sections with @--section@ argument:
+
+$$ galen-suites
+Home page on a small mobile device
+    http://example.com/home     320x600
+        check   homepage.gspec --section "Login for * device"
+$$
+
 
 h2. Passing JavaScript variables to spec file
 
@@ -85,7 +95,7 @@ $$
 You can also define multiple variables within same instruction like this:
 
 $$ galen-suites
-@@ set 
+@@ set
     domain          example.com
     mobile_size     320x600
 
@@ -97,7 +107,7 @@ $$
 Or you can also use variable reference when defining another variable:
 
 $$ galen-suites
-@@ set 
+@@ set
     domain          example.com
     base_url        http://${domain}/
 
@@ -142,7 +152,7 @@ Homepage in PhantomJS browser
         check homepage.gspec
 $$
 
-Actually if you skip the browser name before url Galen will pick Firefox by default. 
+Actually if you skip the browser name before url Galen will pick Firefox by default.
 
 
 h2. Running in Selenium Grid
@@ -166,19 +176,19 @@ The following are the arguments that you can use for selenium grid config:
 Actually the *browser*, *version* and *platform* are optional arguments so you can use it like this:
 
 $$ galen-suites
-Homepage in Selenium Grid 
-    selenium grid http://your.selenium.grid.hostname:4444/wd/hub --page http://example.com --size 640x480 
+Homepage in Selenium Grid
+    selenium grid http://your.selenium.grid.hostname:4444/wd/hub --page http://example.com --size 640x480
         check homepage.gspec
 $$
 
 Or it would be even better to put selenium grid in the variable:
 
 $$ galen-suites
-@@ Set 
-    run_in_grid    selenium grid http://your.selenium.grid.hostname:4444/wd/hub 
+@@ Set
+    run_in_grid    selenium grid http://your.selenium.grid.hostname:4444/wd/hub
 
-Homepage in Selenium Grid 
-    ${run_in_grid} --page http://example.com --size 640x480 
+Homepage in Selenium Grid
+    ${run_in_grid} --page http://example.com --size 640x480
         check homepage.gspec
 $$
 
@@ -246,13 +256,13 @@ Login page test
         check login.gspec
 $$
 
-In the end galen will use everything before '|' in HTML report. So only the @Login page url /login@ part will be shown. 
+In the end galen will use everything before '|' in HTML report. So only the @Login page url /login@ part will be shown.
 
 h1. Page Actions
 
 h2. Page Actions: Cookies Handling
 
-Sometimes you need to work with functionality that is hidden behind "Feature switch (or Feature Toggle)":http://en.wikipedia.org/wiki/Feature_toggle. That is now possible with Galen Framework. Lets imagine that for your website you use the cookie @MyFeature1=allowed; path=/@ to set a feature switch. Now you need to test that functionality behind the feature switch. You could do it like this. 
+Sometimes you need to work with functionality that is hidden behind "Feature switch (or Feature Toggle)":http://en.wikipedia.org/wiki/Feature_toggle. That is now possible with Galen Framework. Lets imagine that for your website you use the cookie @MyFeature1=allowed; path=/@ to set a feature switch. Now you need to test that functionality behind the feature switch. You could do it like this.
 
 $$ galen-suites
 Homepage on mobile device
@@ -306,7 +316,7 @@ driver.findElement(By.cssSelector("#login-form .password")).sendKeys(userPasswor
 // Submitting the login page
 driver.findElement(By.cssSelector("#login-form .submit")).click();
 
-// Waiting till user profile page is shown 
+// Waiting till user profile page is shown
 function pageIsLoaded() {
     return driver.findElement(By.id("user-profile")) != null;
 }
@@ -338,7 +348,7 @@ User profile page
 $$
 
 
-h2. Page Actions: Open and Resize 
+h2. Page Actions: Open and Resize
 
 In case you use your own factory for creating a browser and you don't want to handle url opening in there you can use @open@ page action
 
@@ -480,13 +490,13 @@ $$ galen-specs
 @objects
     header          #header
 
-= Header = 
+= Header =
     header:
         @on desktop
-            height ${header.desktop.height} 
+            height ${header.desktop.height}
         @on mobile
-            height ${header.mobile.height} 
-        
+            height ${header.mobile.height}
+
 $$
 
 
@@ -496,11 +506,11 @@ In case you want to temporarily disable a test just put the @disabled@ special i
 
 $$ galen-suites
 @@ disabled
-Home page 
+Home page
     http://example.com      640x480
         check homepage.gspec
 
-Login page 
+Login page
     http://example.com/login      640x480
         check homepage.gspec
 $$
@@ -604,5 +614,16 @@ $$ galen-suites
 Home page test
     http://example.com 640x480
         dump homepage.gspec --name "Home page" --export dumps/homepage --max-width 200 --max-height 200
+$$
 
+h1. Mutation Testing
 
+Since version @2.4@ galen lets you perform the so called "mutation testing":https://en.wikipedia.org/wiki/Mutation_testing of your galen specs. It lets you check whether your galen specs are good enough by running "mutations" for each object and checking if it was catched by the spec. It works like the check command and uses same arguments. All you need is a working galen spec (it should always pass, otherwise mutation test will not succeed). In the galen test suite you can invoke with the following command:
+
+$$ galen-suites
+Home page test
+    http://example.com 640x480
+        mutate homepage.gspec --offset 5
+$$
+
+Where the @--offset 5@ is an offset for each individual mutation.

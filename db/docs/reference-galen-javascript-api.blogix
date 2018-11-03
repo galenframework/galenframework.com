@@ -9,7 +9,7 @@ allowComments
    true
 --------------------------------
 categories
-   
+
 ================================
 
 * "load":#load
@@ -31,6 +31,7 @@ categories
 * "inject":#inject
 * "createTestDataProvider":#createTestDataProvider
 * "dumpPage":#dumpPage
+* "testMutation":#testMutation
 * "logged":#logged
 * "loggedFunction":#loggedFunction
 
@@ -51,7 +52,7 @@ $$
 
 Important to note that Galen loads the specified javascript only once. So if your tests in multiple files load the same javascript file - it will be executed only once.
 
-Sometimes you might have different folder levels and fromt their you need to access the script from the root folder of a project. Instead of having @../../somescript.js@ you could use slash in the beginning: 
+Sometimes you might have different folder levels and fromt their you need to access the script from the root folder of a project. Instead of having @../../somescript.js@ you could use slash in the beginning:
 
 $$ javascript
 load("/somescript.js");
@@ -132,11 +133,12 @@ $$
 
 You can also use @checkLayout@ with a single argument like this
 *checkLayout( settings )*
-* *settings* - PlainObject. A set of key/value that specifies different properties for checking layout. 
+* *settings* - PlainObject. A set of key/value that specifies different properties for checking layout.
 ** *driver* - "WebDriver":https://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/WebDriver.html type. An instance of WebDriver
 ** *spec* - String type. A path to spec file
 ** *tags* - String[] type _(optional)_ - An array of tags that should be included when checking layout
 ** *excludedTags* - String[] type _(optional)_ - An array of tags that should be excluded when checking layout
+** *sectionFilter* - String type _(optional)_ - A simple filter for sections
 ** *screenshot* - String type _(optional)_ - A path to a screenshot. In case this property is provided Galen will not make a screenshot and will use the provided screenshot instead in reports and for image analysis
 ** *properties* - "Properties":http://docs.oracle.com/javase/6/docs/api/java/util/Properties.html type _(optional)_. Used for providing custom properties when parsing a spec file.
 ** *vars* - Map type _(optional)_ - A set of key value pairs which will be used in spec as variables.
@@ -172,7 +174,7 @@ test("Home page", function() {
                             "1024x768");
 
   var pageSpec = parsePageSpec({
-    driver: driver, 
+    driver: driver,
     spec: "homePage.gspec",
     tags: ["all", "desktop"]
   });
@@ -183,11 +185,12 @@ $$
 
 You can also use @checkPageSpecLayout@ with a single argument like this
 *checkPageSpecLayout( settings )*
-* *settings* - PlainObject. A set of key/value that specifies different properties for checking layout. 
+* *settings* - PlainObject. A set of key/value that specifies different properties for checking layout.
 ** *driver* - "WebDriver":https://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/WebDriver.html type. An instance of WebDriver
 ** *pageSpec* - "PageSpec":http://jdoc.galenframework.com/com/galenframework/specs/page/PageSpec.html type. A path to spec file
 ** *tags* - String[] type _(optional)_ - An array of tags that should be included when checking layout
 ** *excludedTags* - String[] type _(optional)_ - An array of tags that should be excluded when checking layout
+** *sectionFilter* - String type _(optional)_ - A simple filter for sections
 ** *screenshot* - String type _(optional)_ - A path to a screenshot. In case this property is provided Galen will not make a screenshot and will use the provided screenshot instead in reports and for image analysis
 ** *properties* - "Properties":http://docs.oracle.com/javase/6/docs/api/java/util/Properties.html type _(optional)_. Used for providing custom properties when parsing a spec file.
 ** *vars* - Map type _(optional)_ - A set of key value pairs which will be used in spec as variables.
@@ -215,7 +218,7 @@ h2. parsePageSpec
 
 Takes same arguments as @"checkLayout":#checkLayout@ function but instead of checking layout it parses a page spec and return a @"PageSpec":http://jdoc.galenframework.com/com/galenframework/specs/page/PageSpec.html@ object.
 
-* *settings* - PlainObject. A set of key/value that specifies different properties for checking layout. 
+* *settings* - PlainObject. A set of key/value that specifies different properties for checking layout.
 ** *driver* - "WebDriver":https://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/WebDriver.html type. An instance of WebDriver
 ** *spec* - String type. A path to spec file
 ** *tags* - String[] type _(optional)_ - An array of tags that should be included when checking layout
@@ -415,17 +418,42 @@ Creates a dump for a current open page in a browser
 
 $$ javascript
 dumpPage({
-    driver: driver, 
-    name: "Home page", 
+    driver: driver,
+    name: "Home page",
     spec: "specs/homepage.gspec",
-    exportPath: "dumps/homepage", 
-    maxWidth: 200, 
-    maxHeight: 200, 
-    onlyImages: false, 
+    exportPath: "dumps/homepage",
+    maxWidth: 200,
+    maxHeight: 200,
+    onlyImages: false,
     excludedObjects: ["header", "footer"]
 });
 $$
 
+
+h2. testMutation
+
+*testMutation( settings )*
+
+Runs "mutation testing":https://en.wikipedia.org/wiki/Mutation_testing for specified galen spec file.
+
+* *settings* - PlainObject. A set of key/value that specifies different properties for checking layout.
+** *driver* - "WebDriver":https://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/WebDriver.html type. An instance of WebDriver
+** *spec* - String type. A path to spec file
+** *tags* - String[] type _(optional)_ - An array of tags that should be included when checking layout
+** *excludedTags* - String[] type _(optional)_ - An array of tags that should be excluded when checking layout
+** *options* - PlainObject. _(optional)_ - A structure that holds settings for mutation testing.
+*** *offset* - integer type - offset in pixels for each individual mutation
+
+$$ javascript
+testMutation({
+    driver: driver,
+    spec: "specs/homepage.gspec",
+    tags: ["mobile", "iphone"],
+    options: {
+        offset: 5
+    }
+});
+$$
 
 h2. logged
 
@@ -433,7 +461,7 @@ h2. logged
 
 Wraps the callback into report section for html report
 
-* *text* - a report section text 
+* *text* - a report section text
 * *callback* - the callback that will be called within report section
 
 
@@ -462,5 +490,3 @@ this.LoginPage = $page("Login", {
 
 var loginPage = new LoginPage(driver);
 loginPage.loginAs("testuser@example.com", "qwerty");
-$$
-
