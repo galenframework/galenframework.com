@@ -1,0 +1,215 @@
+--------------------------------
+title
+   Released version 2.4. Spec generator and mutation testing
+--------------------------------
+date
+   2018-11-03 17:36
+--------------------------------
+allowComments
+   true
+--------------------------------
+categories
+   
+================================
+
+I am excited to announce a release of new Galen version 2.4.0! This release has a new awesome feature: spec generator. With it you are now able to generate a complete spec without much effort. And with another new feature, which is called "mutate", you can test your generated specs whether they have proper test coverage. Here is the full list of features:
+
+* "Spec generator":/post/2018-11-03-released-version-2.4-spec-generator-and-mutation-testing/#Specgenerator
+* "Mutation testing":/post/2018-11-03-released-version-2.4-spec-generator-and-mutation-testing/#Mutationtesting
+* "Embedded galen-extras lib":/post/2018-11-03-released-version-2.4-spec-generator-and-mutation-testing/#Embeddedgalenextraslib
+* "Validations highlight in HTML report":/post/2018-11-03-released-version-2.4-spec-generator-and-mutation-testing/#ValidationshighlightinHTMLreport
+* "Failure map in HTML report":/post/2018-11-03-released-version-2.4-spec-generator-and-mutation-testing/#FailuremapinHTMLreport
+* "Section filtering":/post/2018-11-03-released-version-2.4-spec-generator-and-mutation-testing/#Sectionfiltering
+* "Google Vision integration for text recognition":/post/2018-11-03-released-version-2.4-spec-generator-and-mutation-testing/#GoogleVisionintegrationfortextrecognition
+
+
+>>>>
+
+h2. Spec generator
+
+This is a feature that was requested by many. It simplifies the boring task of writing gspec files yourself and all it requires from you is a page dump. It analyzes all objects on your page dump and generates specs in such manner that it is easy to read and maintain. For instance, the generator is able to identify an inner side of a parent object to which a child is attached to. This way it doesn't create unnecessary validations. Here is an example of how it works:
+
+$$ bash
+galen generate "login-pagedump/page.json" --export login.gspec
+$$
+
+Below is an example for generated spec (based on the page dump for "http://testapp.galenframework.com/#login":http://testapp.galenframework.com/#login page):
+
+$$ galen-specs
+@lib galen-extras
+
+= Skeleton =
+    | header, menu, content, footer are aligned vertically above each other with ~0px margin
+
+    header, menu, content, footer:
+        centered horizontally inside screen 1px
+
+    menu, content:
+        inside screen
+
+    footer:
+        inside screen 0px bottom
+
+    header:
+        height 69px
+        inside screen 0px top
+
+    menu:
+        height 63px
+
+= header elements =
+    | header.logo should be squared with 48px size
+
+    header.logo:
+        inside header 13px top, 0px left, 8px bottom
+        left-of header.text 22px
+
+    header.text:
+        height 39px
+        inside header 20px top, 10px bottom
+
+= menu elements =
+    | menu.item-* are aligned horizontally next to each other with 0px margin
+
+    menu.item-1, menu.item-2, menu.item-3, menu.item-4:
+        height 63px
+
+    menu.item-2, menu.item-3, menu.item-4:
+        inside menu 0px top bottom
+
+    menu.item-1:
+        inside menu 0px top left bottom
+
+= content elements =
+    | login_caption, username_textfield, password_textfield are aligned vertically above each other with 10px margin
+    | login_button, cancel_button are aligned horizontally next to each other with 3px margin
+
+   cancel_button:
+        inside login_box 31px bottom, >= 21px right
+        width 90px
+
+    login_button:
+        inside login_box 31px bottom, 21px left
+        width 79px
+
+    login_caption:
+        height 33px
+        inside login_box 41px top, 21px left right
+
+    login_button, cancel_button:
+        below password_textfield 10px
+        height 45px
+
+    username_textfield, password_textfield:
+        height 34px
+        inside login_box 21px left right
+
+    login_box:
+        centered horizontally inside content 1px
+        inside content 20px top
+
+    login_caption, username_textfield, password_textfield:
+        centered horizontally inside login_box 1px
+$$
+
+As you can see, it doesn't use absolute coordinates for every element and is capable of understanding the structure of a given page. Also, you might notice the new "galen extras":/docs/reference-galen-extras/ expression. If you don't like these expressions, you can turn them off with the following command:
+
+$$ bash
+galen generate "login-pagedump/page.json" --export login.gspec --no-galen-extras
+$$
+
+
+h2. Mutation testing
+
+It might be useful to check whether your spec covers all page elements and that it will not miss any bugs. Although it is always hard to combine simplicity with a 100% coverage in the same spec, still you can test your spec files with mutation testing. It lets you check whether your galen specs are good enough by running "mutations" for each object and checking if it was caught by the spec. It works like the check command and uses same arguments. All you need is a working galen spec (it should always pass, otherwise mutation test will not succeed) and you can run it via the following command:
+
+$$ bash
+galen mutate login.gspec --url "http://testapp.galenframework.com#login" --size 1200x800 --offset 5 --htmlreport mutation-report
+$$
+
+Lets see what it has found out for our newly generated @login.gspec@ file.
+
+!/public/images/release-2.4/mutation-report.png!
+
+As you can see the mutation for two elements "menu.item-4" and "header.text" have failed. Once you click on the object, you will see the exact mutations that have failed. In the example above it shows _"menu.item-4: increase width by 5px"_ and _"menu.item-4: decrease width by 5px"_. This means that if this element would suddenly appear with a different width - our spec would not have caught that. But in this particular example it makes sense, given that the menu is not really attached from the right side to any other element, so we don't have to treat it as a serious issue.
+
+
+
+h2. Embedded galen-extras lib
+
+Galen-Extras lib was developed outside of galen project but since it is quite generic it was decided to move it into galen core. Therefore from now on you can enable it in your gspec files by including it as a library. Here are some of the new expressions that you can use with it:
+
+$$ galen-specs
+@lib galen-extras
+
+| home_box_* are aligned vertically above each other with 10 to 20 px margin
+| last menu.item-* :
+    above footer 10px
+    inside main_container 0px left right
+
+login_panel:
+    | stretches to main_container with 10px margin
+$$
+
+You can find more information about it "here":/docs/reference-galen-extras/
+
+
+h2. Validations highlight in HTML report
+
+This feature was requested a long time ago. Often users find the error messages a bit confusing and they would like to see what is exactly checked. This is now made a bit more clear as in HTML report you can find the arrows which highlight the actual distance.
+
+!/public/images/release-2.4/html-layout-meta-1.png!
+
+!/public/images/release-2.4/html-layout-meta-2.png!
+
+
+h2. Failure map in HTML report
+
+Often when you have a lot of errors in your layout report you only want to find out which element is to blame. This is now possible with failure map. It uses color to highlight the status of an item on page.
+
+!/public/images/release-2.4/failure-map.png!
+
+
+
+h2. Section filtering
+
+Another handy addition in version 2.4 is a possibility to filter out only validations in particular section. Let's say you don't want to run the full test suite and are only interested in a specific part of a web page. You can run your tests like this:
+
+
+$$ bash
+galen check homepage.gspec
+    --url "http://example.com"
+    --size "640x480"
+    --include "mobile"
+    --section "Login box styling"
+$$
+
+Or you can also do that in your JavaScript test:
+
+$$ javasript
+checkLayout({
+    driver: driver,
+    spec: 'homepage.gspec',
+    tags: ['mobile']
+    sectionFilter: 'Login box styling'
+})
+$$
+
+
+h2. Google Vision integration for text recognition
+
+This feature was brought by "Experitest":https://experitest.com and it allows to analyze text on the screenshot. It makes use of "Google Vision API":https://cloud.google.com/vision/, so make sure to create an account for it. During the test it will analyze text on a selected region of a screenshot and will compare it with expected.
+
+$$ galen-specs
+= Login box =
+    login_button:
+        ocr text is "Login"
+$$
+
+Of course for the above to work you should provide Google Vision Key for your account via @galen.ocr.google.vision.key@ property.
+
+
+
+These are all the main features included into version 2.4 together with some bug fixes. Hope it improves your layout testing experience.
+Kind regards!
+Ivan
