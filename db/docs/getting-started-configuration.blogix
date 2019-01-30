@@ -74,7 +74,7 @@ galen.range.approximation=3
 # In some browsers it is possible to use a headless mode where no UI is needed at runtime.
 # Currently only supported on Chrome and Firefox.
 #
-galen.headless = true
+galen.browser.headless = true
 
 # Full screenshots
 # ~~~~~~~~~~~~~~~~~~~~
