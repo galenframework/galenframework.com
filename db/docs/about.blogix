@@ -45,7 +45,7 @@ Galen uses "Selenium":http://www.seleniumhq.org/ for interacting with elements o
 Once Galen sees that something is wrong - it reports the error, makes a screenshot and highlights the misbehaving element on it.
 You can also run test against "Selenium Grid":http://code.google.com/p/selenium/wiki/Grid2 in case you want to cover cross-browser layout testing.
 
-In case you don't have resources to set up a Selenium Grid you can also run Galen tests with "Experitest":https://experitest.com/ , Sauce Labs":https://saucelabs.com/ or "BrowserStack":http://www.browserstack.com. Actually with Experitest, BrowserStack and Sauce Labs you can even run your tests against real mobile devices like iPhone or Android so you don't need to emulate the mobile layout by resizing a browser.
+In case you don't have resources to set up a Selenium Grid you can also run Galen tests with "Experitest":https://experitest.com/, "Sauce Labs":https://saucelabs.com/ or "BrowserStack":http://www.browserstack.com. Actually with Experitest, BrowserStack and Sauce Labs you can even run your tests against real mobile devices like iPhone or Android so you don't need to emulate the mobile layout by resizing a browser.
 
 Galen offers two ways of reporting:
 - *Html Reports* - gives nice overview of all test suites with complete reports, screenshots and highlighted errors
