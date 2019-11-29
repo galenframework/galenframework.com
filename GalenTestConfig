@@ -1,0 +1,565 @@
+package com.ibs.library.galen.components;
+
+import com.ibs.library.galen.models.PageConfig;
+import com.ibs.library.galen.utils.Util;
+import com.galenframework.api.Galen;
+import com.galenframework.api.GalenPageDump;
+import com.galenframework.config.GalenConfig;
+import com.galenframework.config.GalenProperty;
+import com.galenframework.reports.model.LayoutObject;
+import com.galenframework.reports.model.LayoutReport;
+import com.galenframework.reports.model.LayoutSpec;
+import com.galenframework.speclang2.pagespec.SectionFilter;
+import com.galenframework.support.LayoutValidationException;
+import com.galenframework.testng.GalenTestNgTestBase;
+import com.poiji.annotation.ExcelCell;
+import com.poiji.bind.Poiji;
+import org.apache.commons.io.FileUtils;
+import org.apache.poi.ss.formula.functions.T;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.annotations.DataProvider;
+
+import java.io.*;
+import java.lang.reflect.Method;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
+
+
+import java.io.File;
+
+import static java.util.Arrays.asList;
+import com.esotericsoftware.yamlbeans.YamlReader;
+
+/**
+ * Created by Deepak Edakkott on 14-02-2018.
+ */
+public class GalenTestConfig extends GalenTestNgTestBase {
+
+
+    /**
+     *
+         TODO :
+            TREE is here..
+                     $HOME (User's home dir)
+                         `-- galen
+                             |
+                             `-- app_name
+                                     |
+                                     |-- lab
+                                     |   |-- report
+                                     |   |   `-- report.html
+                                     |   `-- tester
+                                     |       `-- bdm_lab.xlsx
+                                     |-- local
+                                     |   |-- report
+                                     |   |   `-- report.html
+                                     |   `-- tester
+                                     |       `-- bdm_local.xlsx
+                                     |-- production
+                                     |   |-- report
+                                     |   |   `-- report.html
+                                     |   `-- tester
+                                     |       `-- bdm_production.xlsx
+                                     |
+                                     `-- spec-generator
+                                            `-- bdm_spec-generator.xlsx
+
+             1. mvn install galen-help should print help details..
+    *
+     **/
+
+    private final static Logger LOGGER = LoggerFactory.getLogger(GalenTestConfig.class);
+    /*
+     Let these constants be here itself.
+    */
+    public static final String FIREFOX = "firefox";
+    public static final String CHROME = "chrome";
+    public static final String INTERNET_EXPLORER = "internetExplorer";
+
+    /*
+    TODO : The wrong thing @ dump with dir name of devices (when row comes in excel file with same device multiple times, dump will override) - Need to think.
+    */
+
+
+    static StringTokenizer st1;
+    static String msg;
+    private HashMap<String,String> userConfig;
+
+    public HashMap<String,String> getUserConfig() {
+        return userConfig;
+    }
+
+    public void setUserConfig(HashMap<String,String> userConfig) {
+        this.userConfig = userConfig;
+    }
+
+
+    public void setDefaultConfig() {
+        GalenConfig.getConfig().setProperty(GalenProperty.GALEN_RANGE_APPROXIMATION,"100");
+        GalenConfig.getConfig().setProperty(GalenProperty.GALEN_LOG_LEVEL,"5"); //TODO : Need to confirm this value
+        
+    }
+
+    public void checkAndCreateDefaultDirs(){
+        String appName = getUserConfig().get("app_name");
+        String userHome = System.getProperty("user.home");
+        String appDir = userHome + File.separator + "galen" + File.separator + appName;
+        String[] environments = {"local", "lab", "production"}; //TODO : Read from config yaml
+
+        for (String envName : environments){
+            File dir = new File(appDir + File.separator + envName);
+            Boolean isDirCreated = false;
+            if(!dir.exists()){
+                try {
+                    isDirCreated = dir.mkdirs();
+                    //If parent directory could create (isDirCreated) then it's children also will be created.
+                    new File (appDir + File.separator + envName + File.separator + "input-spec-generator" + File.separator + "desktopDump").mkdirs();
+                    new File (appDir + File.separator + envName + File.separator + "input-spec-generator" + File.separator + "desktopDump").mkdirs();
+                    new File (appDir + File.separator + envName + File.separator + "input-spec-generator" + File.separator + "inputspec").mkdirs();
+                    new File (appDir + File.separator + envName + File.separator + "input-spec-generator" + File.separator + "mobileDump").mkdirs();
+                    new File (appDir + File.separator + envName + File.separator + "input-spec-generator" + File.separator + "mobileDump").mkdirs();
+                    new File (appDir + File.separator + envName + File.separator + "input-spec-generator" + File.separator + "tabDump").mkdirs();
+                    new File (appDir + File.separator + envName + File.separator + "report").mkdirs();
+                    new File (appDir + File.separator + envName + File.separator + "specs").mkdirs();
+                    new File (appDir + File.separator + envName + File.separator + "tester").mkdirs();
+                } catch (SecurityException se) {
+                    LOGGER.error("Can't able to create directory if does not exists. " +
+                            "Thank you for creating it your own and running the same test once again. " +
+                            "Directory to be created : " + dir);
+                    se.printStackTrace();
+                }
+                LOGGER.info("Is " + dir + " created ? " + isDirCreated);
+            }
+        }
+    }
+
+    public HashMap<String,String> readAndSetUserConfigValues(String projectYamlFile) throws IOException {
+
+    	try {
+        /**
+         * TODO : When galen-tester becomes running as a jar file
+         * Priority 1 : Command line arguments
+         * Priority 2 : yml in user home directory (If not exists, create it with default data)
+         */
+
+
+        /*TODO :
+                defaultConfig = new File(<$HOME/<app_name>/above directory structure>) where `app_name` get as argument from command prompt.
+                OR there should be two config files one in resources directory which contains app_name and one in $HOME...... for environ
+                OR at least BROWSER should be configured somewhere outside (should not be in resources config)*/
+            File defaultConfig = getResourceFile(projectYamlFile);
+            LOGGER.info("Galen - User Config file path : " + defaultConfig.getAbsolutePath());
+
+            YamlReader reader = new YamlReader(new FileReader(defaultConfig));
+            Object obj = reader.read();
+            userConfig = (HashMap<String,String>) obj;
+            //TODO : Do code for reading values of hierarchical object in yaml too so that to read as userConfig.get("test.something.description")
+
+        GalenConfig.getConfig().getProperties().put("userConfig", userConfig);
+
+    	}catch(Exception ee) {
+    		ee.printStackTrace();
+    	}
+        return userConfig;
+    }
+
+    private File getResourceFile(String resourcePath) {
+        try {
+            InputStream in = ClassLoader.getSystemClassLoader().getResourceAsStream(resourcePath);
+            if (in == null) {
+                return null;
+            }
+
+            File tempFile = File.createTempFile(String.valueOf(in.hashCode()), ".tmp");
+            LOGGER.info("Temp file : " + tempFile.getCanonicalPath());
+            tempFile.deleteOnExit();
+
+            try (FileOutputStream out = new FileOutputStream(tempFile)) {
+                //copy stream
+                byte[] buffer = new byte[1024];
+                int bytesRead;
+                while ((bytesRead = in.read(buffer)) != -1) {
+                    out.write(buffer, 0, bytesRead);
+                }
+            }
+            return tempFile;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
+
+    @Override
+    public WebDriver createDriver(Object[] args) {
+        WebDriver driver = getDriver(CHROME);
+        if (args.length > 0) {
+            if (args[0] != null && args[0] instanceof TestDevice) {
+                TestDevice device = (TestDevice)args[0];
+                if (device.getScreenSize() != null) {
+                    driver.manage().window().setSize(device.getScreenSize());
+                }
+            }
+        }
+        LOGGER.info("\n\n+++++++++++++++ - Instance Divider - +++++++++++++++++++\n");
+        LOGGER.info("Browser Driver : " + driver);
+        return driver;
+    }
+
+
+/*    @Override
+    @AfterMethod(alwaysRun = true)
+    public void quitDriver() {
+        //super.quitDriver();
+        LOGGER.info("Browser not closed...");
+        LOGGER.info(getDriver());
+        getDriver().get("http://yahoo.com");
+    }*/
+
+    public WebDriver getDriver(String browser) {
+        WebDriver driver = null;
+/*        try {
+            driver = getDriver();
+        } catch (RuntimeException e) {
+            LOGGER.info(e + " , Hence instantiating new " + browser + " instance.");
+        }*/
+
+
+        if(driver == null){
+            if(browser.equals(FIREFOX)) {
+                System.setProperty("webdriver.firefox.bin", getUserConfig().get("firefox")); //version=38.0.5
+                driver = new FirefoxDriver();
+                driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+
+            }else if (browser.equals(CHROME)) {
+                System.setProperty("webdriver.chrome.driver", getUserConfig().get("chrome"));
+                driver = new ChromeDriver();
+                driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+            }else if (browser.equals(INTERNET_EXPLORER)){
+                /* To enable blocked content in dump page:
+                Tools tab in IE->Internet Options->Advanced->Security->Allow Active Content to run files on My Computer
+                Then close IE, restart IE.
+                */
+                System.setProperty("webdriver.ie.driver", getUserConfig().get("internetExplorer"));
+                driver = new InternetExplorerDriver();
+                driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+            }
+        }
+        return driver;
+    }
+
+
+    @DataProvider(name = "device")
+    public Object [][] devices () {
+        TestDevice device_mobile    = new TestDevice("mobile", new Dimension(450, 800), asList("mobile"));
+        TestDevice device_tablet    = new TestDevice("tablet", new Dimension(750, 800), asList("tablet"));
+        TestDevice device_desktop   = new TestDevice("desktop", new Dimension(1024, 800), asList("desktop"));
+        return new Object[][] {
+                {device_mobile}
+                ,
+                {device_tablet}
+                ,
+                {device_desktop}
+        };
+    }
+
+
+    @DataProvider(name="userData")
+    public Object[][] userFormDataFromExcel(Method method) throws FileNotFoundException, ClassNotFoundException {
+        String appUserDataClass = getUserConfig().get("excelUserDataClass");
+        String excelFilePath = getUserConfig().get("excelFilePath");
+        Class clazz = Class.forName(appUserDataClass);
+        List<UserData> userDataList = new ArrayList<>();
+
+        try {
+            userDataList = Poiji.fromExcel(new File(excelFilePath), clazz);
+        } catch (Exception e) {
+            LOGGER.error(e + " | Please check " + excelFilePath + " is not in use. If so, close it and try again");
+            e.printStackTrace();
+        }
+
+        Object[][] data = userDataList.stream()
+                .map(row -> new Object[]{row})
+                .toArray(Object[][]::new);
+
+        LOGGER.info("Running test : " + method.getDeclaringClass().getName() +"#"+  method.getName());
+
+        return data;
+    }
+
+    /**
+     * TODO : To be moved to `galen.generator` package
+     * @throws IOException
+     */
+        public void generateInputSpec() throws IOException {
+            List<WebElement> allids =getDriver().findElements(By.xpath(".//*"));
+            //Create Spec File with all IDs on Page. This file is used as Input file for Preparing Dumps and store it in Working Directory
+
+            String inputSpec = getUserConfig().get("input_spec");
+            File inputSpecFile = new File(inputSpec);
+            checkAndcreateDir(inputSpecFile.getParentFile());
+
+            if (!inputSpecFile.exists())
+            {
+                try {
+                    inputSpecFile.createNewFile();
+                } catch (IOException e) {
+                    LOGGER.error(e + " , Exception in creating : " + inputSpecFile.getCanonicalPath());
+                    e.printStackTrace();
+                }
+            }
+            FileWriter fw1 = new FileWriter(inputSpecFile.getAbsoluteFile());
+            BufferedWriter bw1 = new BufferedWriter(fw1);
+            String txt1=null;
+            bw1.write("@objects");
+            bw1.newLine();
+            String delim1 = "\n";
+            for (WebElement idelement: allids)
+            {
+                txt1=idelement.getAttribute("id").toString();
+                // these are my delimiters
+                st1= new StringTokenizer(txt1,delim1);
+                while (st1.hasMoreElements())
+                {
+                    msg = (String) st1.nextElement();
+                    bw1.newLine();
+                    bw1.write("\t"+msg+"   id   "+msg);
+                }
+
+            }
+            bw1.close();
+
+        }
+
+    /**
+     * TODO : To be moved to `galen.generator` package
+     * @param pageConfig
+     * @throws IOException
+     */
+    public void doPageDump(PageConfig pageConfig, String url) throws IOException {
+    	GalenPageDump pageDump=new GalenPageDump(pageConfig.getAppName());
+        String inputSpec = getUserConfig().get("input_spec");
+        String mobileDumpLocation = getUserConfig().get("mobile_dump_location");
+        String tabDumpLocation = getUserConfig().get("tab_dump_location");
+        String desktopDumpLocation = getUserConfig().get("desktop_dump_location");
+
+        TestDevice device_ = pageConfig.getDevice();
+        switch(device_.getName()) {
+            case "mobile":
+                pageDump.dumpPage(getDriver(), inputSpec, mobileDumpLocation);
+                generateOutputspec(pageConfig, url);
+                break;
+            case "tablet":
+                pageDump.dumpPage(getDriver(), inputSpec, tabDumpLocation);
+                generateOutputspec(pageConfig, url);
+                break;
+            case "desktop":
+                pageDump.dumpPage(getDriver(), inputSpec, desktopDumpLocation);
+                generateOutputspec(pageConfig, url);
+                break;
+            default:break;
+        }
+    }
+
+   
+
+    /**
+     * TODO : To be moved to `galen.generator` package
+     * @param pageConfig
+     * @throws IOException
+     */
+    public void generateOutputspec(PageConfig pageConfig, String url) throws IOException {
+        String deviceName = pageConfig.getDevice().getName();
+        //TODO : Device name should not be hard-coded like mobile/tab/desktop.. it should get from PageConfig.
+        ArrayList<String> formElements = new ArrayList<String>();
+        String mobileDumpLocation = getUserConfig().get("mobile_dump_location");
+        String tabDumpLocation = getUserConfig().get("tab_dump_location");
+        String desktopDumpLocation = getUserConfig().get("desktop_dump_location");
+        List<String> startContent=new ArrayList<String>();
+        
+        String parentDiv = getUserConfig().get("parent_div");
+   
+        
+      /*  if(deviceName.equals("mobile"))
+            getDriver().get(mobileDumpLocation + "\\page.html");
+        else if(deviceName.equals("tablet"))
+            getDriver().get(tabDumpLocation + "\\page.html");
+        else if(deviceName.equals("desktop"))
+            getDriver().get(desktopDumpLocation + "\\page.html");*/
+
+        startContent.add("@objects");                            
+        getDriver().get(url);
+        
+        List<WebElement> elementsList =  getDriver().findElements(By.xpath("//div[@id='"+parentDiv+"']//*"));//generate spec file foe a div.
+        String txt1=null;
+        System.out.println("out...");
+        String delim1 = "\n";
+        //Print all the which are sibling of the the element named as 'SELENIUM' in 'Popular course'
+        for (WebElement webElement : elementsList) {
+        	 txt1=webElement.getAttribute("id").toString();
+             // these are my delimiters
+             st1= new StringTokenizer(txt1,delim1);
+             while (st1.hasMoreElements())
+             {
+                 msg = (String) st1.nextElement();
+                 String str  = "\t"+msg+"   id   "+msg;
+                 startContent.add("\t" + msg + "   id   " + msg);
+                 System.out.println(str);
+                 formElements.add(msg);
+                 
+             }
+        } 
+        
+
+        File specFile_temp=null;
+        File specFile=null;
+
+        String specFileLocation = getUserConfig().get("specFileLocation");//location of specfile
+        String specFileStr = specFileLocation + File.separator + pageConfig.getSpecFileName();//spec file name
+        specFile_temp = new File(specFileStr);
+        specFile = new File(specFile_temp.getCanonicalPath());
+
+        File parentDir = specFile.getParentFile();
+
+        checkAndcreateDir(parentDir);
+
+        if (!specFile.exists())
+        {
+            specFile.createNewFile();
+        }
+        LOGGER.info("Spec file : " + specFile.getCanonicalPath() + "\n");
+
+        startContent.add("");
+        startContent.add("= Content =");
+        startContent.add("\t@on " + deviceName);              
+        Iterator<String> itr = formElements.iterator();
+        
+        while(itr.hasNext()) {             	
+        	try {
+        		String id = itr.next();
+        		WebElement web = getDriver().findElement(By.xpath(".//*[@id='"+id+"']"))   ;
+        		Dimension rectangle = web.getSize();         		
+        		if(rectangle.getHeight()>0 && rectangle.getHeight()>0) {
+        			startContent.add("\t"+id+":");
+        			startContent.add("\t\t height "+rectangle.getHeight()+" px");
+        			startContent.add("\t\t width "+rectangle.getWidth()+" px");
+        			startContent.add("\t\t css font-size is \""+web.getCssValue("font-size")+"\"");
+        			startContent.add("\t\t css font-weight is \""+web.getCssValue("font-weight")+"\"");
+        			startContent.add("\t\t css color is \""+web.getCssValue("color")+"\"");   
+        			
+        			//TODO customize more attributes.
+        		}else {
+        			startContent.remove(id);
+        		}
+        	}catch(Exception ee) {
+        		ee.printStackTrace();
+        	}        	
+        }
+        
+        FileUtils.writeLines(specFile_temp, startContent);
+    }
+
+    private void checkAndcreateDir(File parentDir) throws IOException {
+        //TODO : Do something for this error !! ('dirCreated' is always false) Don't know the reason!!
+        if(!parentDir.exists()){
+            Boolean dirCreated = parentDir.mkdir();
+            if(!dirCreated){
+                LOGGER.error("Can't able to create directory if does not exists. " +
+                        "Thank you for creating it your own and running the same test once again. " +
+                        "Directory to be created : " + parentDir.getCanonicalPath());
+            }else {
+                LOGGER.info(parentDir + " - directory created : " + dirCreated);
+            }
+        }
+    }
+
+
+    @Override
+    public void load(String URL) {
+        WebDriver webDriver = getDriver();
+        LOGGER.info("Loading URL : "+URL);
+        webDriver.get(URL);
+    }
+
+    /**
+     * TODO : TO change cases as customized - if required
+     * Method which validates given spec file with the URL
+     * @param pageConfig
+     * @throws IOException
+     */
+    public void CheckLayout(PageConfig pageConfig) throws IOException {
+        LOGGER.info("Started validating above URL with " + new File(pageConfig.getSpecFilePath()).getCanonicalPath());
+        LOGGER.info("Device : " + pageConfig.getDevice().getName());
+
+        GalenConfig.getConfig().setProperty(GalenProperty.TEST_JAVA_REPORT_OUTPUTFOLDER, getUserConfig().get("report_location"));
+        String specFileLocation = getUserConfig().get("specFileLocation"); //TODO : Remove redundancy
+        String specFileStr = specFileLocation + File.separator + pageConfig.getSpecFileName();
+        checkLayout(specFileStr, new SectionFilter(pageConfig.getDevice().getTags(), Collections.<String>emptyList()), new Properties(), null);
+        //checkLayout(pageConfig.getSpecFilePath(), pageConfig.getDevice().getTags());
+    }
+
+    public void checkLayout(String specPath, SectionFilter sectionFilter, Properties properties, Map<String, Object> vars) throws IOException {    	
+        String title = "Check layout " + specPath;
+        LayoutReport layoutReport = Galen.checkLayout(getDriver(), specPath, sectionFilter, properties, vars);
+
+        getReport().layout(layoutReport, title);
+
+        if (layoutReport.errors() > 0) {
+            LOGGER.error("[ERROR] Report has errors ! Please check : " + getUserConfig().get("report_location"));
+            Boolean failTestWhenErrorsExists  = Boolean.valueOf(getUserConfig().get("failTestWhenErrorsExists")) ;
+            if(failTestWhenErrorsExists){
+                throw new LayoutValidationException(specPath, layoutReport, sectionFilter);
+            }
+        }
+
+        Boolean showErrorsAloneInHTMLreport = Boolean.valueOf(getUserConfig().get("showErrorsAloneInHTMLreport")) ;
+        if(showErrorsAloneInHTMLreport){
+            List<LayoutObject> layoutObjects = layoutReport.getSections().get(0).getObjects();
+            List<LayoutSpec> successful_layoutSpecs = new ArrayList<LayoutSpec>();
+            for(LayoutObject layoutObject : layoutObjects){
+                List<LayoutSpec> layoutSpecs = layoutObject.getSpecs();
+                for(LayoutSpec layoutSpec : layoutSpecs){                	                	
+                    if(layoutSpec.getErrors()==null){
+                        successful_layoutSpecs.add(layoutSpec);
+                    }else {
+                    	String str = layoutSpec.getErrors().get(0);
+                    	if(str.contains("is not visible")) {
+                    		successful_layoutSpecs.add(layoutSpec);
+                    	}
+                    }
+                    
+                }
+                layoutSpecs.removeAll(successful_layoutSpecs);
+            }
+            
+            System.out.println(layoutObjects);
+        }
+
+        
+    }
+
+    /**
+     * Method to get the base version of application.
+     * TODO : IDEA - To created and test with different version of specs files of an app
+     *          (/base/version is applicable for Ibs apps alone).
+     * - Could be overridden
+     * @param appURL
+     * @return
+     * @throws IOException
+     */
+    public String getAppVersion(String appURL) throws IOException {
+        String baseVersionURL = appURL + "/base/version";
+        return Util.getBaseVersion(baseVersionURL);
+    }
+
+}
