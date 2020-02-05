@@ -1,56 +1,5 @@
 <h2>Developers</h2>
 
-You can use <a href="/dashboard/">Project Dashboard</a> to track the progress of Galen Framework milestones.
-<script>
-
-    var _templates = {};
-
-    function createTemplateFrom(id) {
-        var source = $("#" + id).html();
-        return Handlebars.compile(source);
-    }
-
-    function obtainContributorsForProject(name, callback) {
-        $.ajax({
-            url: "https://api.github.com/repos/galenframework/" + name + "/contributors",
-            jsonp: "callback",
-            dataType: "jsonp",
-            data: {
-                access_token: "d2f9cf142182ae97e848fd1da31b91c23c56c682"
-            },
-            success: function (response) {
-                callback(response.data);
-            }
-        });
-    }
-    $(function (){
-        _templates.contributors = createTemplateFrom("contributors-tpl");
-
-        obtainContributorsForProject("galen", function (contributors) {
-            $("#code-contributors").html(_templates.contributors(contributors));
-        });
-
-        obtainContributorsForProject("galenframework.com", function (contributors) {
-            $("#docs-contributors").html(_templates.contributors(contributors));
-        });
-    });
-</script>
-<h3>Code Contributors</h3>
-<div id="code-contributors" class="dashboard-contributors">
-    Loading...
-</div>
-
-<h3>Documentation Contributors</h3>
-<div id="docs-contributors" class="dashboard-contributors">
-    Loading...
-</div>
-
-<script id="contributors-tpl" language="text/x-handlebars-template">
-    {{#each this}}
-    <a class="contributor" href="{{html_url}}" title="{{login}}"><img width="50px" src="{{avatar_url}}"></a>
-    {{/each}}
-</script>
-
 <h3>How to Contribute</h3>
 
 If you want to contribute to this project just look for current open issues. Please let know in the comments of the issue that you are going to pick it up because somebody could already work on it. In the end just send the pull request. By the way the feature that you are going to work on should not just solve your particular problem. It should be extendable and configurable. The github issues is the best place to debate on the feature and discuss how it should be implemented.
