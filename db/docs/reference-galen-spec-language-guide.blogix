@@ -1450,6 +1450,17 @@ $$ galen-specs
             height 100 px
 $$
 
+Note that if you're trying to access a previously defined variable within a JavaScript expression, you don't need to reference it in the traditional manner.
+ 
+$$ galen-specs
+ 
+    @forEach [item-*] as item
+        @if ${isPresent(item)}
+            ${item}:
+                height 10px
+ 
+$$
+
 
 
 h2. Warning level for specs
